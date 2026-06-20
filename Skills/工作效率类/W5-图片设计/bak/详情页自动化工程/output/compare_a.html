@@ -1,0 +1,295 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
+<style>/* =============================================================
+   Detail Page Design System
+   11 种布局 + 图区占位 + 文字卡片
+   ============================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+/* ── 1. Reset ── */
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+/* ── 2. Design Tokens ── */
+:root {
+  --serif-zh: "Noto Serif SC","Songti SC","STSong",serif;
+  --serif-en: "Playfair Display","Noto Serif SC",serif;
+  --sans: "Noto Sans SC",-apple-system,"PingFang SC","Microsoft YaHei UI",sans-serif;
+  --mono: "IBM Plex Mono",ui-monospace,"SF Mono",Consolas,monospace;
+  --sp-2: 4px;  --sp-3: 8px;   --sp-4: 12px;  --sp-5: 16px;
+  --sp-6: 24px; --sp-7: 32px;  --sp-8: 40px;  --sp-9: 48px;
+  --sp-10: 64px; --sp-11: 80px; --sp-12: 96px; --sp-13: 128px;
+  --canvas-w: 1024px;
+  --canvas-h: 1024px;
+  --body-bg: #0f0d0b;
+}
+
+/* ── 3. Typography Roles ── */
+.mod .kicker {
+  font-family: var(--mono); font-size: 13px; font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(var(--ink-rgb), .45);
+  margin-bottom: var(--sp-6);
+}
+.mod .h-display {
+  font-family: var(--serif-zh); font-weight: 500;
+  font-size: 52px; line-height: 1.18;
+  letter-spacing: .03em; color: var(--ink);
+  margin-bottom: var(--sp-5);
+}
+.mod .h-xl {
+  font-family: var(--serif-zh); font-weight: 500;
+  font-size: 40px; line-height: 1.22;
+  letter-spacing: .02em; color: var(--ink);
+  margin-bottom: var(--sp-5);
+}
+.mod .h-md {
+  font-family: var(--serif-zh); font-weight: 500;
+  font-size: 30px; line-height: 1.28;
+  letter-spacing: .02em; color: var(--ink);
+  margin-bottom: var(--sp-4);
+}
+.mod .h-sub {
+  font-family: var(--serif-en); font-style: italic; font-weight: 400;
+  font-size: 26px; color: var(--mut); margin-bottom: var(--sp-5);
+}
+.mod .body {
+  font-family: var(--sans); font-weight: 400;
+  font-size: 18px; line-height: 1.7;
+  color: rgba(var(--ink-rgb), .72);
+  white-space: pre-line;
+}
+.mod .body-sm {
+  font-family: var(--sans); font-weight: 400;
+  font-size: 16px; line-height: 1.65;
+  color: rgba(var(--ink-rgb), .62);
+}
+.mod .stat-num {
+  font-family: var(--serif-en); font-weight: 600;
+  font-size: 48px; line-height: 1.1;
+  letter-spacing: -.01em; color: var(--acc);
+  margin-bottom: var(--sp-3);
+}
+.mod .stat-num-lg {
+  font-family: var(--serif-en); font-weight: 600;
+  font-size: 64px; line-height: 1.05;
+  letter-spacing: -.02em; color: var(--acc);
+  margin-bottom: var(--sp-3);
+}
+.mod .badge {
+  display: inline-block; padding: 5px 18px;
+  border: 1px solid rgba(var(--acc-rgb), .35);
+  border-radius: 100px;
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  letter-spacing: .10em; color: var(--acc);
+}
+.mod .badge-set {
+  display: flex; flex-wrap: wrap; gap: var(--sp-4);
+  margin-top: var(--sp-6);
+}
+
+/* ── 4. Layout Primitives ── */
+.mod .stack     { display: flex; flex-direction: column; }
+.mod .row       { display: flex; flex-direction: row; }
+.mod .grow      { flex: 1; }
+.mod .center    { text-align: center; }
+.mod .right     { text-align: right; }
+.mod .gap-3 { gap: var(--sp-3); } .mod .gap-4 { gap: var(--sp-4); }
+.mod .gap-5 { gap: var(--sp-5); } .mod .gap-6 { gap: var(--sp-6); }
+.mod .gap-7 { gap: var(--sp-7); } .mod .gap-8 { gap: var(--sp-8); }
+
+/* ── 5. 文字卡片 ── */
+.mod .text-card {
+  background: var(--card-bg, #FFFFFF);
+  --ink: #1A1A1A;
+  --mut: #666666;
+  --ink-rgb: 26, 26, 26;
+  --acc-rgb: var(--card-acc-rgb, 128, 128, 128);
+  border-radius: 4px;
+  padding: var(--sp-8);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  position: relative;
+  z-index: 2;
+}
+.mod .card {
+  background: var(--card-bg, #FFFFFF);
+  --ink: #1A1A1A;
+  --mut: #666666;
+  --ink-rgb: 26, 26, 26;
+  --acc-rgb: var(--card-acc-rgb, 128, 128, 128);
+  border-radius: 4px;
+  padding: var(--sp-8);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  position: relative;
+  z-index: 2;
+}
+.mod .text-card-center {
+  display: flex; flex-direction: column;
+  justify-content: center;
+}
+.mod .card-center {
+  display: flex; flex-direction: column;
+  justify-content: center;
+}
+.mod .sep {
+  height: 1px; background: rgba(var(--ink-rgb), .10); border: 0;
+  margin: var(--sp-6) 0; width: 64px;
+}
+.mod .num-step {
+  font-family: var(--mono); font-size: 13px; font-weight: 600;
+  letter-spacing: .10em; color: rgba(var(--acc-rgb), .55);
+  margin-bottom: var(--sp-2);
+}
+
+/* ── 6.1 图区比例类 ── */
+.mod .img-full { position: absolute; z-index: 0; inset: 0; background: var(--img-grad); }
+.mod .img-r-1x1 { aspect-ratio: 1/1; }
+.mod .img-r-3x4 { aspect-ratio: 3/4; }
+.mod .img-r-4x3 { aspect-ratio: 4/3; }
+.mod .img-r-16x9 { aspect-ratio: 16/9; }
+
+/* ── 6. 图区占位（渐变） ── */
+.mod .img-zone {
+  position: absolute; z-index: 0;
+  background: var(--img-grad);
+}
+/* 光晕效果 */
+.mod .img-zone::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(255,255,255,0.06) 0%, transparent 70%);
+}
+.mod.dark .img-zone::before {
+  background: radial-gradient(ellipse at 50% 40%, rgba(255,255,255,0.08) 0%, transparent 70%);
+}
+
+/* ── 7. 拱门遮罩布局 ── */
+.mod .arch-frame {
+  position: absolute; z-index: 0; inset: 0;
+  background: var(--img-grad);
+  clip-path: ellipse(70% 88% at 50% 12%);
+}
+.mod .arch-frame::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(255,255,255,0.07) 0%, transparent 65%);
+}
+
+/* ── 9. 模块容器 ── */
+.mod {
+  position: relative; overflow: hidden; isolation: isolate;
+  width: var(--canvas-w); height: var(--canvas-h);
+  background: var(--bg);
+}
+.mod + .mod { border-top: 1px solid rgba(var(--acc-rgb), .06); }
+
+/* ── 10. 分页编号 ── */
+.mod .pg {
+  position: absolute; bottom: 28px; right: 32px; z-index: 3;
+  font-family: var(--mono); font-size: 13px; font-weight: 500;
+  letter-spacing: .15em; color: rgba(var(--acc-rgb), .25);
+}
+body{background:var(--body-bg);width:var(--canvas-w);margin:0 auto;}
+</style>
+</head>
+<body>
+<div class="mod dark" style="--bg:#1A1513;--ink:#F5F0EB;--mut:#A0937D;--acc:#C9A96E;--card-bg:#FFFFFF;--ink-rgb:245, 240, 235;--acc-rgb:201, 169, 110;--card-acc-rgb:201, 169, 110;--img-grad:linear-gradient(145deg, #1A1513 0%, #C9A96E22 40%, #1A1513 100%);">
+  <div class="img-zone" style="inset:0;"></div>
+  <div class="card" style="position:absolute;left:var(--sp-12);right:var(--sp-12);bottom:var(--sp-11);padding:var(--sp-9) var(--sp-8);">
+    <p class="kicker">新品首发</p>
+    <h1 class="h-display">源自深海的逆龄奇迹</h1>
+    <p class="h-sub">HKH 鱼子酱精华奢养面霜</p>
+    <div class="body" style="margin-top:var(--sp-4)">产品悬浮于深蓝渐变至鎏金的底色中，光线透射出宝石般质感。</div>
+    <div class="badge-set"><span class="badge">深润奢护</span><span class="badge">紧致淡纹</span><span class="badge">焕亮透光</span></div>
+  </div>
+  <div class="pg">01</div>
+</div>
+<div class="mod dark" style="--bg:#1A1513;--ink:#F5F0EB;--mut:#A0937D;--acc:#C9A96E;--card-bg:#FFFFFF;--ink-rgb:245, 240, 235;--acc-rgb:201, 169, 110;--card-acc-rgb:201, 169, 110;--img-grad:linear-gradient(145deg, #1A1513 0%, #C9A96E22 40%, #1A1513 100%);">
+  <div class="text-card" style="position:absolute;inset:var(--sp-11) var(--sp-12);display:flex;flex-direction:column;justify-content:center;">
+    <p class="kicker">数据洞察</p>
+    <h1 class="h-xl" style="max-width:75%">肌肤的断崖式衰老</h1>
+    <div class="body" style="max-width:70%;margin-bottom:var(--sp-7)">熬夜压力氧化糖化正在透支肌肤的未来储备</div>
+    <div class="row" style="gap:var(--sp-10);align-items:stretch;">
+      <div class="stack gap-3" style="flex:1;"><div class="body" style="padding:10px 0;border-bottom:1px solid rgba(var(--ink-rgb),.08)">法令纹加深，苹果肌下垂</div><div class="body" style="padding:10px 0;border-bottom:1px solid rgba(var(--ink-rgb),.08)">干纹细纹交织，上妆即卡粉</div><div class="body" style="padding:10px 0;border-bottom:1px solid rgba(var(--ink-rgb),.08)">熬夜后脸色蜡黄，屏障脆弱泛红</div></div>
+      <div class="stack gap-3" style="flex:1;text-align:right;justify-content:center;"></div>
+    </div>
+  </div>
+  <div class="pg">02</div>
+</div>
+<div class="mod dark" style="--bg:#1A1513;--ink:#F5F0EB;--mut:#A0937D;--acc:#C9A96E;--card-bg:#FFFFFF;--ink-rgb:245, 240, 235;--acc-rgb:201, 169, 110;--card-acc-rgb:201, 169, 110;--img-grad:linear-gradient(145deg, #1A1513 0%, #C9A96E22 40%, #1A1513 100%);;display:flex;flex-direction:row;">
+  <div class="img-zone" style="position:relative;flex:6;"></div>
+  <div class="card card-center" style="flex:4;margin:var(--sp-11) var(--sp-8);border-radius:6px;">
+    <p class="kicker">核心成分</p>
+    <h1 class="h-xl">细胞级的深海奢养</h1>
+    <div class="body-sm" style="margin-bottom:var(--sp-5)">HKH实验室破译鱼子酱的青春密码</div>
+    <hr class="sep">
+    <p class="body" style="color:var(--acc);font-weight:500">微流控封装技术：保持鱼子酱精华巅峰活性，触肤释放深海修护能量。</p>
+    <p class="body">深透传导系统：模拟肌肤亲和力配比，直抵肌底撑起紧实轮廓。</p>
+    
+  </div>
+  <div class="pg">03</div>
+</div>
+<div class="mod dark" style="--bg:#1A1513;--ink:#F5F0EB;--mut:#A0937D;--acc:#C9A96E;--card-bg:#FFFFFF;--ink-rgb:245, 240, 235;--acc-rgb:201, 169, 110;--card-acc-rgb:201, 169, 110;--img-grad:linear-gradient(145deg, #1A1513 0%, #C9A96E22 40%, #1A1513 100%);;display:flex;flex-direction:row-reverse;">
+  <div class="img-zone" style="position:relative;flex:6;"></div>
+  <div class="card card-center" style="flex:4;margin:var(--sp-11) var(--sp-8);border-radius:6px;">
+    <p class="kicker">核心成分</p>
+    <h1 class="h-xl">每一罐都是奢华的深海宝藏</h1>
+    <div class="body-sm" style="margin-bottom:var(--sp-5)"></div>
+    <hr class="sep">
+    
+    
+    <div class="body" style="padding:10px 0;border-bottom:1px solid rgba(var(--ink-rgb),.08)">深海鲟鱼子酱提取物：珍罕修护奢品，激发胶原新生</div><div class="body" style="padding:10px 0;border-bottom:1px solid rgba(var(--ink-rgb),.08)">多重胜肽复合物：靶向淡化表情纹与深度皱纹</div><div class="body" style="padding:10px 0;border-bottom:1px solid rgba(var(--ink-rgb),.08)">海洋永生蔷薇精粹：卓越抗氧，逆转熬夜疲态黄气</div>
+  </div>
+  <div class="pg">04</div>
+</div>
+<div class="mod dark" style="--bg:#1A1513;--ink:#F5F0EB;--mut:#A0937D;--acc:#C9A96E;--card-bg:#FFFFFF;--ink-rgb:245, 240, 235;--acc-rgb:201, 169, 110;--card-acc-rgb:201, 169, 110;--img-grad:linear-gradient(145deg, #1A1513 0%, #C9A96E22 40%, #1A1513 100%);">
+  <div class="img-zone" style="inset:0;bottom:36%;"></div>
+  <div class="card card-center" style="position:absolute;left:var(--sp-12);right:var(--sp-12);bottom:var(--sp-10);height:30%;padding:var(--sp-7) var(--sp-8);text-align:center;">
+    <p class="kicker" style="text-align:center">感官体验</p>
+    <h1 class="h-md">触肤即融的极致奢宠SPA</h1>
+    <div class="body-sm" style="margin-bottom:var(--sp-3)">不浮油不搓泥不假滑</div>
+    <div class="body">天鹅绒般细腻绵柔的拉丝质地，推开瞬间化成精华水膜。</div>
+    <div class="badge-set" style="justify-content:center"><span class="badge">云绒凝脂质地</span><span class="badge">丰润瞬透·润而不腻</span></div>
+  </div>
+  <div class="pg">05</div>
+</div>
+<div class="mod dark" style="--bg:#1A1513;--ink:#F5F0EB;--mut:#A0937D;--acc:#C9A96E;--card-bg:#FFFFFF;--ink-rgb:245, 240, 235;--acc-rgb:201, 169, 110;--card-acc-rgb:201, 169, 110;--img-grad:linear-gradient(145deg, #1A1513 0%, #C9A96E22 40%, #1A1513 100%);;display:flex;flex-direction:row;">
+  <div class="img-zone" style="position:relative;flex:4;"></div>
+  <div class="card card-center" style="flex:6;margin:var(--sp-11) var(--sp-8) var(--sp-11) 0;border-radius:6px;">
+    <p class="kicker" style="text-align:right;margin-left:auto;">临床验证</p>
+    <h1 class="h-xl" style="text-align:right">数据会说话，口碑是王者</h1>
+    <hr class="sep" style="margin-left:auto;">
+    <div class="stack gap-4" style="align-items:flex-end;"><p class="stat-num">法令纹面积减少 28.3%</p><p class="stat-num">表皮水合度提升 95%</p><p class="stat-num">肌肤紧致度提升 31%</p></div>
+    <div class="body" style="margin-top:var(--sp-6);text-align:right;">经第三方检测机构实证，敏肌温和可用。不添加酒精、矿物油。</div>
+  </div>
+  <div class="pg">06</div>
+</div>
+<div class="mod dark" style="--bg:#1A1513;--ink:#F5F0EB;--mut:#A0937D;--acc:#C9A96E;--card-bg:#FFFFFF;--ink-rgb:245, 240, 235;--acc-rgb:201, 169, 110;--card-acc-rgb:201, 169, 110;--img-grad:linear-gradient(145deg, #1A1513 0%, #C9A96E22 40%, #1A1513 100%);;display:flex;flex-direction:row;">
+  <div class="card card-center" style="flex:5;margin:var(--sp-11) var(--sp-8);border-radius:6px;">
+    <p class="kicker">使用手法</p>
+    <h2 class="h-xl" style="font-style:italic;font-family:var(--serif-en)">配合HKH鱼子酱提拉术，让价值不辜负每一滴</h2>
+    <hr class="sep">
+    <div class="stack gap-6"><div class="stack" style="gap:var(--sp-2)"><span class="num-step">STEP 01</span><div class="body" style="color:var(--ink)">掌心温热乳化，激发鱼子酱精华活性</div></div><div class="stack" style="gap:var(--sp-2)"><span class="num-step">STEP 02</span><div class="body" style="color:var(--ink)">由鼻翼向太阳穴舒展提升</div></div><div class="stack" style="gap:var(--sp-2)"><span class="num-step">STEP 03</span><div class="body" style="color:var(--ink)">沿下颌线向耳后提拉，反复三次</div></div><div class="stack" style="gap:var(--sp-2)"><span class="num-step">STEP 04</span><div class="body" style="color:var(--ink)">颈部由下向上按压，锁住青春</div></div></div>
+  </div>
+  <div class="img-zone" style="position:relative;flex:5;"></div>
+  <div class="pg">07</div>
+</div>
+<div class="mod dark" style="--bg:#1A1513;--ink:#F5F0EB;--mut:#A0937D;--acc:#C9A96E;--card-bg:#FFFFFF;--ink-rgb:245, 240, 235;--acc-rgb:201, 169, 110;--card-acc-rgb:201, 169, 110;--img-grad:linear-gradient(145deg, #1A1513 0%, #C9A96E22 40%, #1A1513 100%);">
+  <div class="img-zone" style="inset:0;"></div>
+  <div class="card" style="position:absolute;inset:var(--sp-11) var(--sp-12);display:flex;flex-direction:column;justify-content:center;padding:var(--sp-9) var(--sp-8);">
+    <p class="kicker" style="text-align:center">全面呵护</p>
+    <h1 class="h-xl" style="text-align:center">无论哪个年龄段，都是你的奢华答案</h1>
+    <div class="row" style="gap:var(--sp-5);margin-top:var(--sp-7);justify-content:center;"><div class="card card-center" style="padding:var(--sp-7) var(--sp-5);text-align:center;gap:var(--sp-4);border-radius:6px;"><div class="body" style="font-weight:600;color:var(--acc);font-size:18px"></div><div class="body-sm">25+ 轻熟肌 急救熬夜垮脸</div></div><div class="card card-center" style="padding:var(--sp-7) var(--sp-5);text-align:center;gap:var(--sp-4);border-radius:6px;"><div class="body" style="font-weight:600;color:var(--acc);font-size:18px"></div><div class="body-sm">30+ 熟龄肌 把少女线雕回来</div></div><div class="card card-center" style="padding:var(--sp-7) var(--sp-5);text-align:center;gap:var(--sp-4);border-radius:6px;"><div class="body" style="font-weight:600;color:var(--acc);font-size:18px"></div><div class="body-sm">全龄段贵妇 光泽感前所未有</div></div></div>
+  </div>
+  <div class="pg">08</div>
+</div>
+<div class="mod dark" style="--bg:#1A1513;--ink:#F5F0EB;--mut:#A0937D;--acc:#C9A96E;--card-bg:#FFFFFF;--ink-rgb:245, 240, 235;--acc-rgb:201, 169, 110;--card-acc-rgb:201, 169, 110;--img-grad:linear-gradient(145deg, #1A1513 0%, #C9A96E22 40%, #1A1513 100%);">
+  <div class="img-zone" style="inset:0;"></div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:35%;z-index:2;
+    background:linear-gradient(transparent, rgba(0,0,0,0.65));display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 var(--sp-12);">
+    <h1 class="h-xl" style="color:#fff;margin-bottom:var(--sp-5)">HKH，给你无可比拟的奢宠宠爱</h1>
+    <div class="body" style="color:rgba(255,255,255,0.6)">即刻下单尊享买1享N加赠
+过敏包退无忧售后
+顺丰包邮无需等待</div>
+  </div>
+  <div class="pg">09</div>
+</div>
+
+</body></html>

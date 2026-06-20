@@ -1,0 +1,17 @@
+{
+  "mode": "pipeline",
+  "name": "故事板到视频提示词",
+  "project_id": "项目UUID",
+  "output_dir": "图片所在目录",
+  "step_delay": 5,
+  "steps": [
+    {
+      "name": "storyboard_N_v1",
+      "type": "analyze",
+      "image": "图片绝对路径/storyboard_N_v1.png",
+      "follow_ups": 0,
+      "thread": "new",
+      "prompt": "这是我的故事板分镜图，画面内容描述。根据这张图写视频提示词，包含场景氛围、角色状态、镜头运动、光影色调。只输出提示词正文，不要任何前缀说明、不要分析过程、不要多余文字。直接输出提示词。"
+    }
+  ]
+}

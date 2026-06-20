@@ -1,0 +1,36 @@
+{
+  "skill_name": "克隆详情页",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我看看这张竞品图的结构，把它的文案和排版提取出来，我想改成我的产品。",
+      "expected_output": "启动 State 0 进行转录",
+      "expectations": [
+        "必须调用本技能",
+        "输出必须包含 MD 模板格式",
+        "输出必须带有 🟢🟡🔴 置信度标签"
+      ],
+      "files": ["sample_competitor_page.jpg"]
+    },
+    {
+      "id": 2,
+      "prompt": "我这里有一段新产品的卖点文案，帮我直接排版设计一个高端详情页。",
+      "expected_output": "引导至 W5，不执行转录",
+      "expectations": [
+        "输出不得包含转录 MD 模板",
+        "必须建议用户使用 W5 详情页生成器"
+      ],
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "帮我把这张截图转录成文字。",
+      "expected_output": "启动 State 0，但需询问并确认是几屏",
+      "expectations": [
+        "必须调用本技能",
+        "输出必须包含询问截图包含了多少屏的确认动作"
+      ],
+      "files": ["long_screenshot_unsplit.jpg"]
+    }
+  ]
+}

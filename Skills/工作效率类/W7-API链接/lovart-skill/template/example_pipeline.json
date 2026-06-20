@@ -1,0 +1,36 @@
+{
+  "mode": "pipeline",
+  "name": "示例-品牌规范自动化（含分叉审核）",
+  "output_dir": "./output",
+  "step_delay": 12,
+  "steps": [
+    {
+      "name": "01-上传图片分析",
+      "type": "analyze",
+      "image": "D:/你的图片路径/参考图.jpg",
+      "prompt": "提取这张图的设计规范",
+      "follow_ups": 3
+    },
+    {
+      "name": "02-生成海报",
+      "type": "ask",
+      "prompt": "好，现在按这个规范，用 Nano Banana 2 生成一张 1K 竖屏海报。",
+      "follow_ups": 3
+    },
+    {
+      "name": "03-独立审核",
+      "type": "analyze",
+      "image": "$last",
+      "prompt": "以独立审核者视角，检查生成的海报是否满足规范",
+      "thread": "new",
+      "follow_ups": 3
+    },
+    {
+      "name": "04-根据审核修改",
+      "type": "ask",
+      "prompt": "按审核意见修改海报：\n$step[03-独立审核]",
+      "thread": "main",
+      "follow_ups": 3
+    }
+  ]
+}

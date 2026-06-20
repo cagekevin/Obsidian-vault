@@ -1,0 +1,187 @@
+{
+  "project_id": "HKH_CAVIAR_001",
+  "product_name": "HKH Caviar Supreme Cream",
+  "product_color": "deep amber gold",
+  "color_hex": "#C9A96E",
+  "engine_key": "premium_luxury",
+  "modules": [
+    {
+      "name": "01_黄金海报位",
+      "layout_key": "hero_banner",
+      "subject_route": "product_hero",
+      "edge_style": "linear",
+      "texts": {
+        "hero_title": "源自深海的逆龄奇迹",
+        "subtitle": "HKH 鱼子酱精华奢养面霜",
+        "body_text": "产品悬浮于深蓝渐变至鎏金的底色中，光线透射出宝石般质感。",
+        "badge_1": "深润奢护",
+        "badge_2": "紧致淡纹",
+        "badge_3": "焕亮透光",
+        "kicker": "新品首发"
+      },
+      "render_instruction": {
+        "background_hex": "#1C1816",
+        "text_primary": "#F5F0EB",
+        "text_secondary": "#A0937D",
+        "accent": "#C9A96E"
+      }
+    },
+    {
+      "name": "02_深挖危机",
+      "layout_key": "split_before_after",
+      "subject_route": "before_after",
+      "edge_style": "sine",
+      "texts": {
+        "section_title": "肌肤的断崖式衰老",
+        "subtitle": "熬夜压力氧化糖化正在透支肌肤的未来储备",
+        "feature_1": "法令纹加深，苹果肌下垂",
+        "feature_2": "干纹细纹交织，上妆即卡粉",
+        "feature_3": "熬夜后脸色蜡黄，屏障脆弱泛红",
+        "kicker": "数据洞察"
+      },
+      "render_instruction": {
+        "background_hex": "#1C1816",
+        "text_primary": "#F5F0EB",
+        "text_secondary": "#A0937D",
+        "accent": "#C9A96E"
+      }
+    },
+    {
+      "name": "03_核心科技",
+      "layout_key": "ingredient_zigzag_left",
+      "subject_route": "ingredient_origin",
+      "edge_style": "linear",
+      "texts": {
+        "section_title": "细胞级的深海奢养",
+        "subtitle": "HKH实验室破译鱼子酱的青春密码",
+        "highlight": "微流控封装技术：保持鱼子酱精华巅峰活性，触肤释放深海修护能量。",
+        "body_text": "深透传导系统：模拟肌肤亲和力配比，直抵肌底撑起紧实轮廓。",
+        "kicker": "核心成分"
+      },
+      "render_instruction": {
+        "background_hex": "#1C1816",
+        "text_primary": "#F5F0EB",
+        "text_secondary": "#A0937D",
+        "accent": "#C9A96E"
+      }
+    },
+    {
+      "name": "04_成分矩阵",
+      "layout_key": "ingredient_zigzag_right",
+      "subject_route": "ingredient_origin",
+      "edge_style": "linear",
+      "texts": {
+        "section_title": "每一罐都是奢华的深海宝藏",
+        "feature_1": "深海鲟鱼子酱提取物：珍罕修护奢品，激发胶原新生",
+        "feature_2": "多重胜肽复合物：靶向淡化表情纹与深度皱纹",
+        "feature_3": "海洋永生蔷薇精粹：卓越抗氧，逆转熬夜疲态黄气",
+        "kicker": "核心成分"
+      },
+      "render_instruction": {
+        "background_hex": "#1C1816",
+        "text_primary": "#F5F0EB",
+        "text_secondary": "#A0937D",
+        "accent": "#C9A96E"
+      }
+    },
+    {
+      "name": "05_感官盛宴",
+      "layout_key": "texture_smear_bottom_text",
+      "subject_route": "texture_detail",
+      "edge_style": "sine",
+      "texts": {
+        "section_title": "触肤即融的极致奢宠SPA",
+        "subtitle": "不浮油不搓泥不假滑",
+        "body_text": "天鹅绒般细腻绵柔的拉丝质地，推开瞬间化成精华水膜。",
+        "badge_1": "云绒凝脂质地",
+        "badge_2": "丰润瞬透·润而不腻",
+        "kicker": "感官体验"
+      },
+      "render_instruction": {
+        "background_hex": "#1C1816",
+        "text_primary": "#F5F0EB",
+        "text_secondary": "#A0937D",
+        "accent": "#C9A96E"
+      }
+    },
+    {
+      "name": "06_权威见证",
+      "layout_key": "authority_endorsement_split",
+      "subject_route": "brand_authority",
+      "edge_style": "linear",
+      "texts": {
+        "section_title": "数据会说话，口碑是王者",
+        "data_1": "法令纹面积减少 28.3%",
+        "data_2": "表皮水合度提升 95%",
+        "data_3": "肌肤紧致度提升 31%",
+        "body_text": "经第三方检测机构实证，敏肌温和可用。不添加酒精、矿物油。",
+        "kicker": "临床验证"
+      },
+      "render_instruction": {
+        "background_hex": "#1C1816",
+        "text_primary": "#F5F0EB",
+        "text_secondary": "#A0937D",
+        "accent": "#C9A96E"
+      }
+    },
+    {
+      "name": "07_使用仪式",
+      "layout_key": "model_lifestyle_side_anchor",
+      "subject_route": "lifestyle_usage",
+      "edge_style": "soft_brush",
+      "texts": {
+        "quote_text": "配合HKH鱼子酱提拉术，让价值不辜负每一滴",
+        "step_1": "掌心温热乳化，激发鱼子酱精华活性",
+        "step_2": "由鼻翼向太阳穴舒展提升",
+        "step_3": "沿下颌线向耳后提拉，反复三次",
+        "step_4": "颈部由下向上按压，锁住青春",
+        "kicker": "使用手法"
+      },
+      "render_instruction": {
+        "background_hex": "#1C1816",
+        "text_primary": "#F5F0EB",
+        "text_secondary": "#A0937D",
+        "accent": "#C9A96E"
+      }
+    },
+    {
+      "name": "08_场景共鸣",
+      "layout_key": "three_column_features",
+      "subject_route": "badge_grid",
+      "edge_style": "linear",
+      "texts": {
+        "hero_title": "无论哪个年龄段，都是你的奢华答案",
+        "feature_1": "25+ 轻熟肌 急救熬夜垮脸",
+        "feature_2": "30+ 熟龄肌 把少女线雕回来",
+        "feature_3": "全龄段贵妇 光泽感前所未有",
+        "kicker": "全面呵护"
+      },
+      "render_instruction": {
+        "background_hex": "#1C1816",
+        "text_primary": "#F5F0EB",
+        "text_secondary": "#A0937D",
+        "accent": "#C9A96E"
+      }
+    },
+    {
+      "name": "09_品牌承诺",
+      "layout_key": "full_bleed_lifestyle",
+      "subject_route": "product_hero",
+      "edge_style": "soft_brush",
+      "texts": {
+        "tagline": "HKH，给你无可比拟的奢宠宠爱",
+        "body_text": "即刻下单尊享买1享N加赠\n过敏包退无忧售后\n顺丰包邮无需等待",
+        "kicker": "品牌承诺"
+      },
+      "render_instruction": {
+        "background_hex": "#1C1816",
+        "text_primary": "#F5F0EB",
+        "text_secondary": "#A0937D",
+        "accent": "#C9A96E"
+      }
+    }
+  ],
+  "_meta": {
+    "draft_note": "HKH鱼子酱面霜详情页，9屏按文案指引匹配布局"
+  }
+}

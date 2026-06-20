@@ -1,0 +1,148 @@
+{
+  "detail_catalog": {
+    "hero_banner": {
+      "category": "首屏横幅",
+      "kicker": "新品首发",
+      "trigger_logic": "First module of detail page. Has main_title + product hero shot.",
+      "gestalt_rules": {
+        "alignment": "center",
+        "text_zone": "top 25% of module",
+        "product_zone": "center 50% of module",
+        "hierarchy": "main_title on top, body description below"
+      },
+      "spatial_prompt_injection": "Product centered in the frame. The top quarter of the frame must be clean atmospheric negative space ready for headline text. Soft floor shadow beneath product.",
+      "translator_instruction": "详情页首屏横幅。提示词要求顶部 25% 留出纯净背景用于标题。产品居中放置在画面中央。"
+    },
+    "ingredient_zigzag_left": {
+      "category": "成分解析 - Z字型左留白",
+      "kicker": "核心成分",
+      "trigger_logic": "Component breakdown (Array item 1, 3, 5). Ingredient macro on right, text on left.",
+      "gestalt_rules": {
+        "alignment": "flush-left",
+        "text_zone": "Strictly Left 40%, centered vertically",
+        "hierarchy": "Ingredient name H2 (bold), description Body (regular), tight proximity"
+      },
+      "spatial_prompt_injection": "The core subject MUST be positioned strictly on the right 60% of the canvas. The left 40% of the frame MUST be completely empty, pure seamless negative space. No textures, no objects, no distractions on the left side.",
+      "translator_instruction": "向 Translator 强力注入左侧留白指令。排版引擎在渲染时，将成分说明文字严格局限在左侧 40% 的纯净区域内，实现标准的左文右图。"
+    },
+    "ingredient_zigzag_right": {
+      "category": "成分解析 - Z字型右留白",
+      "kicker": "核心成分",
+      "trigger_logic": "Component breakdown (Array item 2, 4, 6). Ingredient macro on left, text on right.",
+      "gestalt_rules": {
+        "alignment": "flush-right",
+        "text_zone": "Strictly Right 40%, centered vertically",
+        "hierarchy": "Ingredient name H2 (bold), description Body (regular), tight proximity"
+      },
+      "spatial_prompt_injection": "The core subject MUST be positioned strictly on the left 60% of the canvas. The right 40% of the frame MUST be completely empty, pure seamless negative space. No textures, no objects, no distractions on the right side.",
+      "translator_instruction": "配合 ingredient_zigzag_left 交替使用。Python 脚本循环读取成分数组时，奇数项用 left、偶数项用 right，自动形成视线引导完美的 Z 字型瀑布流排版。"
+    },
+    "texture_smear_bottom_text": {
+      "category": "肤感/质地展示 - 底部文字托盘",
+      "kicker": "感官体验",
+      "trigger_logic": "Texture showcase or multi-step usage guide. Highly detailed visual at top.",
+      "gestalt_rules": {
+        "alignment": "center",
+        "text_zone": "Bottom 35% of the canvas",
+        "hierarchy": "Centered title, body text description for usage steps"
+      },
+      "spatial_prompt_injection": "The highly detailed texture or macro subject must occupy the bottom 55% of the frame. The top 45% of the canvas must be a clean, flat, uncluttered solid color block or extremely soft gradient, forming a completely empty base for headline text.",
+      "translator_instruction": "质地图往往极其复杂（如飞溅的水、拉丝的乳霜）。强制模型在下方 35% 生成干净的「文字托盘」，彻底解决复杂背景导致文字无法阅读的痛点。"
+    },
+    "model_lifestyle_side_anchor": {
+      "category": "模特/使用场景 - 侧边大面积留白",
+      "kicker": "使用手法",
+      "trigger_logic": "Human face or lifestyle application shot. Needs emotional connection.",
+      "gestalt_rules": {
+        "alignment": "flush-left",
+        "text_zone": "Left 50%, large typography for emotional quotes",
+        "hierarchy": "Oversized elegant serif quote, small sans-serif attribution"
+      },
+      "spatial_prompt_injection": "Human model positioned on the right edge of the frame, looking towards the left. The entire left half (50%) of the image must be a vast, clean, soft atmospheric negative space. No background clutter on the left.",
+      "translator_instruction": "带有模特人脸的图极易显得拥挤。强制将人物挤向一侧，留出一半的绝对呼吸空间，用于放置大字号的情绪感染力文案。"
+    },
+    "three_column_features": {
+      "category": "三列特点/图标网格",
+      "kicker": "全面呵护",
+      "trigger_logic": "Has 3 feature_icons + 3 short labels. Grid layout.",
+      "gestalt_rules": {
+        "alignment": "center",
+        "grid_columns": 3,
+        "icon_zone": "top 40%, centered in each column",
+        "label_zone": "bottom 60%, centered below each icon",
+        "hierarchy": "Icon above label, equal spacing"
+      },
+      "spatial_prompt_injection": "Create three evenly spaced columns across the full frame. Each column has a centered circular or rounded area at the top for icon placement. The rest of each column should be clean uniform background.",
+      "translator_instruction": "三列对比模块。生图提示词要求画面等分为三列，每列顶部留出圆形或圆角图标区。三列底色统一均匀。"
+    },
+    "split_before_after": {
+      "category": "前后对比",
+      "kicker": "数据洞察",
+      "trigger_logic": "Has before_after comparison. Product has visible transformation effect.",
+      "gestalt_rules": {
+        "alignment": "center",
+        "split": "vertical center",
+        "text_zone": "bottom 20%, full width",
+        "hierarchy": "Before on left, after on right, caption below"
+      },
+      "spatial_prompt_injection": "Split the frame vertically down the middle. Left side shows before state with subtle warm tone. Right side shows after state with bright clean lighting. The bottom 20% of the frame must be empty uniform background for caption text.",
+      "translator_instruction": "前后对比模块。提示词要求画面垂直对半分割，左侧暖调「使用前」，右侧亮调「使用后」，底部留出 20% 背景区放标注文字。"
+    },
+    "full_bleed_lifestyle": {
+      "category": "全幅生活方式",
+      "kicker": "品牌承诺",
+      "trigger_logic": "Has lifestyle_story or emotion_description. No complex text, only short tagline.",
+      "gestalt_rules": {
+        "alignment": "center",
+        "text_zone": "bottom 15%, full width overlay",
+        "hierarchy": "Tagline floating at bottom with slight dark overlay for readability"
+      },
+      "spatial_prompt_injection": "Full-bleed immersive lifestyle scene. The bottom 15% of the frame should have a subtle dark gradient overlay area suitable for placing a clean white tagline text.",
+      "translator_instruction": "全幅生活方式模块。无边全幅场景图，底部 15% 加暗色渐变区用于放白色标语文字。提示词要强调沉浸感。",
+      "edge_style": "soft_brush",
+      "rendering_hint": "使用 soft_brush 边缘与上一模块拼接"
+    },
+    "texture_center_floating": {
+      "category": "悬浮微距展示 - 中轴构图，两翼留白",
+      "kicker": "质地特写",
+      "trigger_logic": "Highly viscous texture (e.g., oil, serum, honey) with multiple short feature callouts.",
+      "gestalt_rules": {
+        "alignment": "left-and-right-flanks",
+        "text_zone": "Left 25% and Right 25% symmetrically, text floating around the center subject",
+        "hierarchy": "Small elegant badges with short descriptions, left and right flanks"
+      },
+      "spatial_prompt_injection": "The macro subject MUST be positioned floating perfectly in the vertical center of the frame. The entire left 25% and the entire right 25% of the canvas MUST be completely empty, pure seamless negative space. NO elements allowed on the left and right edges.",
+      "translator_instruction": "强制 Flow 在画面正中央画质地，把左右两侧彻底清空。底图生成后，排版渲染引擎分别在左右两侧的安全区内执行对齐印字。",
+      "edge_style": "sine",
+      "rendering_hint": "使用正弦波边缘与上一模块拼接"
+    },
+    "authority_endorsement_split": {
+      "category": "专家背书 - 侧边人像聚焦",
+      "kicker": "临床验证",
+      "trigger_logic": "Requires expert portrait, doctor, or scientist with lab context and certification text.",
+      "gestalt_rules": {
+        "alignment": "flush-right",
+        "text_zone": "Right 60% of the canvas, large numerical data highlight",
+        "hierarchy": "Huge numbers (e.g., 57%), heavy bold title, small clinical text"
+      },
+      "spatial_prompt_injection": "A professional portrait of a scientist on the strictly left 40% of the frame. The background is a highly blurred out-of-focus laboratory. The right 60% of the image MUST be a clean, dark, or solid color overlay area, serving as completely empty negative space for text. Do not generate text in the image.",
+      "translator_instruction": "限制专家只能出现在左侧，右侧强制生成大面积纯净暗区或色块。代码后续在右侧 60% 的区域排版巨大的实验数据和认证文案。",
+      "edge_style": "linear",
+      "rendering_hint": "标准线性羽化拼接"
+    },
+    "module_arch_window": {
+      "category": "焦点视窗/对比展示 - 拱门遮罩布局",
+      "kicker": "焦点视窗",
+      "trigger_logic": "Has before/after comparison OR concentrated scalp/hair texture shot.",
+      "gestalt_rules": {
+        "alignment": "center",
+        "text_zone": "Top 15% and Bottom 15% outside the arch",
+        "hierarchy": "Elegant serif titles wrapping the top curve, minimal labels below"
+      },
+      "spatial_prompt_injection": "Generate the entire image as a highly detailed macro texture or lifestyle scene filling the entire 100% of the frame. DO NOT generate any borders or text areas.",
+      "translator_instruction": "Flow 输出满屏底图。Python 渲染引擎调用 apply_arch_mask() 将底图裁切成拱门形状，贴在全局背景色上。文字排版在拱门外的上下区域。",
+      "edge_style": "arch",
+      "rendering_hint": "拱门遮罩：调用 apply_arch_mask() 裁切，然后在拱门外渲染文本。免去 Flow 画边缘的幻觉风险。"
+    }
+  }
+}

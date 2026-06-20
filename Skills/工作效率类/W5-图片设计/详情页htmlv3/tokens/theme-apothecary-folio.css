@@ -1,0 +1,262 @@
+/*
+ * Theme: Apothecary Folio (药剂师文库)
+ * prompt_palette: warm chamois #E8E4D9 / sage-gray #7A8470 / amber #7A4623 / ink-black #1B1B1B
+ * Design School: Aesop + Stripe Press + Monocle
+ * Vibe: 麂皮纸质感、传统印刷墨水、极其安静的文学阅读感、实体书阴影
+ */
+
+:root {
+    /* 1. 经典印刷调色板 */
+    --color-bg-base: #E8E4D9;         /* Aesop 标志性的温暖麂皮纸色 */
+    --color-bg-alt: #F0EDE4;          /* 略浅的奶油色，用于区分层级 */
+    --color-bg-dark: #1B1B1B;         /* Aesop 的传统墨水黑 */
+
+    --color-text: #1B1B1B;
+    --color-sub: #7A8470;             /* Aesop 鼠尾草灰绿 */
+    --color-accent: #7A4623;          /* 经典的琥珀棕色 */
+    --color-line: #C8BEA4;            /* Stripe Press 的极细纸张分割线 */
+
+    /* 2. 文学字体栈 */
+    --font-serif: 'Lyon Text', 'Georgia', 'Noto Serif SC', serif;
+    --font-sans: 'Helvetica Now', 'Arial', sans-serif;
+    --font-script: 'Caveat', 'Kaiti', cursive;
+
+    /* 3. 诗意的古典留白节奏 */
+    --sp-1: 8px; --sp-2: 16px; --sp-3: 24px; --sp-4: 40px;
+    --sp-6: 72px; --sp-8: 96px; --sp-10: 120px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background-color: #DCD8CC;
+    display: flex;
+    justify-content: center;
+    -webkit-font-smoothing: antialiased;
+    color: var(--color-text);
+}
+.page-wrapper {
+    width: 100%;
+    max-width: 720px;
+    background-color: var(--color-bg-base);
+    box-shadow: 0 0 60px rgba(27, 27, 27, 0.08);
+}
+
+/* =========================================
+   主结构容器：安静的画布
+   ========================================= */
+.mod {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: var(--sp-10) 0;
+    background-color: var(--color-bg-base);
+    overflow: hidden;
+}
+
+.mod--hero { padding: 0; background-color: var(--color-bg-base); }
+.mod--alt-bg { background-color: var(--color-bg-alt); }
+.mod--dark-bg { background-color: var(--color-bg-dark); color: var(--color-bg-base); }
+
+.mod-top-c {
+    padding: 0 var(--sp-6) var(--sp-6);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.mod-body {
+    flex: 1;
+    padding: 0 var(--sp-6);
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+/* =========================================
+   字体排印：古典文学感
+   ========================================= */
+.display-xxl, .display-xl, .display-lg {
+    font-family: var(--font-serif);
+    color: var(--color-text);
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: 0.02em;
+}
+
+.display-xxl { font-size: 42px; }
+.display-xl { font-size: 34px; }
+.display-lg { font-size: 26px; }
+
+.h1-sm {
+    font-family: var(--font-serif);
+    font-size: 18px;
+    font-style: italic;
+    color: var(--color-sub);
+    margin-top: var(--sp-2);
+    font-weight: 400;
+}
+
+.body {
+    font-family: var(--font-serif);
+    font-size: 16px;
+    color: var(--color-text);
+    line-height: 1.7;
+    font-weight: 400;
+    text-align: justify;
+}
+
+/* =========================================
+   Aesop 式的标签与指示符
+   ========================================= */
+.kicker {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-sub);
+    margin-bottom: var(--sp-4);
+}
+
+.deco-en {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    opacity: 0.6;
+    margin-top: var(--sp-2);
+}
+
+.num {
+    font-family: var(--font-serif);
+    font-size: 36px;
+    color: var(--color-accent);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.deco-script {
+    font-family: var(--font-script);
+    font-size: 26px;
+    color: var(--color-text);
+    opacity: 0.7;
+    display: block;
+    margin-top: var(--sp-4);
+    text-align: center;
+}
+
+/* =========================================
+   布局与组件：克制的物理留白
+   ========================================= */
+.stack { display: flex; flex-direction: column; }
+.gap-1 { gap: var(--sp-2); }
+.gap-2 { gap: var(--sp-4); }
+
+.grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-4);
+    width: 100%;
+}
+.grid-2x2-item { display: flex; flex-direction: column; }
+.grid-2x2-item:nth-child(even) { margin-top: 24px; }
+
+.callout-box {
+    background: transparent;
+    border: none;
+    padding: var(--sp-3) 0;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--sp-4);
+}
+
+.tag-item {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    padding: 4px 0;
+    color: var(--color-sub);
+    border: none;
+    border-bottom: 1px solid var(--color-line);
+    border-radius: 0;
+    margin: 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.quote {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--color-text);
+    text-align: center;
+    line-height: 1.5;
+    padding: var(--sp-6) 0;
+    border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+    margin: var(--sp-4) 0;
+}
+
+/* =========================================
+   图片：Stripe Press 实体书阴影
+   ========================================= */
+.dp2-mock {
+    width: 100%;
+    background: #E0DDD2;
+    border: none;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-sub);
+    font-family: var(--font-sans);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    box-shadow: 0 24px 48px rgba(27, 27, 27, 0.18);
+}
+
+.dp2-mock--hero { aspect-ratio: 4/5; margin-top: var(--sp-6); }
+.dp2-mock--square { aspect-ratio: 1/1; box-shadow: 0 12px 24px rgba(27, 27, 27, 0.12); }
+.dp2-mock--portrait { aspect-ratio: 3/4; }
+.dp2-mock--arch {
+    aspect-ratio: 3/4;
+    border-radius: 200px 200px 0 0;
+    box-shadow: 0 32px 64px rgba(27, 27, 27, 0.15);
+}
+
+.dp2-data-strip {
+    background: transparent;
+    border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+    color: var(--color-text);
+    display: flex;
+    justify-content: space-around;
+    padding: 16px 0;
+    border-radius: 0;
+    margin-top: 48px;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.dp2-card-overlap { display: flex; margin-top: 48px; border-top: 1px solid var(--color-line); }
+.dp2-card-overlap__card--them,
+.dp2-card-overlap__card--us {
+    width: 50%;
+    background: transparent;
+    border: none;
+    padding: 32px 16px;
+    border-radius: 0;
+    box-shadow: none;
+}
+.dp2-card-overlap__card--them { border-right: 1px solid var(--color-line); }
+

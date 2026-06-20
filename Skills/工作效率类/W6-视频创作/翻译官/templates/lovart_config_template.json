@@ -1,0 +1,19 @@
+{
+  "project_id": "",
+  "refs": {
+    "resolution": "1K",
+    "aspect_ratio": "4:3",
+    "model": "generate_image_gpt_image_2_medium"
+  },
+  "shots": {
+    "resolution": "2K",
+    "aspect_ratio": "16:9",
+    "model": "generate_image_gpt_image_2_medium"
+  },
+  "output": {
+    "assets_dir": "assets",
+    "images_dir": "images",
+    "videos_dir": "videos"
+  },
+  "skip_existing": false
+}

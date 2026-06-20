@@ -1,0 +1,14 @@
+{
+  "mode": "pipeline",
+  "name": "肌肤状态展示图生成器 V2",
+  "project_id": "[项目UUID]",
+  "output_dir": "[项目路径]/output",
+  "steps": [
+    {
+      "name": "01-生成肌肤状态展示图",
+      "type": "ask",
+      "prompt": "Skill ID: skin_condition_display\n\n用途: 生成护肤产品营销用的多肌肤状态对比展示图，自适应1-6个状态\n\n输入参数定义：\n| 参数 | 类型 | 必填 | 说明 |\n|------|------|------|------|\n| conditions | 文本数组 | 是 | 肌肤状态列表，1-6个 |\n| layout | 文本 | 否 | 布局方式：auto(默认) / horizontal / vertical / grid |\n| aspect_ratio | 文本 | 否 | 图片比例，默认根据数量自适应 |\n| style | 文本 | 否 | 视觉风格描述 |\n| skin_tone | 文本 | 否 | 肤色，默认 亚洲中性肤色 |\n| show_area | 文本 | 否 | 展示部位，默认 脸部局部特写 |\n\n固定输出规范：\n| 属性 | 设定 |\n|------|------|\n| 展示范围 | 真人脸部局部特写（眼周、脸颊、额头等）|\n| 年龄段 | AI根据肌肤状态自动判断（如松弛下垂→熟龄肌，干燥粗糙→轻熟龄肌） |\n| 画面风格 | 专业护肤品广告摄影，柔和自然光，高清质感 |\n\n自适应布局规则：\n| 状态数量 | 布局 | 建议比例 |\n|---------|------|--------|\n| 1个 | 单图居中 | 1:1 |\n| 2个 | 左右并排 | 16:9 |\n| 3个 | 横向三列 | 21:9 或 3:1 |\n| 4个 | 四宫格 2×2 | 1:1 |\n| 5-6个 | 自适应网格 | 根据内容调整 |\n\n生成提示词模板：\nProfessional skincare marketing image showing [数量] Asian skin condition close-ups.\n\nLayout: [自适应布局]\nEach frame shows a partial face close-up (eye area, cheek, or forehead) of Asian skin with neutral tone.\n\nSkin conditions:\n[condition_1]: [AI判断年龄] - realistic close-up showing this condition with Chinese label\n[condition_2]: [AI判断年龄] - realistic close-up showing this condition with Chinese label\n...\n\nStyle: Professional beauty photography, soft natural lighting, clean background, high-definition skin texture. Each quadrant/frame has Chinese text label of the condition. Elegant, high-end skincare advertisement aesthetic.\n\nconditions：[替换为肌肤状态列表]\n人种：[替换成人种，例如亚洲女性，不要自己猜]\n比例：[替换成比例，例如1:1，不要自己猜]\n\n请根据以上 Skill 用 Nano Banana 2K 生成图片，不要加载任何kit资源",
+      "follow_ups": 0
+    }
+  ]
+}

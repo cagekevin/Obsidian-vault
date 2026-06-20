@@ -1,0 +1,39 @@
+{
+  "subject_catalog": {
+    "product_hero": {
+      "focus": "产品包装主体",
+      "injection": "Macro shot of the #PRODUCT_NAME# bottle, perfect commercial product photography on a clean gradient background.",
+      "anti_hallucination": "Do not generate human models, hands, or faces."
+    },
+    "lifestyle_usage": {
+      "focus": "真人模特使用场景",
+      "injection": "Cinematic lifestyle portrait. A human model applying #TEXTURE_TYPE# to their skin/hair in a natural setting, soft natural lighting.",
+      "anti_hallucination": "Do not generate product bottles or packaging in this shot. Focus purely on the human and the texture application."
+    },
+    "ingredient_origin": {
+      "focus": "成分原料/植物源头",
+      "injection": "High-end nature documentary style macro shot of raw #INGREDIENT_NAME# in its natural environment or on a natural surface with dewdrops.",
+      "anti_hallucination": "Absolutely no product packaging, no plastic bottles, no text."
+    },
+    "brand_authority": {
+      "focus": "实验室/专家背书",
+      "injection": "Cinematic shot of a pristine high-tech cosmetic laboratory or a professional portrait of a skincare scientist examining samples with modern equipment.",
+      "anti_hallucination": "Keep the background atmospheric and slightly out of focus. No chaotic lab equipment. No text labels."
+    },
+    "texture_detail": {
+      "focus": "微距质地细节",
+      "injection": "Extreme macro detail shot of #TEXTURE_TYPE#, showing rich texture and viscosity, perfect macro photography lighting.",
+      "anti_hallucination": "Do not generate product packaging. Focus entirely on the texture macro."
+    },
+    "before_after": {
+      "focus": "使用前后对比",
+      "injection": "Split composition showing before state (left) and after state (right) of #TEXTURE_TYPE# application on skin, clinical comparison lighting.",
+      "anti_hallucination": "Keep composition strictly split. Before side slightly warm tone, after side bright clean."
+    },
+    "badge_grid": {
+      "focus": "图标与特点网格",
+      "injection": "Clean minimal flat lay composition of #INGREDIENT_NAME# related natural elements arranged for icon placement, soft gradient background.",
+      "anti_hallucination": "No product bottles. Clean uncluttered top-down or flat composition."
+    }
+  }
+}

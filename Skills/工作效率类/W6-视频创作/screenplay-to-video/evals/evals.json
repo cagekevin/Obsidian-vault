@@ -1,0 +1,26 @@
+{
+  "skill_name": "screenplay-to-video",
+  "skill_path": "skills/工作效率类/W6-视频创作/screenplay-to-video",
+  "evals": [
+    {"id": 1, "query": "帮我做分镜，我要拍一个科普视频", "expectations": ["必须触发"]},
+    {"id": 2, "query": "从剧本到视频，自动化出片", "expectations": ["必须触发"]},
+    {"id": 3, "query": "做一个短剧视频流水线", "expectations": ["必须触发"]},
+    {"id": 4, "query": "调用0号skill，开始视频制作流程", "expectations": ["必须触发"]},
+    {"id": 5, "query": "帮我生成storyboard，剧本已经写好了", "expectations": ["必须触发"]},
+    {"id": 6, "query": "我需要定妆和参考图，然后出分镜", "expectations": ["必须触发"]},
+    {"id": 7, "query": "美术指导，帮我规划这个视频的视觉风格", "expectations": ["必须触发"]},
+    {"id": 8, "query": "启动0_skill，开始自动化视频生产", "expectations": ["必须触发"]},
+    {"id": 9, "query": "帮我画分镜图，然后转视频", "expectations": ["必须触发"]},
+    {"id": 10, "query": "做微短剧，从剧本到成片全自动", "expectations": ["必须触发"]},
+    {"id": 11, "query": "帮我写一个三幕结构的电影剧本", "expectations": ["不应触发"]},
+    {"id": 12, "query": "生成一段视频提示词，用Seedance", "expectations": ["不应触发"]},
+    {"id": 13, "query": "帮我画一张海报", "expectations": ["不应触发"]},
+    {"id": 14, "query": "这段Python代码有bug，帮我看看", "expectations": ["不应触发"]},
+    {"id": 15, "query": "帮我设计一个网页UI", "expectations": ["不应触发"]},
+    {"id": 16, "query": "用W5生成商品主图", "expectations": ["不应触发"]},
+    {"id": 17, "query": "帮我翻译这段文字成英文", "expectations": ["不应触发"]},
+    {"id": 18, "query": "Git冲突了，帮我解决一下", "expectations": ["不应触发"]},
+    {"id": 19, "query": "帮我审计一下这个技能的代码质量", "expectations": ["不应触发"]},
+    {"id": 20, "query": "写一篇公众号文章配图", "expectations": ["不应触发"]}
+  ]
+}

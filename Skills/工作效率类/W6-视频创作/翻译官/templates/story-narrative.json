@@ -1,0 +1,29 @@
+{
+  "//": "输出位置：storyboard 同级目录，和 story.md 放在同一层。如 /项目根目录/story-narrative.json",
+  "groups": [
+    {
+      "label": "[分组1标签——中文]",
+      "narrative": "[分组1一段话概括——纯叙事，不写摄像机/光线/材质，只写发生了什么]",
+      "scenes": [
+        {
+          "scene_num": 1,
+          "narrative": "[纯叙事——谁 + 在哪里 + 做什么/发生什么。不写镜头运动，不写光线，不写材质质感]"
+        },
+        {
+          "scene_num": 2,
+          "narrative": "[纯叙事——同上]"
+        }
+      ]
+    },
+    {
+      "label": "[分组2标签——中文]",
+      "narrative": "[分组2概括]",
+      "scenes": [
+        {
+          "scene_num": 3,
+          "narrative": "[纯叙事]"
+        }
+      ]
+    }
+  ]
+}

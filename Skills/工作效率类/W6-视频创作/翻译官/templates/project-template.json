@@ -1,0 +1,38 @@
+{
+  "visual_style": "[视觉风格——英文]",
+  "accent_color": "[强调色系说明——英文，不写 hex]",
+  "frame_aspect_ratio": "[可选——每帧画幅比，如 3:4、16:9；不写则模型默认]",
+
+  "elements": [
+    {
+      "name": "[元素1名称——中文，用户看的]",
+      "english_name": "[元素1英文名——进 prompt，和描述中的叫法一致]",
+      "appearance": "[外观——英文，摄像机拍到的画面]",
+      "is_background": false,
+      "reference": true
+    },
+    {
+      "name": "[元素2名称——中文，用户看的]",
+      "english_name": "[元素2英文名——进 prompt，和描述中的叫法一致]",
+      "appearance": "[外观——英文]",
+      "is_background": false,
+      "reference": true
+    }
+  ],
+
+  "storyboard_groups": [
+    {
+      "label": "[分组标签——中文]",
+      "element_refs": ["[在此场景组中出现的元素 name，只列出镜的]"],
+      "scenes": [
+        {
+          "scene_num": 1,
+          "title": "[场景中文标题——4-6字概括]",
+          "description": "[画面描述——英文，单行；供单帧图片/视频 prompt 使用，可引用其他 scene]",
+          "storyboard_desc": "[故事板专用描述——英文，单行；必须自圆其说，不可引用其他 scene；如 description 无跨镜引用则省略本字段]",
+          "camera": "[镜头语言——英文]"
+        }
+      ]
+    }
+  ]
+}

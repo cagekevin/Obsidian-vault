@@ -1,0 +1,7 @@
+### [Theme_Medical_WhiteRed]（参考：清爽医疗美白风）
+- **Environment Palette:** Pure white to soft pink gradient background, soft light flow, minimal clinical aesthetics, product at right golden ratio point.
+- **Typography Style:** Sharp dual-color typography (key keywords in bold red + black body text), precision scale line decorations for subtitles, small icons in red outlined circles with white checkmarks.
+- **Spatial Framework (空间与留白基准):** F型编辑网格。所有文本和UI元素严格沿左侧1/3垂直基准线对齐。右上半球预留为纯留白区以突出产品。双徽章系统位于左下角，水平紧凑排列零偏移。底部横幅锁定于画布下边缘。
+- **Sticker Snippet (<=3 Items):** In the bottom-left area, a dual-badge system: left is a silver metallic circular badge with the text "[Inject: Text_1]", right is a red circular certification badge with the text "[Inject: Text_2]", both with thin white borders and subtle drop shadows. The two badges are horizontally aligned and tightly spaced as a locked block.
+- **Checklist Snippet (>3 Items):** On the left side is a clean vertical checklist panel with red circular checkmark icons next to each item. Text is dark and crisp, line spacing 1.5x, no background, minimalist aesthetic. All items strictly flush-left along the same vertical baseline.
+- **Banner Snippet:** At the absolute bottom edge, a diagonal split banner with a 15-degree angle. The left section is solid red with white text "[Inject: Left_Text]". The right section is pure white displaying the text "[Inject: Right_Text]" in dark black.

@@ -1,0 +1,13 @@
+{
+  "name": "group{N}_video",
+  "project_id": "[项目UUID]",
+  "prompt": "[完整视频运动描述：从 storyboard_data.shots[].en 展开，写清每镜画面+运镜+过渡]",
+  "model": "generate_video_seedance_v2_0",
+  "aspect_ratio": "16:9",
+  "resolution": "480p",
+  "duration": 15,
+  "reference_image_paths": [
+    "（board_to_video.py 自动从 manifest 解析故事板图，无需手动填写）"
+  ],
+  "output_dir": "<项目根目录>/videos/group{N}_video.mp4"
+}

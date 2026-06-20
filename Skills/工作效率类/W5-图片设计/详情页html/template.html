@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>产品详情页 — 标题</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<!-- ★ FONTS: 所有主题共用的字体（Google Fonts 全字重预加载） -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* ═══════════════════════════════════════════════════════════
+   详情页设计系统 — CSS 引擎
+   ═══════════════════════════════════════════════════════════ */
+
+/* ─── Token 底座（默认值兜底）─── */
+:root {
+  /* 颜色（4 主色，不可增减，只可换值） */
+  --text-main:#2B2826;--text-muted:#827A73;--accent:#B89670;--bg:#FAF8F5;
+  /* 辅助色（不可增减） */
+  --text-meta:#A6A09A;--body-bg:#E0E0E0;--card-bg:#FFFFFF;--line:#E8E2DB;
+  --ph-bg:#E5DCD4;--ph-text:#A69888;
+  /* 字体族 */
+  --font-serif:"Noto Serif SC","Songti SC","STSong",serif;
+  --font-sans:"Noto Sans SC",-apple-system,"PingFang SC","Microsoft YaHei UI",sans-serif;
+  --font-display:"Playfair Display","Noto Serif SC",serif;
+  --font-mono:"IBM Plex Mono",Consolas,"Courier New",monospace;
+  --font-num:var(--font-mono);
+  /* 字重（跟字体走，不可任意选） */
+  --weight-title:400; --weight-lead:700; --weight-body:400; --weight-sub:500;
+  /* 英文装饰形态（主题可覆盖） */
+  --en-transform:none; --en-font-style:italic;
+  /* 字号（主题可覆盖） */
+  --fs-h1:44px; --fs-h1-sm:36px; --fs-h-md:40px; --fs-h2:32px;
+  --fs-claim:40px; --fs-num:28px; --fs-pullquote:32px; --fs-quote:24px;
+  --fs-sub:16px; --fs-lead:16px; --fs-body:14px; --fs-meta:12px;
+  --fs-kicker:13px; --fs-spec:16px; --fs-en-deco:24px; --fs-h-sub:20px;
+  /* 形态参数（主题可覆盖：默认 0/none，视觉效果不变） */
+  --radius-md:0; --radius-lg:0; --radius-full:99px;
+  --shadow-soft:none; --shadow-card:none;
+}
+
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--font-sans);background:var(--body-bg);color:var(--text-main);-webkit-font-smoothing:antialiased;}
+.page{width:790px;margin:0 auto;background:var(--bg);overflow:hidden;}
+
+/* ─── 文字 — Serif 展示（字号/字重读变量）─── */
+.h1{font-family:var(--font-serif);font-size:var(--fs-h1);font-weight:var(--weight-title);line-height:1.3;color:var(--text-main);text-align:center;letter-spacing:0.05em;}
+.h1-sm{font-family:var(--font-serif);font-size:var(--fs-h1-sm);font-weight:var(--weight-title);line-height:1.3;color:var(--text-main);text-align:center;letter-spacing:0.03em;}
+.h-md{font-family:var(--font-serif);font-size:var(--fs-h-md);font-weight:var(--weight-title);line-height:1.3;color:var(--text-main);text-align:center;letter-spacing:0.02em;}
+.h2{font-family:var(--font-serif);font-size:var(--fs-h2);font-weight:var(--weight-title);line-height:1.4;color:var(--text-main);text-align:center;letter-spacing:0.05em;}
+.claim{font-family:var(--font-serif);font-size:var(--fs-claim);font-weight:var(--weight-title);color:var(--accent);text-align:center;letter-spacing:0.05em;}
+.num{font-family:var(--font-num);font-size:var(--fs-num);font-weight:var(--weight-title);color:var(--accent);text-align:center;letter-spacing:0.03em;}
+.pullquote{font-family:var(--font-serif);font-size:var(--fs-pullquote);font-weight:var(--weight-title);font-style:italic;color:var(--accent);text-align:center;line-height:1.5;}
+.quote{font-family:var(--font-serif);font-size:var(--fs-quote);font-weight:var(--weight-title);color:var(--accent);text-align:center;letter-spacing:0.05em;}
+
+/* ─── 文字 — Sans 功能（字号/字重读变量）─── */
+.sub{font-family:var(--font-sans);font-size:var(--fs-sub);font-weight:var(--weight-sub);color:var(--accent);text-align:center;letter-spacing:0.1em;margin-top:16px;}
+.sub-muted{font-family:var(--font-sans);font-size:var(--fs-sub);font-weight:var(--weight-sub);color:var(--text-muted);text-align:center;letter-spacing:0.1em;margin-top:16px;}
+.lead{font-family:var(--font-sans);font-size:var(--fs-lead);font-weight:var(--weight-lead);color:var(--text-main);margin-bottom:8px;}
+.body{font-family:var(--font-sans);font-size:var(--fs-body);font-weight:var(--weight-body);line-height:1.8;color:var(--text-muted);}
+.meta{font-family:var(--font-sans);font-size:var(--fs-meta);font-weight:var(--weight-body);color:var(--text-meta);text-align:center;margin-top:24px;}
+
+/* ─── 文字 — Mono 标签 ─── */
+.kicker{font-family:var(--font-mono);font-size:var(--fs-kicker);font-weight:var(--weight-sub);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.22em;margin-bottom:12px;}
+.spec{font-family:var(--font-mono);font-size:var(--fs-spec);font-weight:var(--weight-sub);color:var(--text-main);letter-spacing:0.02em;}
+
+/* ─── 文字 — Display 英文装饰 ─── */
+.h-sub{font-family:var(--font-display);font-style:var(--en-font-style);font-size:var(--fs-h-sub);font-weight:var(--weight-title);color:var(--text-muted);}
+.en-deco{font-family:var(--font-display);font-style:var(--en-font-style);text-transform:var(--en-transform);font-size:var(--fs-en-deco);font-weight:var(--weight-title);color:var(--accent);}
+
+/* 修饰符 */
+.gold{color:var(--accent);font-weight:inherit;}
+.text-center{text-align:center;}
+.text-left{text-align:left;}
+
+/* ─── 模块系统（骨架常量，不变）─── */
+.mod{height:940px;display:flex;flex-direction:column;border-top:1px solid var(--line);}
+.mod-auto{height:auto;min-height:940px;display:flex;flex-direction:column;border-top:1px solid var(--line);}
+.mod-top-c{padding:80px 48px 0;text-align:center;}
+.mod-body{flex:1;padding:24px 48px 48px;display:flex;flex-direction:column;}
+.mod-img{margin:0 48px 48px;min-height:200px;display:flex;align-items:center;justify-content:center;background:var(--ph-bg);color:var(--ph-text);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;border-radius:var(--radius-md);}
+
+/* ─── 布局辅助（骨架常量，不变）─── */
+.stack{display:flex;flex-direction:column;}
+.gap-1{gap:12px;}.gap-1-5{gap:16px;}.gap-2{gap:24px;}.gap-3{gap:36px;}.gap-4{gap:48px;}.gap-5{gap:64px;}
+.grid-3{display:flex;gap:32px;}
+.grid-3-item{flex:1;text-align:center;}
+.grid-2x2{display:flex;flex-wrap:wrap;gap:40px;}
+.grid-2x2-item{flex:1 1 calc(50% - 20px);text-align:center;}
+
+/* ─── 图片容器（圆角/阴影读变量）─── */
+.img-box{display:flex;align-items:center;justify-content:center;background:var(--ph-bg);color:var(--ph-text);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;}
+.frame-img{width:100%;display:block;overflow:hidden;border-radius:var(--radius-md);box-shadow:var(--shadow-soft);}
+.frame-img>img{width:100%;height:100%;object-fit:cover;display:block;}
+.frame-img.fit-contain>img{object-fit:contain;}
+.r-16x9{aspect-ratio:16/9;}.r-4x3{aspect-ratio:4/3;}.r-1x1{aspect-ratio:1/1;}.r-3x4{aspect-ratio:3/4;}
+.img-fluid{width:100%;display:flex;align-items:center;justify-content:center;background:var(--ph-bg);color:var(--ph-text);font-size:13px;letter-spacing:0.15em;text-transform:uppercase;}
+
+/* ─── 装饰（圆角/阴影读变量）─── */
+.rule{height:1px;background:var(--line);border:0;margin:24px 0;}
+.deco-line{width:40px;height:1px;background:var(--accent);margin:24px auto;}
+.tag-item{display:inline-block;padding:6px 16px;border:1px solid var(--line);border-radius:var(--radius-full);font-size:13px;color:var(--text-muted);margin:4px;}
+.tag-wrap{line-height:2.4;}
+.callout-box{background:var(--card-bg);padding:20px;text-align:center;border:1px solid var(--line);border-radius:var(--radius-lg);box-shadow:var(--shadow-card);}
+.icon-circle{width:120px;height:120px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:28px;color:var(--accent);box-shadow:var(--shadow-soft);}
+.icon-circle.is-negative{color:var(--text-muted);}
+
+/* ─── 参数行（骨架常量，不变）─── */
+.ledger{display:flex;flex-direction:column;}
+.ledger-row{display:grid;grid-template-columns:1fr auto;gap:24px;padding:14px 0;border-bottom:1px solid var(--line);align-items:baseline;}
+.ledger-label{font-family:var(--font-sans);font-size:14px;font-weight:var(--weight-body);color:var(--text-muted);}
+.ledger-value{font-family:var(--font-mono);font-size:16px;font-weight:var(--weight-sub);color:var(--text-main);text-align:right;}
+
+/* ─── Task-scoped CSS（布局超出内置 class 时启用）─── */
+/* ★ 命名规范：
+   新增 task-scoped CSS 必须加页面标识注释，格式：
+   /* 仅用于 <产品名> · 屏 N */
+   例如：.page-compare-col {  } /* 仅用于充电器详情页 · 屏2 */
+   禁止使用未注释的孤立 .page-xxx 类。长期维护时通过注释追溯来源。 */
+.page-flex-2 { display:flex; gap:40px; }
+.page-flex-2 > * { flex:1; }
+.page-flex-3 { display:flex; gap:32px; }
+.page-flex-3 > * { flex:1; }
+.page-stack-c { display:flex; flex-direction:column; align-items:center; text-align:center; }
+.page-lead-flush { margin-bottom:0; }
+.page-lead-tight { margin-bottom:4px; }
+.page-body-c { max-width:580px; margin-left:auto; margin-right:auto; }
+.page-ph-full { height:100%; }
+.page-tag-center { text-align:center; }
+.page-img-margin { margin-bottom:32px; }
+.page-promise-item { display:flex; flex-direction:column; align-items:center; text-align:center; gap:12px; }
+.page-hero { border-top:none; }
+.page-hero-sub { max-width:580px; margin:12px auto 0; }
+.page-tag-wrap { margin-top:16px; }
+.page-hero-img { flex:1; min-height:400px; margin-bottom:0; }
+</style>
+
+<!-- ★ 主题：改 href 切换风格，如 "tokens/luxe-warm.css"。不换风格则删除此行 -->
+<link rel="stylesheet" href="">
+
+</head>
+<body>
+<div class="page">
+
+<!-- ★★★ 模块骨架结构铁律 ★★★
+  模块内三件套的顺序只有两种，不可混淆：
+
+  结构 A（首屏海报）：
+    .mod > .mod-top-c → .mod-img（无 .mod-body）
+
+  结构 B（通用屏/内容屏）：
+    .mod > .mod-top-c → .mod-body → .mod-img（可选，放底部）
+    或 .mod > .mod-top-c → .mod-body（无底部图时）
+
+  绝不允许：.mod-top-c → .mod-img → .mod-body
+  （.mod-img 必须在 .mod-body 之后或取代 .mod-body，不能插在两者之间）
+★★★ -->
+
+<!-- ========================================================
+  【演示屏1：首屏黄金海报】
+  整合组件：h1-sm / h-sub(英文装饰) / body / deco-line / tag-wrap / tag-item / page-hero-img
+  规则：首屏 .mod 必须加 .page-hero 去除上边框
+        标题区内 deco-line 仅放1次，禁止放入 .mod-body
+        h-sub 英文装饰提升数码/轻奢质感，非必需
+======================================================== -->
+<div class="mod page-hero">
+  <div class="mod-top-c">
+    <!-- ★ 前缀标签（可选，仅首屏使用）：高对比度利益点，用 .lead.gold 实现，不需新增 class -->
+    <p class="lead gold">核心利益点标签</p>
+    <p class="h-sub">PRODUCT NAME · SERIES</p>
+    <p class="h1-sm">标题不超过14字</p>
+    <div class="deco-line"></div>
+    <p class="body page-hero-sub">副标题说明文字，概括核心卖点</p>
+    <div class="tag-wrap page-tag-wrap">
+      <span class="tag-item">卖点标签一</span>
+      <span class="tag-item">卖点标签二</span>
+      <span class="tag-item">卖点标签三</span>
+    </div>
+  </div>
+  <div class="mod-img page-hero-img">
+    [ 产品主视觉 · 请替换为真实图片 ]
+  </div>
+</div>
+
+<!-- ========================================================
+  【演示屏2：核心科技卖点 · 三列功能网格】
+  整合组件：h1-sm / deco-line / grid-3 / icon-circle / .num / .gold / .lead / .body / .rule
+  规则：核心数据强制使用 .num + .gold
+        多组内容之间用 .rule 分割
+        连续网格不超过3屏，核心屏优先主次分栏
+======================================================== -->
+<div class="mod">
+  <div class="mod-top-c">
+    <p class="h1-sm">核心技术标题 ≤14 字</p>
+    <div class="deco-line"></div>
+    <p class="body page-hero-sub">副标题说明辅助文案</p>
+  </div>
+  <div class="mod-body stack gap-4">
+    <div class="grid-3">
+      <div class="grid-3-item">
+        <div class="icon-circle"></div>
+        <p class="lead">卖点标题</p>
+        <p class="num gold">93%</p>
+        <p class="body">卖点描述文案，说明核心优势</p>
+      </div>
+      <div class="grid-3-item">
+        <div class="icon-circle"></div>
+        <p class="lead">卖点标题</p>
+        <p class="num gold">65W</p>
+        <p class="body">卖点描述文案，说明核心优势</p>
+      </div>
+      <div class="grid-3-item">
+        <div class="icon-circle"></div>
+        <p class="lead">卖点标题</p>
+        <p class="num gold">8000次/秒</p>
+        <p class="body">卖点描述文案，说明核心优势</p>
+      </div>
+    </div>
+    <div class="rule"></div>
+    <p class="body text-center">补充说明文案，用 .rule 与上方网格分割</p>
+  </div>
+</div>
+
+<!-- ========================================================
+  ═══════════════════════════════════════════════════════════
+  【预制通用区块 · 可直接复制复用】
+  以下为7类高频排版区块，全部使用原生Class，零内联布局样式。
+  使用时直接复制整段到 <body> 内，替换文案和图片即可。
+  ═══════════════════════════════════════════════════════════
+
+  --- 区块1：通用标题组合 ---
+  <div class="mod-top-c">
+    <p class="h1-sm">主标题（9-14字用h1-sm）</p>
+    <div class="deco-line"></div>
+    <p class="lead">导语文案</p>
+    <!-- 可选标签组 -->
+    <div class="tag-wrap">
+      <span class="tag-item">关键词1</span>
+      <span class="tag-item">关键词2</span>
+    </div>
+  </div>
+
+  --- 区块2：双列对比（A vs B） ---
+  <div class="mod-body stack gap-4">
+    <div class="stack gap-1-5">
+      <div class="grid-2x2-item">
+        <figure class="frame-img r-4x3">
+          <div class="img-fluid">[ 占位图·请替换 ]</div>
+        </figure>
+        <p class="lead" style="color:var(--text-muted);">对照方文案（唯一合法内联灰色）</p>
+      </div>
+      <div class="grid-2x2-item">
+        <figure class="frame-img r-4x3">
+          <div class="img-fluid">[ 占位图·请替换 ]</div>
+        </figure>
+        <p class="lead gold">优势方文案</p>
+      </div>
+    </div>
+    <div class="rule"></div>
+    <p class="body">补充说明</p>
+  </div>
+
+  --- 区块3：三列平行列表（科技/功能卖点） ---
+  <div class="mod-body stack gap-4">
+    <div class="grid-3">
+      <div class="grid-3-item">
+        <div class="icon-circle"></div>
+        <p class="lead">卖点标题</p>
+        <p class="num gold">核心数据</p>
+        <p class="body">卖点描述</p>
+      </div>
+      <div class="grid-3-item">
+        <div class="icon-circle"></div>
+        <p class="lead">卖点标题</p>
+        <p class="num gold">核心数据</p>
+        <p class="body">卖点描述</p>
+      </div>
+      <div class="grid-3-item">
+        <div class="icon-circle"></div>
+        <p class="lead">卖点标题</p>
+        <p class="num gold">核心数据</p>
+        <p class="body">卖点描述</p>
+      </div>
+    </div>
+  </div>
+
+  --- 区块4：2×2网格（场景/参数） ---
+  <div class="mod-body stack gap-4">
+    <div class="grid-2x2">
+      <div class="grid-2x2-item">
+        <div class="icon-circle"></div>
+        <p class="lead">标题</p>
+        <p class="body">描述</p>
+      </div>
+      <div class="grid-2x2-item">
+        <div class="icon-circle"></div>
+        <p class="lead">标题</p>
+        <p class="body">描述</p>
+      </div>
+      <div class="grid-2x2-item">
+        <div class="icon-circle"></div>
+        <p class="lead">标题</p>
+        <p class="body">描述</p>
+      </div>
+      <div class="grid-2x2-item">
+        <div class="icon-circle"></div>
+        <p class="lead">标题</p>
+        <p class="body">描述</p>
+      </div>
+    </div>
+  </div>
+
+  --- 区块5：标签+说明左右图文 ---
+  <div class="mod-body stack gap-4">
+    <div class="stack gap-1-5">
+      <p class="lead">细节标题</p>
+      <p class="body">细节描述文案</p>
+    </div>
+    <figure class="frame-img r-3x4">
+      <div class="img-fluid">[ 细节特写图·请替换 ]</div>
+    </figure>
+  </div>
+
+  --- 区块6：大主张/金句 ---
+  <div class="mod-top-c">
+    <p class="quote gold">核心金句文案，用.quote突出</p>
+    <div class="deco-line"></div>
+  </div>
+
+  --- 区块7：卡片强调（callout-box） ---
+  <div class="mod-body stack gap-4">
+    <div class="callout-box">
+      <p class="body">单条核心权益/结论，一卡一条</p>
+    </div>
+    <!-- 一屏最多3张卡片 -->
+    <div class="callout-box">
+      <p class="body">单条核心权益/结论</p>
+    </div>
+  </div>
+
+  --- 区块8：参数表/规格底盘（ledger） ---
+  <div class="mod-body stack gap-3">
+    <div class="ledger">
+      <div class="ledger-row">
+        <span class="ledger-label">参数名 / Label</span>
+        <span class="ledger-value">参数值 / Value</span>
+      </div>
+      <div class="ledger-row">
+        <span class="ledger-label">参数名 / Label</span>
+        <span class="ledger-value">参数值 / Value</span>
+      </div>
+      <div class="ledger-row">
+        <span class="ledger-label">参数名 / Label</span>
+        <span class="ledger-value">参数值 / Value</span>
+      </div>
+    </div>
+  </div>
+======================================================== 
+
+</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+# Lieflat HTML Deck Style Understanding
+
+The starter HTML files are references, not fixed fill-in forms. Use the user's content to decide slide structure first, then apply the chosen style's visual grammar.
+
+## Content-First Layout Logic
+
+- A single strong claim needs a hero, statement, or quote slide.
+- A complex argument needs a sequence: context -> claim -> proof -> implication.
+- Real numbers can become scorecards, KPI rows, bars, or data posters.
+- No real numbers means no fake KPI tables.
+- A process can become a pipeline, loop, timeline, or phase map.
+- No process means no decorative flowchart.
+- Use `consulting-report` only when the content has enough real charts, tables, market/industry evidence, competitor comparisons, financial or business metrics, or other research artifacts to justify a consulting-style report.
+- If the content is mostly text, narrative, opinion, teaching, brand thinking, or an internal memo with few charts, do not default to `consulting-report`; prefer `editorial`, `clean-review`, `geek-report`, `rain-notes`, or `sunrise` based on tone and audience.
+- Real images can support portfolios, evidence, stories, and product scenes.
+- No approved images means reduce image slots or replace them with typography, diagrams, code/data panels, or abstract CSS/canvas visuals.
+- Comparisons need two or more clearly distinct positions. Do not force before/after when the content is not comparative.
+
+## Consulting Report Layout Guardrails
+
+- `consulting-report` pages should keep a balanced vertical center of gravity. When a slide is text-heavy, place the main text block around the visual middle of the slide instead of letting the title, subtitles, bullets, and notes crowd the upper area while the bottom stays mostly empty.
+- If a consulting slide has more text than chart material, use centered editorial layouts, evenly spaced two-column text, or a vertically centered statement/proof structure. Do not fake charts just to fill space.
+- Preserve the sober consulting hierarchy, but distribute whitespace deliberately across the whole page: top, middle, and bottom should feel designed, not accidentally vacant.
+
+## Style Families
+
+| 中文名 | Template ID | Use When | Visual Grammar | Avoid |
+|---|---|---|---|---|
+| Y2K 手册 | `y2k-brand` | Creator brands, social accounts, internet culture, playful identity systems | Millennium web UI, chrome-like type, stickers, pixel windows, lively motion | Board decks, finance reports, legal/compliance topics |
+| 极客风格 | `geek-report` | AI analysis, systems strategy, developer-facing ideas | Terminal paper, monochrome contrast, technical labels, dense but calm claims | Warm lifestyle stories, luxury campaigns |
+| 镭射网格 | `shiny-tiles` | Polished technical decks, creative technology, dark visual systems | Black grids, silver glass cards, cold light, restrained WebGL sheen | Plain conservative memos, low-motion compliance decks |
+| 黑底闪光 | `pixel-report` | Technical walkthroughs, model reviews, structured AI explainers | Dark grid, pixel HUD, neon-green accents, metric panels | Luxury essays, institutional reports |
+| 点阵编辑风 | `dot-matrix-light` / `dot-matrix-dark` | AI systems, model briefings, benchmark reads, signal narratives | Dot fields, canvas motion, data-signal metaphors, technical editorial rhythm | Warm human stories, image-led portfolios |
+| 杂志风 | `editorial` | Thought leadership, media kits, publication-style storytelling | Magazine hierarchy, refined whitespace, serif-led titles, text-first pacing | Dense KPI appendices |
+| 咨询报告 | `consulting-report` | Chart/data-heavy market, industry, competitive, investor, or business research | High-trust structure, sober sections, charts/tables, evidence blocks, crisp hierarchy | Mostly text-only strategy essays, opinion decks, internal memos without substantial evidence, playful creator packaging |
+| 简约测评 | `clean-review` | Product reviews, evaluations, comparisons, serious technical judgement | Minimal white space, clear grades, strong contrast, restrained accent | Warm brand stories, highly decorative decks |
+| 日光 | `sunrise` | Premium brand narratives, lifestyle, hospitality, refined campaign decks | Warm whitespace, elegant titles, gold/soft light, slow pacing | Dense technical tables |
+| 雨天手记 | `rain-notes` | Calm product notes, AI/model review notes, quiet workshops | Soft paper, rain atmosphere, muted panels, contemplative rhythm | High-energy launches |
+| 作品集 | `studio-photo` | Product photography, visual identity, object-led portfolios | Studio framing, approved images, gallery pacing, client-ready polish | Abstract text-only analysis |
+| 故事集 | `story-field` | Cinematic narratives, field reports, project dossiers, place/person stories | Documentary imagery, archive mood, horizontal cinema rhythm | Topics without images unless redesigned toward text/evidence panels |
+
+## Geek Report Guardrails
+
+- `geek-report` cover titles must wrap inside the slide. Never use `white-space: nowrap` or `word-break: keep-all` on the main cover title or kicker.
+- Prefer explicit semantic line breaks (`<br>`) for long cover titles so each line reads like a deliberate technical headline, not an accidental browser wrap.
+- Long Chinese/English mixed titles should be split into 2-4 intentional lines, or constrained with `max-width`, `overflow-wrap: break-word`, and `text-wrap: balance`.
+- If the title includes long technical tokens such as `RAG.AI`, model names, API names, or repository names, keep them readable but allow the surrounding Chinese title to wrap. Do not let one token force the whole headline into a single horizontal line.
+- Before delivery, preview the cover at desktop width and confirm no title text touches or exits the slide edge.
+
+## Consistency Rules
+
+- Keep one primary style recognizable from the first slide to the last.
+- Borrowing is allowed only for content structure, not for visual identity.
+- After borrowing a structure, restyle fonts, colors, spacing, borders, materials, and motion into the primary style.
+- Do not mix decorative motifs across unrelated styles, such as Y2K chrome type inside consulting, pixel HUDs inside Sunrise, or luxury serif covers inside Geek Report.
+- If two styles both fit, choose the one that matches audience and content density more than personal taste.

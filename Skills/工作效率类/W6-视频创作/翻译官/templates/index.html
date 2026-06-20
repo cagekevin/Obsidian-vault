@@ -1,0 +1,939 @@
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Lovart Web UI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+    --c-bg: #F5F6F4;          /* 更温润的纸白背景 */
+    --c-surface: #FFFFFF;
+    --c-text-main: #2A2F2D;   /* 极深墨绿灰，替代纯黑 */
+    --c-text-mut: #8B948F;    /* 柔和的银灰色 */
+    --c-border: rgba(0,0,0,0.05);
+    --c-accent: #4A5D54;      /* 高级鼠尾草绿 */
+    --shadow-soft: 0 8px 30px rgba(0,0,0,0.03), 0 1px 3px rgba(0,0,0,0.02);
+    --shadow-hover: 0 20px 40px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.02);
+    --radius-lg: 16px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+    --sp-8: 8px; --sp-12: 12px; --sp-16: 16px; --sp-24: 24px; --sp-32: 32px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* 优雅的隐藏式滚动条 */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #DDE2DE; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #C0C8C4; }
+
+body {
+    background: var(--c-bg);
+    font-family: 'Space Grotesk', sans-serif;
+    color: var(--c-text-main);
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+.device-frame {
+    width: 100%;
+    max-width: 96vw;
+    background: var(--c-surface);
+    border-radius: 20px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.05);
+    border: 1px solid rgba(0,0,0,0.02);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin: var(--sp-24);
+}
+.frame-header {
+    height: 48px;
+    background: var(--c-surface);
+    display: flex;
+    align-items: center;
+    padding: 0 var(--sp-24);
+    gap: var(--sp-8);
+    border-bottom: 1px solid var(--c-border);
+}
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot.red { background: #E8CAC8; }
+.dot.yellow { background: #E6D8B6; }
+.dot.green { background: #C8D8C8; }
+.layout {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    flex: 1;
+    height: calc(100vh - 96px);
+    min-height: 600px;
+    background: var(--c-bg);
+}
+.sidebar {
+    padding: var(--sp-32) var(--sp-24);
+    background: var(--c-surface);
+    overflow-y: auto;
+    border-right: 1px solid var(--c-border);
+}
+.sidebar-title {
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 6px;
+    letter-spacing: -0.2px;
+    color: var(--c-text-main);
+}
+.sidebar-style {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: var(--c-text-mut);
+    margin-bottom: 32px;
+    line-height: 1.6;
+}
+.tabs { display: flex; flex-direction: column; gap: 4px; }
+.tab {
+    text-align: left;
+    padding: 12px var(--sp-16);
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    background: transparent;
+    border: none;
+    color: var(--c-text-mut);
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+    transition: all 0.2s ease;
+    font-weight: 400;
+}
+.tab:hover { background: var(--c-bg); color: var(--c-text-main); }
+.tab.active {
+    background: var(--c-bg);
+    color: var(--c-text-main);
+    font-weight: 500;
+}
+.count { float: right; font-family: 'Space Grotesk'; font-size: 12px; color: #B0B8C0; opacity: 0.8; }
+.tab.active .count { color: var(--c-accent); }
+.content {
+    padding: 40px;
+    overflow-y: auto;
+    max-height: 100%;
+}
+.card {
+    border: none;
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--sp-32);
+    background: var(--c-surface);
+    box-shadow: var(--shadow-soft);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.card:hover { box-shadow: var(--shadow-hover); }
+@keyframes fadeUp {
+    0% { opacity: 0; transform: translateY(20px) scale(0.98); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.card-header {
+    padding: 24px 32px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.card-title {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    color: var(--c-text-main);
+    display: block;
+    margin-bottom: 4px;
+}
+.card-meta {
+    font-family: 'Space Grotesk';
+    font-size: 12px;
+    color: var(--c-text-mut);
+    font-weight: 300;
+}
+.card-body { 
+    padding: 0 32px 32px; 
+    position: relative; 
+}
+pre {
+    font-family: 'Space Grotesk', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: #4A5258;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 400px;
+    overflow-y: auto;
+    background: var(--c-bg);
+    padding: 24px;
+    border-radius: var(--radius-md);
+    border: 1px solid var(--c-border);
+}
+
+/* 高级垫图区域 (Apple Photos 风格) */
+.ref-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: var(--sp-24);
+}
+.ref-img-item {
+    position: relative;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    cursor: pointer;
+    background: #000; /* 用于垫底，缩小时显现深色边界 */
+}
+.ref-img-item img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease, border-radius 0.4s ease;
+}
+.ref-img-item:hover img { transform: scale(1.05); opacity: 0.9; }
+
+/* 优雅的选中态：缩小 + 徽章 */
+.ref-img-item.selected img {
+    transform: scale(0.88);
+    border-radius: 8px;
+    opacity: 0.85;
+}
+.ref-img-item::after {
+    content: '';
+    position: absolute;
+    top: 8px; right: 8px;
+    width: 22px; height: 22px;
+    background: var(--c-accent) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="white"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>') center/12px no-repeat;
+    border-radius: 50%;
+    border: 2px solid #FFF;
+    opacity: 0;
+    transform: scale(0.5);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+.ref-img-item.selected::after { opacity: 1; transform: scale(1); }
+
+.ref-img-missing {
+    width: 120px;
+    height: 120px;
+    border-radius: var(--radius-md);
+    background: var(--c-bg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: #B0B8C0;
+    text-align: center;
+}
+.ref-img-missing svg { margin-bottom: 6px; opacity: 0.5; }
+
+/* + 按钮 */
+.ref-add-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    background: var(--c-bg);
+    border: 1px dashed var(--c-border);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    color: var(--c-text-mut);
+    transition: all 0.2s ease;
+}
+.ref-add-btn:hover {
+    background: #E8ECE8;
+    color: var(--c-accent);
+    border-color: var(--c-accent);
+}
+
+.ref-img-label {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    font-size: 10px;
+    color: #FFF;
+    background: linear-gradient(transparent, rgba(0,0,0,0.6));
+    padding: 16px 8px 6px;
+    text-align: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    transition: opacity 0.3s ease;
+}
+.ref-img-item.selected .ref-img-label { opacity: 0; } /* 选中时隐藏文字保持整洁 */
+
+/* 左上角悬浮放大按钮 */
+.ref-zoom {
+    position: absolute;
+    top: 8px; left: 8px;
+    background: rgba(255,255,255,0.85);
+    border: none;
+    border-radius: 50%;
+    width: 24px; height: 24px;
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    cursor: pointer;
+    color: var(--c-text-main);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+.ref-img-item:hover .ref-zoom { opacity: 1; }
+.ref-zoom:hover { transform: scale(1.1); background: #FFF; }
+
+/* 文本编辑框：光晕焦点 */
+.appearance-editor, .scene-editor {
+    width: 100%;
+    font-family: 'Space Grotesk', monospace;
+    font-size: 13px;
+    line-height: 1.8;
+    color: var(--c-text-main);
+    padding: 20px;
+    background: rgba(247, 248, 246, 0.6);
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    resize: vertical;
+    outline: none;
+    transition: all 0.3s ease;
+}
+.appearance-editor { min-height: 140px; }
+.scene-editor { min-height: 80px; font-size: 12px; padding: 16px; margin-top: 8px; }
+.appearance-editor:focus, .scene-editor:focus {
+    background: #FFF;
+    box-shadow: 0 0 0 3px rgba(74, 93, 84, 0.1); /* 优雅的高级光晕 */
+    border-color: rgba(74, 93, 84, 0.2);
+}
+
+.scene-label {
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--c-text-main);
+    margin-top: 16px;
+    margin-bottom: 4px;
+}
+.scene-label:first-of-type { margin-top: 0; }
+
+/* 按钮：微阻尼交互 */
+.action-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 16px;
+}
+.btn-generate {
+    background: var(--c-text-main);
+    color: var(--c-surface);
+    border: none;
+    padding: 12px 28px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.1), 0 2px 6px rgba(42, 47, 45, 0.2);
+}
+.btn-generate:hover { background: var(--c-accent); transform: translateY(-1px); box-shadow: 0 6px 16px rgba(74, 93, 84, 0.25); }
+.btn-generate:active { transform: scale(0.98); } /* 按压态 */
+
+.btn-copy {
+    background: transparent;
+    color: var(--c-text-mut);
+    border: none;
+    padding: 8px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+}
+.btn-copy:hover { background: rgba(0,0,0,0.03); color: var(--c-text-main); }
+.btn-copy.copied { color: var(--c-accent); }
+
+/* 优雅的 Loading 遮罩：沉浸式毛玻璃 */
+.render-overlay {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 10;
+    border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+}
+.render-overlay.active { opacity: 1; pointer-events: auto; }
+.pulse-ring {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: var(--c-accent);
+    opacity: 0.1;
+    animation: pulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    margin-bottom: 12px;
+}
+@keyframes pulse {
+    0% { transform: scale(0.8); opacity: 0.4; }
+    50% { transform: scale(1.6); opacity: 0; }
+    100% { transform: scale(0.8); opacity: 0; }
+}
+.render-text {
+    font-family: 'Space Grotesk';
+    font-size: 12px;
+    color: var(--c-text-main);
+    letter-spacing: 1.5px;
+}
+
+/* 磨砂光箱动画 */
+@keyframes lightboxFadeIn {
+    from { opacity: 0; backdrop-filter: blur(0px); }
+    to { opacity: 1; backdrop-filter: blur(12px); }
+}
+@keyframes lightboxImgPop {
+    from { transform: scale(0.95); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* 错误反馈 */
+.error-banner {
+    display: none;
+    margin-top: 16px;
+    padding: 16px;
+    background: #FCF5F5;
+    border-radius: var(--radius-md);
+    border: 1px solid #F7E5E5;
+    color: #A36B6B;
+    font-size: 12px;
+}
+.error-banner details { margin-top: 8px; cursor: pointer; }
+.error-banner summary { outline: none; opacity: 0.8; }
+.error-banner pre { background: transparent; border: none; padding: 12px 0 0; color: #A36B6B; max-height: 150px; }
+
+/* 图片网格 */
+.img-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: var(--sp-24);
+}
+.img-grid img {
+    width: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+    cursor: pointer;
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+}
+.img-grid img:hover { transform: scale(1.03); box-shadow: var(--shadow-hover); }
+
+/* Markdown 渲染 */
+.md-content h1 { font-family:'Outfit';font-size:22px;font-weight:500;margin:24px 0 12px; color:var(--c-text-main); }
+.md-content h2 { font-family:'Outfit';font-size:18px;font-weight:500;margin:20px 0 10px; color:var(--c-text-main); }
+.md-content h3 { font-family:'Outfit';font-size:15px;font-weight:500;margin:16px 0 8px; color:var(--c-text-main); }
+.md-content ul { margin: 12px 0; padding-left: 20px; line-height: 1.8; color: #4A5258; }
+.md-content li { list-style: none; position: relative; }
+.md-content li::before { content: "·"; position: absolute; left: -14px; font-weight: bold; color: var(--c-accent); }
+.md-content strong { font-weight: 500; color: var(--c-text-main); }
+.md-content { font-size:14px;line-height:1.8;color:#4A5258; }
+
+.page-loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+    color: var(--c-text-mut);
+    font-size: 13px;
+    letter-spacing: 1px;
+}
+</style>
+</head>
+<body>
+
+<div class="device-frame">
+    <div class="frame-header">
+        <div class="dot red"></div>
+        <div class="dot yellow"></div>
+        <div class="dot green"></div>
+    </div>
+    <div class="layout">
+        <div class="sidebar">
+            <div class="sidebar-title" id="project-name">Loading...</div>
+            <div class="tabs" id="tab-bar"></div>
+        </div>
+        <div class="content" id="content-area">
+            <div class="page-loading">INITIALIZING...</div>
+        </div>
+    </div>
+</div>
+
+<script>
+let projectData = null;
+let activeTab = 'all';
+let currentActiveCard = null; // 用于记录当前正在操作的卡片
+
+const TAB_DEFS = [
+    { key: 'all', label: '全片总览' },
+    { key: 'group', label: '故事板图片' },
+    { key: 'groupvideo', label: '故事板视频' },
+    { key: 'shot', label: '图片单帧', editable: true },
+    { key: 'video', label: '单镜视频' },
+    { key: 'ref', label: '角色和场景', editable: true },
+    { key: 'asset', label: '资产索引' },
+    { key: 'qc', label: '质检报告' },
+    { key: 'img', label: '已生成图片' },
+];
+
+const svgCopy = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>`;
+const svgCheck = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+const svgImg = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>`;
+const svgZoom = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>`;
+
+async function init() {
+    await loadProject();
+    renderTabs();
+    switchTab(activeTab);
+}
+
+async function loadProject() {
+    const resp = await fetch('/api/project');
+    projectData = await resp.json();
+    document.getElementById('project-name').textContent = projectData.projectName || 'Project';
+}
+
+function renderTabs() {
+    const bar = document.getElementById('tab-bar');
+    bar.innerHTML = '';
+    TAB_DEFS.forEach(def => {
+        const count = getCount(def.key);
+        if (count === 0 && !['shot','ref'].includes(def.key)) return;
+        const btn = document.createElement('button');
+        btn.className = 'tab' + (def.key === activeTab ? ' active' : '');
+        btn.dataset.key = def.key;
+        btn.innerHTML = `${def.label} ${count !== '' ? '<span class="count">' + count + '</span>' : ''}`;
+        btn.onclick = () => switchTab(def.key);
+        bar.appendChild(btn);
+    });
+}
+
+function getCount(key) {
+    if (!projectData || !projectData.tabs) return 0;
+    const d = projectData.tabs[key];
+    if (!d) return 0;
+    if (Array.isArray(d)) return d.length;
+    if (typeof d === 'object' && d.content) return d.content ? 1 : 0;
+    return Array.isArray(d) ? d.length : 0;
+}
+
+function switchTab(key) {
+    activeTab = key;
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    const target = document.querySelector(`.tab[data-key="${key}"]`);
+    if (target) target.classList.add('active');
+    renderPanel(key);
+}
+
+function renderPanel(key) {
+    const area = document.getElementById('content-area');
+    const d = projectData ? projectData.tabs[key] : null;
+
+    if (!d || (Array.isArray(d) && d.length === 0) && !['shot','ref'].includes(key)) {
+        area.innerHTML = '<div class="page-loading">NO DATA</div>';
+        return;
+    }
+
+    let delay = 0;
+    switch (key) {
+        case 'all': case 'groupvideo': case 'video':
+            renderTextCards(area, d, key); break;
+        case 'group': case 'shot':
+            renderStoryboardCards(area, d, key); break;
+        case 'ref':
+            renderEditableCards(area, d, key); break;
+        case 'asset': case 'qc':
+            renderMarkdown(area, d.content, key); break;
+        case 'img':
+            renderImageGrid(area, d); break;
+    }
+    
+    Array.from(area.children).forEach(child => {
+        child.style.animationDelay = `${delay}s`;
+        delay += 0.05;
+    });
+}
+
+function renderTextCards(container, items, key) {
+    let html = '';
+    items.forEach(item => {
+        html += `
+        <div class="card">
+            <div class="card-header">
+                <span class="card-title">${escapeHtml(item.filename)}</span>
+                <button class="btn-copy" onclick="copyCard(this)" title="Copy Prompt">${svgCopy} Copy</button>
+            </div>
+            <div class="card-body"><pre>${escapeHtml(item.content || '')}</pre></div>
+        </div>`;
+    });
+    container.innerHTML = html;
+}
+
+function renderStoryboardCards(container, items, key) {
+    const isShot = key === 'shot';
+    let html = '';
+    items.forEach(item => {
+        const fn = escapeHtml(item.filename);
+        const prompt = escapeHtml(item.prompt || '');
+        const meta = isShot ? `${item.aspectRatio || ''} · ${item.resolution || ''} · ${item.model || ''}`.trim() : '';
+        const refs = item.allRefImages || [];
+        let refHtml = '';
+        if (refs.length > 0) {
+            refHtml = '<div class="ref-images" data-group="sb-' + hash(fn) + '">';
+            refs.forEach((ri) => {
+                const dispName = typeof ri === 'string' ? ri : (ri.displayName || ri);
+                const dispPath = typeof ri === 'string' ? ri : (ri.displayPath || ri);
+                const imgUrl = '/api/assets/' + encodeURIComponent(dispPath);
+                refHtml += `
+                <div class="ref-img-item" data-path="${escapeHtml(dispPath)}" onclick="selectRef(this)">
+                    <img src="${imgUrl}" alt="${escapeHtml(dispName)}"/>
+                    <div class="ref-img-label">${escapeHtml(dispName)}</div>
+                    <button class="ref-zoom" onclick="openLightbox(event, '${imgUrl}')" title="Zoom">${svgZoom}</button>
+                </div>`;
+            });
+            refHtml += `
+                <div class="ref-img-item ref-add-btn" onclick="openAssetPicker(this)" title="添加垫图">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </div></div>`;
+        } else {
+            refHtml = `<div class="ref-images" data-group="ref-' + hash(fn) + '"><div class="ref-img-missing">${svgImg}<span>Empty Reference</span></div><div class="ref-img-item ref-add-btn" onclick="openAssetPicker(this)" title="添加垫图"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>`;
+        }
+
+        let scenesHtml = '';
+        const scenes = item.scenes || [];
+        if (scenes.length > 0) {
+            scenes.forEach((s, si) => {
+                const title = escapeHtml(s.title || '');
+                const sceneNum = s.scene_num || (si + 1);
+                const editField = isShot ? (s.description || '') : (s.storyboard_desc || '');
+                scenesHtml += `
+                <div class="scene-label">Frame ${String(sceneNum).padStart(2,'0')} — ${title}</div>
+                <textarea class="scene-editor" data-scene="${si}" spellcheck="false">${escapeHtml(editField)}</textarea>`;
+            });
+        }
+
+        const apiType = isShot ? 'shot' : 'storyboard';
+
+        html += `
+        <div class="card" data-filename="${fn}">
+            <div class="card-header">
+                <div>
+                    <span class="card-title">${fn}</span>
+                    ${meta ? `<span class="card-meta">${meta}</span>` : ''}
+                </div>
+                <button class="btn-copy" onclick="copyCard(this)" title="Copy Prompt">${svgCopy} Copy</button>
+            </div>
+            <div class="card-body">
+                ${refHtml}
+                <pre style="max-height:200px;margin-bottom:16px;">${prompt}</pre>
+                ${scenesHtml}
+                <div class="action-row">
+                    <button class="btn-generate" onclick="saveScene(this)" data-filename="${fn}" data-type="${apiType}">Save & Render</button>
+                </div>
+                <div class="error-banner" id="error-sb-${hash(fn)}"></div>
+                <div class="render-overlay" id="overlay-sb-${hash(fn)}">
+                    <div class="pulse-ring"></div>
+                    <span class="render-text">RENDERING</span>
+                </div>
+            </div>
+        </div>`;
+    });
+    container.innerHTML = html || '<div class="page-loading">NO DATA</div>';
+}
+
+function renderEditableCards(container, items, key) {
+    let html = '';
+    items.forEach(item => {
+        const fn = escapeHtml(item.filename);
+        const meta = `${item.aspectRatio || ''} · ${item.resolution || ''} · ${item.model || ''}`.trim();
+        const refs = item.allRefImages || [];
+        let refHtml = '';
+        
+        if (refs.length > 0) {
+            refHtml = '<div class="ref-images" data-group="ref-' + hash(fn) + '">';
+            refs.forEach((ri) => {
+                const dispName = typeof ri === 'string' ? ri : (ri.displayName || ri);
+                const dispPath = typeof ri === 'string' ? ri : (ri.displayPath || ri);
+                const imgUrl = '/api/assets/' + encodeURIComponent(dispPath);
+                refHtml += `
+                <div class="ref-img-item" data-path="${escapeHtml(dispPath)}" onclick="selectRef(this)">
+                    <img src="${imgUrl}" alt="${escapeHtml(dispName)}"/>
+                    <div class="ref-img-label">${escapeHtml(dispName)}</div>
+                    <button class="ref-zoom" onclick="openLightbox(event, '${imgUrl}')" title="Zoom">${svgZoom}</button>
+                </div>`;
+            });
+            refHtml += `
+                <div class="ref-img-item ref-add-btn" onclick="openAssetPicker(this)" title="添加垫图">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                </div></div>`;
+        } else {
+            refHtml = `<div class="ref-images" data-group="ref-' + hash(fn) + '"><div class="ref-img-missing">${svgImg}<span>Empty Reference</span></div><div class="ref-img-item ref-add-btn" onclick="openAssetPicker(this)" title="添加垫图"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></div>`;
+        }
+
+        html += `
+        <div class="card" data-filename="${fn}">
+            <div class="card-header">
+                <div>
+                    <span class="card-title">${fn}</span>
+                    <span class="card-meta">${meta}</span>
+                </div>
+                <button class="btn-copy" onclick="copyCard(this)" title="Copy Prompt">${svgCopy} Copy</button>
+            </div>
+            <div class="card-body">
+                ${refHtml}
+                <textarea class="appearance-editor" spellcheck="false" placeholder="Prompt...">${escapeHtml(item.appearance || item.prompt || '')}</textarea>
+                <div class="action-row">
+                    <button class="btn-generate" onclick="generateItem(this)" data-filename="${fn}">Save & Render</button>
+                </div>
+                <div class="error-banner" id="error-${hash(fn)}"></div>
+                <div class="render-overlay" id="overlay-${hash(fn)}">
+                    <div class="pulse-ring"></div>
+                    <span class="render-text">RENDERING</span>
+                </div>
+            </div>
+        </div>`;
+    });
+    container.innerHTML = html || '<div class="page-loading">NO DATA</div>';
+}
+
+function renderMarkdown(container, content, key) {
+    if (!content) { container.innerHTML = '<div class="page-loading">NO CONTENT</div>'; return; }
+    let html = simpleMd(content);
+    container.innerHTML = `<div class="md-content card"><div class="card-body" style="padding-top:32px;">${html}</div></div>`;
+}
+
+function renderImageGrid(container, files) {
+    if (!files || files.length === 0) { container.innerHTML = '<div class="page-loading">NO IMAGES YET</div>'; return; }
+    let html = '<div class="img-grid">';
+    files.forEach(f => {
+        const url = '/api/assets/' + encodeURIComponent(f);
+        html += `<a href="${url}" target="_blank"><img src="${url}" alt="${escapeHtml(f)}" loading="lazy"/></a>`;
+    });
+    html += '</div>';
+    container.innerHTML = html;
+}
+
+function copyCard(btn) {
+    const cardBody = btn.parentElement.nextElementSibling;
+    const pre = cardBody.querySelector('pre');
+    const text = pre ? pre.textContent : cardBody.textContent;
+    const finalText = text.split('-'.repeat(100))[0].trim();
+    navigator.clipboard.writeText(finalText).then(() => {
+        btn.innerHTML = `${svgCheck} Copied`;
+        btn.classList.add('copied');
+        setTimeout(() => { btn.innerHTML = `${svgCopy} Copy`; btn.classList.remove('copied'); }, 2000);
+    });
+}
+
+function selectRef(el) {
+    el.classList.toggle('selected');
+}
+
+function getSelectedRefs(card) {
+    const sels = card.querySelectorAll('.ref-img-item.selected');
+    return Array.from(sels).map(el => el.dataset.path);
+}
+
+function openLightbox(event, imgUrl) {
+    event.stopPropagation();
+    const existing = document.getElementById('lightbox');
+    if (existing) existing.remove();
+    const div = document.createElement('div');
+    div.id = 'lightbox';
+    div.style.cssText = 'position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.4);z-index:9999;display:flex;align-items:center;justify-content:center;cursor:pointer;animation: lightboxFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;';
+    div.innerHTML = `<img src="${escapeHtml(imgUrl)}" style="max-width:85vw;max-height:85vh;border-radius:16px;box-shadow:0 30px 100px rgba(0,0,0,0.4);object-fit:contain;animation: lightboxImgPop 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;">`;
+    
+    div.onclick = () => {
+        div.style.animation = 'lightboxFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) reverse forwards';
+        div.querySelector('img').style.animation = 'lightboxImgPop 0.3s cubic-bezier(0.16, 1, 0.3, 1) reverse forwards';
+        setTimeout(() => div.remove(), 300);
+    };
+    document.body.appendChild(div);
+}
+
+function openAssetPicker(btn) {
+    currentActiveCard = btn.closest('.card'); // 保存当前触发的卡片上下文
+    const allAssets = projectData.allAssets || [];
+    if (allAssets.length === 0) return;
+    const existing = document.getElementById("asset-picker");
+    if (existing) { existing.remove(); return; }
+    
+    const picker = document.createElement("div");
+    picker.id = "asset-picker";
+    picker.style.cssText = "position:fixed;top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.3);z-index:9998;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(4px);";
+    
+    // 使用 JS 模板字符串（反引号）修复引号冲突错误
+    let grid = `<div style="background:#fff;border-radius:16px;padding:24px;max-width:600px;max-height:80vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,0.2);">
+                    <h3 style="font-family:Outfit;font-weight:500;font-size:16px;margin-bottom:16px;">选择垫图</h3>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(80px,1fr));gap:12px;">`;
+    
+    allAssets.forEach(f => {
+        const url = "/api/assets/" + encodeURIComponent(f);
+        grid += `<div style="cursor:pointer;border-radius:8px;overflow:hidden;border:1px solid #EBEFEB;">
+                    <img src="${url}" style="width:100%;aspect-ratio:1;object-fit:cover;display:block;" onclick="addCustomRef('${escapeHtml(f)}')"/>
+                 </div>`;
+    });
+    grid += `</div></div>`;
+    picker.innerHTML = grid;
+    picker.onclick = function(e) { if (e.target === picker) picker.remove(); };
+    document.body.appendChild(picker);
+}
+
+function addCustomRef(filename) {
+    const picker = document.getElementById("asset-picker");
+    if (picker) picker.remove();
+    
+    const card = currentActiveCard; // 确保新垫图加在对应触发的卡片中
+    if (!card) return;
+    
+    const refGroup = card.querySelector(".ref-images");
+    if (!refGroup) return;
+    
+    const imgUrl = "/api/assets/" + encodeURIComponent(filename);
+    const div = document.createElement("div");
+    div.className = "ref-img-item selected";
+    div.dataset.path = filename;
+    
+    // 使用模板字符串重写，避免拼接报错
+    div.innerHTML = `
+        <img src="${imgUrl}" alt="${escapeHtml(filename)}" onclick="selectRef(this)"/>
+        <div class="ref-img-label">${escapeHtml(filename)}</div>
+        <button class="ref-zoom" onclick="event.stopPropagation();openLightbox(event, '${imgUrl}')" title="Zoom">${svgZoom}</button>
+    `;
+    
+    refGroup.insertBefore(div, refGroup.lastElementChild);
+}
+
+function generateItem(btn) {
+    const filename = btn.dataset.filename;
+    const card = btn.closest('.card');
+    const textarea = card.querySelector('.appearance-editor');
+    const overlay = document.getElementById('overlay-' + hash(filename));
+    const errBanner = document.getElementById('error-' + hash(filename));
+    const selectedRefs = getSelectedRefs(card);
+
+    errBanner.style.display = 'none';
+    overlay.classList.add('active');
+
+    const payload = { name: filename, appearance: textarea.value };
+    if (selectedRefs.length > 0) payload.selectedRefs = selectedRefs;
+
+    fetch('/api/generate', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(payload),
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.error) throw new Error(data.error);
+        pollTask(data.taskId, filename, overlay, errBanner);
+    })
+    .catch(err => {
+        overlay.classList.remove('active');
+        showError(errBanner, "Request Failed", err.message);
+    });
+}
+
+function saveScene(btn) {
+    const filename = btn.dataset.filename;
+    const sceneType = btn.dataset.type;
+    const card = btn.closest('.card');
+    const overlay = document.getElementById('overlay-sb-' + hash(filename));
+    const errBanner = document.getElementById('error-sb-' + hash(filename));
+    const selectedRefs = getSelectedRefs(card);
+
+    const scenes = [];
+    card.querySelectorAll('.scene-editor').forEach(ta => {
+        const si = parseInt(ta.dataset.scene);
+        scenes[si] = ta.value;
+    });
+
+    errBanner.style.display = 'none';
+    overlay.classList.add('active');
+
+    const payload = { name: filename, scenes: scenes, type: sceneType };
+    if (selectedRefs.length > 0) payload.selectedRefs = selectedRefs;
+
+    fetch('/api/generate-scene', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(payload),
+    })
+    .then(r => r.json())
+    .then(data => {
+        if (data.error) throw new Error(data.error);
+        pollTask(data.taskId, filename, overlay, errBanner);
+    })
+    .catch(err => {
+        overlay.classList.remove('active');
+        showError(errBanner, "Request Failed", err.message);
+    });
+}
+
+function pollTask(taskId, filename, overlay, errBanner) {
+    let polls = 0;
+    const interval = setInterval(() => {
+        polls++;
+        fetch('/api/task/' + taskId).then(r => r.json()).then(data => {
+            if (data.status === 'done') {
+                clearInterval(interval);
+                overlay.classList.remove('active');
+                setTimeout(async () => { await loadProject(); renderPanel(activeTab); }, 400);
+            } else if (data.status === 'error') {
+                clearInterval(interval);
+                overlay.classList.remove('active');
+                showError(errBanner, "Rendering Interrupted", (data.log||[]).join('\n'));
+            } else if (polls >= 180) {
+                clearInterval(interval);
+                overlay.classList.remove('active');
+                showError(errBanner, "Timeout", "The rendering took too long and timed out.");
+            }
+        }).catch(() => {});
+    }, 6000);
+}
+
+function showError(banner, title, logText) {
+    banner.innerHTML = `<strong>${title}</strong><details><summary>View Logs</summary><pre>${escapeHtml(logText)}</pre></details>`;
+    banner.style.display = 'block';
+}
+
+function escapeHtml(str) { return String(str||'').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"\'":'&#39;'}[m])); }
+function hash(str) { let h=0; for(let i=0;i<str.length;i++) h=((h<<5)-h)+str.charCodeAt(i),h|=0; return Math.abs(h).toString(36); }
+function simpleMd(md) {
+    let h = escapeHtml(md);
+    h = h.replace(/^### (.+)$/gm, '<h3>$1</h3>').replace(/^## (.+)$/gm, '<h2>$1</h2>').replace(/^# (.+)$/gm, '<h1>$1</h1>');
+    h = h.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>').replace(/^- (.+)$/gm, '<li>$1</li>').replace(/(<li>.*<\/li>\n?)/g, '<ul>$1</ul>').replace(/<\/ul>\s*<ul>/g, '\n');
+    h = h.replace(/^(?!<[hubl/\s]).+$/gm, '<div>$&</div>');
+    return h;
+}
+
+init();
+</script>
+</body>

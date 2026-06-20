@@ -1,0 +1,12 @@
+{
+  "name": "example_video",
+  "prompt": "Pixar 3D animation style, claymation feel. A middle-aged woman discovers visible signs of facial aging...",
+  "aspect_ratio": "9:16",
+  "resolution": "480p",
+  "duration": 15,
+  "reference_image_paths": [
+    "G:/my_project/images/storyboard_1.png"
+  ],
+  "output_dir": "G:/my_project/videos/example_video.mp4",
+  "model": "generate_video_seedance_v2_0"
+}

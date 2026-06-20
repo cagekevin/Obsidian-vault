@@ -1,0 +1,266 @@
+/*
+ * Theme: Data-Ink Broadsheet (数据时报)
+ * prompt_palette: newsprint-warm #FBFAF6 / NYT-red #D0021B / ink-black #121212 / faint-line #D8D2C2
+ * Design School: Edward Tufte Data-Ink + New York Times
+ * Vibe: 权威报纸、科学论文、绝对消除冗余装饰、红白黑极致对比、极细参考线
+ */
+
+:root {
+    /* 1. Tufte 的学术报告色板 */
+    --color-bg-base: #FBFAF6;         /* 略带暖意的新闻纸/学术纸白 */
+    --color-bg-alt: #F7F7F7;          /* NYT 专栏灰 */
+    --color-bg-dark: #121212;         /* 浓重的新闻油墨黑 */
+
+    --color-text: #121212;
+    --color-sub: #666666;             /* 纽约时报标准次级灰 */
+
+    --color-accent: #D0021B;          /* NYT Red */
+    --color-line: #D8D2C2;            /* Tufte 极细参考线 */
+
+    /* 2. 权威字体栈 */
+    --font-serif: 'PT Serif', 'Times New Roman', 'Noto Serif SC', serif;
+    --font-sans: 'Franklin Gothic', 'Arial', sans-serif;
+    --font-mono: 'Courier New', monospace;
+
+    /* 3. 紧凑的报幅排版间距 */
+    --sp-1: 4px; --sp-2: 8px; --sp-3: 16px; --sp-4: 24px;
+    --sp-6: 48px; --sp-8: 64px; --sp-10: 96px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background-color: #E2E2E2;
+    display: flex;
+    justify-content: center;
+    -webkit-font-smoothing: antialiased;
+    color: var(--color-text);
+}
+.page-wrapper {
+    width: 100%;
+    max-width: 720px;
+    background-color: var(--color-bg-base);
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+/* =========================================
+   主结构容器：消除块状感，化为连续长文
+   ========================================= */
+.mod {
+    width: 100%;
+    min-height: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: var(--sp-8) 0;
+    background-color: var(--color-bg-base);
+    border-bottom: 1px solid var(--color-line);
+}
+
+.mod--hero { padding-bottom: 0; }
+.mod--alt-bg { background-color: var(--color-bg-alt); }
+.mod--dark-bg { background-color: var(--color-bg-dark); color: var(--color-bg-base); }
+
+.mod-top-c {
+    padding: 0 var(--sp-6) var(--sp-4);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.mod-body {
+    flex: 1;
+    padding: 0 var(--sp-6);
+    display: flex;
+    flex-direction: column;
+}
+
+/* =========================================
+   NYT 字体排印：权威的三段式阶梯
+   ========================================= */
+.display-xxl, .display-xl, .display-lg {
+    font-family: var(--font-serif);
+    color: var(--color-text);
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.display-xxl { font-size: 46px; }
+.display-xl { font-size: 36px; }
+.display-lg { font-size: 28px; }
+
+.h1-sm {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-style: italic;
+    color: var(--color-sub);
+    margin-top: var(--sp-3);
+    font-weight: 400;
+}
+
+.body {
+    font-family: var(--font-serif);
+    font-size: 17px;
+    color: var(--color-text);
+    line-height: 1.6;
+    font-weight: 400;
+    text-align: justify;
+}
+
+/* =========================================
+   装饰与信息层：Tufte 的数据墨水原则
+   ========================================= */
+.kicker {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--sp-2);
+}
+
+.deco-en {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-sub);
+    margin-top: var(--sp-1);
+}
+
+.num {
+    font-family: var(--font-sans);
+    font-size: 28px;
+    color: var(--color-accent);
+    font-weight: 700;
+    line-height: 1;
+}
+
+.deco-script {
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--color-text);
+    text-transform: uppercase;
+    margin-top: var(--sp-4);
+    display: inline-block;
+    border-top: 2px solid var(--color-text);
+    padding-top: 8px;
+}
+
+/* =========================================
+   网格与排版框：绝对消除图表垃圾
+   ========================================= */
+.stack { display: flex; flex-direction: column; }
+.gap-1 { gap: var(--sp-2); }
+.gap-2 { gap: var(--sp-4); }
+
+.grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-4);
+}
+.grid-2x2-item { display: flex; flex-direction: column; }
+.grid-2x2-item:nth-child(even) { margin-top: 0; }
+
+.callout-box {
+    background: transparent;
+    border: none;
+    border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+    border-radius: 0;
+    padding: var(--sp-3) 0;
+    display: flex;
+    align-items: flex-start;
+    gap: var(--sp-3);
+    margin-bottom: -1px;
+}
+
+.tag-item {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: bold;
+    padding: 2px 6px;
+    color: var(--color-text);
+    background: var(--color-line);
+    border: none;
+    border-radius: 2px;
+    margin-right: 6px;
+    text-transform: uppercase;
+}
+
+.quote {
+    font-family: var(--font-serif);
+    font-size: 26px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--color-text);
+    text-align: left;
+    line-height: 1.4;
+    padding: var(--sp-4) 0;
+    border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+    margin: var(--sp-4) 0;
+}
+
+/* =========================================
+   图片与图表：Tufte 的科学插图感
+   ========================================= */
+.dp2-mock {
+    width: 100%;
+    background: transparent;
+    border: 1px solid var(--color-line);
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-sub);
+    font-family: var(--font-sans);
+    font-size: 11px;
+    text-transform: uppercase;
+}
+
+.dp2-mock--hero { aspect-ratio: 3/2; margin-top: var(--sp-6); border: none; }
+.dp2-mock--square { aspect-ratio: 1/1; }
+.dp2-mock--portrait { aspect-ratio: 4/5; }
+.dp2-mock--arch { aspect-ratio: 4/5; border-radius: 0; }
+
+.dp2-data-strip {
+    background: transparent;
+    border-top: 2px solid var(--color-text);
+    border-bottom: 2px solid var(--color-text);
+    color: var(--color-text);
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0;
+    border-radius: 0;
+    margin-top: 32px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.dp2-card-overlap { display: flex; margin-top: 32px; border-top: 1px solid var(--color-text); }
+.dp2-card-overlap__card--them,
+.dp2-card-overlap__card--us {
+    width: 50%;
+    background: transparent;
+    border: none;
+    padding: 24px 16px 24px 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+.dp2-card-overlap__card--them { border-right: 1px solid var(--color-line); color: var(--color-sub); }
+.dp2-card-overlap__card--us { padding-left: 16px; color: var(--color-text); }
+
+/* 强制重置手写体为无衬线小标 */
+[style*="font-family:'Caveat'"] {
+    font-family: var(--font-sans) !important;
+    font-style: normal !important;
+    transform: none !important;
+    font-weight: bold !important;
+    font-size: 14px !important;
+}
+

@@ -1,0 +1,88 @@
+/*
+ * 朝圣黎明 · Pilgrim's Dawn
+ * 默认主题 · 35+ 女性护肤/美妆适配
+ * 5 项配置：颜色 / 字体 / 间距 / 圆角 / 留白节奏
+ *
+ * 加载方式：<link rel="stylesheet" href="tokens/theme-pilgrim-dawn.css">
+ * 此文件只覆盖 :root 变量，不动结构 class。
+ * 字体由 template.html 预加载。
+ */
+
+/* ═══ 1. 颜色（4 主色 + 灰度派生）═══ */
+:root {
+  /* 4 主色 */
+  --text-main: #3B2A1E;   /* 深棕墨 · 主文字 */
+  --text-muted: #6B574A;  /* 次级文字 */
+  --accent:    #C8956D;   /* 岩蔷薇粉 · 强调色 */
+  --bg:        #EFE6D8;   /* 暖砂米 · 主背景 */
+
+  /* 辅助色（不可增减） */
+  --text-meta: #9A8A7E;
+  --line:      #D9CDB9;
+  --card-bg:   #FBF7EF;
+  --bg-soft:   #F5EFE4;   /* 屏间背景交替用 */
+  --body-bg:   #E0DACE;
+  --ph-bg:     #D9CDB9;
+  --ph-text:   #8A7A6A;
+
+  /* 灰度 6 级派生（主文字 60% 透明度阶梯） */
+  --ink-100: #3B2A1E;
+  --ink-80:  rgba(59, 42, 30, 0.82);
+  --ink-60:  rgba(59, 42, 30, 0.62);
+  --ink-40:  rgba(59, 42, 30, 0.42);
+  --ink-20:  rgba(59, 42, 30, 0.22);
+  --ink-10:  rgba(59, 42, 30, 0.10);
+}
+
+/* ═══ 2. 字体（衬线小细节 + 无衬线功能）═══ */
+:root {
+  --font-serif: "Fraunces", "Noto Serif SC", "Songti SC", "STSong", Georgia, serif;
+  --font-sans:  "Inter Tight", "Noto Sans SC", -apple-system, "PingFang SC", "Microsoft YaHei UI", sans-serif;
+  --font-display: "Fraunces", "Noto Serif SC", serif;
+  --font-mono: "IBM Plex Mono", Consolas, "Courier New", monospace;
+  --font-num: var(--font-display);
+
+  /* 字重 */
+  --weight-title: 400;
+  --weight-lead:  700;
+  --weight-body:  400;
+  --weight-sub:   500;
+
+  /* 衬线柔化（claud 小细节 · 让衬线更温柔） */
+  --serif-soft: "opsz" 144, "SOFT" 90;
+}
+
+/* ═══ 3. 间距（8pt 网格）═══ */
+:root {
+  --s-1:  8px;
+  --s-2:  16px;
+  --s-3:  24px;
+  --s-4:  32px;
+  --s-5:  48px;
+  --s-6:  64px;
+  --s-7:  96px;
+  --s-8:  128px;
+
+  /* 留白节奏（R5 排版美感核心） */
+  --rhythm-tight:  24px;   /* 屏内紧密度 */
+  --rhythm-base:   48px;   /* 标准留白 */
+  --rhythm-loose:  80px;   /* 屏顶呼吸 */
+}
+
+/* ═══ 4. 圆角（暖色容器）═══ */
+:root {
+  --radius-sm:  8px;
+  --radius-md:  16px;
+  --radius-lg:  24px;
+  --radius-full: 999px;
+
+  /* 暖色微阴影（不让容器"飘"） */
+  --shadow-soft: 0 4px 16px rgba(59, 42, 30, 0.06);
+  --shadow-card: 0 8px 24px rgba(59, 42, 30, 0.08);
+}
+
+/* ═══ 5. 留白节奏应用 ═══ */
+/* 屏顶永远 80px 起始（R6 强制） */
+.mod-top-c {
+  padding-top: var(--rhythm-loose) !important;
+}

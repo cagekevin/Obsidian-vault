@@ -1,0 +1,43 @@
+/*
+ * theme-default — 冷峻硬核（当前风格，与 template.html 内嵌值一致）
+ * 此文件可省略不加载，template.html 已内嵌相同的 :root 值。
+ * 提供此文件是为了让外部引用时保持一致性。
+ */
+
+:root {
+  /* ─── 字重 ─── */
+  --weight-title: 400;    /* h1, h1-sm, h-md, h2, claim, pullquote, quote, num */
+  --weight-lead: 700;     /* lead */
+  --weight-body: 400;     /* body, meta */
+  --weight-sub: 500;      /* sub, sub-muted, kicker, spec */
+
+  /* ─── 字距 ─── */
+  --tracking-h1: 0.05em;
+  --tracking-h1-sm: 0.03em;
+  --tracking-h-md: 0.02em;
+  --tracking-h2: 0.05em;
+  --tracking-claim: 0.05em;
+  --tracking-num: 0.03em;
+  --tracking-sub: 0.10em;
+  --tracking-kicker: 0.22em;
+  --tracking-spec: 0.02em;
+
+  /* ─── 英文装饰形态 ─── */
+  --en-transform: none;
+  --en-font-style: italic;
+
+  /* ─── 字号 ─── */
+  --fs-h1:44px; --fs-h1-sm:36px; --fs-h-md:40px; --fs-h2:32px;
+  --fs-claim:40px; --fs-num:28px; --fs-pullquote:32px; --fs-quote:24px;
+  --fs-sub:16px; --fs-lead:16px; --fs-body:14px; --fs-meta:12px;
+  --fs-kicker:13px; --fs-spec:16px; --fs-en-deco:24px; --fs-h-sub:20px;
+
+  /* ─── 形态参数 ─── */
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-full: 99px;
+  --shadow-soft: none;
+  --shadow-card: none;
+  --shadow-elevated: none;
+}

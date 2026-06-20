@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A+ 详情页预览编辑器</title>
+<style>
+:root {
+  --bg: #F5F5F7; --surface: #FFF; --border: #E5E5EA;
+  --txt: #1D1D1F; --muted: #86868B; --accent: #007AFF;
+  --font: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+* { box-sizing:border-box; margin:0; padding:0; outline:none; }
+body { font-family:var(--font); background:#E0E0E0; font-size:13px; color:var(--txt); }
+.mac { width:95%; max-width:1200px; height:90vh; margin:5vh auto;
+  background:var(--bg); border-radius:12px; overflow:hidden; box-shadow:0 20px 40px rgba(0,0,0,0.1);
+  display:flex; flex-direction:column; }
+.titlebar { height:38px; background:var(--surface); border-bottom:1px solid var(--border);
+  display:flex; align-items:center; padding:0 16px; gap:8px; flex-shrink:0; }
+.dot { width:12px; height:12px; border-radius:50%; }
+.dot.r { background:#FF5F56; } .dot.y { background:#FFBD2E; } .dot.g { background:#27C93F; }
+.body { display:flex; flex:1; overflow:hidden; }
+.sidebar { width:220px; background:var(--surface); border-right:1px solid var(--border); display:flex; flex-direction:column; }
+.sidebar-header { padding:12px 16px; font-weight:600; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; align-items:center; }
+.module-list { flex:1; overflow-y:auto; padding:8px; }
+.mi { padding:8px 10px; margin-bottom:4px; border-radius:6px; cursor:pointer; border:1px solid transparent; display:flex; justify-content:space-between; align-items:center; gap:4px; }
+.mi:hover { background:var(--bg); }
+.mi.active { background:#E6F2FF; border-color:#B3D7FF; font-weight:600; }
+.mi input { border:none; background:transparent; font:inherit; width:100%; cursor:pointer; }
+.mi.active input { cursor:text; background:transparent; }
+.btn-sm { cursor:pointer; border:none; background:transparent; color:var(--muted); flex-shrink:0; }
+.btn-sm:hover { color:#FF3B30; }
+.main { flex:1; display:flex; flex-direction:column; }
+.toolbar { height:48px; background:var(--surface); border-bottom:1px solid var(--border);
+  display:flex; justify-content:space-between; align-items:center; padding:0 20px; flex-shrink:0; gap:8px; }
+.toolbar-left { display:flex; gap:8px; }
+.toolbar-right { display:flex; gap:8px; }
+.btn { padding:6px 14px; border:1px solid var(--border); border-radius:6px; background:var(--surface);
+  cursor:pointer; font-size:13px; }
+.btn.primary { background:var(--txt); color:#fff; border-color:var(--txt); }
+.scroll { flex:1; overflow-y:auto; padding:20px; }
+.editor { max-width:700px; margin:0 auto; display:flex; flex-direction:column; gap:16px; }
+.card { background:var(--surface); border:1px solid var(--border); border-radius:8px; padding:16px; }
+.card-title { font-size:13px; font-weight:600; margin-bottom:12px; color:var(--txt); border-bottom:1px solid var(--border); padding-bottom:6px; }
+.row { display:flex; gap:12px; margin-bottom:12px; }
+.row .fg { flex:1; }
+.fg { margin-bottom:12px; }
+.fg:last-child { margin-bottom:0; }
+.fg label { display:block; font-size:11px; color:var(--muted); margin-bottom:4px; font-weight:500; }
+input, select, textarea { width:100%; padding:6px 10px; border:1px solid var(--border); border-radius:6px;
+  font-family:var(--font); font-size:13px; background:#FAFAFA; }
+input:focus, select:focus, textarea:focus { border-color:var(--accent); background:#FFF; box-shadow:0 0 0 2px rgba(0,122,255,0.1); }
+textarea { min-height:60px; resize:vertical; }
+.modal-overlay { position:fixed; inset:0; background:rgba(0,0,0,0.5); display:none; justify-content:center; align-items:center; z-index:100; }
+.modal { background:#fff; padding:20px; border-radius:12px; width:420px; box-shadow:0 24px 48px rgba(0,0,0,0.2); }
+.modal textarea { min-height:200px; font-family:monospace; font-size:12px; }
+.tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; background:#E6F2FF; color:var(--accent); margin-right:4px; }
+.muted { color:var(--muted); font-size:12px; }
+</style>
+</head>
+<body>
+<div class="mac">
+  <div class="titlebar">
+    <div class="dot r"></div><div class="dot y"></div><div class="dot g"></div>
+    <span style="margin-left:12px;font-size:12px;color:var(--muted);" id="draftNote"></span>
+  </div>
+  <div class="body">
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <span>模块流</span>
+        <button class="btn-sm" onclick="addModule()" style="color:var(--accent);font-weight:600;">+</button>
+      </div>
+      <div class="module-list" id="moduleList"></div>
+    </aside>
+    <main class="main">
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <span id="topbarTitle" class="muted">未选择模块</span>
+        </div>
+        <div class="toolbar-right">
+          <button class="btn" onclick="showLoadModal()">📂 加载 JSON</button>
+          <button class="btn primary" onclick="exportJSON()">📤 导出 JSON</button>
+        </div>
+      </div>
+      <div class="scroll"><div class="editor" id="editorContainer"></div></div>
+    </main>
+  </div>
+</div>
+
+<div class="modal-overlay" id="loadModal">
+  <div class="modal">
+    <div style="font-weight:600;margin-bottom:12px;">加载 JSON 初稿</div>
+    <div class="muted" style="margin-bottom:8px;">粘贴由 AI 生成的初稿 JSON 或手动编辑数据：</div>
+    <textarea id="jsonInput" placeholder='{"product_name":"...","modules":[...]}'></textarea>
+    <div class="row" style="margin-top:12px;">
+      <button class="btn" onclick="closeLoadModal()">取消</button>
+      <button class="btn primary" onclick="loadJSON()">加载预览</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── 数据 ──
+const LAYOUT_OPTS = [
+  ["hero_banner","首屏横幅"],["ingredient_zigzag_left","Z字左留白"],
+  ["ingredient_zigzag_right","Z字右留白"],["texture_smear_bottom_text","肤感底部托盘"],
+  ["model_lifestyle_side_anchor","模特侧边留白"],["three_column_features","三列图标"],
+  ["split_before_after","前后对比"],["full_bleed_lifestyle","全幅场景"],
+  ["texture_center_floating","悬浮微距中轴"],["authority_endorsement_split","专家背书"],
+  ["module_arch_window","拱门遮罩"]
+];
+const ROUTE_OPTS = [
+  ["product_hero","产品"],["lifestyle_usage","使用场景"],["ingredient_origin","成分原料"],
+  ["brand_authority","实验室"],["texture_detail","微距质地"],["before_after","对比"],["badge_grid","图标网格"]
+];
+const EDGE_OPTS = [
+  ["linear","线性"],["sine","正弦波"],["soft_brush","笔刷"],["arch","拱门"],["jagged","锯齿"]
+];
+
+const defaultData = {
+  project_id: "DRAFT",
+  product_name: "Product",
+  product_color: "soft pastel",
+  engine_key: "scientific_clinical",
+  modules: []
+};
+
+let data = JSON.parse(JSON.stringify(defaultData));
+let activeId = null;
+
+// ── 渲染 ──
+function render() {
+  renderSidebar();
+  renderEditor();
+  document.getElementById('draftNote').textContent =
+    data._meta?.draft_note || `${data.project_id} · ${data.modules.length} 模块`;
+}
+
+function renderSidebar() {
+  const list = document.getElementById('moduleList');
+  list.innerHTML = data.modules.map((m, i) => `
+    <div class="mi ${m._id === activeId ? 'active' : ''}" onclick="selectModule('${m._id}')">
+      <input value="${m.name || '未命名'}" onfocus="this.select()"
+        onchange="renameModule('${m._id}', this.value)" onclick="event.stopPropagation()">
+      <button class="btn-sm" onclick="delModule('${m._id}', event)">×</button>
+    </div>
+  `).join('');
+}
+
+function renderEditor() {
+  const mod = data.modules.find(m => m._id === activeId);
+  const c = document.getElementById('editorContainer');
+  if (!mod) { c.innerHTML = '<div class="muted" style="text-align:center;margin-top:40px;">选择模块开始编辑</div>'; return; }
+
+  document.getElementById('topbarTitle').textContent = mod.name;
+
+  const lo = LAYOUT_OPTS.map(o => `<option ${mod.layout_key===o[0]?'selected':''} value="${o[0]}">${o[1]}</option>`).join('');
+  const ro = ROUTE_OPTS.map(o => `<option ${mod.subject_route===o[0]?'selected':''} value="${o[0]}">${o[1]}</option>`).join('');
+  const eo = EDGE_OPTS.map(o => `<option ${mod.edge_style===o[0]?'selected':''} value="${o[0]}">${o[1]}</option>`).join('');
+  const t = mod.texts || {};
+
+  c.innerHTML = `
+    <div class="card">
+      <div class="card-title">引擎配置</div>
+      <div class="row">
+        <div class="fg"><label>空间排版</label><select onchange="upd('${mod._id}','layout_key',this.value)">${lo}</select></div>
+        <div class="fg"><label>主体路由</label><select onchange="upd('${mod._id}','subject_route',this.value)">${ro}</select></div>
+      </div>
+      <div class="fg"><label>边缘风格</label><select onchange="upd('${mod._id}','edge_style',this.value)">${eo}</select></div>
+      <div class="fg" style="margin-bottom:0;">
+        <div style="display:flex;flex-wrap:wrap;gap:4px;">
+          <span class="tag">${lo[0]}</span>
+          <span class="muted">→</span>
+          <span class="tag" style="background:#F0FFF0;color:#2A8;">${ROUTE_OPTS.find(o=>o[0]===mod.subject_route)?.[1]||mod.subject_route}</span>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">文案 <span class="muted">(留空的字段会由 AI 路由自动填充)</span></div>
+      <div class="row">
+        <div class="fg"><label>主标题</label><input value="${t.hero_title||''}" onchange="updText('${mod._id}','hero_title',this.value)"></div>
+        <div class="fg"><label>副标题</label><input value="${t.section_title||''}" onchange="updText('${mod._id}','section_title',this.value)"></div>
+      </div>
+      <div class="fg"><label>正文</label><textarea onchange="updText('${mod._id}','body_text',this.value)">${t.body_text||''}</textarea></div>
+    </div>
+  `;
+}
+
+// ── 操作 ──
+let _idCounter = 1000;
+function genId() { return 'm_' + (_idCounter++); }
+
+function selectModule(id) { activeId = id; render(); }
+
+function addModule() {
+  data.modules.push({ _id: genId(), name: '新模块', layout_key: 'ingredient_zigzag_left',
+    subject_route: 'ingredient_origin', edge_style: 'linear',
+    texts: { hero_title: '', section_title: '', body_text: '', quote_text: '', tagline: '' } });
+  activeId = data.modules[data.modules.length-1]._id;
+  render();
+}
+
+function delModule(id, e) {
+  e.stopPropagation();
+  data.modules = data.modules.filter(m => m._id !== id);
+  activeId = data.modules.length ? data.modules[0]._id : null;
+  render();
+}
+
+function renameModule(id, val) {
+  const m = data.modules.find(x => x._id === id);
+  if (m) m.name = val;
+}
+
+function upd(id, field, val) {
+  const m = data.modules.find(x => x._id === id);
+  if (m) m[field] = val;
+  if (field !== 'name') renderEditor();
+}
+
+function updText(id, field, val) {
+  const m = data.modules.find(x => x._id === id);
+  if (m) { if (!m.texts) m.texts = {}; m.texts[field] = val; }
+}
+
+// ── 加载/导出 ──
+function showLoadModal() {
+  document.getElementById('jsonInput').value = JSON.stringify(data, null, 2);
+  document.getElementById('loadModal').style.display = 'flex';
+}
+function closeLoadModal() { document.getElementById('loadModal').style.display = 'none'; }
+
+function loadJSON() {
+  try {
+    const parsed = JSON.parse(document.getElementById('jsonInput').value);
+    // 确保每个模块有 _id
+    parsed.modules = (parsed.modules || []).map(m => {
+      if (!m._id) m._id = genId();
+      if (!m.texts) m.texts = { hero_title: '', section_title: '', body_text: '', quote_text: '', tagline: '' };
+      if (!m.edge_style) m.edge_style = 'linear';
+      if (!m.subject_route) m.subject_route = 'product_hero';
+      return m;
+    });
+    data = parsed;
+    activeId = data.modules.length ? data.modules[0]._id : null;
+    closeLoadModal();
+    render();
+  } catch(e) { alert('JSON 格式错误: ' + e.message); }
+}
+
+function exportJSON() {
+  const out = JSON.parse(JSON.stringify(data));
+  // 清理 _id（引擎不需要）
+  out.modules.forEach(m => delete m._id);
+  const blob = new Blob([JSON.stringify(out, null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `aplus_${out.project_id || 'draft'}.json`;
+  a.click();
+}
+</script>
+</body>
+</html>

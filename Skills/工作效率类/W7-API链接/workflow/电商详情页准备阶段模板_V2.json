@@ -1,0 +1,42 @@
+{
+  "mode": "pipeline",
+  "name": "电商详情页准备阶段-优化版",
+  "project_id": "[项目UUID]",
+  "output_dir": "[项目路径]/output",
+  "step_delay": 8,
+  "steps": [
+    {
+      "name": "加载技能框架",
+      "type": "ask",
+      "follow_ups": 0,
+      "prompt": "以下是我的 Skin-Care PDP Layout Design 技能框架，请仔细加载作为后续工作指南。仅回复「已加载」即可，不要复述框架内容，不要做任何操作。\n\n## Skin-Care PDP Layout Design\n\n## Core Methodology\n\n### 1. Structural Layout Matrix\nThis framework organizes product assets into a standardized e-commerce sequence to maximize conversion:\n- **Main Hero (Single):** A high-impact 3:4 image focusing on the primary product silhouette with professional studio lighting. 纯白底，无文字。\n- **Multi-Angle Logic (Grid):** A 4-panel (2x2) grid system showing the product from at least two distinct angles (front-facing, profile, or slightly elevated) to establish three-dimensional form.\n- **Texture Detail (Macro):** Close-up shots focusing on the formula (cream, serum, gel) or unique packaging finishes (frosted glass, metallic caps).\n\n### 2. Clinical Studio Aesthetic\nMaintains a consistent \"clean beauty\" visual language through three dimensions:\n- **Lighting:** Soft diffused top-down lighting with subtle contact shadows to ground the product.\n- **Background:** High-key white or neutral-toned studio environments to ensure readability across mobile devices.\n- **Composition:** Strict 3:4 vertical orientation with centered or rule-of-thirds product placement.\n\n## Workflow\n\n### 1. Preparation Stage\n- **Asset Inventory:** Identify the number of product units (1-N).\n- **Material Mapping:** Define packaging materials.\n- **Angle Checklist:** Select 2-3 specific angles for the multi-angle grid stage.\n\n### 2. Initial Design Stage\n- **Calibration Shot:** Generate a single front-view hero shot to lock in lighting and shadow consistency.\n- **Prompt Framework:** [Product Category] + [Packaging Detail] + [Angle] + [3:4 Vertical] + [Clean Studio White Background].\n- **Batch Generation:** Produce a set of 5-8 variations including the requested multi-angle shots.\n\n### 3. Iteration Stage\n- **Grid Assembly:** Consolidate selected variations into a 4-panel grid format.\n- **Consistency Audit:** Check that lighting direction and product colors remain identical across the hero shot and the grid panels.\n- **Refinement:** Adjust shadow density if the product appears to \"float\" on the white background.\n\n## Key Constraints & Standards\n- **Aspect Ratio:** Strictly 3:4 for all outputs.\n- **Background Integrity:** Zero texture or noise in the background; must be pure studio white.\n- **Product Consistency:** Labels, font sizes, and container proportions must remain 1:1 consistent.\n- **Grid Structure:** The 4-panel grid must maintain equal spacing and alignment.\n\n---\n## OUTPUT — 全部 3:4，纯白底，无文字，共 7 张\n\n### 1. 主视觉大图 ×1 | 85mm\n3:4 vertical. Full product [Single Unit] centered on pure white background, slightly elevated angle. Soft studio lighting, subtle contact shadow. Commercial product photography, ultra-sharp, no text.\n\n### 2a. 多角度4宫格A — 产品全局视角 | 50mm\n3:4. 4-panel 2x2 grid, 50mm, pure white background, consistent studio lighting. No text.\n位置 | 内容\nTL | Front view, product facing straight-on\nTR | 45° three-quarter profile\nBL | Side/silhouette profile\nBR | Top-down bird's eye\n\n### 2b. 多角度4宫格B — 使用状态视角 | 50mm\n3:4. 4-panel 2x2 collage-style grid, 50mm, irregular composition (not strict 2x2 alignment), pure white bg. No text.\n位置 | 内容\nTL | Front view with cap removed / opened\nTR | Low angle, product viewed from desk level\nBL | Back/reverse side of product\nBR | One key accessory isolated (cap / dropper / pump)\n\n### 3. 产品细节4宫格 ×1 | 100mm macro\n3:4. 4-panel 2x2 grid, 100mm macro, extreme close-up with shallow depth of field. Pure white bg. No text.\n位置 | 内容\nTL | Formula texture close-up (cream / serum / gel visible)\nTR | Packaging surface macro (glass / plastic / metal grain)\nBL | Closure detail macro (cap threads / seal / nozzle)\nBR | Product applied on skin surface, dewy finish\n\n### 4. 使用场景4宫格 ×1 | 70mm\n3:4. 4-panel 2x2 grid, 70mm. Clean beauty lifestyle on pure white bg. Soft rim light on hand to separate from background. No text.\n位置 | 内容\nTL | Hand holding product, natural positioning\nTR | Hand interacting with the packaging opening/dispensing\nBL | Product being applied to skin surface (arm / face)\nBR | Skin result after application, hydrated glow\n\n### 5a. 卖点图1 — 多单元阵列 | 60mm\n3:4. [Multiple units] of product arranged in staggered formation on pure white background. Low front angle, 60mm. Soft studio lighting. Subtle contact shadow. No text.\n\n### 5b. 卖点图2 — 单单元自然俯拍 | 90mm\n3:4. Single unit product flat lay, top-down directly above on pure white. 90mm telephoto. Soft shadow grounding the bottle. One accent element (leaf / flower petal) placed beside for composition. No text.\n"
+    },
+    {
+      "name": "分析产品素材",
+      "type": "analyze",
+      "images": ["[产品图片路径1]", "[产品图片路径2]"],
+      "follow_ups": 0,
+      "prompt": "分析这批产品图片。直接输出分析结果：产品品类、包装材质、颜色、瓶身比例、品牌风格调性。不要复述已加载的技能框架，不要反问，不要让我选择，不要生成图片。"
+    },
+    {
+      "name": "确认产品信息",
+      "type": "ask",
+      "follow_ups": 0,
+      "prompt": "基于上一步分析，确认完整产品信息。如果上一步分析中缺少产品材质、颜色或品牌调性中的任何一项，请根据图片自行判断补全。直接输出确认后的产品属性汇总，不反问。"
+    },
+    {
+      "name": "生成所有素材图",
+      "type": "ask",
+      "follow_ups": 6,
+      "mode": "fast",
+      "prompt": "按已加载的技能框架和已确认的产品信息，逐张生成全部 7 张素材图。\n\n首先生成第1张（主视觉大图），然后我追问一张你出一张，直到出完7张。\n\n每张图严格遵守：3:4竖版、纯白底、无文字。用 Nano Banana 2 低价格模型。\n\n现在开始，出第1张：主视觉大图 ×1（85mm）"
+    },
+    {
+      "name": "一致性审核",
+      "type": "ask",
+      "follow_ups": 0,
+      "thread": "new",
+      "prompt": "检查刚才生成的7张素材图中，光照方向、产品颜色、阴影处理是否统一。如果有明显不一致之处，列出需要重做的图片编号和具体问题。如果没有问题，回复「一致性通过」。"
+    }
+  ]
+}

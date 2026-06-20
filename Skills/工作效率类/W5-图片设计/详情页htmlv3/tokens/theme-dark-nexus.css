@@ -1,0 +1,433 @@
+/*
+ * Theme: Dark Nexus (暗夜星云)
+ * prompt_palette: cyan #0070F3 / magenta #FF0080 / orange #F5A623 / accent-red #FF6363
+ * Design School: Vercel Mesh + Raycast Glassmorphism
+ * Vibe: 极客、深邃、硅谷前沿科技、精准的黑白灰配以迷幻的渐变网格
+ */
+
+:root {
+    /* 1. 基础灰度：Raycast 与 Vercel 的经典暗场 */
+    --color-bg-base: #000000;         /* Vercel 纯黑极简底色 */
+    --color-bg-alt: #0A0A0A;          /* Vercel 次级表面 */
+    --color-bg-panel: #0F0F11;        /* Raycast 玻璃板底色 */
+
+    /* 2. 文本系统 */
+    --color-text: #EDEDED;            /* 主文本：非纯白，保护视力 */
+    --color-sub: #888888;             /* 次级文本：极客灰 */
+
+    /* 3. 边框与玻璃质感：Raycast 招牌特征 */
+    --color-border: rgba(255, 255, 255, 0.1);
+    --color-glass: rgba(255, 255, 255, 0.04);
+    --color-glass-hover: rgba(255, 255, 255, 0.08);
+
+    /* 4. 品牌高光：Vercel 标志性的 CMY 渐变色 */
+    --color-mesh-1: #0070F3; /* Cyan */
+    --color-mesh-2: #FF0080; /* Magenta */
+    --color-mesh-3: #F5A623; /* Orange */
+    --color-accent: #FF6363; /* Raycast 标志性红色点缀 */
+
+    /* 5. 极客字体栈：抛弃所有衬线体，全面拥抱无衬线与等宽字体 */
+    --font-sans: 'Inter', 'Geist Sans', -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Geist Mono', monospace;
+
+    /* 6. 严谨的 8px 间距网格 */
+    --sp-1: 8px; --sp-2: 16px; --sp-3: 24px; --sp-4: 32px;
+    --sp-6: 48px; --sp-8: 64px; --sp-10: 80px; --sp-15: 120px;
+}
+
+/* =========================================
+   全局重置与页面容器
+   ========================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    -webkit-font-smoothing: antialiased;
+    color: var(--color-text);
+}
+.page-wrapper {
+    width: 100%;
+    max-width: 720px;
+    background-color: var(--color-bg-base);
+    border-left: 1px solid var(--color-border);
+    border-right: 1px solid var(--color-border);
+    box-shadow: 0 0 100px rgba(0,0,0,1);
+}
+
+/* =========================================
+   主结构容器 (Modules)
+   ========================================= */
+.mod {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: var(--sp-15) 0;
+    overflow: hidden;
+    background-color: var(--color-bg-base);
+}
+
+.mod--hero {
+    padding: 0;
+    /* Vercel 的经典深邃首屏 */
+    background-color: var(--color-bg-base);
+}
+
+.mod--alt-bg {
+    background-color: var(--color-bg-alt);
+    border-top: 1px solid rgba(255,255,255,0.03);
+    border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+
+/* 在黑夜模式下，Dark BG 变成深邃的面板色 */
+.mod--dark-bg {
+    background-color: var(--color-bg-panel);
+}
+
+.mod-top-c {
+    padding: 0 var(--sp-6) var(--sp-6);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.mod-body {
+    flex: 1;
+    padding: 0 var(--sp-6);
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+/* =========================================
+   Vercel Mesh 核心动效：极致的动态网格
+   ========================================= */
+.editorial-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: #000;
+    overflow: hidden;
+}
+
+/* 使用伪元素生成漂浮的 Vercel 渐变光球 */
+.editorial-bg::before,
+.editorial-bg::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px); /* 极度柔化的边缘 */
+    opacity: 0.5;
+    animation: mesh-drift 15s infinite alternate ease-in-out;
+}
+
+.editorial-bg::before {
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--color-mesh-1) 0%, transparent 70%);
+    top: -200px;
+    left: -200px;
+}
+
+.editorial-bg::after {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, var(--color-mesh-2) 0%, var(--color-mesh-3) 70%, transparent 100%);
+    bottom: -100px;
+    right: -100px;
+    animation-delay: -5s;
+}
+
+@keyframes mesh-drift {
+    0% { transform: translate(0, 0) scale(1); opacity: 0.4; }
+    50% { transform: translate(100px, 50px) scale(1.1); opacity: 0.6; }
+    100% { transform: translate(-50px, 100px) scale(0.9); opacity: 0.3; }
+}
+
+.mod-hero-overlay { position: relative; z-index: 10; }
+
+/* =========================================
+   科技排版系统 (Geist/Inter 无衬线体系)
+   ========================================= */
+.display-xxl, .display-xl, .display-lg, .h1-sm {
+    font-family: var(--font-sans);
+    color: #FFFFFF;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.04em; /* 科技风标志性的紧凑字间距 */
+}
+
+.display-xxl { font-size: 48px; }
+.display-xl { font-size: 38px; }
+.display-lg { font-size: 28px; letter-spacing: -0.02em; }
+
+.h1-sm {
+    font-family: var(--font-mono); /* 副标题改用等宽字体 */
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-sub);
+    margin-bottom: var(--sp-1);
+}
+
+.body {
+    font-family: var(--font-sans);
+    font-size: 15px; /* 偏大一点，提升科技面板可读性 */
+    color: var(--color-sub);
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+/* =========================================
+   装饰元素：Raycast 的快捷键与极客徽章
+   ========================================= */
+/* Kicker 变成 Terminal 的命令行提示符样式 */
+.kicker {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--color-accent); /* Raycast 红 */
+    background: rgba(255, 99, 99, 0.1);
+    padding: 6px 12px;
+    border-radius: 4px;
+    margin-bottom: var(--sp-3);
+    border: 1px solid rgba(255, 99, 99, 0.2);
+}
+
+.deco-en {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-sub);
+    opacity: 0.5;
+}
+
+/* 手写体签名在这个主题里变成了"代码高亮注释" */
+.deco-script {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: #4CAF50; /* 终端绿色 */
+    display: inline-block;
+    margin-top: var(--sp-2);
+}
+.deco-script::before {
+    content: '// '; /* 自动加上代码注释符 */
+    opacity: 0.5;
+}
+
+.num {
+    font-family: var(--font-mono);
+    font-size: 32px;
+    color: var(--color-text);
+    font-weight: 200;
+    line-height: 1;
+}
+
+/* 巨型背板数字变成网格像素风 */
+.display-huge {
+    font-family: var(--font-mono);
+    font-size: 140px;
+    font-weight: 700;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.05);
+    position: absolute;
+    top: -10px;
+    left: 0px;
+    z-index: 0;
+}
+
+/* 渐变赛博线条 */
+.deco-line {
+    width: 80px;
+    height: 1px;
+    background: linear-gradient(to right, var(--color-mesh-1), var(--color-mesh-2));
+    margin: var(--sp-3) auto;
+}
+
+/* =========================================
+   布局组件
+   ========================================= */
+.stack { display: flex; flex-direction: column; }
+.gap-1 { gap: var(--sp-2); }
+.gap-2 { gap: var(--sp-4); }
+
+.grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-4);
+    width: 100%;
+}
+
+.grid-2x2-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.grid-2x2-item:nth-child(even) { margin-top: 48px; }
+
+/* =========================================
+   Raycast 玻璃态组件 (Glassmorphism)
+   ========================================= */
+.callout-box {
+    background: var(--color-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: var(--sp-4);
+    display: flex;
+    align-items: center;
+    gap: var(--sp-3);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+.callout-box:hover {
+    background: var(--color-glass-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.4);
+}
+
+.tag-item {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    padding: 6px 12px;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    border-radius: 6px; /* 科技风硬朗切角 */
+    background: var(--color-bg-panel);
+}
+
+.quote {
+    font-family: var(--font-sans);
+    font-size: 24px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 1.4;
+    padding: 0 var(--sp-4);
+    border-left: 3px solid var(--color-mesh-1); /* 左侧引用线 */
+}
+
+/* =========================================
+   DP2 图片占位与高阶修饰 (赛博朋克化)
+   ========================================= */
+.dp2-mock {
+    width: 100%;
+    background: rgba(255,255,255,0.02);
+    border: 1px dashed var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-sub);
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 模拟扫描线效果 */
+.dp2-mock::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 10px;
+    background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.05), transparent);
+    animation: scanline 4s infinite linear;
+}
+@keyframes scanline {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(1000%); }
+}
+
+.dp2-mock--hero { aspect-ratio: 16/11; border:none; }
+.dp2-mock--square { aspect-ratio: 1/1; border-radius: 12px; }
+.dp2-mock--portrait { aspect-ratio: 3/4; border-radius: 16px; box-shadow: 0 24px 60px rgba(0,0,0,0.8); }
+.dp2-mock--arch {
+    aspect-ratio: 3/4;
+    border-radius: 120px 120px 12px 12px; /* 科技风胶囊罩 */
+    box-shadow: 0 0 0 1px var(--color-border), 0 24px 60px rgba(0,0,0,0.8);
+}
+
+/* Vercel 数据属性条 */
+.dp2-data-strip {
+    background: var(--color-bg-panel);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    display: flex;
+    justify-content: space-around;
+    padding: 16px;
+    border-radius: 8px;
+    margin-top: 32px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+/* Raycast 层叠比对面板 */
+.dp2-card-overlap { display: flex; margin-top: 32px; position: relative; }
+.dp2-card-overlap__card--them {
+    width: 48%;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--color-border);
+    padding: 32px 16px;
+    border-radius: 12px 0 0 12px;
+    z-index: 1;
+}
+.dp2-card-overlap__card--us {
+    width: 56%;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-mesh-1); /* Vercel 蓝突出版权 */
+    padding: 32px 24px;
+    border-radius: 12px;
+    margin-left: -4%;
+    z-index: 2;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.6), inset 0 1px 0 rgba(255,255,255,0.1);
+}
+
+/* =========================================
+   新增：MUJI/Monocle/Tufte 的科技版映射
+   ========================================= */
+.muji-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: var(--color-sub);
+    text-transform: uppercase;
+}
+.monocle-pullquote {
+    font-family: var(--font-sans);
+    font-size: 24px;
+    font-weight: 300;
+    color: #FFFFFF;
+    line-height: 1.5;
+    padding: 24px 0;
+    margin: 32px 0;
+    border-top: 1px dashed var(--color-border);
+    border-bottom: 1px dashed var(--color-border);
+}
+.layout-editorial-cols {
+    column-count: 2;
+    column-gap: 32px;
+    column-rule: 1px solid var(--color-border);
+}
+.tufte-sidenote {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--color-sub);
+    border-left: 2px solid var(--color-mesh-2);
+    padding-left: 12px;
+    margin-top: 16px;
+}
+.stripe-shadow {
+    box-shadow: 0 32px 64px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05);
+    border-radius: 4px;
+}
+

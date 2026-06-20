@@ -1,0 +1,38 @@
+/*
+ * luxe-warm — 高奢温润（美妆精油版）
+ * 参考：韩方五谷护发精油详情页
+ *
+ * 加载方式：<link rel="stylesheet" href="">
+ * → 改为 <link rel="stylesheet" href="tokens/luxe-warm.css">
+ *
+ * 字体已由 template.html 预加载，此文件只覆盖 :root 变量。
+ * 默认 :root 中 radius=0/shadow=none，此处覆盖为参考文件风格。
+ */
+
+:root {
+  /* ─── 色系（暖沙 / 香槟金 / 暖咖）─── */
+  --text-main:#382E28;
+  --text-muted:#7A6C63;
+  --accent:#C29562;
+  --bg:#FDF9F5;
+  --line:#E6D5C3;
+  --card-bg:#FFFFFF;
+
+  /* ─── 字重 ─── */
+  --weight-title:700;
+  --weight-lead:700;
+  --weight-sub:500;
+
+  /* ─── 数字字体（luxe 用 Playfair Display 更优雅）─── */
+  --font-num:var(--font-display);
+
+  /* ─── 英文装饰 ─── */
+  --en-transform:uppercase;
+  --en-font-style:normal;
+
+  /* ─── 圆角/阴影（参考：16px 圆角 + 微阴影）─── */
+  --radius-md:16px;
+  --radius-lg:16px;
+  --shadow-soft:0 6px 20px rgba(194,149,98,0.08);
+  --shadow-card:0 10px 30px rgba(194,149,98,0.10);
+}

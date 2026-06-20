@@ -1,0 +1,41 @@
+{
+  "project_id": "产品英文ID（用于 product-colors.json 匹配）",
+  "product_name": "产品英文名",
+  "product_color": "产品主色描述（如 deep amber gold / electric blue）",
+  "color_hex": "产品主色 HEX 值",
+  "engine_key": "img-engines.json 中的引擎 key",
+
+  "modules": [
+    {
+      "name": "模块名称/屏号",
+      "layout_key": "layout-defaults.json 中的布局 key",
+      "subject_route": "img-subjects.json 中的主体路由 key（影响 flow_prompt 的焦点和防幻觉）",
+      "edge_style": "linear | sine | soft_brush | arch（模块间拼接边缘样式）",
+
+      "flow_prompt": "AI 拼装的英文生图提示词，发给 ImageFX/Midjourney 用",
+
+      "render_instruction": {
+        "background_hex": "模块背景色（引擎默认或 per-product 覆盖）",
+        "text_primary": "主文字色（卡片内文字用深色，模块背景深色时用浅色）",
+        "text_secondary": "次要文字色",
+        "accent": "强调色（徽章边框、分隔线、数据大字）"
+      },
+
+      "texts": {
+        "kicker": "【必填】标签文字，没有会抛 KeyError",
+        "hero_title": "大标题",
+        "section_title": "章节标题",
+        "subtitle": "副标题",
+        "body_text": "正文描述",
+        "highlight": "高亮重点文字",
+        "quote_text": "情绪引用语",
+        "tagline": "标语（full_bleed 用）",
+        "badge_1": "徽章标签",
+        "badge_1_icon": "徽章 SVG 图标（可选，renderer 不硬编码图标）",
+        "feature_1": "特点/痛点列表项",
+        "data_1": "数据大字",
+        "step_1": "步骤说明"
+      }
+    }
+  ]
+}

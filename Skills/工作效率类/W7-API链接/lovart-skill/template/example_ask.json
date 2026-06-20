@@ -1,0 +1,7 @@
+{
+  "mode": "ask",
+  "name": "示例-提问Lovart",
+  "prompt": "请详细说明小红书封面图的设计规范，越具体越好。",
+  "output_dir": "./output",
+  "follow_ups": 5
+}

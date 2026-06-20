@@ -1,0 +1,117 @@
+{
+  "version": 1,
+  "description": "Lovart 语义路由配置 — 根据用户描述中的关键词自动匹配任务类型、模型、比例。加新类型只需在 rules 数组中加一条。",
+  "models": {
+    "nb2": "generate_image_nano_banana_2",
+    "gpt2 low": "generate_image_gpt_image_2_low",
+    "gpt2 medium": "generate_image_gpt_image_2_medium",
+    "gpt2 high": "generate_image_gpt_image_2_high"
+  },
+  "rules": [
+    {
+      "keywords": ["主图", "首图", "main image", "封面", "hero shot"],
+      "match": "any",
+      "type": "电商主图",
+      "model": "gpt2 medium",
+      "ratio": "1:1",
+      "resolution": "2K",
+      "hint": "必须有产品图垫图"
+    },
+    {
+      "keywords": ["亚马逊", "amazon", "amazon main image"],
+      "match": "any",
+      "type": "亚马逊主图",
+      "model": "gpt2 medium",
+      "ratio": "1:1",
+      "resolution": "2K",
+      "hint": "全英文描述，白底为主"
+    },
+    {
+      "keywords": ["详情页", "详情", "详情图", "pdp", "detail page", "product detail"],
+      "match": "any",
+      "type": "电商详情页",
+      "model": "gpt2 low",
+      "ratio": "3:4",
+      "resolution": "2K",
+      "hint": "多图组合，无文字"
+    },
+    {
+      "keywords": ["海报", "banner", "促销", "活动", "poster", "promotion"],
+      "match": "any",
+      "type": "海报/促销图",
+      "model": "gpt2 medium",
+      "ratio": "auto",
+      "resolution": "2K",
+      "hint": "排版型，文字是核心"
+    },
+    {
+      "keywords": ["素材图", "氛围图", "场景图", "material", "ambient", "scene"],
+      "match": "any",
+      "type": "素材/场景图",
+      "model": "nb2",
+      "ratio": "9:16",
+      "resolution": "2K",
+      "hint": "不需要文字排版"
+    },
+    {
+      "keywords": ["痛点", "对比", "before", "after", "痛点图", "对比图"],
+      "match": "any",
+      "type": "痛点/对比图",
+      "model": "nb2",
+      "ratio": "auto",
+      "resolution": "1K",
+      "hint": "纯视觉表达，无文字"
+    },
+    {
+      "keywords": ["成分", "功效", "成分图", "ingredient", "功效图"],
+      "match": "any",
+      "type": "成分/功效图",
+      "model": "gpt2 low",
+      "ratio": "3:4",
+      "resolution": "2K",
+      "hint": "信息展示，突出关键成分"
+    },
+    {
+      "keywords": ["模特", "人像", "真人", "穿搭", "上身", "model", "portrait"],
+      "match": "any",
+      "type": "模特/人像",
+      "model": "nb2",
+      "ratio": "3:4",
+      "resolution": "2K",
+      "hint": "人像更优，真实自然"
+    },
+    {
+      "keywords": ["复刻", "仿照", "参考设计", "replica", "参考图"],
+      "match": "any",
+      "type": "复刻设计",
+      "model": "gpt2 medium",
+      "ratio": "auto",
+      "resolution": "2K",
+      "hint": "需 analyze 提取规范后再生成"
+    },
+    {
+      "keywords": ["视频", "video", "短视频", "动画"],
+      "match": "any",
+      "type": "视频生成",
+      "model": "seedance_v2_0",
+      "ratio": "9:16",
+      "resolution": "720p",
+      "hint": "走 run_video_generator.py 视频管线"
+    },
+    {
+      "keywords": ["欧美", "欧美模特", "西方", "western", "caucasian"],
+      "match": "any",
+      "type": "欧美模特/人像",
+      "model": "nb2",
+      "ratio": "3:4",
+      "resolution": "2K",
+      "hint": "欧美面容，护肤广告风格"
+    }
+  ],
+  "fallback": {
+    "model": "nb2",
+    "ratio": "auto",
+    "resolution": "1K",
+    "type": "通用生图"
+  }
+}

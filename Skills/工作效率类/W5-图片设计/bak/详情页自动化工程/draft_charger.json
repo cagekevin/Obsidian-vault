@@ -1,0 +1,204 @@
+{
+  "project_id": "CHARGER_001",
+  "product_name": "HKH Smart Charger",
+  "product_color": "electric blue",
+  "color_hex": "#0057FF",
+  "engine_key": "scientific_clinical",
+  "modules": [
+    {
+      "name": "01_黄金海报位",
+      "layout_key": "hero_banner",
+      "subject_route": "product_hero",
+      "edge_style": "linear",
+      "texts": {
+        "hero_title": "充得快，只是一种本能。",
+        "subtitle": "HKH 全场景数智充电器 —— 更智能的，是它懂得如何保护你。",
+        "body_text": "搭载航天级氮化镓芯片，65W 全速输出，三口同充不断连。",
+        "badge_1": "氮化镓 GaN",
+        "badge_1_icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z\"/></svg>",
+        "badge_2": "多协议全兼容",
+        "badge_2_icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 20v2\"/><path d=\"M12 2v2\"/><path d=\"M17 20v2\"/><path d=\"M17 2v2\"/><path d=\"M2 12h2\"/><path d=\"M2 17h2\"/><path d=\"M2 7h2\"/><path d=\"M20 12h2\"/><path d=\"M20 17h2\"/><path d=\"M20 7h2\"/><path d=\"M7 20v2\"/><path d=\"M7 2v2\"/><rect x=\"4\" y=\"4\" width=\"16\" height=\"16\" rx=\"2\"/><rect x=\"8\" y=\"8\" width=\"8\" height=\"8\" rx=\"1\"/></svg>",
+        "badge_3": "毫秒级控温",
+        "badge_3_icon": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z\"/></svg>",
+        "kicker": "新品首发"
+      },
+      "render_instruction": {
+        "background_hex": "#F8F9FA",
+        "text_primary": "#1A1D21",
+        "text_secondary": "#5A6570",
+        "accent": "#0057FF"
+      },
+      "flow_prompt": "Macro shot of the HKH Smart Charger bottle, perfect commercial product photography on a clean gradient background. Product centered in the frame. The top quarter of the frame must be clean atmospheric negative space ready for headline text. Soft floor shadow beneath product. High-end frosted glass, clear acrylic podium, perfectly transparent liquid, sterile pristine surface Clean bright studio lighting, softbox diffusion, subtle cool rim light Seamless smooth light grey or pristine white gradient background, Subtle electric blue reflections in the shadows, cool ambient tones. 100mm macro lens, tack-sharp focus on the product, minimal depth of field for background blur Do not generate human models, hands, or faces."
+    },
+    {
+      "name": "02_充电慢的痛",
+      "layout_key": "split_before_after",
+      "subject_route": "before_after",
+      "edge_style": "sine",
+      "texts": {
+        "section_title": "你的时间，不该浪费在\"伪快充\"上。",
+        "subtitle": "发热、断流、协议不匹配……这些隐形损耗，正在偷走你的效率与电池寿命。",
+        "feature_1": "多头充电就断充重连，电流声滋滋响",
+        "feature_2": "插头太大挤占插排空间，出差死沉",
+        "feature_3": "充电发烫严重，不敢放床头过夜",
+        "data_1": "充电速度+300%",
+        "data_2": "温度-8°C",
+        "kicker": "数据洞察"
+      },
+      "render_instruction": {
+        "background_hex": "#F8F9FA",
+        "text_primary": "#1A1D21",
+        "text_secondary": "#5A6570",
+        "accent": "#0057FF"
+      },
+      "flow_prompt": "Split composition showing before state (left) and after state (right) of premium texture application on skin, clinical comparison lighting. Split the frame vertically down the middle. Left side shows before state with subtle warm tone. Right side shows after state with bright clean lighting. The bottom 20% of the frame must be empty uniform background for caption text. High-end frosted glass, clear acrylic podium, perfectly transparent liquid, sterile pristine surface Clean bright studio lighting, softbox diffusion, subtle cool rim light Seamless smooth light grey or pristine white gradient background, Subtle electric blue reflections in the shadows, cool ambient tones. 100mm macro lens, tack-sharp focus on the product, minimal depth of field for background blur Keep composition strictly split. Before side slightly warm tone, after side bright clean."
+    },
+    {
+      "name": "03_硬核心脏",
+      "layout_key": "ingredient_zigzag_left",
+      "subject_route": "ingredient_origin",
+      "edge_style": "linear",
+      "texts": {
+        "section_title": "小到难以置信，强到不可想象。",
+        "subtitle": "搭载航天级氮化镓芯片，重构电源架构。",
+        "highlight": "GaN氮化镓：能量转化率超93%，体积大瘦身，发热远低传统硅基。",
+        "body_text": "AI 3.0 智能控温：内置数百万级传感器，每秒侦测温度8000次，动态调节功率，全程冷静输出。",
+        "feature_1": "全协议兼容：覆盖 PD3.1 / QC5.0 / PPS / SCP / FCP，一个搞定所有设备。",
+        "kicker": "核心科技"
+      },
+      "render_instruction": {
+        "background_hex": "#F8F9FA",
+        "text_primary": "#1A1D21",
+        "text_secondary": "#5A6570",
+        "accent": "#0057FF"
+      },
+      "flow_prompt": "High-end nature documentary style macro shot of raw GaN chip in its natural environment or on a natural surface with dewdrops. The core subject MUST be positioned strictly on the right 60% of the canvas. The left 40% of the frame MUST be completely empty, pure seamless negative space. No textures, no objects, no distractions on the left side. Translucent gel droplets, microscopic texture of serum, micro-pearls Clean bright studio lighting, softbox diffusion, subtle cool rim light Seamless smooth light grey or pristine white gradient background, Subtle electric blue reflections in the shadows, cool ambient tones. 100mm macro lens, tack-sharp focus on the product, minimal depth of field for background blur Absolutely no product packaging, no plastic bottles, no text."
+    },
+    {
+      "name": "04_多口场景",
+      "layout_key": "ingredient_zigzag_right",
+      "subject_route": "ingredient_origin",
+      "edge_style": "linear",
+      "texts": {
+        "section_title": "三口同充，拒绝\"打架\"。",
+        "subtitle": "智能功率分配，插拔不断连，设备自动排序。",
+        "feature_1": "C1口：MacBook Pro 满速 65W 供电",
+        "feature_2": "C2口：iPhone 满速 27W 快充",
+        "feature_3": "A口：AirPods 涓流养护 5V1A",
+        "kicker": "核心成分"
+      },
+      "render_instruction": {
+        "background_hex": "#F8F9FA",
+        "text_primary": "#1A1D21",
+        "text_secondary": "#5A6570",
+        "accent": "#0057FF"
+      },
+      "flow_prompt": "High-end nature documentary style macro shot of raw GaN chip in its natural environment or on a natural surface with dewdrops. The core subject MUST be positioned strictly on the left 60% of the canvas. The right 40% of the frame MUST be completely empty, pure seamless negative space. No textures, no objects, no distractions on the right side. Translucent gel droplets, microscopic texture of serum, micro-pearls Clean bright studio lighting, softbox diffusion, subtle cool rim light Seamless smooth light grey or pristine white gradient background, Subtle electric blue reflections in the shadows, cool ambient tones. 100mm macro lens, tack-sharp focus on the product, minimal depth of field for background blur Absolutely no product packaging, no plastic bottles, no text."
+    },
+    {
+      "name": "05_安全堡垒",
+      "layout_key": "authority_endorsement_split",
+      "subject_route": "brand_authority",
+      "edge_style": "linear",
+      "texts": {
+        "section_title": "你可以安心睡，我们替你守护一整夜。",
+        "data_1": "12重安全防护",
+        "data_2": "过压/过流/短路",
+        "data_3": "过温/防雷/阻燃",
+        "body_text": "充满自动切换涓流模式，像呼吸一样温柔，保护电池健康度。\n过压保护 / 过流保护 / 短路保护 / 防静电 / 温度保护 / 雷击浪涌保护 / 外壳阻燃 / 智能涓流 / 纹波抑制",
+        "kicker": "临床验证"
+      },
+      "render_instruction": {
+        "background_hex": "#F8F9FA",
+        "text_primary": "#1A1D21",
+        "text_secondary": "#5A6570",
+        "accent": "#0057FF"
+      },
+      "flow_prompt": "Cinematic shot of a pristine high-tech cosmetic laboratory or a professional portrait of a skincare scientist examining samples with modern equipment. A professional portrait of a scientist on the strictly left 40% of the frame. The background is a highly blurred out-of-focus laboratory. The right 60% of the image MUST be a clean, dark, or solid color overlay area, serving as completely empty negative space for text. Do not generate text in the image. High-end frosted glass, clear acrylic podium, perfectly transparent liquid, sterile pristine surface Clean bright studio lighting, softbox diffusion, subtle cool rim light Seamless smooth light grey or pristine white gradient background, Subtle electric blue reflections in the shadows, cool ambient tones. 100mm macro lens, tack-sharp focus on the product, minimal depth of field for background blur Keep the background atmospheric and slightly out of focus. No chaotic lab equipment. No text labels."
+    },
+    {
+      "name": "06_美学与触感",
+      "layout_key": "texture_smear_bottom_text",
+      "subject_route": "texture_detail",
+      "edge_style": "sine",
+      "texts": {
+        "section_title": "一个能放进首饰盒里的科技艺术品。",
+        "subtitle": "磨砂消光外壳 · 精密倒角边框",
+        "body_text": "可折叠插脚设计，90度阻尼顺滑折叠。沉静指示灯，微光呼吸灯，深夜不打扰。",
+        "badge_1": "折叠插脚",
+        "badge_2": "精密倒角",
+        "badge_3": "微光呼吸灯",
+        "kicker": "感官体验"
+      },
+      "render_instruction": {
+        "background_hex": "#F8F9FA",
+        "text_primary": "#1A1D21",
+        "text_secondary": "#5A6570",
+        "accent": "#0057FF"
+      },
+      "flow_prompt": "Extreme macro detail shot of premium texture, showing rich texture and viscosity, perfect macro photography lighting. The highly detailed texture or macro subject must occupy the top 65% of the frame. The bottom 35% of the canvas must smoothly transition into a clean, flat, uncluttered solid color block or extremely soft gradient, forming a completely empty base. Translucent gel droplets, microscopic texture of serum, micro-pearls Clean bright studio lighting, softbox diffusion, subtle cool rim light Seamless smooth light grey or pristine white gradient background, Subtle electric blue reflections in the shadows, cool ambient tones. 100mm macro lens, tack-sharp focus on the product, minimal depth of field for background blur Do not generate product packaging. Focus entirely on the texture macro."
+    },
+    {
+      "name": "07_场景矩阵",
+      "layout_key": "model_lifestyle_side_anchor",
+      "subject_route": "lifestyle_usage",
+      "edge_style": "soft_brush",
+      "texts": {
+        "quote_text": "桌面的第一个加法，也是能源的唯一减法。",
+        "step_1": "极客出差：单手握持，轻便小巧塞入衬衣口袋。",
+        "step_2": "家庭枢纽：床头柜整洁如一，一器三充免去插排打架。",
+        "step_3": "办公桌搭：立式摆放，垂直散热，边充边用不掉电。",
+        "step_4": "游戏战场：低辐射不干扰触控，边充边玩不发烫降频。",
+        "kicker": "使用手法"
+      },
+      "render_instruction": {
+        "background_hex": "#F8F9FA",
+        "text_primary": "#1A1D21",
+        "text_secondary": "#5A6570",
+        "accent": "#0057FF"
+      },
+      "flow_prompt": "Cinematic lifestyle portrait. A human model applying premium texture to their skin/hair in a natural setting, soft natural lighting. Human model positioned on the right edge of the frame, looking towards the left. The entire left half (50%) of the image must be a vast, clean, soft atmospheric negative space. No background clutter on the left. Clean professional skin, white lab coat, stainless steel tools Clean bright studio lighting, softbox diffusion, subtle cool rim light Seamless smooth light grey or pristine white gradient background, Subtle electric blue reflections in the shadows, cool ambient tones. 100mm macro lens, tack-sharp focus on the product, minimal depth of field for background blur Do not generate product bottles or packaging in this shot. Focus purely on the human and the texture application."
+    },
+    {
+      "name": "08_数据实证",
+      "layout_key": "three_column_features",
+      "subject_route": "badge_grid",
+      "edge_style": "linear",
+      "texts": {
+        "hero_title": "性能，是测出来的。",
+        "feature_1": "0%到50%仅需15分钟：速度曲线碾压普通20W头",
+        "feature_2": "表面温度低5°C：同等功率下温控领先全场",
+        "feature_3": "兼容上百款设备：手机/平板/笔记本全覆盖",
+        "kicker": "全面呵护"
+      },
+      "render_instruction": {
+        "background_hex": "#F8F9FA",
+        "text_primary": "#1A1D21",
+        "text_secondary": "#5A6570",
+        "accent": "#0057FF"
+      },
+      "flow_prompt": "Clean minimal flat lay composition of GaN chip related natural elements arranged for icon placement, soft gradient background. Create three evenly spaced columns across the full frame. Each column has a centered circular or rounded area at the top for icon placement. The rest of each column should be clean uniform background. High-end frosted glass, clear acrylic podium, perfectly transparent liquid, sterile pristine surface Clean bright studio lighting, softbox diffusion, subtle cool rim light Seamless smooth light grey or pristine white gradient background, Subtle electric blue reflections in the shadows, cool ambient tones. 100mm macro lens, tack-sharp focus on the product, minimal depth of field for background blur No product bottles. Clean uncluttered top-down or flat composition."
+    },
+    {
+      "name": "09_品牌承诺",
+      "layout_key": "full_bleed_lifestyle",
+      "subject_route": "product_hero",
+      "edge_style": "soft_brush",
+      "texts": {
+        "tagline": "不是每个充电器，都敢承诺 3 年换新。",
+        "body_text": "顺丰包邮 · 赠全兼容快充数据线\n365天以换代修 · 3年质保无忧",
+        "kicker": "品牌承诺"
+      },
+      "render_instruction": {
+        "background_hex": "#F8F9FA",
+        "text_primary": "#1A1D21",
+        "text_secondary": "#5A6570",
+        "accent": "#0057FF"
+      },
+      "flow_prompt": "Macro shot of the HKH Smart Charger bottle, perfect commercial product photography on a clean gradient background. Full-bleed immersive lifestyle scene. The bottom 15% of the frame should have a subtle dark gradient overlay area suitable for placing a clean white tagline text. Clean professional skin, white lab coat, stainless steel tools Clean bright studio lighting, softbox diffusion, subtle cool rim light Seamless smooth light grey or pristine white gradient background, Subtle electric blue reflections in the shadows, cool ambient tones. 100mm macro lens, tack-sharp focus on the product, minimal depth of field for background blur Do not generate human models, hands, or faces."
+    }
+  ],
+  "_meta": {
+    "draft_note": "HKH智能充电器详情页，9屏科技性能+安全守护方向"
+  }
+}

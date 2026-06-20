@@ -1,0 +1,16 @@
+{
+  "来源": "ComfyUI-dapaoAPI/seedream_nodes.py — style_mapping",
+  "说明": "每种风格对应的英文Prompt后缀，拼接在用户提示词末尾",
+  "风格映射": {
+    "默认": "",
+    "电影感": ", cinematic lighting, dramatic atmosphere, film grain, professional color grading, cinematic composition",
+    "动漫风格": ", anime style, manga art, vibrant colors, cel shading, anime aesthetic, Japanese animation style",
+    "写实摄影": ", photorealistic, high detail photography, professional camera, natural lighting, sharp focus, realistic texture",
+    "油画艺术": ", oil painting style, classical art, brush strokes, artistic texture, painted artwork, fine art",
+    "水彩画": ", watercolor painting, soft colors, artistic brushwork, watercolor texture, delicate shading",
+    "赛博朋克": ", cyberpunk style, neon lights, futuristic city, sci-fi atmosphere, high-tech low-life, dystopian future",
+    "3D渲染": ", 3D render, octane render, unreal engine, CGI, ray tracing, professional 3D graphics, detailed modeling",
+    "极简主义": ", minimalist style, simple composition, clean design, minimal colors, modern aesthetic, negative space",
+    "复古怀旧": ", vintage style, retro aesthetic, nostalgic atmosphere, classic photography, aged effect, old-fashioned"
+  }
+}

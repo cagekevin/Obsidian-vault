@@ -1,0 +1,43 @@
+{
+  "group": 1,
+  "title": "组标题（如：浴室摸脸确认皱纹）",
+  "shots_total": "镜头数说明（如：1 一镜到底 / 5 组分镜）",
+  "duration": "时长，如 12秒",
+  "palette": "从 global_vars.md 色彩脚本提取调色板描述",
+  "environment": "场景环境描述（含光源氛围）",
+
+  "--- 垫图: assets_manifest.json 中的资产 key (不含路径/后缀) ---": "",
+
+  "refs": [
+    "char_main_female",
+    "product_hkh_serum",
+    "scene_bathroom"
+  ],
+
+  "--- 运镜设计 ---": "",
+
+  "camera_path": "运镜路径文字，如 START→摸眼角→按法令纹→END",
+  "camera_pos": "机位描述，如 镜前45度侧前方",
+  "camera_move": "运镜方式概括，如 推近→跟拍手部→缓慢退回",
+
+  "shots": [
+    {
+      "title": "中景推近",
+      "en": "Medium shot pushing in, woman standing before mirror, morning light透过窗帘, she raises hand slowly to touch her face."
+    },
+    {
+      "title": "手指特写",
+      "en": "Extreme close-up of index finger pressing into cheek skin, slight indentation visible, warm skin tone, subsurface scattering."
+    }
+  ],
+
+  "--- 视觉与情绪 ---": "",
+
+  "lighting_curve": "灯光情绪曲线\\n时间轴标注\\n如：暖光为主→冷蓝主导\\n0s────6s────12s",
+  "keywords": "逗号分隔的英文情绪关键词",
+
+  "--- 音频与摄影 ---": "",
+
+  "audio": "环境声/音乐/SFX 说明\\n多行用 \\n 分隔",
+  "cinema_notes": "摄影风格与特效笔记\\n多行用 \\n 分隔"
+}

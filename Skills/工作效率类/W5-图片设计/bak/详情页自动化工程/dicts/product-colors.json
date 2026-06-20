@@ -1,0 +1,32 @@
+{
+  "product_palettes": {
+    "$note": "每款产品的色卡定义。Translator 读取后覆盖 studio_photography.json 中对应引擎的 color_system 默认值，传给 Flow + Python 渲染。覆盖字段名必须与 engine.color_system 的 key 一致。",
+    "retinol-serum-01": {
+      "product_name": "视黄醇精华",
+      "product_color": "warm amber",
+      "color_hex": "#D4924A",
+      "engine_match": "scientific_clinical",
+      "overrides": {
+        "background_hex": "#F5F3F0",
+        "text_primary": "#2C2416",
+        "text_secondary": "#7A6E5C",
+        "accent": "#D4924A",
+        "overlay_dark": "rgba(44, 36, 22, 0.6)"
+      }
+    },
+    "HKH_CAVIAR_001": {
+      "product_name": "HKH鱼子酱奢养面霜",
+      "product_color": "deep amber gold",
+      "color_hex": "#C9A96E",
+      "engine_match": "premium_luxury",
+      "overrides": {
+        "background_hex": "#1A1513",
+        "text_primary": "#F5F0EB",
+        "text_secondary": "#A0937D",
+        "accent": "#C9A96E",
+        "overlay_dark": "rgba(10, 8, 6, 0.7)"
+      }
+    }
+  },
+  "$expansion_rule": "每个产品一个 key（product_id），key 名不要用 $ 开头。engine_match 必须指向 skincare_visual_catalog 中已存在的 key。overrides 字段必须与 engine.color_system 的 key 一致（background_hex / text_primary / text_secondary / accent / overlay_dark等）。"
+}

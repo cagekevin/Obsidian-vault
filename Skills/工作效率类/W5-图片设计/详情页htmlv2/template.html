@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>详情页 HTML 2 · 模板骨架</title>
+
+<!-- 字体预加载（Fraunces 衬线小细节 + Inter Tight + Noto Serif/Sans SC 兜底） -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<!-- ★ 主题：编辑 href 切换风格，默认朝圣黎明 -->
+<link rel="stylesheet" href="tokens/theme-pilgrim-dawn.css">
+
+<style>
+/* ════════════════════════════════════════════════════════════
+   详情页 HTML 2 · 模板骨架（v0.4）
+   ════════════════════════════════════════════════════════════
+   8 铁律内嵌：
+   R1 每屏必有文字
+   R2 每屏 940px
+   R4 静态优先（无 transition/animation）
+   R5 排版美感优先
+   R6 主副标屏顶居中
+   R7 屏间不可穿插
+   R8 屏间不可堆叠（背景交替 + 描边）
+
+   38 个 class（BEM 命名 · 命名空间规范）
+   ════════════════════════════════════════════════════════════ */
+
+/* ─── 基础重置 ─── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: var(--font-sans);
+  background: var(--body-bg);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.page { width: 790px; margin: 0 auto; background: var(--bg); }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* ═══ 字号（戏剧性 3 + 基础 4 = 7）═══ */
+/* display-xxl：仅屏 1 Hero */
+.display-xxl {
+  font-family: var(--font-serif);
+  font-size: clamp(48px, 7vw, 72px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  text-align: center;
+  font-variation-settings: var(--serif-soft);
+}
+.display-xxl em {
+  font-style: italic;
+  color: var(--accent);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.display-xl {
+  font-family: var(--font-serif);
+  font-size: clamp(44px, 5.5vw, 60px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  text-align: center;
+  font-variation-settings: var(--serif-soft);
+}
+.display-lg {
+  font-family: var(--font-serif);
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.015em;
+  color: var(--text-main);
+  text-align: center;
+  font-variation-settings: var(--serif-soft);
+}
+.h1-sm {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  color: var(--text-main);
+  text-align: center;
+  font-variation-settings: var(--serif-soft);
+}
+/* deco-en：英文斜体装饰（替代旧 .h-sub） */
+.deco-en {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--accent);
+  text-align: center;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+.body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 24px;
+}
+.meta {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-meta);
+  text-align: center;
+}
+
+/* ═══ 文字强调（3）═══ */
+.lead {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+.lead--gold { color: var(--accent); }
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+/* ═══ 数据 / 装饰（6）═══ */
+.num {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--accent);
+  text-align: center;
+  font-variation-settings: var(--serif-soft);
+}
+.quote {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--accent);
+  text-align: center;
+  font-style: italic;
+  line-height: 1.5;
+  font-variation-settings: var(--serif-soft);
+}
+.rule {
+  height: 1px;
+  background: var(--line);
+  border: 0;
+  margin: var(--rhythm-tight) 0;
+}
+.deco-line {
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+  margin: 24px auto;
+}
+.icon-circle {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--rhythm-tight);
+  font-size: 24px;
+  color: var(--accent);
+  background: var(--card-bg);
+}
+.icon-circle--negative { color: var(--text-muted); }
+
+/* ═══ R6 模块系统 · 940px 屏（4 个主结构）═══ */
+.mod {
+  height: 940px;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+  position: relative;
+}
+.mod-auto {
+  height: auto;
+  min-height: 940px;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+
+/* R8 屏间不可堆叠 · 背景交替（3 个修饰符） */
+.mod--alt-bg { background: var(--bg-soft); }
+.mod--dark-bg {
+  background: var(--text-main);
+  color: var(--bg);
+}
+.mod--dark-bg .lead,
+.mod--dark-bg .h1-sm,
+.mod--dark-bg .display-lg,
+.mod--dark-bg .display-xl { color: var(--bg); }
+.mod--dark-bg .body { color: rgba(239, 230, 216, 0.7); }
+.mod--dark-bg .kicker { color: var(--accent); }
+.mod--hero { border-top: none; }   /* 屏 1 去除上边框 */
+
+/* R6 屏顶固定居中 · 80px 起始 + 底部 24px 留白 */
+.mod-top-c {
+  padding: 80px 48px 24px;
+  text-align: center;
+}
+
+/* 自由排版区 */
+.mod-body {
+  flex: 1;
+  padding: var(--rhythm-base) 48px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ═══ 图片（4 个）═══ */
+/* R7 屏间不可穿插 · 底部图撑满剩余 */
+.mod-img {
+  margin: 0 48px 48px;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ph-bg);
+  color: var(--ph-text);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.mod-img > img { width: 100%; height: 100%; object-fit: cover; }
+.mod-img--hero {
+  flex: 1;
+  min-height: 360px;
+  margin-bottom: 48px;
+}
+
+.frame-img {
+  width: 100%;
+  display: block;
+  overflow: hidden;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
+}
+.frame-img > img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.r-4x3 { aspect-ratio: 4/3; }
+.r-1x1 { aspect-ratio: 1/1; }
+.r-3x4 { aspect-ratio: 3/4; }
+.r-16x9 { aspect-ratio: 16/9; }
+.img-fluid {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ph-bg);
+  color: var(--ph-text);
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  min-height: 180px;
+}
+.img-fluid--bg {
+  background-size: cover;
+  background-position: center;
+  color: transparent;
+}
+
+/* ═══ 布局辅助（11 个）═══ */
+.stack { display: flex; flex-direction: column; }
+.gap-1 { gap: var(--s-1); }
+.gap-2 { gap: var(--s-2); }
+.gap-3 { gap: var(--s-3); }
+.gap-4 { gap: var(--s-4); }
+.gap-5 { gap: var(--s-5); }
+.grid-3 { display: flex; gap: 32px; }
+.grid-3-item { flex: 1; text-align: center; }
+.grid-2x2 { display: flex; flex-wrap: wrap; gap: 40px; }
+.grid-2x2-item { flex: 1 1 calc(50% - 20px); text-align: center; }
+.page-flex-2 { display: flex; gap: 40px; }
+.page-flex-2 > * { flex: 1; }
+
+/* ═══ 组件（7 个）═══ */
+.callout-box {
+  background: var(--card-bg);
+  padding: 32px 24px;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+.tag-item {
+  display: inline-block;
+  padding: 6px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 4px;
+  font-family: var(--font-sans);
+}
+.tag-wrap { line-height: 2.4; text-align: center; }
+.ledger { display: flex; flex-direction: column; }
+.ledger-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.ledger-label {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.ledger-value {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--text-main);
+  text-align: right;
+}
+
+/* ═══ 对齐修饰符（2 个）═══ */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+
+/* ═══ R4 静态优先 · 严禁 transition/animation ═══ */
+/* 此处不写任何 transition / animation / IntersectionObserver 监听 */
+</style>
+</head>
+<body>
+
+<div class="page">
+
+<!-- ════════════════════════════════════════════════════════════
+  <analysis>
+  【屏 01 · Hero 海报】
+  步骤2 4维定位：
+    叙事角色：Hero · 主屏
+    观看距离：1m 笔记本为主
+    视觉温度：warm · 安静 · 诗意
+    容量检查：标题区 374px + mod-img 撑满 518px = 892 + 48 底部 = 940px ✅
+  步骤3 排版模板：Hero 海报（kicker + deco-en + display-xxl + body + tags + 主图）
+  步骤4 空间预算：
+    标题区：80 + 16 + 11(kicker) + 16 + 18(deco-en) + 16 + 72(display-xxl 2行) + 24 + 1(deco) + 24 + 14(body) + 24 + 50(tags) + 24(padding-bottom) ≈ 374px
+    mod-img 撑满：940 - 374 - 48(底部留白) = 518px ✅
+  步骤5 文字 class：kicker + deco-en + display-xxl + display-xxl em + body + tag-item
+  步骤6 配图：mod-img--hero 装载真实资产 capsule-hero.png
+  R6 验证：所有标题元素都在 .mod-top-c 内（屏顶 80px 起始）✅
+  R7 验证：mod-img 限定 margin-bottom 48px 不溢出 ✅
+  R8 验证：本屏用 --bg（暖砂米），下一屏用 .mod--alt-bg（--bg-soft 浅米）做背景交替 ✅
+  v0.4 验证：所有 class 走 BEM 命名，屏 1 使用 8 个 class（.mod .mod--hero .mod-top-c .kicker .deco-en .display-xxl .body .tag-wrap .tag-item .mod-img .mod-img--hero）
+  </analysis>
+════════════════════════════════════════════════════════════ -->
+<div class="mod mod--hero">
+  <div class="mod-top-c">
+    <p class="kicker">PLANT RETINOL · VITAMIN C</p>
+    <p class="deco-en">Time Capsule</p>
+    <p class="display-xxl">每日一胶囊<br><em>唤醒</em>肌肤韧性</p>
+    <div class="deco-line"></div>
+    <p class="body">HKH 诞生于一个信念：衰老应当是优雅的，而非必然。</p>
+    <div class="tag-wrap">
+      <span class="tag-item">SGS 临床认证</span>
+      <span class="tag-item">植物视黄醇</span>
+      <span class="tag-item">低刺激配方</span>
+    </div>
+  </div>
+  <div class="mod-img mod-img--hero">
+    <img src="assets/brand/capsule-hero.png" alt="HKH Plant Retinol Time Capsule 胶囊精华主图">
+  </div>
+</div>
+
+<!-- 屏 2-12 暂未实现（Day 2 验证通过后批量写） -->
+
+</div>
+
+</body>
+</html>

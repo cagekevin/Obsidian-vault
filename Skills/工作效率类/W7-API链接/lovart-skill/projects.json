@@ -1,0 +1,21 @@
+{
+  "_comment": "项目名 → Lovart project 信息。旧格式为纯 UUID 字符串，新格式为 {uuid, path}。",
+  "HKH皮卡斯02版本": {
+    "uuid": "3432dff74cb94147ac1eae7431b1060a",
+    "path": "G:\\AgentSpace\\1_Active\\HKH皮卡斯02版本\\HKH皮卡斯02版本"
+  },
+  "婷美面霜": "9a55effc-0847-4bf8-bcfb-c739b74e7568",
+  "婷美焕颜抗皱精华霜lovart": {
+    "uuid": "9f83fc0330324058a08089d5cde08181",
+    "path": "H:\\04详情图片\\唯品会\\婷美\\37.婷美焕颜抗皱精华霜\\婷美焕颜抗皱精华霜lovart"
+  },
+  "小人科普动画01": {
+    "uuid": "792b31e412464538a9db3b9078034a5e",
+    "path": "G:\\AgentSpace\\1_Active\\小人科普动画01"
+  },
+  "CSS艺术能力测试": {
+    "uuid": "b6d4c9b9276f43809e3c8c35545f5916",
+    "path": "G:\\AgentSpace\\1_Active\\Temp\\css-art-test-output\\CSS艺术能力测试"
+  },
+  "HKH皮卡斯03版本": "0b44331503474e60a36b7d11cd0ee375"
+}

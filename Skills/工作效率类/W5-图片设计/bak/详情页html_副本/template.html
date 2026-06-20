@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>产品详情页 — 标题</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{--text-main:#2B2826;--text-muted:#827A73;--text-meta:#A6A09A;--accent:#B89670;--bg:#FAF8F5;--body-bg:#E0E0E0;--card-bg:#FFFFFF;--line:#E8E2DB;--ph-bg:#EFECE8;--ph-text:#C4BCB4;--font-serif:"Noto Serif SC","Songti SC","STSong",serif;--font-sans:"Noto Sans SC",-apple-system,"PingFang SC","Microsoft YaHei UI",sans-serif;--font-display:"Playfair Display","Noto Serif SC",serif;--font-mono:"IBM Plex Mono",Consolas,"Courier New",monospace;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:var(--font-sans);background:var(--body-bg);color:var(--text-main);-webkit-font-smoothing:antialiased;}
+.page{width:790px;margin:0 auto;background:var(--bg);overflow:hidden;}
+.h1{font-family:var(--font-serif);font-size:44px;font-weight:400;line-height:1.3;color:var(--text-main);text-align:center;letter-spacing:0.05em;}
+.h1-sm{font-family:var(--font-serif);font-size:36px;font-weight:400;line-height:1.3;color:var(--text-main);text-align:center;letter-spacing:0.03em;}
+.h-md{font-family:var(--font-serif);font-size:40px;font-weight:400;line-height:1.3;color:var(--text-main);text-align:center;letter-spacing:0.02em;}
+.h2{font-family:var(--font-serif);font-size:32px;font-weight:400;line-height:1.4;color:var(--text-main);text-align:center;letter-spacing:0.05em;}
+.claim{font-family:var(--font-serif);font-size:40px;font-weight:400;color:var(--accent);text-align:center;letter-spacing:0.05em;}
+.num{font-family:var(--font-serif);font-size:28px;font-weight:400;color:var(--accent);text-align:center;letter-spacing:0.03em;}
+.pullquote{font-family:var(--font-serif);font-size:32px;font-weight:400;font-style:italic;color:var(--accent);text-align:center;line-height:1.5;}
+.quote{font-family:var(--font-serif);font-size:24px;font-weight:400;color:var(--accent);text-align:center;letter-spacing:0.05em;}
+.sub{font-family:var(--font-sans);font-size:16px;font-weight:500;color:var(--accent);text-align:center;letter-spacing:0.1em;margin-top:16px;}
+.sub-muted{font-family:var(--font-sans);font-size:16px;font-weight:400;color:var(--text-muted);text-align:center;letter-spacing:0.1em;}
+.lead{font-family:var(--font-sans);font-size:16px;font-weight:700;color:var(--text-main);margin-bottom:8px;}
+.body{font-family:var(--font-sans);font-size:14px;font-weight:400;line-height:1.8;color:var(--text-muted);}
+.meta{font-family:var(--font-sans);font-size:12px;color:var(--text-meta);text-align:center;margin-top:24px;}
+.kicker{font-family:var(--font-mono);font-size:13px;font-weight:500;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.22em;margin-bottom:12px;}
+.spec{font-family:var(--font-mono);font-size:16px;font-weight:400;color:var(--text-main);letter-spacing:0.02em;}
+.h-sub{font-family:var(--font-display);font-style:italic;font-size:20px;font-weight:400;color:var(--text-muted);}
+.en-deco{font-family:var(--font-display);font-style:italic;font-size:24px;font-weight:400;color:var(--accent);}
+.gold{color:var(--accent);font-weight:inherit;}
+.text-center{text-align:center;}
+.text-left{text-align:left;}
+.mod{height:940px;display:flex;flex-direction:column;border-top:1px solid var(--line);}
+.mod-auto{height:auto;min-height:940px;display:flex;flex-direction:column;border-top:1px solid var(--line);}
+.mod-top-c{padding:80px 48px 0;text-align:center;}
+.mod-body{flex:1;padding:24px 48px 48px;display:flex;flex-direction:column;}
+.mod-img{margin:0 48px 48px;min-height:200px;display:flex;align-items:center;justify-content:center;background:var(--ph-bg);color:var(--ph-text);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;}
+.stack{display:flex;flex-direction:column;}
+.gap-1{gap:12px;}.gap-1-5{gap:16px;}.gap-2{gap:24px;}.gap-3{gap:36px;}.gap-4{gap:48px;}.gap-5{gap:64px;}
+.grid-3{display:flex;gap:32px;}
+.grid-3-item{flex:1;text-align:center;}
+.grid-2x2{display:flex;flex-wrap:wrap;gap:40px;}
+.grid-2x2-item{flex:1 1 calc(50% - 20px);text-align:center;}
+.img-box{display:flex;align-items:center;justify-content:center;background:var(--ph-bg);color:var(--ph-text);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;}
+.frame-img{width:100%;display:block;overflow:hidden;}
+.frame-img>img{width:100%;height:100%;object-fit:cover;display:block;}
+.frame-img.fit-contain>img{object-fit:contain;}
+.r-16x9{aspect-ratio:16/9;}.r-4x3{aspect-ratio:4/3;}.r-1x1{aspect-ratio:1/1;}.r-3x4{aspect-ratio:3/4;}
+.img-fluid{width:100%;display:flex;align-items:center;justify-content:center;background:var(--ph-bg);color:var(--ph-text);font-size:13px;letter-spacing:0.15em;text-transform:uppercase;}
+.rule{height:1px;background:var(--line);border:0;margin:24px 0;}
+.deco-line{width:40px;height:1px;background:var(--accent);margin:24px auto;}
+.tag-item{display:inline-block;padding:6px 16px;border:1px solid var(--line);border-radius:99px;font-size:13px;color:var(--text-muted);margin:4px;}
+.tag-wrap{line-height:2.4;}
+.callout-box{background:var(--card-bg);padding:20px;text-align:center;border:1px solid var(--line);}
+.icon-circle{width:120px;height:120px;border-radius:50%;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:28px;color:var(--accent);}
+.icon-circle.is-negative{color:var(--text-muted);}
+.ledger{display:flex;flex-direction:column;}
+.ledger-row{display:grid;grid-template-columns:1fr auto;gap:24px;padding:14px 0;border-bottom:1px solid var(--line);align-items:baseline;}
+.ledger-label{font-family:var(--font-sans);font-size:14px;font-weight:400;color:var(--text-muted);}
+.ledger-value{font-family:var(--font-mono);font-size:16px;font-weight:400;color:var(--text-main);text-align:right;}
+/* 常用 task-scoped CSS（布局超出内置 class 时启用） */
+.page-flex-2 { display:flex; gap:40px; }
+.page-flex-2 > * { flex:1; }
+.page-flex-3 { display:flex; gap:32px; }
+.page-flex-3 > * { flex:1; }
+.page-stack-c { display:flex; flex-direction:column; align-items:center; text-align:center; }
+.page-lead-flush { margin-bottom:0; }
+.page-lead-tight { margin-bottom:4px; }
+.page-body-c { max-width:580px; margin-left:auto; margin-right:auto; }
+.page-ph-full { height:100%; }
+.page-tag-center { text-align:center; }
+.page-img-margin { margin-bottom:32px; }
+.page-promise-item { display:flex; flex-direction:column; align-items:center; text-align:center; gap:12px; }
+/* Task-scoped — 替代模板默认示例的内联样式 */
+.page-hero { border-top:none; }
+.page-hero-sub { max-width:580px; margin:12px auto 0; }
+.page-tag-wrap { margin-top:16px; }
+.page-hero-img { flex:1; min-height:400px; margin-bottom:0; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<!-- ===== 第一屏 ===== -->
+<div class="mod page-hero">
+  <div class="mod-top-c">
+    <p class="h1-sm">标题 ≤14 字</p>
+    <p class="body page-hero-sub">副标题说明文字</p>
+    <div class="deco-line"></div>
+    <div class="tag-wrap page-tag-wrap">
+      <span class="tag-item">标签一</span>
+      <span class="tag-item">标签二</span>
+    </div>
+  </div>
+  <div class="mod-img page-hero-img">
+    [ 产品主视觉 · 请替换为真实图片 ]
+  </div>
+</div>
+
+<!-- ===== 第二屏 ===== -->
+<div class="mod">
+  <div class="mod-top-c">
+    <p class="h2">模块标题 15-23 字</p>
+    <div class="deco-line"></div>
+  </div>
+  <div class="mod-body">
+    <p class="body">正文内容，在此填写描述文字。</p>
+  </div>
+</div>
+
+<!-- ===== 更多屏在此添加 ===== -->
+
+</div>
+</body>
+</html>

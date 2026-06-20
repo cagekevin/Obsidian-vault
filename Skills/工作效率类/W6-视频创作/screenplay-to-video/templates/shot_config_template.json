@@ -1,0 +1,13 @@
+{
+  "name": "{组名}_shot_{序号}",
+  "project_id": "[项目UUID]",
+  "prompt": "场景英文描述。{全局渲染令牌（从 global_vars 提取）}。具体镜头画面描述，9:16竖屏构图",
+  "aspect_ratio": "9:16",
+  "resolution": "2K",
+  "model": "generate_image_gpt_image_2_medium",
+  "output_dir": "G:/AgentSpace/1_Active/{项目名}/images/{组名}_shot_{序号}.png",
+  "reference_image_paths": [
+    "G:/AgentSpace/1_Active/{项目名}/assets/char_{角色ID}.png",
+    "G:/AgentSpace/1_Active/{项目名}/assets/product_{产品ID}.png"
+  ]
+}

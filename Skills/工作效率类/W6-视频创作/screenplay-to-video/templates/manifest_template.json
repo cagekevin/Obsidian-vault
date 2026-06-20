@@ -1,0 +1,22 @@
+{
+  "char_{角色ID}": {
+    "config": "configs/char_{角色ID}.json",
+    "default": "assets/char_{角色ID}.png",
+    "latest": "assets/char_{角色ID}_ar4x3.png"
+  },
+  "product_{产品ID}": {
+    "config": "configs/product_{产品ID}.json",
+    "default": "assets/product_{产品ID}.png",
+    "latest": "assets/product_{产品ID}.png"
+  },
+  "scene_{场景ID}": {
+    "config": "configs/scene_{场景ID}.json",
+    "default": "assets/scene_{场景ID}.png",
+    "latest": "assets/scene_{场景ID}.png"
+  },
+  "storyboard_{组号}": {
+    "config": "",
+    "default": "images/storyboard_{组号}_ar3x4_2K.png",
+    "latest": "images/storyboard_{组号}_ar3x4_2K_v1.png"
+  }
+}

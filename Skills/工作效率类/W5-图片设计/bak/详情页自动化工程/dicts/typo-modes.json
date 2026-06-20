@@ -1,0 +1,106 @@
+{
+  "$schema": "视觉预设字典：每个引擎对应默认视觉模式和色板",
+  "default_mode": "editorial",
+  "engines": {
+    "premium_luxury": {
+      "mode": "editorial",
+      "palette": {
+        "paper": "#1C1816",
+        "ink": "#F5F0EB",
+        "accent": "#C9A96E",
+        "muted": "#A0937D"
+      },
+      "typography": {
+        "display_family": "serif",
+        "rule": "larger_lighter"
+      },
+      "background": "dark_paper"
+    },
+    "refreshing_botanical_breeze": {
+      "mode": "editorial",
+      "palette": {
+        "paper": "#EFF7EE",
+        "ink": "#1A3A2A",
+        "accent": "#7BC67E",
+        "muted": "#4A7A5A"
+      },
+      "typography": {
+        "display_family": "serif",
+        "rule": "larger_lighter"
+      },
+      "background": "paper_grain"
+    },
+    "herbal_earthy_root": {
+      "mode": "editorial",
+      "palette": {
+        "paper": "#F0E8DC",
+        "ink": "#3A2A1A",
+        "accent": "#C4A882",
+        "muted": "#7A6A56"
+      },
+      "typography": {
+        "display_family": "serif",
+        "rule": "larger_lighter"
+      },
+      "background": "paper_grain"
+    },
+    "natural_botanical": {
+      "mode": "editorial",
+      "palette": {
+        "paper": "#F5F0E8",
+        "ink": "#2D2A24",
+        "accent": "#8CB08C",
+        "muted": "#7A7368"
+      },
+      "typography": {
+        "display_family": "serif",
+        "rule": "larger_lighter"
+      },
+      "background": "paper_grain"
+    },
+    "scientific_clinical": {
+      "mode": "swiss",
+      "palette": {
+        "paper": "#F8F9FA",
+        "ink": "#1A1D21",
+        "accent": "#007AFF",
+        "muted": "#5A6570"
+      },
+      "typography": {
+        "display_family": "sans",
+        "rule": "light_display"
+      },
+      "background": "solid"
+    },
+    "deep_hydration": {
+      "mode": "swiss",
+      "palette": {
+        "paper": "#E8F4F8",
+        "ink": "#1A2A33",
+        "accent": "#4A9BC7",
+        "muted": "#4A6B7A"
+      },
+      "typography": {
+        "display_family": "sans",
+        "rule": "light_display"
+      },
+      "background": "solid"
+    }
+  },
+  "card_defaults": {
+    "background": "#FFFFFF",
+    "ink": "#1A1A1A",
+    "muted": "#666666",
+    "border_radius": "4px",
+    "shadow": "0 2px 12px rgba(0,0,0,0.05)",
+    "padding": "var(--sp-8)"
+  },
+  "global_rules": {
+    "min_density_pct": 75,
+    "min_font_size": 22,
+    "max_lines_xhs": {
+      "display": 3,
+      "body": 12
+    }
+  }
+}

@@ -1,0 +1,34 @@
+# Skills 全局 Python 依赖
+# 安装：uv pip install -r Skills/requirements.txt
+# 新增依赖时：先 uv pip install，再追加到此文件
+
+aiohttp
+anthropic
+certifi
+dateutil
+DrissionPage
+edge-tts
+feedparser
+flask
+numpy
+packaging
+pandas
+pdf2image
+pdfkit
+Pillow
+psutil
+pydantic
+pypdf
+pytest
+qrcode
+rapidocr-onnxruntime
+reportlab
+requests
+rich
+scipy
+slugify
+tabulate
+tqdm
+typing_extensions
+PyYAML
+yfinance

@@ -1,0 +1,45 @@
+{
+  "base_config": {
+    "canvas_width": 790,
+    "canvas_height": 1200,
+    "safe_margin_pct": 5,
+    "line_height_ratio": 1.6,
+    "font_family": "PingFang SC, Microsoft YaHei, Noto Sans SC, sans-serif"
+  },
+  "editorial": {
+    "display_family": "Noto Serif SC, Songti SC, STSong, serif",
+    "body_family": "Noto Serif SC, Songti SC, serif",
+    "sans_family": "PingFang SC, Noto Sans SC, sans-serif",
+    "mono_family": "IBM Plex Mono, monospace",
+    "title_bands": [
+      {"max_chars": 100, "lines": 1, "size": 48, "weight": 500, "tracking": 0.03}
+    ],
+    "body": {"size": 17, "weight": 400, "line_height": 1.7, "family": "body"},
+    "quote": {"size": 32, "weight": 400, "line_height": 1.3, "style": "italic"},
+    "caption": {"size": 13, "weight": 500, "tracking": 0.18, "family": "mono"},
+    "rule": "larger_lighter"
+  },
+  "swiss": {
+    "display_family": "Inter, Helvetica Neue, Helvetica, Noto Sans SC, sans-serif",
+    "body_family": "PingFang SC, Noto Sans SC, sans-serif",
+    "mono_family": "IBM Plex Mono, monospace",
+    "title_bands": [
+      {"max_chars": 100, "lines": 1, "size": 48, "weight": 500, "tracking": 0}
+    ],
+    "body": {"size": 17, "weight": 400, "line_height": 1.7, "family": "body"},
+    "quote": {"size": 32, "weight": 300, "line_height": 1.3},
+    "caption": {"size": 13, "weight": 500, "family": "mono"},
+    "rule": "light_display"
+  },
+  "ecommerce": {
+    "display_family": "PingFang SC, Microsoft YaHei, Noto Sans SC, sans-serif",
+    "body_family": "PingFang SC, Microsoft YaHei, sans-serif",
+    "title_bands": [
+      {"max_chars": 100, "lines": 1, "size": 48, "weight": 600, "tracking": 0.02}
+    ],
+    "body": {"size": 17, "weight": 400, "line_height": 1.7, "family": "body"},
+    "quote": {"size": 32, "weight": 300, "line_height": 1.3},
+    "caption": {"size": 13, "weight": 500, "tracking": 0.18, "family": "mono"},
+    "rule": "larger_lighter"
+  }
+}

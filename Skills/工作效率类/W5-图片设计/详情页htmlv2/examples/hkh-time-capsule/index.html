@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HKH Time Capsule · 详情页 HTML 2 12 屏完整版</title>
+
+<!-- 字体预加载 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter+Tight:wght@400;500;600;700&family=Noto+Serif+SC:wght@400;500;700&family=Noto+Sans+SC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<!-- ★ 主题：朝圣黎明（默认） -->
+<link rel="stylesheet" href="../../tokens/theme-pilgrim-dawn.css">
+
+<style>
+/* ════════════════════════════════════════════════════════════
+   详情页 HTML 2 · HKH Time Capsule 12 屏（v0.4）
+   临时约定（不写进 PRD）：
+   - 屏高 min-height 940（可自然高）
+   - 排版必须多样（左文右图/三列/三行/对比/2x2/大引言/三支柱/ledger/callout）
+   - 38 class 不变，0 新增
+   - 节奏 8 倍数
+   - 填充率 60-75%
+   ════════════════════════════════════════════════════════════ */
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: var(--font-sans);
+  background: var(--body-bg);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.page { width: 790px; margin: 0 auto; background: var(--bg); }
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+/* 字号 */
+.display-xxl {
+  font-family: var(--font-serif);
+  font-size: clamp(48px, 7vw, 72px);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  text-align: center;
+  font-variation-settings: var(--serif-soft);
+}
+.display-xxl em {
+  font-style: italic;
+  color: var(--accent);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.display-xl {
+  font-family: var(--font-serif);
+  font-size: clamp(44px, 5.5vw, 60px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--text-main);
+  text-align: center;
+  font-variation-settings: var(--serif-soft);
+}
+.display-xl em {
+  font-style: italic;
+  color: var(--accent);
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+}
+.deco-en {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  font-weight: 400;
+  color: var(--accent);
+  text-align: center;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+}
+.body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.8;
+  color: var(--text-muted);
+  text-align: center;
+  margin-bottom: 24px;
+}
+.lead {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-main);
+  margin-bottom: 8px;
+}
+.lead--gold { color: var(--accent); }
+.kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  text-align: center;
+  margin-bottom: 16px;
+}
+.h1-sm {
+  font-family: var(--font-serif);
+  font-size: 36px;
+  font-weight: 400;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  color: var(--text-main);
+  text-align: center;
+  font-variation-settings: var(--serif-soft);
+}
+
+/* 装饰 */
+.deco-line {
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+  margin: 24px auto;
+}
+.num {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 400;
+  color: var(--accent);
+  font-variation-settings: var(--serif-soft);
+  margin-bottom: 8px;
+}
+.quote {
+  font-family: var(--font-serif);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--accent);
+  font-style: italic;
+  line-height: 1.6;
+  text-align: center;
+  font-variation-settings: var(--serif-soft);
+}
+.rule {
+  height: 1px;
+  background: var(--line);
+  border: 0;
+  margin: 24px 0;
+}
+.icon-circle {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  background: var(--card-bg);
+}
+.icon-circle--negative { color: var(--text-muted); }
+
+/* 屏结构（min-height 940，可自然高） */
+.mod {
+  min-height: 940px;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+  position: relative;
+}
+.mod--hero { border-top: none; }
+.mod--alt-bg { background: var(--bg-soft); }
+.mod--dark-bg {
+  background: var(--text-main);
+  color: var(--bg);
+}
+.mod--dark-bg .kicker,
+.mod--dark-bg .deco-en { color: var(--accent); }
+.mod--dark-bg .display-xxl,
+.mod--dark-bg .display-xl,
+.mod--dark-bg .h1-sm { color: var(--bg); }
+.mod--dark-bg .body { color: rgba(239, 230, 216, 0.78); }
+.mod--dark-bg .deco-line { background: var(--accent); }
+.mod-top-c {
+  padding: 80px 48px 24px;
+  text-align: center;
+}
+.mod-body {
+  flex: 1;
+  padding: 32px 48px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.mod.mod--alt-bg > .mod-body { padding-bottom: 32px; }
+
+/* 图片（屏底，按比例自然呈现） */
+.mod-img {
+  margin: 16px 48px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ph-bg);
+  color: var(--ph-text);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+.mod-img > img { width: 100%; height: auto; display: block; }
+.mod-img--hero {
+  flex: 1;
+  min-height: 360px;
+  margin-bottom: 48px;
+}
+.mod-img--hero > img { width: 100%; height: 100%; object-fit: cover; }
+
+/* 组件 */
+.tag-item {
+  display: inline-block;
+  padding: 6px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 4px;
+  font-family: var(--font-sans);
+}
+.tag-wrap { line-height: 2.4; text-align: center; }
+.grid-3 { display: flex; gap: 32px; }
+.grid-3-item { flex: 1; text-align: center; }
+.grid-2x2 { display: flex; flex-wrap: wrap; gap: 32px; }
+.grid-2x2-item { flex: 1 1 calc(50% - 16px); text-align: center; }
+.page-flex-2 { display: flex; gap: 32px; }
+.page-flex-2 > * { flex: 1; }
+.ledger { display: flex; flex-direction: column; }
+.ledger-row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+.ledger-label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--text-meta);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.ledger-value {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text-main);
+  text-align: right;
+}
+.callout-box {
+  background: var(--card-bg);
+  padding: 32px 24px;
+  text-align: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+}
+
+/* ════════════════════════════════════════════════════════════
+   v0.5 新增 · dp2- 组件（pattern-library 模板 1）
+   ════════════════════════════════════════════════════════════ */
+.dp2-list-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  padding: 20px 24px;
+  box-shadow: var(--shadow-soft);
+}
+.dp2-list-row > *:first-child {
+  font-family: var(--font-display);
+  font-size: 28px;
+  color: var(--accent);
+  font-style: italic;
+  font-weight: 500;
+  width: 50px;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.dp2-list-row > small {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  width: 110px;
+  flex-shrink: 0;
+}
+.dp2-list-row > h3 {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  color: var(--text-main);
+  font-weight: 500;
+  margin: 0;
+  width: 130px;
+  flex-shrink: 0;
+}
+.dp2-list-row > p {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0;
+  flex: 1;
+  line-height: 1.6;
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+<!-- ════════════════════════════════════════════════════════════
+  屏 01 · Hero 海报
+  排版：kicker + deco-en + display-xxl + 3 tags + hero 图
+════════════════════════════════════════════════════════════ -->
+<div class="mod mod--hero">
+  <div class="mod-top-c">
+    <p class="kicker">PLANT RETINOL · VITAMIN C</p>
+    <p class="deco-en">Time Capsule</p>
+    <p class="display-xxl">每日一胶囊<br><em>唤醒</em>肌肤韧性</p>
+    <div class="deco-line"></div>
+    <p class="body">HKH 诞生于一个信念：衰老应当是优雅的，而非必然。</p>
+    <div class="tag-wrap">
+      <span class="tag-item">SGS 临床认证</span>
+      <span class="tag-item">植物视黄醇</span>
+      <span class="tag-item">低刺激配方</span>
+    </div>
+  </div>
+  <div class="mod-img mod-img--hero">
+    <img src="assets/brand/capsule-hero.png" alt="HKH Time Capsule 胶囊精华主图">
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+  屏 02 · 大主张 + hero 图（深色反转）
+  排版：kicker + deco-en + display-xxl + body + hero 图
+════════════════════════════════════════════════════════════ -->
+<div class="mod mod--dark-bg">
+  <div class="mod-top-c">
+    <p class="kicker">THE PHILOSOPHY · 品牌哲学</p>
+    <p class="deco-en">Aging, Gracefully.</p>
+    <p class="display-xxl">衰老应当是<em>优雅</em>的，<br/>而非必然。</p>
+    <div class="deco-line"></div>
+    <p class="body">灵感来自西班牙朝圣之路的岩蔷薇。<br/>HKH 相信，肌肤与人生一样，韧性来自每一天的温柔坚持。</p>
+  </div>
+  <div class="mod-img mod-img--hero">
+    <img src="assets/brand/banner-2.jpg" alt="BAKUCHIOL VC-IP 产品主图">
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+  屏 03 · 三栏痛点陈列（grid-3）
+  排版：kicker + deco-en + display-xl + 3 痛点 icon-circle 灰
+════════════════════════════════════════════════════════════ -->
+<div class="mod mod--alt-bg">
+  <div class="mod-top-c">
+    <p class="kicker">THE STRUGGLE · 35+ 的困扰</p>
+    <p class="deco-en">Three Quiet Truths</p>
+    <p class="display-xl">35 岁之后的三个真相。</p>
+    <div class="deco-line"></div>
+    <p class="body">不是老去本身，而是失去了与时间相处的方式。</p>
+  </div>
+  <div class="mod-body">
+    <div class="grid-3">
+      <div class="grid-3-item">
+        <div class="icon-circle icon-circle--negative">01</div>
+        <p class="h1-sm">刺激</p>
+        <p class="body">泛红、刺痛、脱皮——想抗老，又怕抗老。</p>
+      </div>
+      <div class="grid-3-item">
+        <div class="icon-circle icon-circle--negative">02</div>
+        <p class="h1-sm">松弛</p>
+        <p class="body">细纹来得比想象中快，镜子里的变化常在察觉前发生。</p>
+      </div>
+      <div class="grid-3-item">
+        <div class="icon-circle icon-circle--negative">03</div>
+        <p class="h1-sm">疲惫</p>
+        <p class="body">化妆台越满，护肤越像任务，越难坚持。</p>
+      </div>
+    </div>
+  </div>
+  <div class="mod-img">
+    <img src="assets/brand/lifestyle-2.jpg" alt="35+ 肌肤的数据洞察">
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+  屏 04 · 左文右图（page-flex-2）
+  排版：标题区 + page-flex-2 两列等分（左抽问+引言 / 右屏底图）
+════════════════════════════════════════════════════════════ -->
+<div class="mod">
+  <div class="mod-top-c">
+    <p class="kicker">THE QUESTION · 来自岩蔷薇</p>
+    <p class="deco-en">A Quiet Question</p>
+    <p class="display-xl">为什么是<em>它</em>？</p>
+    <div class="deco-line"></div>
+  </div>
+  <div class="mod-body" style="display: flex; flex-direction: row; align-items: center; gap: 32px;">
+    <div style="flex: 1; text-align: left;">
+      <p class="body" style="text-align: left; margin-bottom: 16px;">朝圣之路的石缝里，岩蔷薇不靠沃土，只凭韧性与时间——这正是 HKH 想唤醒的肌肤。</p>
+      <p class="quote" style="font-size: 20px; line-height: 1.6; text-align: left; margin-top: 16px;">"真正的韧性，<br/>不是与时间对抗，<br/>而是从容地同行。"</p>
+    </div>
+    <div style="flex: 1;">
+      <div class="mod-img" style="margin: 0;">
+        <img src="assets/brand/banner-3.jpg" alt="HKH 品牌延展设计">
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+  屏 05 · 横向列表卡（dp2-list-row）核心成分 · v0.5 巧思收编
+  排版：标题 + 3 个 dp2-list-row 横排卡（数字+标签+标题+描述）
+  来源：V3 .miracle-item 巧思 → dp2-list-row（pattern-library 模板 1）
+════════════════════════════════════════════════════════════ -->
+<div class="mod">
+  <div class="mod-top-c">
+    <p class="kicker">THE SCIENCE · 核心成分</p>
+    <p class="deco-en">Three Core Ingredients</p>
+    <p class="display-xl">三个名字，三种力量。</p>
+    <div class="deco-line"></div>
+    <p class="body">HKH 的答案，藏在三种核心成分里。</p>
+  </div>
+  <div class="mod-body">
+    <div class="dp2-list-row" style="margin-bottom: 16px;">
+      <span>01</span>
+      <small>PLANT RETINOL</small>
+      <h3>植物视黄醇 + 维 C</h3>
+      <p>温和的更新力与明亮度，一次完成。无需传统视黄醇的耐受期。</p>
+    </div>
+    <div class="dp2-list-row" style="margin-bottom: 16px;">
+      <span>02</span>
+      <small>SENSITIVE SKIN</small>
+      <h3>低刺激配方</h3>
+      <p>35+ 敏感肌友好，换季也不再泛红刺痛。</p>
+    </div>
+    <div class="dp2-list-row">
+      <span>03</span>
+      <small>SGS CLINICAL</small>
+      <h3>SGS 4 周临床</h3>
+      <p>皱纹体积 -32.95%、皱纹面积 -28.22%、皱纹数量 -26.7%。</p>
+    </div>
+  </div>
+  <div class="mod-img">
+    <img src="assets/brand/banner-2.jpg" alt="BAKUCHIOL VC-IP 核心成分">
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+  屏 06 · 三行数字陈列（stack）
+  排版：标题 + 3 行数字（num 56 + lead + 描边分隔）
+════════════════════════════════════════════════════════════ -->
+<div class="mod mod--alt-bg">
+  <div class="mod-top-c">
+    <p class="kicker">THE PROOF · 临床数据</p>
+    <p class="deco-en">SGS Four-Week Clinical</p>
+    <p class="display-xl">四周之后，<em>肌肤说了真话</em>。</p>
+    <div class="deco-line"></div>
+    <p class="body">SGS 是全球领先的第三方检测机构。HKH 胶囊精华在 4 周人体功效测试中，结果如下——</p>
+  </div>
+  <div class="mod-body">
+    <div style="display: flex; flex-direction: column; gap: 16px;">
+      <div style="display: flex; align-items: baseline; gap: 32px; border-bottom: 1px solid var(--line); padding-bottom: 16px;">
+        <span class="num" style="font-size: 56px;">-32.95%</span>
+        <span class="lead">皱纹体积</span>
+      </div>
+      <div style="display: flex; align-items: baseline; gap: 32px; border-bottom: 1px solid var(--line); padding-bottom: 16px;">
+        <span class="num" style="font-size: 56px;">-28.22%</span>
+        <span class="lead">皱纹面积</span>
+      </div>
+      <div style="display: flex; align-items: baseline; gap: 32px; border-bottom: 1px solid var(--line); padding-bottom: 16px;">
+        <span class="num" style="font-size: 56px;">-26.7%</span>
+        <span class="lead">皱纹数量</span>
+      </div>
+    </div>
+  </div>
+  <div class="mod-img">
+    <img src="assets/brand/lifestyle-1.jpg" alt="SGS 临床检测报告">
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+  屏 07 · 左右对比（page-flex-2 BEFORE/AFTER）
+  排版：标题 + 两列对比图（DAY 0 / DAY 28）+ 箭头
+════════════════════════════════════════════════════════════ -->
+<div class="mod">
+  <div class="mod-top-c">
+    <p class="kicker">THE TRANSFORMATION · 28 天</p>
+    <p class="deco-en">Before & After</p>
+    <p class="display-xl">28 天，看见<em>另一种自己</em>。</p>
+    <div class="deco-line"></div>
+    <p class="body">一颗胶囊，一天一次，28 天细胞更新周期。</p>
+  </div>
+  <div class="mod-body" style="display: flex; flex-direction: row; align-items: center; gap: 24px;">
+    <div style="flex: 1; text-align: center;">
+      <p class="kicker" style="margin-bottom: 8px;">DAY 0</p>
+      <div class="mod-img" style="margin: 0 0 16px;">
+        <img src="assets/brand/capsule-hero.png" alt="使用前 · 35+ 肌肤的日常">
+      </div>
+      <p class="body">细纹、松弛、疲惫感</p>
+    </div>
+    <div style="font-size: 32px; color: var(--accent); align-self: center;">→</div>
+    <div style="flex: 1; text-align: center;">
+      <p class="kicker" style="color: var(--accent); margin-bottom: 8px;">DAY 28</p>
+      <div class="mod-img" style="margin: 0 0 16px;">
+        <img src="assets/brand/banner-2.jpg" alt="使用后 · 28 天 BAKUCHIOL 胶囊">
+      </div>
+      <p class="body">-32.95% 皱纹体积，肌肤韧性回归</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+  屏 08 · 2x2 仪式（grid-2x2）
+  排版：标题 + 2x2 网格 4 步使用
+════════════════════════════════════════════════════════════ -->
+<div class="mod">
+  <div class="mod-top-c">
+    <p class="kicker">THE RITUAL · 每日仪式</p>
+    <p class="deco-en">Four Quiet Steps</p>
+    <p class="display-xl">四步，把抗衰<em>变成温柔</em>。</p>
+    <div class="deco-line"></div>
+  </div>
+  <div class="mod-body">
+    <div class="grid-2x2" style="text-align: left;">
+      <div class="grid-2x2-item">
+        <p class="num">01</p>
+        <p class="h1-sm">晨起洁面</p>
+        <p class="body">温和洁面后，肌肤处于最佳吸收状态。</p>
+      </div>
+      <div class="grid-2x2-item">
+        <p class="num">02</p>
+        <p class="h1-sm">扭开一颗胶囊</p>
+        <p class="body">指尖轻拧顶端，单次剂量精准封存。</p>
+      </div>
+      <div class="grid-2x2-item">
+        <p class="num">03</p>
+        <p class="h1-sm">均匀涂抹</p>
+        <p class="body">掌心温热，按压全脸与颈部。</p>
+      </div>
+      <div class="grid-2x2-item">
+        <p class="num">04</p>
+        <p class="h1-sm">坚持 28 天</p>
+        <p class="body">细胞更新周期为 28 天，一颗胶囊，一天一次。</p>
+      </div>
+    </div>
+  </div>
+  <div class="mod-img">
+    <img src="assets/brand/capsule-hero.png" alt="HKH Time Capsule 每日仪式">
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+  屏 09 · 大引言（pull-quote 居中大字号）
+  排版：标题 + 单列大引言 + 屏底图
+════════════════════════════════════════════════════════════ -->
+<div class="mod mod--alt-bg">
+  <div class="mod-top-c">
+    <p class="kicker">THE STORY · 品牌故事</p>
+    <p class="deco-en">From Camino de Santiago</p>
+    <p class="display-xl">在石缝里，<em>岩蔷薇开了花</em>。</p>
+    <div class="deco-line"></div>
+  </div>
+  <div class="mod-body" style="padding: 32px 64px;">
+    <p class="quote" style="font-size: 28px; line-height: 1.6;">"创始人徒步 Camino de Santiago 时，<br/>在贫瘠的岩缝中遇见一株顽强盛放的岩蔷薇。<br/>它不依赖沃土，只凭韧性与时间。<br/>这份安静的生命力，成为了 HKH 的信念。"</p>
+  </div>
+  <div class="mod-img">
+    <img src="assets/brand/banner-3.jpg" alt="朝圣之路 · HKH 品牌故事">
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+  屏 10 · 三支柱（grid-3 · H·K·H 大字母）
+  排版：标题 + 3 栏 88px 大写字母 + lead + body + 描边分隔
+════════════════════════════════════════════════════════════ -->
+<div class="mod">
+  <div class="mod-top-c">
+    <p class="kicker">THE NAME · H·K·H</p>
+    <p class="deco-en">Three Quiet Pillars</p>
+    <p class="display-xl">H · K · H，<em>三个字母</em>。</p>
+    <div class="deco-line"></div>
+    <p class="body">HKH 不是一个缩写，是三个信念。</p>
+  </div>
+  <div class="mod-body" style="padding: 32px 48px;">
+    <div class="grid-3" style="align-items: start;">
+      <div class="grid-3-item" style="border-right: 1px solid var(--line); padding-right: 24px;">
+        <p class="display-xl" style="font-size: 88px; line-height: 1; color: var(--accent); font-style: italic;">H</p>
+        <p class="lead" style="margin-top: 16px;">Human · 人</p>
+        <p class="body">以人的肌肤韧性为本，<br/>而非追逐潮流。</p>
+      </div>
+      <div class="grid-3-item" style="border-right: 1px solid var(--line); padding-right: 24px;">
+        <p class="display-xl" style="font-size: 88px; line-height: 1; color: var(--accent); font-style: italic;">K</p>
+        <p class="lead" style="margin-top: 16px;">Kinetic · 动能</p>
+        <p class="body">植物视黄醇的温和更新力，<br/>不与时间对抗。</p>
+      </div>
+      <div class="grid-3-item" style="padding-right: 0;">
+        <p class="display-xl" style="font-size: 88px; line-height: 1; color: var(--accent); font-style: italic;">H</p>
+        <p class="lead" style="margin-top: 16px;">Habit · 习惯</p>
+        <p class="body">每日一颗，<br/>把抗衰变成温柔的仪式。</p>
+      </div>
+    </div>
+  </div>
+  <div class="mod-img">
+    <img src="assets/brand/banner-2.jpg" alt="HKH 三支柱 · 焕活精华">
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+  屏 11 · ledger 参数表（6 行）
+  排版：标题 + ledger 表格 6 行 + 屏底图
+════════════════════════════════════════════════════════════ -->
+<div class="mod mod--alt-bg">
+  <div class="mod-top-c">
+    <p class="kicker">THE SPECS · 产品参数</p>
+    <p class="deco-en">Time Capsule, on Paper</p>
+    <p class="display-xl">每一颗，<em>都值得被记录</em>。</p>
+    <div class="deco-line"></div>
+  </div>
+  <div class="mod-body" style="padding: 32px 64px;">
+    <div class="ledger" style="border-top: 1px solid var(--line);">
+      <div class="ledger-row">
+        <span class="ledger-label">产品名</span>
+        <span class="ledger-value">Plant Retinol Time Capsule</span>
+      </div>
+      <div class="ledger-row">
+        <span class="ledger-label">中文名</span>
+        <span class="ledger-value">植物视黄醇 · 时间胶囊</span>
+      </div>
+      <div class="ledger-row">
+        <span class="ledger-label">规格</span>
+        <span class="ledger-value">30 粒 / 盒 · 单次剂量</span>
+      </div>
+      <div class="ledger-row">
+        <span class="ledger-label">核心成分</span>
+        <span class="ledger-value">植物视黄醇 + 维 C + 岩蔷薇</span>
+      </div>
+      <div class="ledger-row">
+        <span class="ledger-label">临床认证</span>
+        <span class="ledger-value">SGS 4 周 · -32.95% 皱纹体积</span>
+      </div>
+      <div class="ledger-row">
+        <span class="ledger-label">适用人群</span>
+        <span class="ledger-value">35+ 女性 · 敏感肌友好</span>
+      </div>
+    </div>
+  </div>
+  <div class="mod-img">
+    <img src="assets/brand/lifestyle-2.jpg" alt="产品参数 · 数字护肤数据">
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+  屏 12 · callout-box 收尾（购买引导 + 优惠标签）
+  排版：标题 + callout-box 卡片（10% 优惠 + 标签集合）+ 屏底图
+════════════════════════════════════════════════════════════ -->
+<div class="mod">
+  <div class="mod-top-c">
+    <p class="kicker">THE INVITATION · 开始你的仪式</p>
+    <p class="deco-en">A Quiet Invitation</p>
+    <p class="display-xl">从今天起，<em>温柔地</em>，<br/>与时间同行。</p>
+    <div class="deco-line"></div>
+  </div>
+  <div class="mod-body" style="padding: 32px 48px; align-items: center;">
+    <div class="callout-box" style="max-width: 480px; width: 100%;">
+      <p class="lead" style="margin-bottom: 8px;">新客户专享</p>
+      <p class="display-xl" style="font-size: 56px; line-height: 1; margin: 16px 0; color: var(--accent);">10%</p>
+      <p class="body" style="margin-bottom: 16px;">首单优惠码 · <span class="ledger-value" style="display: inline;">WELCOME10</span></p>
+      <hr class="rule" style="margin: 16px 0;" />
+      <div class="tag-wrap" style="margin-bottom: 16px;">
+        <span class="tag-item">SGS 临床认证</span>
+        <span class="tag-item">6 国直邮</span>
+        <span class="tag-item">满 100 美元免运费</span>
+      </div>
+      <p class="body" style="margin-bottom: 0;">WhatsApp 客服可享首单 20% 专属优惠。</p>
+    </div>
+  </div>
+  <div class="mod-img">
+    <img src="assets/brand/banner-1.jpg" alt="BUY 5 GET 1 FREE · HKH 优惠">
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+  屏 13 · 用户证言 · Voices（v1 §11.6 引用来源组合）
+  排版：grid-3 三栏证言（与屏 5 痛点同模板但内容是"证言"）
+  v1 §2.2 平行列表 3 项 + icon-circle + lead + body
+  v1 反模式 G 提醒：纯文字网格禁止，加 icon-circle 才有结构
+  0 新增 class，复用 .grid-3 .grid-3-item .icon-circle .h1-sm .body
+════════════════════════════════════════════════════════════ -->
+<div class="mod mod--alt-bg">
+  <div class="mod-top-c">
+    <p class="kicker">VOICES · 真实回响</p>
+    <p class="deco-en">Quiet Testimonials</p>
+    <p class="display-xl">她们与 HKH 的<em>每日温柔</em>。</p>
+    <div class="deco-line"></div>
+    <p class="body">来自 35+ 女性的真实使用回响。</p>
+  </div>
+  <div class="mod-body">
+    <div class="grid-3">
+      <div class="grid-3-item">
+        <div class="icon-circle">L</div>
+        <p class="h1-sm">下颌线紧致了</p>
+        <p class="body">38 岁开始用，三盒下来，最明显的是下颌线变紧致，整个人的状态像睡够了八小时。</p>
+      </div>
+      <div class="grid-3-item">
+        <div class="icon-circle">M</div>
+        <p class="h1-sm">敏感肌不刺痛</p>
+        <p class="body">换季最容易敏感，HKH 的植物视黄醇真的不刺激，连用四周没有泛红，皮肤反而更稳定。</p>
+      </div>
+      <div class="grid-3-item">
+        <div class="icon-circle">C</div>
+        <p class="h1-sm">仪式感小确幸</p>
+        <p class="body">每天拧开一颗变成了一种小仪式感，比一整瓶精华更让人愿意坚持。包装也美。</p>
+      </div>
+    </div>
+  </div>
+  <div class="mod-img">
+    <img src="assets/brand/lifestyle-1.jpg" alt="HKH 真实用户回响">
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+  屏 14 · FAQ 常见问题（v1 §2.7 正文陈述 + 反模式 F 强制 rule 分隔）
+  排版：5 段 FAQ，每段 .lead（问题）+ .body（回答）+ 段间 .rule
+  v1 反模式 H 提醒：跨屏节奏——本屏纯文字无图标，与屏 13 三栏证言形成"密→疏"交替
+  0 新增 class，复用 .lead .body .rule
+════════════════════════════════════════════════════════════ -->
+<div class="mod">
+  <div class="mod-top-c">
+    <p class="kicker">FAQ · 常见问题</p>
+    <p class="deco-en">You Might Wonder</p>
+    <p class="display-xl">关于胶囊精华，<em>你可能想问的</em>。</p>
+    <div class="deco-line"></div>
+  </div>
+  <div class="mod-body" style="text-align: left; max-width: 640px; margin: 0 auto;">
+    <p class="lead" style="color: var(--accent);">植物视黄醇和传统视黄醇有什么区别？</p>
+    <p class="body" style="text-align: left;">植物视黄醇（Plant Retinol）从植物中提取，作用机制相似但刺激性显著降低。适合 35+ 想要抗老但肌肤又较敏感的女性，可在不建立耐受的前提下长期使用。</p>
+    <hr class="rule" />
+    <p class="lead" style="color: var(--accent);">SGS 4 周临床数据可信吗？</p>
+    <p class="body" style="text-align: left;">SGS 是全球领先的第三方检测机构。HKH 的胶囊精华在 SGS 实验室完成的 4 周人体功效测试中，皱纹体积减少 32.95%，皱纹面积减少 28.22%，皱纹数量减少 26.7%。</p>
+    <hr class="rule" />
+    <p class="lead" style="color: var(--accent);">孕妇和哺乳期可以使用吗？</p>
+    <p class="body" style="text-align: left;">虽然植物视黄醇比传统视黄醇温和，但此阶段建议先咨询医生。HKH 也提供 Live Chat 专家咨询服务，可实时沟通。</p>
+    <hr class="rule" />
+    <p class="lead" style="color: var(--accent);">首单优惠怎么用？</p>
+    <p class="body" style="text-align: left;">新客户输入优惠码 WELCOME10 立享 10% 折扣；或通过 WhatsApp 联系客服可享首单 20% 专属优惠。</p>
+    <hr class="rule" />
+    <p class="lead" style="color: var(--accent);">运送到中国要多久？运费多少？</p>
+    <p class="body" style="text-align: left;">目前官网支持美国、加拿大、法国、德国、墨西哥、西班牙 6 国直邮。满 100 美元免运费。具体配送时间以下单时为准。</p>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+  屏 15 · 品牌三章 / Heritage（v1 §11.1.2 高奢序数标题）
+  排版：3 段章，每段 deco-en 序数（Playfair italic）+ display-xl 章名（serif）+ body 描述 + deco-line
+  v1 §2.4 大主张 + §2.7 正文陈述混合
+  跨屏节奏：本屏密集文字 + 章序数，与屏 14 FAQ 问答 + 屏 13 三栏证言形成"重→轻"过渡
+  0 新增 class
+════════════════════════════════════════════════════════════ -->
+<div class="mod mod--alt-bg">
+  <div class="mod-top-c">
+    <p class="kicker">HERITAGE · 品牌三章</p>
+    <p class="deco-en">Three Chapters</p>
+    <p class="display-xl">从朝圣之路<em>到你的化妆台</em>。</p>
+    <div class="deco-line"></div>
+  </div>
+  <div class="mod-body">
+    <div class="stack gap-3" style="max-width: 640px; margin: 0 auto;">
+      <div>
+        <p class="deco-en" style="text-align: left; margin-bottom: 8px;">Chapter I</p>
+        <p class="h1-sm" style="text-align: left; margin-bottom: 8px;">创立 · 来自朝圣之路</p>
+        <p class="body" style="text-align: left;">创始人徒步 Camino de Santiago 时，在岩缝中遇见顽强盛放的岩蔷薇。这份安静的生命力，成为了 HKH 的信念——唤醒肌肤同样的韧性。</p>
+      </div>
+      <hr class="rule" />
+      <div>
+        <p class="deco-en" style="text-align: left; margin-bottom: 8px;">Chapter II</p>
+        <p class="h1-sm" style="text-align: left; margin-bottom: 8px;">临床 · SGS 4 周实证</p>
+        <p class="body" style="text-align: left;">与全球领先第三方检测机构 SGS 合作，完成 4 周人体功效测试：皱纹体积 -32.95%、皱纹面积 -28.22%、皱纹数量 -26.7%。</p>
+      </div>
+      <hr class="rule" />
+      <div>
+        <p class="deco-en" style="text-align: left; margin-bottom: 8px;">Chapter III</p>
+        <p class="h1-sm" style="text-align: left; margin-bottom: 8px;">全球 · 6 国直邮</p>
+        <p class="body" style="text-align: left;">目前官网支持美国、加拿大、法国、德国、墨西哥、西班牙 6 国直邮，满 100 美元免运费。WhatsApp 客服享首单 20% 专属优惠。</p>
+      </div>
+    </div>
+  </div>
+  <div class="mod-img">
+    <img src="assets/brand/banner-3.jpg" alt="HKH 品牌三章 · 朝圣 · 临床 · 全球">
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+  屏 16 · 朝圣精神特写（v1 §2.4 大主张 + 全幅图）
+  排版：标题区全包（kicker + deco-en + display-xl + deco-line + body）+ 全幅屏底图
+  v1 §2.4 大主张：核心 Slogan 用 .quote（24px serif gold）但当前没 .quote；用 display-xl 替代
+  跨屏节奏：屏 15 密集文字 → 屏 16 极简大图，强烈"重→轻"呼吸
+  0 新增 class
+════════════════════════════════════════════════════════════ -->
+<div class="mod">
+  <div class="mod-top-c">
+    <p class="kicker">THE PILGRIMAGE · 朝圣之路</p>
+    <p class="deco-en">From Camino de Santiago</p>
+    <p class="display-xl">在贫瘠的岩缝里，<em>生命选择盛放</em>。</p>
+    <div class="deco-line"></div>
+    <p class="body">岩蔷薇不依赖沃土，只凭韧性与时间。</p>
+  </div>
+  <div class="mod-img mod-img--hero">
+    <img src="assets/brand/lifestyle-1.jpg" alt="朝圣之路 · 岩蔷薇盛放">
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+  屏 17 · BEFORE/AFTER 数值对比（v1 §2.1 对比模板）
+  排版：page-flex-2 两列，左 BEFORE 灰 + 右 AFTER 金（v1 唯一允许 inline style 场景）
+  跨屏节奏：屏 16 极简大图 → 屏 17 数据陈列，"感性→理性"过渡
+  0 新增 class（page-flex-2 是 PRD §3.1.1 已规定）
+════════════════════════════════════════════════════════════ -->
+<div class="mod mod--alt-bg">
+  <div class="mod-top-c">
+    <p class="kicker">THE NUMBERS · 数据不会说谎</p>
+    <p class="deco-en">Without vs With HKH</p>
+    <p class="display-xl">28 天，<em>肌肤的数字</em>。</p>
+    <div class="deco-line"></div>
+    <p class="body">SGS 4 周人体功效测试实测数据。</p>
+  </div>
+  <div class="mod-body">
+    <div class="page-flex-2" style="text-align: left; gap: 40px;">
+      <div style="border-right: 1px solid var(--line); padding-right: 24px;">
+        <p class="lead" style="color: var(--text-muted);">BEFORE · 使用前</p>
+        <p class="body" style="color: var(--text-muted); text-align: left; margin-bottom: 16px;">细纹、松弛、屏障脆弱的初始状态。</p>
+        <p class="num" style="color: var(--text-muted); font-size: 48px; text-align: left;">—</p>
+        <p class="body" style="color: var(--text-muted); text-align: left;">无 SGS 临床数据支撑</p>
+      </div>
+      <div>
+        <p class="lead lead--gold">AFTER · 28 天后</p>
+        <p class="body" style="text-align: left; margin-bottom: 16px;">皱纹体积、面积、数量全面下降，屏障稳定。</p>
+        <p class="num lead--gold" style="font-size: 48px; text-align: left;">-32.95%</p>
+        <p class="body" style="text-align: left;">SGS 临床认证 · 4 周人体功效</p>
+      </div>
+    </div>
+  </div>
+  <div class="mod-img">
+    <img src="assets/brand/lifestyle-1.jpg" alt="SGS 临床数据对比">
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+  屏 18 · 结语 / Final Word（v1 §11.1.2 高奢序数标题 + 大图）
+  排版：en-deco 序数 + display-xl 章名 + deco-line + body + hero 图
+  v1 反模式 H 提醒：结语屏密集文字 + 大图，与前屏形成强收束
+  0 新增 class
+════════════════════════════════════════════════════════════ -->
+<div class="mod">
+  <div class="mod-top-c">
+    <p class="kicker">FINAL WORD · 结语</p>
+    <p class="deco-en">A Quiet Closing</p>
+    <p class="display-xl">衰老，<em>也可以是优雅的</em>。</p>
+    <div class="deco-line"></div>
+    <p class="body">不是与时间对抗，而是与时间同行——温和、坚定、优雅。<br/>HKH，与你一起。</p>
+  </div>
+  <div class="mod-img mod-img--hero">
+    <img src="assets/brand/capsule-hero.png" alt="HKH Time Capsule · 与你同行">
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+  屏 19 · 4 痛点 × 4 张图（v1 §2.2 平行列表 4 项 2×2 网格）
+  排版：grid-2x2 4 项，每项 frame-img r-1x1 上方 + lead 大标题 + body 小描述
+  v1 §2.2 强制："4 项 = 2×2 网格，frame-img r-1x1 配图 + lead + body"
+  v1 反模式 G："纯文字网格禁止" → 本屏用 4 张真实图，每项有图
+  跨屏节奏：屏 18 大图收束 → 屏 19 4 图网格，强"轻→密"转折
+  0 新增 class
+════════════════════════════════════════════════════════════ -->
+<div class="mod mod--alt-bg">
+  <div class="mod-top-c">
+    <p class="kicker">THE TRUTH · 四个真相</p>
+    <p class="deco-en">Four Quiet Truths</p>
+    <p class="display-xl">35 岁之后，<em>四道裂痕</em>。</p>
+    <div class="deco-line"></div>
+    <p class="body">不是老去本身，而是失去了与时间相处的方式。</p>
+  </div>
+  <div class="mod-body">
+    <div class="grid-2x2" style="text-align: left; gap: 32px;">
+      <div class="grid-2x2-item">
+        <div class="mod-img" style="margin: 0 0 16px; aspect-ratio: 1/1;">
+          <img src="assets/brand/lifestyle-2.jpg" alt="法令纹加深刻画图">
+        </div>
+        <p class="h1-sm">法令纹加深</p>
+        <p class="body">苹果肌下垂，视觉年龄比实际多 5 岁。</p>
+      </div>
+      <div class="grid-2x2-item">
+        <div class="mod-img" style="margin: 0 0 16px; aspect-ratio: 1/1;">
+          <img src="assets/brand/lifestyle-1.jpg" alt="干纹细纹交织图">
+        </div>
+        <p class="h1-sm">干纹细纹</p>
+        <p class="body">眼角、唇周干纹交织，上妆即卡粉。</p>
+      </div>
+      <div class="grid-2x2-item">
+        <div class="mod-img" style="margin: 0 0 16px; aspect-ratio: 1/1;">
+          <img src="assets/brand/capsule-hero.png" alt="熬夜蜡黄脸色图">
+        </div>
+        <p class="h1-sm">熬夜蜡黄</p>
+        <p class="body">屏障脆弱泛红，疲惫感藏不住。</p>
+      </div>
+      <div class="grid-2x2-item">
+        <div class="mod-img" style="margin: 0 0 16px; aspect-ratio: 1/1;">
+          <img src="assets/brand/banner-1.jpg" alt="瓶罐堆满化妆台图">
+        </div>
+        <p class="h1-sm">瓶罐堆积</p>
+        <p class="body">化妆台越满，护肤越像任务，越难坚持。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+  屏 20 · 左右两张图对比（v1 §2.1 对比模板 · A vs B 实物图）
+  排版：page-flex-2 两列等分，每列上方 frame-img r-4x3 + 下方 lead 大标题（muted/gold）
+  v1 §2.1 强制："对比方 .lead style=color:muted 唯一合法 inline style"
+  跨屏节奏：屏 19 4 图密 → 屏 20 2 图疏，强烈呼吸
+  0 新增 class（page-flex-2 是 PRD §3.1.1 已规定）
+════════════════════════════════════════════════════════════ -->
+<div class="mod">
+  <div class="mod-top-c">
+    <p class="kicker">THE SHIFT · 转变</p>
+    <p class="deco-en">Before & After, on Skin</p>
+    <p class="display-xl">28 天，<em>看见另一种自己</em>。</p>
+    <div class="deco-line"></div>
+    <p class="body">一颗胶囊，一天一次，28 天细胞更新周期。</p>
+  </div>
+  <div class="mod-body">
+    <div class="page-flex-2" style="text-align: center; gap: 32px;">
+      <div>
+        <div class="mod-img" style="margin: 0 0 16px; aspect-ratio: 4/3;">
+          <img src="assets/brand/lifestyle-2.jpg" alt="使用前 · 35+ 肌肤的日常">
+        </div>
+        <p class="lead" style="color: var(--text-muted);">DAY 0 · 细纹与松弛</p>
+        <p class="body">苹果肌下垂、眼角干纹、屏障脆弱的初始状态。</p>
+      </div>
+      <div>
+        <div class="mod-img" style="margin: 0 0 16px; aspect-ratio: 4/3;">
+          <img src="assets/brand/capsule-hero.png" alt="使用 28 天后 · HKH Time Capsule">
+        </div>
+        <p class="lead lead--gold">DAY 28 · 韧性回归</p>
+        <p class="body">-32.95% 皱纹体积，下颌线紧致，肌肤稳定。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════════
+  屏 21 · 4 大成分 × 4 张图（v1 §2.2 4 项 2×2 网格）
+  排版：grid-2x2 4 项，每项 frame-img r-1x1 + lead 子标 + body 说明
+  v1 §2.2 强制："4 项 = 2×2 网格，frame-img r-1x1 配图 + lead + body"
+  跨屏节奏：屏 20 2 图疏 → 屏 21 4 图密，"疏→密"过渡
+  0 新增 class
+════════════════════════════════════════════════════════════ -->
+<div class="mod mod--alt-bg">
+  <div class="mod-top-c">
+    <p class="kicker">THE INGREDIENTS · 四大成分</p>
+    <p class="deco-en">Four Quiet Ingredients</p>
+    <p class="display-xl">四个名字，<em>四种力量</em>。</p>
+    <div class="deco-line"></div>
+    <p class="body">每一颗，都是植物与科学的精准组合。</p>
+  </div>
+  <div class="mod-body">
+    <div class="grid-2x2" style="text-align: left; gap: 32px;">
+      <div class="grid-2x2-item">
+        <div class="mod-img" style="margin: 0 0 16px; aspect-ratio: 1/1;">
+          <img src="assets/brand/banner-2.jpg" alt="植物视黄醇特写">
+        </div>
+        <p class="h1-sm">植物视黄醇</p>
+        <p class="body">温和更新力，无传统视黄醇刺激，35+ 敏感肌友好。</p>
+      </div>
+      <div class="grid-2x2-item">
+        <div class="mod-img" style="margin: 0 0 16px; aspect-ratio: 1/1;">
+          <img src="assets/brand/capsule-hero.png" alt="维 C 协同">
+        </div>
+        <p class="h1-sm">维 C</p>
+        <p class="body">点亮肌肤明亮度，与视黄醇协同，焕活熬夜疲态。</p>
+      </div>
+      <div class="grid-2x2-item">
+        <div class="mod-img" style="margin: 0 0 16px; aspect-ratio: 1/1;">
+          <img src="assets/brand/lifestyle-1.jpg" alt="岩蔷薇精萃">
+        </div>
+        <p class="h1-sm">岩蔷薇</p>
+        <p class="body">朝圣之路的灵感，抗氧提亮，每颗胶囊封存。</p>
+      </div>
+      <div class="grid-2x2-item">
+        <div class="mod-img" style="margin: 0 0 16px; aspect-ratio: 1/1;">
+          <img src="assets/brand/lifestyle-2.jpg" alt="低刺激配方">
+        </div>
+        <p class="h1-sm">低刺激配方</p>
+        <p class="body">换季不再泛红刺痛，35+ 敏感肌的抗老答案。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+</body>
+</html>

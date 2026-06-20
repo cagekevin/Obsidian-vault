@@ -1,0 +1,38 @@
+{
+  "mode": "pipeline",
+  "name": "电商详情页准备阶段",
+  "project_id": "[项目UUID]",
+  "output_dir": "[项目路径]/output",
+  "steps": [
+    {
+      "name": "01-加载技能框架",
+      "type": "ask",
+      "follow_ups": 0,
+      "prompt": "以下是我的 Skin-Care PDP Layout Design 技能框架，请仔细加载作为后续工作指南。仅回复「已加载」即可，不要复述框架内容，不要做任何操作。\n\n---\nname: Skin-Care PDP Layout Design\ndescription: Transforms skin-care product images into structured e-commerce PDP assets, including hero shots, multi-angle grids, and texture details in 3:4 aspect ratio.\nargument-hint: \"[product_type] [packaging_material] [key_ingredients]\"\n---\n\n# Skin-Care PDP Layout Design\n\n## Core Methodology\n\n### 1. Structural Layout Matrix\nThis framework organizes product assets into a standardized e-commerce sequence to maximize conversion:\n- **Main Hero (Single):** A high-impact 3:4 image focusing on the primary product silhouette with professional studio lighting. 纯白底，无文字。\n- **Multi-Angle Logic (Grid):** A 4-panel (2x2) grid system showing the product from at least two distinct angles (front-facing, profile, or slightly elevated) to establish three-dimensional form.\n- **Texture Detail (Macro):** Close-up shots focusing on the formula (cream, serum, gel) or unique packaging finishes (frosted glass, metallic caps).\n\n### 2. Clinical Studio Aesthetic\nMaintains a consistent \"clean beauty\" visual language through three dimensions:\n- **Lighting:** Soft diffused top-down lighting with subtle contact shadows to ground the product.\n- **Background:** High-key white or neutral-toned studio environments to ensure readability across mobile devices.\n- **Composition:** Strict 3:4 vertical orientation with centered or rule-of-thirds product placement.\n\n## Workflow\n\n### 1. Preparation Stage\n- **Asset Inventory:** Identify the number of product units (1-N).\n- **Material Mapping:** Define packaging materials (e.g., translucent glass, opaque plastic, metallic pump).\n- **Angle Checklist:** Select 2-3 specific angles for the multi-angle grid stage.\n\n### 2. Initial Design Stage\n- **Calibration Shot:** Generate a single front-view hero shot to lock in lighting and shadow consistency.\n- **Prompt Framework:** [Product Category] + [Packaging Detail] + [Angle] + [3:4 Vertical] + [Clean Studio White Background].\n- **Batch Generation:** Produce a set of 5-8 variations including the requested multi-angle shots.\n\n### 3. Iteration Stage\n- **Grid Assembly:** Consolidate selected variations into a 4-panel grid format.\n- **Consistency Audit:** Check that lighting direction and product colors remain identical across the hero shot and the grid panels.\n- **Refinement:** Adjust shadow density if the product appears to \"float\" on the white background.\n\n## Key Constraints & Standards\n\n- **Aspect Ratio:** Strictly 3:4 for all outputs to match mobile shopping interface standards.\n- **Background Integrity:** Zero texture or noise in the background; must be pure studio white.\n- **Product Consistency:** Labels, font sizes, and container proportions must remain 1:1 consistent across different angles in the same batch.\n- **Grid Structure:** The 4-panel grid must maintain equal spacing and alignment between the four sub-images.\n\n---\n\n## Skill: skincare_product_detail_image\n\n### INPUT\n1-N 张产品图片\n\n### OUTPUT\n全部 3:4 尺寸，共 7 张：\n\n| 类别 | 数量 | 说明 |\n|------|------|------|\n| **主视觉大图** | × 1 张 | 白底产品，无文字 |\n| **多角度 4 宫格** | × 2 张 | 第1张：正面/45度/侧面/背面；第2张：顶视/底部/瓶盖/标签 |\n| **产品细节 4 宫格** | × 1 张 | 瓶身/膏体质地/材质/开盖 |\n| **使用场景 4 宫格** | × 1 张 | 桌面/手持/梳妆台/涂抹 |\n| **产品卖点图** | × 2 张 | 成分/功效/质地/人群/用法 |\n\n### 视觉规范\n\n- 白底、柔光、清晰投影\n- 产品外观完全一致\n- 高级简约风格"
+    },
+    {
+      "name": "02-提交素材并分析",
+      "type": "analyze",
+      "images": [
+        "[产品图1_路径]",
+        "[产品图2_路径]",
+        "[产品图N_路径]"
+      ],
+      "prompt": "现在开始分析我的产品图片（共N张）。直接输出分析结果，不要复述已加载的技能框架，不要反问，不要让我选择，不要生成图片。",
+      "follow_ups": 0
+    },
+    {
+      "name": "03-要求重分析",
+      "type": "ask",
+      "prompt": "再完整仔细分析一遍，然后直接给出完整方案。不要反问，不要问我选哪个方案，直接输出最佳方案。不要生成图片。",
+      "follow_ups": 0
+    },
+    {
+      "name": "04-最终生成",
+      "type": "ask",
+      "mode": "fast",
+      "prompt": "用 gpt-image-2 medium 或 nano banana 2 生成所有图片，禁止用高价模型。画面上不要出现任何文字。",
+      "follow_ups": 0
+    }
+  ]
+}

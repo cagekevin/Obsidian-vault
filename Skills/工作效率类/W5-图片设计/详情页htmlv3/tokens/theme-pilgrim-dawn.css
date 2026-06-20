@@ -1,0 +1,321 @@
+/*
+ * Theme: Pilgrim Dawn (朝圣黎明 - 高奢平衡版)
+ * prompt_palette: warm gold #C5A26B / cream #F2E8D9 / deep brown #2A1F1A / soft taupe #7A6E67
+ * 核心基建：严格限定 25+ BEM Classes，保障 720px 定宽下 100% 防爆与高奢排版
+ */
+
+:root {
+    /* 基础灰度与辅助色：采用温润的同色系，拒绝死白与死黑 */
+    --color-bg-base: #FBF9F4;
+    --color-bg-alt: #F4EFE3;
+    --color-bg-dark: #231E1A;
+    --color-line: rgba(42, 31, 26, 0.08);
+    --color-accent: #C5A26B;
+    --color-text: #2A1F1A;
+    --color-sub: #7A6E67;
+    
+    /* 字体栈隔离 */
+    --font-serif: 'Fraunces', 'Noto Serif SC', serif;
+    --font-sans: 'Inter', 'PingFang SC', sans-serif;
+    --font-script: 'Caveat', 'Kaiti', cursive; /* 高奢手写体注入 */
+    
+    /* 8px 网格节奏 */
+    --sp-1: 8px;
+    --sp-2: 16px;
+    --sp-3: 24px;
+    --sp-4: 32px;
+    --sp-6: 48px;
+    --sp-10: 80px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background-color: #E6E2DC; display: flex; justify-content: center; -webkit-font-smoothing: antialiased; }
+.page-wrapper { width: 100%; max-width: 720px; background-color: var(--color-bg-base); box-shadow: 0 0 60px rgba(0,0,0,0.05); }
+
+/* =========================================
+   1. 主结构与流体呼吸 (4 Classes)
+   ========================================= */
+.mod {
+    width: 100%;
+    /* 兜底高度，实际由 render.cjs 动态注入 min-height 撑开 */
+    min-height: 100vh; 
+    height: auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    /* 注入巨大的上下呼吸留白 */
+    padding: 100px 0; 
+    overflow: hidden;
+    /* 模拟微观影棚光：中心微亮，边缘渐暗 */
+    background: radial-gradient(circle at 50% 45%, #FFFFFF 0%, var(--color-bg-base) 80%);
+}
+
+.mod--hero { 
+    padding: 0; 
+    background: var(--color-bg-alt); 
+}
+
+.mod--alt-bg { 
+    background: radial-gradient(circle at 50% 45%, #FCFAF6 0%, var(--color-bg-alt) 100%); 
+}
+
+.mod--dark-bg { 
+    background: var(--color-bg-dark); 
+    color: var(--color-bg-base); 
+}
+
+.mod-top-c {
+    padding: 0 var(--sp-6) var(--sp-6);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 2;
+}
+
+.mod-body {
+    flex: 1;
+    padding: 0 var(--sp-6);
+    display: flex;
+    flex-direction: column;
+    z-index: 2;
+}
+
+/* =========================================
+   2. 字号与排版：克制的大牌反差 (5 Classes)
+   ========================================= */
+.display-xxl, .display-xl, .display-lg, .h1-sm {
+    font-family: var(--font-serif);
+    color: var(--color-text);
+    font-weight: 500;
+    line-height: 1.25;
+    font-variation-settings: "SOFT" 80;
+}
+
+/* 在 720px 下极其安全的字号阶梯 */
+.display-xxl { 
+    font-size: 44px; /* 安全上限，防爆 */
+    letter-spacing: 2px; 
+}
+
+.display-xl { 
+    font-size: 36px; 
+    letter-spacing: 1px; 
+}
+
+.display-lg { 
+    font-size: 28px; 
+    letter-spacing: 1px; 
+}
+
+.h1-sm { 
+    font-family: var(--font-sans);
+    font-size: 13px; 
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--color-sub);
+    margin-bottom: var(--sp-1); 
+}
+
+.body {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    color: rgba(42, 31, 26, 0.75);
+    line-height: 1.65;
+}
+
+.mod--dark-bg .display-xxl, 
+.mod--dark-bg .display-xl, 
+.mod--dark-bg .display-lg, 
+.mod--dark-bg .h1-sm { color: var(--color-bg-base); }
+.mod--dark-bg .body { color: rgba(251, 249, 244, 0.7); }
+
+/* =========================================
+   3. 装饰元素 (严格限定在 25 BEM 内的视觉大丰满)
+   ========================================= */
+.kicker {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 5px; /* 极宽的字间距，营造呼吸感 */
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--sp-2);
+}
+
+.deco-en {
+    font-family: var(--font-serif);
+    font-size: 12px;
+    letter-spacing: 8px; /* 变态级的英文留白拓扑 */
+    text-transform: uppercase;
+    color: var(--color-accent);
+    opacity: 0.4; /* 极度克制，半透明若隐若现 */
+    margin-top: var(--sp-2);
+}
+
+/* 优雅的 1px 极细设计感线条：完美填补视线负空间，绝不突兀 */
+.deco-line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(to right, transparent, var(--color-accent) 50%, transparent);
+    margin: var(--sp-3) auto;
+    opacity: 0.6;
+}
+
+.num {
+    font-family: var(--font-serif);
+    font-size: 48px;
+    color: var(--color-accent);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1;
+}
+
+/* 手写体情绪装饰：优雅倾斜，安全的行内流 */
+.deco-script {
+    font-family: 'Caveat', 'Kaiti', cursive;
+    font-size: 28px;
+    color: var(--color-accent);
+    transform: rotate(-2.5deg);
+    display: inline-block;
+    margin-top: var(--sp-1);
+    font-weight: 400;
+}
+
+/* =========================================
+   4. 稳固错落布局 (5 Classes)
+   ========================================= */
+.stack { display: flex; flex-direction: column; }
+.gap-1 { gap: var(--sp-2); }
+.gap-2 { gap: var(--sp-4); }
+
+.grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-4);
+}
+
+.grid-2x2-item {
+    display: flex;
+    flex-direction: column;
+}
+
+/* 核心错落逻辑：偶数列自然下沉，100%安全不出错 */
+.grid-2x2-item:nth-child(even) {
+    margin-top: 48px; 
+}
+
+/* =========================================
+   5. 高级组件 (4 Classes)
+   ========================================= */
+.callout-box {
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid var(--color-line);
+    border-radius: 16px; /* 更柔和的大圆角 */
+    padding: var(--sp-4);
+    display: flex;
+    align-items: center; /* 居中对齐 */
+    gap: var(--sp-3);
+}
+.mod--dark-bg .callout-box { background: rgba(0, 0, 0, 0.2); border-color: rgba(251, 249, 244, 0.1); }
+
+.tag-item {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    padding: 6px 14px;
+    border: 1px solid rgba(197, 162, 107, 0.4);
+    color: var(--color-accent);
+    border-radius: 100px;
+    margin: 4px;
+    background: rgba(255, 255, 255, 0.4);
+}
+
+.quote {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-style: italic;
+    color: var(--color-accent);
+    text-align: center;
+    line-height: 1.6;
+    margin: var(--sp-4) 0;
+}
+
+/* =========================================
+   6. DP2 扩展组件与画幅比例 (补充完整版)
+   ========================================= */
+.dp2-mock {
+    width: 100%;
+    background: linear-gradient(135deg, rgba(197, 162, 107, 0.04) 0%, rgba(197, 162, 107, 0.1) 100%);
+    border: 1px dashed rgba(197, 162, 107, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent);
+    font-family: var(--font-sans);
+    font-size: 12px;
+    text-align: center;
+}
+
+/* 四种精准画幅比例 */
+.dp2-mock--hero { aspect-ratio: 16/11; }
+.dp2-mock--square { aspect-ratio: 1/1; border-radius: 16px; }
+.dp2-mock--portrait { aspect-ratio: 3/4; border-radius: 20px; box-shadow: 0 16px 40px rgba(42, 31, 26, 0.08); }
+.dp2-mock--arch { aspect-ratio: 3/4; border-radius: 50% 50% 12px 12px / 12% 12% 12px 12px; box-shadow: 0 16px 40px rgba(42, 31, 26, 0.08); }
+
+.icon-circle { display: inline-block; width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--color-accent); flex-shrink: 0; }
+
+.dp2-data-strip { background: transparent; border: 1px solid var(--color-accent); color: var(--color-text); display: flex; justify-content: space-around; padding: 12px; border-radius: 8px; margin-top: 24px; font-size: 12px; }
+
+/* 错位重叠卡片 (Compare 屏) */
+.dp2-card-overlap { display: flex; margin-top: 24px; position: relative; }
+.dp2-card-overlap__card--them { width: 46%; background: rgba(0,0,0,0.03); padding: 32px 16px 20px; border-radius: 20px 0 0 20px; z-index: 1; }
+.dp2-card-overlap__card--us { width: 58%; background: var(--color-bg-base); border: 1px solid var(--color-accent); padding: 32px 20px 20px; border-radius: 20px; margin-left: -4%; z-index: 2; box-shadow: 0 12px 36px rgba(0,0,0,0.06); }
+/* =========================================
+   V3.3 新增流派 Token: 从顶级设计参考中提取
+   ========================================= */
+
+/* 1. MUJI / Kenya Hara 极简标签 */
+.muji-label {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: var(--color-sub);
+    text-transform: uppercase;
+}
+
+/* 2. Monocle Magazine 引语与分栏 */
+.monocle-pullquote {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    font-style: italic;
+    color: var(--color-text);
+    line-height: 1.4;
+    padding: 24px 0;
+    margin: 32px 0;
+    border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+}
+.layout-editorial-cols {
+    column-count: 2;
+    column-gap: 24px;
+    column-rule: 1px solid rgba(42, 31, 26, 0.05);
+}
+
+/* 3. Stripe Press 实体阴影 */
+.stripe-shadow {
+    box-shadow: 0 24px 48px rgba(26, 26, 24, 0.18);
+    border-radius: 2px;
+}
+
+/* 4. Edward Tufte 数据墨水边注 */
+.tufte-sidenote {
+    font-family: var(--font-serif);
+    font-size: 11px;
+    color: var(--color-sub);
+    border-left: 2px solid var(--color-accent);
+    padding-left: 12px;
+    margin-top: 16px;
+    line-height: 1.5;
+}
+

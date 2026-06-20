@@ -1,0 +1,73 @@
+{
+  "brand": {
+    "name": "这里写品牌英文名",
+    "product_full": "这里写产品完整名称",
+    "product_short": "这里写产品简称",
+    "category": "这里写品类"
+  },
+  "theme": "这里选一个主题名，可选列表在 references/brand-spec-template.md",
+  "claim_seeds": [
+    {"id": "这里写唯一标识", "text": "这里写核心声明"},
+    {"id": "这里写唯一标识", "text": "这里写核心声明"},
+    {"id": "这里写唯一标识", "text": "这里写核心声明"},
+    {"id": "这里写唯一标识", "text": "这里写核心声明"}
+  ],
+  "style": {
+    "height_mode": "这里写 fixed 或 auto",
+    "ratio": "这里写 9:21 或 9:16",
+    "photography": "这里写摄影风格描述（进生图 Prompt）",
+    "lighting": "这里写光位描述（进生图 Prompt）",
+    "lens": "这里写镜头描述（进生图 Prompt）",
+    "mood": "这里写情绪描述（进生图 Prompt）",
+    "palette": {
+      "accent": "这里写强调色（装饰线条/标签/徽章）",
+      "bg_alt": "这里写交替背景色",
+      "text": "这里写主文字色",
+      "sub": "这里写次级文字色"
+    },
+    "typography": {
+      "header": "这里写标题字体",
+      "body": "这里写正文字体"
+    },
+    "modifiers": ["这里写修饰词（进生图 Prompt）"]
+  },
+  "banned": ["这里写全局禁用词"],
+  "theme_bundle": {
+    "allowed": ["这里写画面允许出现的道具"],
+    "banned": ["这里写画面禁止出现的道具"]
+  },
+  "primary_image": "这里写产品图路径",
+  "screens": {
+    "// 说明": "屏数自由增减。01 必须 hero，末屏必须 closing。中间屏的 template 可选 list / compare / closing / editorial / focus。items/rows/qa/notes 的 key 按文案需求自定。",
+    "01": {
+      "template": "hero",
+      "background": "mod--hero",
+      "claim_seed_back": ["这里写追溯的 seed id"],
+      "text_exact": {
+        "kicker": "这里写简短标签",
+        "headline": "这里写主标题（≤18 字）",
+        "subheadline": "这里写副标题（≤24 字）",
+        "body": "这里写正文",
+        "deco_en": "这里写英文装饰文字",
+        "tags": ["这里写标签"]
+      },
+      "visual_description": "这里写纯英文画面描述（30-120 词）"
+    },
+    "02": {
+      "template": "list",
+      "background": "mod--alt-bg",
+      "claim_seed_back": ["这里写追溯的 seed id"],
+      "text_exact": {
+        "kicker": "这里写简短标签",
+        "headline": "这里写主标题",
+        "body": "这里写正文",
+        "deco_en": "这里写英文装饰文字",
+        "items": [
+          {"key1": "值1", "key2": "值2"},
+          {"key1": "值1", "key2": "值2"}
+        ]
+      },
+      "visual_description": "这里写纯英文画面描述"
+    }
+  }
+}

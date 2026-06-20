@@ -1,0 +1,266 @@
+/*
+ * Theme: Parisian Avant-Garde (巴黎先锋)
+ * prompt_palette: pure-white #FFFFFF / pure-black #000000 / rose-gold #D4A373 / paris-gray #666666
+ * Vibe: 兰蔻 (Lancôme) / YSL 风格、高定海报感、极致黑白对比、玫瑰金、戏剧性衬线体
+ */
+
+:root {
+    --color-bg-base: #FFFFFF;
+    --color-bg-alt: #F8F8F8;
+    --color-bg-dark: #000000;
+
+    --color-text: #000000;
+    --color-sub: #666666;
+
+    --color-accent: #D4A373;
+    --color-line: #000000;
+
+    --font-serif: 'Didot', 'Bodoni MT', 'Playfair Display', 'Noto Serif SC', serif;
+    --font-sans: 'Montserrat', 'Helvetica Neue', 'PingFang SC', sans-serif;
+    --font-script: 'Caveat', 'Kaiti', cursive;
+
+    --sp-1: 4px; --sp-2: 12px; --sp-3: 24px; --sp-4: 48px;
+    --sp-6: 80px; --sp-8: 120px; --sp-10: 180px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background-color: #111;
+    display: flex;
+    justify-content: center;
+    -webkit-font-smoothing: antialiased;
+    color: var(--color-text);
+}
+.page-wrapper {
+    width: 100%;
+    max-width: 720px;
+    background-color: var(--color-bg-base);
+    box-shadow: none;
+}
+
+.mod {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: var(--sp-10) 0;
+    background-color: var(--color-bg-base);
+}
+
+.mod--hero { padding-bottom: 0; }
+.mod--alt-bg { background-color: var(--color-bg-alt); }
+.mod--dark-bg { background-color: var(--color-bg-dark); color: #FFFFFF; }
+
+.mod-top-c {
+    padding: 0 var(--sp-6) var(--sp-6);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.mod-body {
+    flex: 1;
+    padding: 0 var(--sp-6);
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.display-xxl, .display-xl, .display-lg {
+    font-family: var(--font-serif);
+    color: var(--color-text);
+    font-weight: 400;
+    line-height: 1.1;
+    text-transform: uppercase;
+}
+
+.display-xxl { font-size: 56px; letter-spacing: -0.01em; }
+.display-xl { font-size: 44px; }
+.display-lg { font-size: 32px; }
+
+.h1-sm {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--color-sub);
+    margin-top: var(--sp-3);
+}
+
+.body {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--color-text);
+    line-height: 1.8;
+    font-weight: 300;
+    text-align: center;
+    max-width: 85%;
+    margin: 0 auto;
+}
+
+.mod--dark-bg .display-xxl, .mod--dark-bg .display-xl, .mod--dark-bg .display-lg, .mod--dark-bg .body { color: #FFFFFF; }
+.mod--dark-bg .h1-sm { color: var(--color-accent); }
+
+.kicker {
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--sp-4);
+    border-bottom: 1px solid var(--color-accent);
+    padding-bottom: 8px;
+}
+
+.deco-en {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-style: italic;
+    color: var(--color-text);
+    opacity: 0.2;
+    margin-top: var(--sp-2);
+}
+.mod--dark-bg .deco-en { color: #FFF; }
+
+.num {
+    font-family: var(--font-serif);
+    font-size: 72px;
+    color: var(--color-text);
+    font-weight: 400;
+    line-height: 0.8;
+}
+.mod--dark-bg .num { color: #FFF; }
+
+.deco-script {
+    font-family: var(--font-script);
+    font-size: 40px;
+    color: var(--color-accent);
+    transform: rotate(-5deg);
+    display: inline-block;
+    margin-top: var(--sp-4);
+}
+
+.deco-line {
+    width: 2px;
+    height: 40px;
+    background-color: var(--color-text);
+    margin: var(--sp-4) auto;
+}
+.mod--dark-bg .deco-line { background-color: #FFF; }
+
+.stack { display: flex; flex-direction: column; }
+.gap-1 { gap: var(--sp-2); }
+.gap-2 { gap: var(--sp-6); }
+
+.grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-4);
+}
+.grid-2x2-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.grid-2x2-item:nth-child(even) { margin-top: 80px; }
+
+.callout-box {
+    background: transparent;
+    border: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--sp-2);
+    text-align: center;
+}
+
+.tag-item {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    font-weight: 600;
+    padding: 8px 20px;
+    border: 1px solid var(--color-text);
+    color: var(--color-text);
+    border-radius: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+}
+.mod--dark-bg .tag-item { border-color: #FFF; color: #FFF; }
+
+.quote {
+    font-family: var(--font-serif);
+    font-size: 32px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--color-text);
+    text-align: center;
+    line-height: 1.4;
+    padding: var(--sp-4) 0;
+}
+.mod--dark-bg .quote { color: #FFF; }
+
+.dp2-mock {
+    width: 100%;
+    background: #EAEAEA;
+    border: none;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-sub);
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+
+.dp2-mock--hero { aspect-ratio: 3/4; border: none; background: transparent; }
+.dp2-mock--square { aspect-ratio: 1/1; }
+.dp2-mock--portrait { aspect-ratio: 2/3; }
+.dp2-mock--arch { aspect-ratio: 2/3; border-radius: 0; }
+
+.dp2-data-strip {
+    background: var(--color-text);
+    color: var(--color-bg-base);
+    display: flex;
+    justify-content: space-around;
+    padding: 24px 0;
+    margin-top: 64px;
+    font-family: var(--font-sans);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+}
+.mod--dark-bg .dp2-data-strip { background: var(--color-bg-base); color: var(--color-text); }
+
+.dp2-card-overlap { display: flex; margin-top: 64px; position: relative; }
+.dp2-card-overlap__card--them {
+    width: 50%;
+    background: transparent;
+    border: 1px solid var(--color-text);
+    padding: 40px 24px;
+    border-radius: 0;
+    z-index: 1;
+}
+.dp2-card-overlap__card--us {
+    width: 55%;
+    background: var(--color-text);
+    color: var(--color-bg-base);
+    border: none;
+    padding: 48px 32px;
+    border-radius: 0;
+    margin-left: -5%;
+    margin-top: -24px;
+    z-index: 2;
+    box-shadow: 20px 20px 0 rgba(212, 163, 115, 0.2);
+}
+.mod--dark-bg .dp2-card-overlap__card--them { border-color: #FFF; }
+.mod--dark-bg .dp2-card-overlap__card--us { background: #FFF; color: var(--color-text); }
+

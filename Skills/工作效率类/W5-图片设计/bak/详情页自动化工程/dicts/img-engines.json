@@ -1,0 +1,214 @@
+{
+  "skincare_visual_catalog": {
+    "scientific_clinical": {
+      "category": "科技修护 / 实验室级无菌感",
+      "price_tier": "mid-to-premium serums, acids, retinol",
+      "global_lighting": "Clean bright studio lighting, softbox diffusion, subtle cool rim light",
+      "camera_lens": "100mm macro lens, tack-sharp focus on the product, minimal depth of field for background blur",
+      "product_shot": {
+        "background": "Seamless smooth light grey or pristine white gradient",
+        "material_texture": "High-end frosted glass, clear acrylic podium, perfectly transparent liquid, sterile pristine surface",
+        "effect": "Crisp edge reflection on glass, no dust or imperfections"
+      },
+      "lifestyle_shot": {
+        "background": "Minimal clinical interior, soft white walls, uncluttered",
+        "material_texture": "Clean professional skin, white lab coat, stainless steel tools",
+        "effect": "Natural hand applying product, clinical precision"
+      },
+      "macro_detail": {
+        "background": "Completely blurred bokeh, pure white ambient",
+        "material_texture": "Translucent gel droplets, microscopic texture of serum, micro-pearls",
+        "effect": "Extreme macro 1:1, droplet surface tension"
+      },
+      "color_system": {
+        "scheme_type": "cool neutral + product accent",
+        "background_constraint": "Seamless smooth light grey or pristine white gradient background",
+        "background_hex": "#F8F9FA",
+        "text_primary": "#1A1D21",
+        "text_secondary": "#5A6570",
+        "accent": "#PRODUCT_COLOR#",
+        "dynamic_injection": "Subtle #PRODUCT_COLOR# reflections in the shadows, cool ambient tones"
+      },
+      "gestalt_defaults": {
+        "text_zone": "clean top or bottom 25% band",
+        "alignment": "flush-left",
+        "texture_language": "用高精度实验室摄影语言。场景必须纯净无菌。材质用 frosted glass / transparent liquid / sterile surface。光线用 softbox diffused。用 'clinical' 'sterile' 'clean studio' 等高频实拍词汇，拒绝 soft focus 和 lens flare。"
+      }
+    },
+    "natural_botanical": {
+      "category": "天然植物 / 温润生机感",
+      "price_tier": "clean beauty, botanical, organic",
+      "global_lighting": "Soft natural window daylight, dappled organic shadows (like tree leaves), warm ambient fill",
+      "camera_lens": "50mm prime lens, creamy bokeh, soft atmospheric depth",
+      "product_shot": {
+        "background": "Seamless soft warm beige or earthy tone background",
+        "material_texture": "Raw botanical ingredients, unpolished stone, organic matte surfaces, handmade paper",
+        "effect": "Freshly picked herbs beside product, soft natural shadow"
+      },
+      "lifestyle_shot": {
+        "background": "Sunlit wooden table, window-lit room, leafy plants in background",
+        "material_texture": "Soft natural skin, linen fabric, wooden texture, fresh leaves",
+        "effect": "Morning routine, gentle hand touch, steam rising from warm water"
+      },
+      "macro_detail": {
+        "background": "Soft green or beige bokeh, natural blur",
+        "material_texture": "Plant cell structure, dewdrop on leaf, fine herbal powder",
+        "effect": "Water droplet refracting leaf texture, botanical micro details"
+      },
+      "color_system": {
+        "scheme_type": "warm earthy + botanical accent",
+        "background_constraint": "Seamless soft warm beige or earthy tone background",
+        "background_hex": "#F5F0E8",
+        "text_primary": "#2D2A24",
+        "text_secondary": "#7A7368",
+        "accent": "#PRODUCT_COLOR#",
+        "dynamic_injection": "Harmonious #PRODUCT_COLOR# tint in the ambient light, warm earthy atmosphere"
+      },
+      "gestalt_defaults": {
+        "text_zone": "clean top or bottom 25% band",
+        "alignment": "flush-left",
+        "texture_language": "用自然光生活摄影语言。场景必须保留真实的自然光影和纹理。材质用 organic / botanical / raw surface。光线用 window diffused daylight。用 'natural window light' 'botanical' 'earthy tones' 'organic texture' 等词汇。"
+      }
+    },
+    "deep_hydration": {
+      "category": "深层补水 / 清透水光感",
+      "price_tier": "toners, moisturizers, hydrating masks",
+      "global_lighting": "Bright continuous lighting, water caustics light reflection, sparkling highlights",
+      "camera_lens": "High-speed macro photography, freezing water motion, razor-sharp droplet details",
+      "product_shot": {
+        "background": "Seamless aquatic or purely transparent glowing gradient background",
+        "material_texture": "Macro pristine water drops, splashing pure water, translucent gel texture, highly reflective glossy surface",
+        "effect": "Water ripples, suspended droplets, light caustics on product surface"
+      },
+      "lifestyle_shot": {
+        "background": "Bright bathroom with window, blue-white tiles or clean marble",
+        "material_texture": "Freshly cleansed skin, water beading on skin, smooth wet surface",
+        "effect": "Splashing water, facial mist, steam on mirror"
+      },
+      "macro_detail": {
+        "background": "Pure blue-white gradient bokeh",
+        "material_texture": "Translucent gel texture, micro water droplets on skin, hydrogel sheet",
+        "effect": "Freeze-frame water splash, liquid viscosity strands"
+      },
+      "color_system": {
+        "scheme_type": "aqua fresh + product accent",
+        "background_constraint": "Seamless aquatic or purely transparent glowing gradient background",
+        "background_hex": "#E8F4F8",
+        "text_primary": "#1A2A33",
+        "text_secondary": "#4A6B7A",
+        "accent": "#PRODUCT_COLOR#",
+        "dynamic_injection": "Vibrant #PRODUCT_COLOR# passing through the liquid elements, refreshing aqua undertone"
+      },
+      "gestalt_defaults": {
+        "text_zone": "clean top 20% or bottom 20% band",
+        "alignment": "center",
+        "texture_language": "用水润质感摄影语言。场景必须强调水的透明和纯净。材质用 water droplet / translucent gel / reflective liquid。光线用 bright continuous + water caustics。用 'high-speed macro' 'water caustics' 'pristine drops' 'translucent' 等词汇。"
+      }
+    },
+    "premium_luxury": {
+      "category": "高端奢养 / 浓郁贵妇感",
+      "price_tier": "high-end luxury, anti-aging, premium creams",
+      "global_lighting": "Dramatic chiaroscuro lighting, warm golden directional key light, rich deep shadows, elegant rim separation",
+      "camera_lens": "85mm cinema lens, elegant smooth focus roll-off",
+      "product_shot": {
+        "background": "Seamless dark moody background or elegant silk waves",
+        "material_texture": "Premium heavy glass jar, liquid gold texture, smooth silk fabric background, highly polished metallic accents",
+        "effect": "Golden reflection on glass, deep shadow gradient, luxurious rim light"
+      },
+      "lifestyle_shot": {
+        "background": "Dim elegant boudoir, velvet texture, candlelit ambiance",
+        "material_texture": "Silk robe, polished vanity, soft velvet, sophisticated skin",
+        "effect": "Evening skincare ritual, gentle luxurious touch"
+      },
+      "macro_detail": {
+        "background": "Pure dark ambient, golden bokeh lights",
+        "material_texture": "Pearlescent cream texture, gold micro-particles, rich thick balm, caviar beads",
+        "effect": "Rich texture spreading on skin, gold flake shimmer"
+      },
+      "color_system": {
+        "scheme_type": "dark luxurious + gold accent",
+        "background_constraint": "Seamless dark moody background or elegant silk waves",
+        "background_hex": "#1C1816",
+        "text_primary": "#F5F0EB",
+        "text_secondary": "#A0937D",
+        "accent": "#PRODUCT_COLOR#",
+        "dynamic_injection": "Rich #PRODUCT_COLOR# base with elegant gold/silver highlights, dramatic deep shadows"
+      },
+      "gestalt_defaults": {
+        "text_zone": "top 20% (light text) or bottom 25% (light text on dark overlay)",
+        "alignment": "center",
+        "texture_language": "用高端奢侈品摄影语言。场景必须用深色背景突出产品贵气。材质用 heavy glass / liquid gold / silk / metallic。光线用 chiaroscuro dramatic。用 'chiaroscuro' 'golden rim light' 'dark luxury' 'elegant premium' 等词汇。文字必须使用浅色（白色/金色）以在深色背景下可读。"
+      }
+    },
+    "herbal_earthy_root": {
+      "category": "草本固发 / 根系本草感",
+      "price_tier": "hair care, scalp treatment, herbal formulas",
+      "global_lighting": "Warm directional sunlight filtering through dense forest, deep rich ambient shadows",
+      "camera_lens": "100mm macro lens, tack-sharp focus on organic textures, dramatic depth of field",
+      "product_shot": {
+        "background": "Seamless warm earth tone or soft beige seamless gradient",
+        "material_texture": "Raw aged wood, fresh dark green moss, macro ginseng roots, rich amber liquid, organic matte surfaces",
+        "effect": "Deep natural shadow pool beneath product, warm golden rim light"
+      },
+      "lifestyle_shot": {
+        "background": "Dappled forest filter light, soft out-of-focus greenery",
+        "material_texture": "Natural scalp with herbal paste, rough pottery bowl, wooden ladle",
+        "effect": "Steam rising from herbal decoction, morning forest ambiance"
+      },
+      "macro_detail": {
+        "background": "Warm brown bokeh, floating herbal particles",
+        "material_texture": "Ginseng root cross-section, dripping amber liquid, fine herbal powder suspended in oil",
+        "effect": "Macro amber drop with suspended herbal particles, root fiber details"
+      },
+      "color_system": {
+        "scheme_type": "warm earthy + amber accent",
+        "background_constraint": "Seamless warm earth tone or soft beige background",
+        "background_hex": "#F0E8DC",
+        "text_primary": "#3A2A1A",
+        "text_secondary": "#7A6A56",
+        "accent": "#PRODUCT_COLOR#",
+        "dynamic_injection": "Deep amber and earthy #PRODUCT_COLOR# tones suffusing the shadows, warm forest undertone"
+      },
+      "gestalt_defaults": {
+        "text_zone": "clean top or bottom 25% band",
+        "alignment": "flush-left",
+        "texture_language": "用有机草本摄影语言。场景必须保留原始材质的自然纹理。材质用 aged wood / moss / ginseng root / amber liquid。光线用 forest dappled sunlight。用 'organic texture' 'earthy' 'botanical macro' 'raw natural' 'root fiber' 等词汇。"
+      }
+    },
+    "refreshing_botanical_breeze": {
+      "category": "清透植萃 / 呼吸生机感",
+      "price_tier": "green serums, botanical toners, fresh formulas",
+      "global_lighting": "Bright diffused daylight, sparkling water caustics, soft glowing ambient fill",
+      "camera_lens": "High-speed macro capture, freezing flying water droplets, sharp crisp details",
+      "product_shot": {
+        "background": "Seamless soft glowing pastel green or airy white gradient background",
+        "material_texture": "Translucent green leaves, frosty glass, floating fresh herbs, purely transparent liquid, botanical extract",
+        "effect": "Water condensation on frosty glass, floating herb particles in suspension"
+      },
+      "lifestyle_shot": {
+        "background": "Morning garden or windowsill with green leafy plants, bright natural light",
+        "material_texture": "Freshly cleansed dewy skin, cotton pad with green essence, fresh green juice",
+        "effect": "Morning skincare routine, splashing refreshing essence, steam with herbal scent"
+      },
+      "macro_detail": {
+        "background": "Pure soft green gradient bokeh, floating water droplets",
+        "material_texture": "Translucent leaf cell structure, macro water bead, fine green powder suspended in gel, fresh herb petal",
+        "effect": "Water droplet refracting leaf veins, freeze-frame splash of green essence"
+      },
+      "color_system": {
+        "scheme_type": "fresh vibrant + botanical accent",
+        "background_constraint": "Seamless soft glowing pastel green or airy white gradient background",
+        "background_hex": "#EFF7EE",
+        "text_primary": "#1A3A2A",
+        "text_secondary": "#4A7A5A",
+        "accent": "#PRODUCT_COLOR#",
+        "dynamic_injection": "Vibrant #PRODUCT_COLOR# passing through the translucent botanical elements, fresh crisp atmosphere"
+      },
+      "gestalt_defaults": {
+        "text_zone": "clean top 20% or bottom 20% band",
+        "alignment": "center",
+        "texture_language": "用清透植物摄影语言。场景必须透亮有呼吸感。材质用 translucent leaf / frosty glass / floating herb / fresh extract。光线用 bright diffused daylight。用 'botanical' 'dewy' 'fresh green' 'translucent' 'bright macro' 等词汇。"
+      }
+    }
+  }
+}

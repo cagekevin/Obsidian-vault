@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Code-Buddy 看板</title>
+    <style>
+        :root {
+            --bg-color: #0f172a;
+            --column-bg: #1e293b;
+            --card-bg: #334155;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-agent: #38bdf8;
+            --accent-human: #fbbf24;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 20px;
+        }
+        header {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 10px;
+        }
+        h1 { margin: 0; font-size: 24px; color: #f1f5f9; }
+        .project-meta { font-size: 14px; color: var(--text-muted); margin-top: 5px; }
+        
+        /* 看板核心布局 */
+        .board {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            align-items: start;
+        }
+        .column {
+            background-color: var(--column-bg);
+            border-radius: 8px;
+            padding: 15px;
+            min-height: 500px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        .column-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #475569;
+            display: flex;
+            justify-content: space-between;
+        }
+        .card-list {
+            min-height: 450px;
+        }
+        
+        /* 任务卡片样式 */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 6px;
+            padding: 12px;
+            margin-bottom: 12px;
+            cursor: grab;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            transition: transform 0.1s ease;
+        }
+        .card:active { cursor: grabbing; transform: scale(1.02); }
+        .card-title { font-size: 14px; font-weight: 600; margin-bottom: 6px; }
+        .card-desc { font-size: 12px; color: var(--text-muted); margin-bottom: 10px; line-height: 1.4; }
+        
+        /* 标签样式 */
+        .badge {
+            display: inline-block;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .badge-afk { background-color: rgba(56, 189, 248, 0.2); color: var(--accent-agent); }
+        .badge-hitl { background-color: rgba(251, 191, 36, 0.2); color: var(--accent-human); }
+        .blocked-info { font-size: 11px; color: #ef4444; margin-top: 5px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>项目本地可视化看板 📋</h1>
+        <div class="project-meta">当前模式：Local Offline (完全适配 S1-S3 规范)</div>
+    </header>
+
+    <div class="board">
+        <div class="column">
+            <div class="column-title"><span>待处理 (To Do)</span></div>
+            <div class="card-list" ondragover="allowDrop(event)" ondrop="drop(event, 'todo')">
+                
+                <div class="card" draggable="true" ondragstart="drag(event)" id="task-01">
+                    <div class="card-title">#01 搭建视频自动剪辑核心骨架</div>
+                    <div class="card-desc">垂直贯穿：Schema存储、调用外部剪辑API、以及自动化测试验证通路。</div>
+                    <span class="badge badge-afk">Type: AFK (AI独立)</span>
+                </div>
+
+                <div class="card" draggable="true" ondragstart="drag(event)" id="task-02">
+                    <div class="card-title">#02 前端高级剪辑拖拽交互界面</div>
+                    <div class="card-desc">构建高保真动效的前端独立UI。需人工走查设计审美。</div>
+                    <span class="badge badge-hitl">Type: HITL (人机协同)</span>
+                    <div class="blocked-info">⚠ Blocked by: #01</div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="column">
+            <div class="column-title"><span>进行中 (In Progress)</span></div>
+            <div class="card-list" ondragover="allowDrop(event)" ondrop="drop(event, 'progress')">
+                </div>
+        </div>
+
+        <div class="column">
+            <div class="column-title"><span>已完成 (Done)</span></div>
+            <div class="card-list" ondragover="allowDrop(event)" ondrop="drop(event, 'done')">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        function allowDrop(ev) { ev.preventDefault(); }
+        function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); }
+        function drop(ev, columnId) {
+            ev.preventDefault();
+            var data = ev.dataTransfer.getData("text");
+            var card = document.getElementById(data);
+            // 确保卡片丢进的是列表容器而不是别的卡片上
+            var targetList = ev.target.closest('.card-list');
+            if (targetList) {
+                targetList.appendChild(card);
+                console.log(`卡片 ${data} 已成功移至 ${columnId} 桶`);
+            }
+        }
+    </script>
+</body>
+</html>

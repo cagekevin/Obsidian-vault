@@ -1,0 +1,11 @@
+{
+  "name": "example_image",
+  "prompt": "A cute orange tabby cat wearing a tiny bow tie, sitting in a sunlit windowsill, Pixar 3D animation style, RenderMan, Subsurface Scattering, Peach Fuzz micro-details, volumetric golden light, 9:16, 1K resolution",
+  "aspect_ratio": "9:16",
+  "resolution": "1K",
+  "model": "generate_image_gpt_image_2_medium",
+  "output_dir": "D:/my_project/outputs/cat.png",
+  "reference_image_paths": [
+    "D:/my_project/refs/example_ref.png"
+  ]
+}

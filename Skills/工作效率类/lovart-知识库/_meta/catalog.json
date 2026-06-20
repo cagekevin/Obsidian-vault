@@ -1,0 +1,86 @@
+{
+  "version": "1.0",
+  "categories": [
+    {
+      "dir": "00-钓鱼话术",
+      "label": "原始渔获暂存区",
+      "desc": "从 Lovart 套出的原始回复，暂未整理",
+      "export": false,
+      "index_in_readme": true
+    },
+    {
+      "dir": "01-入门",
+      "label": "基础入门与平台概述",
+      "desc": "> **平台定位**：Lovart 作为 AI 设计代理的核心理念、统一创意工作区及自动模型路由等基础功能。\n> **新手指南**：涵盖工作流初探与重要前置设置，如通过全局或单次应用设置品牌套件（Brand Kit）。",
+      "export": true,
+      "index_in_readme": true,
+      "keywords": ["入门", "概述", "开始", "快速"]
+    },
+    {
+      "dir": "02-提示与生成",
+      "label": "核心生成机制与提示词工程",
+      "desc": "> **底层逻辑**：`generate_media` 内部逻辑、多图/视频批量处理策略与多工具协作链条。\n> **精准控制**：参考图使用指南（BASE/STYLE_REF/LAYOUT_REF/SUBJECT_REF 角色区分）、尺寸/分辨率提取决策规则。\n> **模型与 Prompt 策略**：图片与视频模型选择指南、从零构建高转化 Prompt 的结构化方法。\n> **视频与排版**：多镜头视频分镜规划、音频同步合成、设计常识中的文字排版与网格布局系统。",
+      "export": true,
+      "index_in_readme": true,
+      "keywords": ["提示词", "prompt", "参考图", "模型", "生成", "排版", "设计常识", "尺寸", "图片", "视频", "音频", "批量", "工具链", "搜索"]
+    },
+    {
+      "dir": "03-品牌系统",
+      "label": "品牌视觉资产管理 (Brand Kit)",
+      "desc": "> **Brand Kit 全生命周期**：从信息收集、数字品牌规范搭建到 API 管理、版本（变体）控制与导出导入。\n> **底层架构**：品牌资产的数据存储结构（元数据层/设计令牌层）、多品牌隔离切换机制。\n> **资产检索与传递**：`asset_factory` 如何抓取并下发 Logo、配色和字体等规范给生成工具。",
+      "export": true,
+      "index_in_readme": true,
+      "keywords": ["品牌", "brand", "kit", "Logo", "配色", "资产检索"]
+    },
+    {
+      "dir": "04-Skill系统",
+      "label": "技能模板与复用生态",
+      "desc": "> **Skill 概念与构建**：将创意偏好封装为\"可复用创作模板\"的 8 步创建流程。\n> **管理与进阶**：多触发词、子母 Skill 嵌套继承、权限分享、版本回滚及市场评分推荐机制。",
+      "export": true,
+      "index_in_readme": true,
+      "keywords": ["skill", "技能", "模板", "触发词", "嵌套"]
+    },
+    {
+      "dir": "05-编辑与导出",
+      "label": "图像编辑与多模态导出",
+      "desc": "> **局部与精准编辑**：`edit_media` vs `generate_media` 深度对比，包含重构图幅（reframe）、超分放大（upscale）、局部重绘去物（edit_image）等实操场景。\n> **多模态文件生成**：`generate_html`（可交互网页）、`generate_slides`（多页 PPT/演示文稿）的触发条件、结构决策与内置排版逻辑。",
+      "export": true,
+      "index_in_readme": true,
+      "keywords": ["编辑", "导出", "PPT", "HTML", "排版", "edit", "风格一致", "字体"]
+    },
+    {
+      "dir": "06-业务落地",
+      "label": "商业落地与实战指南",
+      "desc": "> **电商视觉转化**：亚马逊 A+ 详情页模块模板、淘宝/天猫 10 区块详情页黄金结构、抖音及小红书内容种草策略。\n> **品牌提案实战**：品牌视觉系统 PPT 设计规范（色彩/字体/Logo 安全空间/交付物检查清单）。\n> **电商起盘流程**：从筹备、视觉资产建设到数据复盘的 0 到 1 商业落地阶段划分与避坑指南。",
+      "export": true,
+      "index_in_readme": true,
+      "keywords": ["电商", "亚马逊", "淘宝", "小红书", "主图", "详情", "业务", "落地", "成本", "流程"]
+    },
+    {
+      "dir": "07-能力边界",
+      "label": "平台能力边界与品控保障",
+      "desc": "> **生成限制**：系统无法直接生成 TTF/OTF 字体安装包，仅支持艺术字图像或参考。\n> **成本与计费**：各类任务积分消耗标准及 Fast/Relaxed 运行模式区别。\n> **品控与故障兜底**：AI 图像质量评估标准（分辨率/构图/品牌合规），以及超时、风控拦截、资源限制时的系统错误回退（Fallback）路径。",
+      "export": true,
+      "index_in_readme": true,
+      "keywords": ["界限", "限制", "不支持", "LLM", "字体", "成本", "质量", "错误", "回退"]
+    },
+    {
+      "dir": "08-参考",
+      "label": "开发者级系统参考册",
+      "desc": "> **工具参数表**：所有可调用工具（图像/视频/搜索 `grounding_hub`/剪辑 `edit_video_ffmpeg` 等）的详细入参、默认值及互斥规则。\n> **架构与调度**：系统对话上下文管理（短期与长期记忆）、子代理 `visual_planner` 协作模式、从意图识别到工具调用的完整路由决策树。",
+      "export": true,
+      "index_in_readme": true,
+      "keywords": ["工具", "参数", "路由", "决策树", "上下文", "子代理", "图像角色", "话术试验"]
+    },
+    {
+      "dir": "_meta",
+      "label": "元数据与调度",
+      "desc": "碎片跟踪表、套取话术策略、任务队列、集中配置",
+      "export": false,
+      "index_in_readme": false
+    }
+  ],
+  "paths": {
+    "agent_skill": "../W7-API链接/lovart-skill/agent_skill.py"
+  }
+}

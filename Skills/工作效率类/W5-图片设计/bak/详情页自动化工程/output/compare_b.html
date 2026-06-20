@@ -1,0 +1,289 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8">
+<style>/* =============================================================
+   Detail Page Design System
+   11 种布局 + 图区占位 + 文字卡片
+   ============================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+
+/* ── 1. Reset ── */
+*,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+/* ── 2. Design Tokens ── */
+:root {
+  --serif-zh: "Noto Serif SC","Songti SC","STSong",serif;
+  --serif-en: "Playfair Display","Noto Serif SC",serif;
+  --sans: "Noto Sans SC",-apple-system,"PingFang SC","Microsoft YaHei UI",sans-serif;
+  --mono: "IBM Plex Mono",ui-monospace,"SF Mono",Consolas,monospace;
+  --sp-2: 4px;  --sp-3: 8px;   --sp-4: 12px;  --sp-5: 16px;
+  --sp-6: 24px; --sp-7: 32px;  --sp-8: 40px;  --sp-9: 48px;
+  --sp-10: 64px; --sp-11: 80px; --sp-12: 96px; --sp-13: 128px;
+  --canvas-w: 1024px;
+  --canvas-h: 1024px;
+  --body-bg: #0f0d0b;
+}
+
+/* ── 3. Typography Roles ── */
+.mod .kicker {
+  font-family: var(--mono); font-size: 13px; font-weight: 500;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(var(--ink-rgb), .45);
+  margin-bottom: var(--sp-6);
+}
+.mod .h-display {
+  font-family: var(--serif-zh); font-weight: 500;
+  font-size: 52px; line-height: 1.18;
+  letter-spacing: .03em; color: var(--ink);
+  margin-bottom: var(--sp-5);
+}
+.mod .h-xl {
+  font-family: var(--serif-zh); font-weight: 500;
+  font-size: 40px; line-height: 1.22;
+  letter-spacing: .02em; color: var(--ink);
+  margin-bottom: var(--sp-5);
+}
+.mod .h-md {
+  font-family: var(--serif-zh); font-weight: 500;
+  font-size: 30px; line-height: 1.28;
+  letter-spacing: .02em; color: var(--ink);
+  margin-bottom: var(--sp-4);
+}
+.mod .h-sub {
+  font-family: var(--serif-en); font-style: italic; font-weight: 400;
+  font-size: 26px; color: var(--mut); margin-bottom: var(--sp-5);
+}
+.mod .body {
+  font-family: var(--sans); font-weight: 400;
+  font-size: 18px; line-height: 1.7;
+  color: rgba(var(--ink-rgb), .72);
+  white-space: pre-line;
+}
+.mod .body-sm {
+  font-family: var(--sans); font-weight: 400;
+  font-size: 16px; line-height: 1.65;
+  color: rgba(var(--ink-rgb), .62);
+}
+.mod .stat-num {
+  font-family: var(--serif-en); font-weight: 600;
+  font-size: 48px; line-height: 1.1;
+  letter-spacing: -.01em; color: var(--acc);
+  margin-bottom: var(--sp-3);
+}
+.mod .stat-num-lg {
+  font-family: var(--serif-en); font-weight: 600;
+  font-size: 64px; line-height: 1.05;
+  letter-spacing: -.02em; color: var(--acc);
+  margin-bottom: var(--sp-3);
+}
+.mod .badge {
+  display: inline-block; padding: 5px 18px;
+  border: 1px solid rgba(var(--acc-rgb), .35);
+  border-radius: 100px;
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  letter-spacing: .10em; color: var(--acc);
+}
+.mod .badge-set {
+  display: flex; flex-wrap: wrap; gap: var(--sp-4);
+  margin-top: var(--sp-6);
+}
+
+/* ── 4. Layout Primitives ── */
+.mod .stack     { display: flex; flex-direction: column; }
+.mod .row       { display: flex; flex-direction: row; }
+.mod .grow      { flex: 1; }
+.mod .center    { text-align: center; }
+.mod .right     { text-align: right; }
+.mod .gap-3 { gap: var(--sp-3); } .mod .gap-4 { gap: var(--sp-4); }
+.mod .gap-5 { gap: var(--sp-5); } .mod .gap-6 { gap: var(--sp-6); }
+.mod .gap-7 { gap: var(--sp-7); } .mod .gap-8 { gap: var(--sp-8); }
+
+/* ── 5. 文字卡片 ── */
+.mod .text-card {
+  background: var(--card-bg, #FFFFFF);
+  --ink: #1A1A1A;
+  --mut: #666666;
+  --ink-rgb: 26, 26, 26;
+  --acc-rgb: var(--card-acc-rgb, 128, 128, 128);
+  border-radius: 4px;
+  padding: var(--sp-8);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  position: relative;
+  z-index: 2;
+}
+.mod .card {
+  background: var(--card-bg, #FFFFFF);
+  --ink: #1A1A1A;
+  --mut: #666666;
+  --ink-rgb: 26, 26, 26;
+  --acc-rgb: var(--card-acc-rgb, 128, 128, 128);
+  border-radius: 4px;
+  padding: var(--sp-8);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+  position: relative;
+  z-index: 2;
+}
+.mod .text-card-center {
+  display: flex; flex-direction: column;
+  justify-content: center;
+}
+.mod .card-center {
+  display: flex; flex-direction: column;
+  justify-content: center;
+}
+.mod .sep {
+  height: 1px; background: rgba(var(--ink-rgb), .10); border: 0;
+  margin: var(--sp-6) 0; width: 64px;
+}
+.mod .num-step {
+  font-family: var(--mono); font-size: 13px; font-weight: 600;
+  letter-spacing: .10em; color: rgba(var(--acc-rgb), .55);
+  margin-bottom: var(--sp-2);
+}
+
+/* ── 6.1 图区比例类 ── */
+.mod .img-full { position: absolute; z-index: 0; inset: 0; background: var(--img-grad); }
+.mod .img-r-1x1 { aspect-ratio: 1/1; }
+.mod .img-r-3x4 { aspect-ratio: 3/4; }
+.mod .img-r-4x3 { aspect-ratio: 4/3; }
+.mod .img-r-16x9 { aspect-ratio: 16/9; }
+
+/* ── 6. 图区占位（渐变） ── */
+.mod .img-zone {
+  position: absolute; z-index: 0;
+  background: var(--img-grad);
+}
+/* 光晕效果 */
+.mod .img-zone::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 40%, rgba(255,255,255,0.06) 0%, transparent 70%);
+}
+.mod.dark .img-zone::before {
+  background: radial-gradient(ellipse at 50% 40%, rgba(255,255,255,0.08) 0%, transparent 70%);
+}
+
+/* ── 7. 拱门遮罩布局 ── */
+.mod .arch-frame {
+  position: absolute; z-index: 0; inset: 0;
+  background: var(--img-grad);
+  clip-path: ellipse(70% 88% at 50% 12%);
+}
+.mod .arch-frame::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 50% 30%, rgba(255,255,255,0.07) 0%, transparent 65%);
+}
+
+/* ── 9. 模块容器 ── */
+.mod {
+  position: relative; overflow: hidden; isolation: isolate;
+  width: var(--canvas-w); height: var(--canvas-h);
+  background: var(--bg);
+}
+.mod + .mod { border-top: 1px solid rgba(var(--acc-rgb), .06); }
+
+/* ── 10. 分页编号 ── */
+.mod .pg {
+  position: absolute; bottom: 28px; right: 32px; z-index: 3;
+  font-family: var(--mono); font-size: 13px; font-weight: 500;
+  letter-spacing: .15em; color: rgba(var(--acc-rgb), .25);
+}
+body{background:var(--body-bg);width:var(--canvas-w);margin:0 auto;}
+</style>
+</head>
+<body>
+<div class="mod" style="--bg:#EFF7EE;--ink:#1A3A2A;--mut:#4A7A5A;--acc:soft glowing pastel green;--card-bg:#FFFFFF;--ink-rgb:26, 58, 42;--acc-rgb:123, 200, 130;--card-acc-rgb:123, 200, 130;--img-grad:linear-gradient(145deg, #EFF7EE 0%, soft glowing pastel green22 40%, #EFF7EE 100%);">
+  <div class="img-zone" style="inset:0;"></div>
+  <div class="card" style="position:absolute;left:var(--sp-12);right:var(--sp-12);bottom:var(--sp-11);padding:var(--sp-9) var(--sp-8);">
+    <p class="kicker">新品首发</p>
+    <h1 class="h-display">本产品</h1>
+    <p class="h-sub">重新定义肌肤的奢宠标准</p>
+    <div class="body" style="margin-top:var(--sp-4)">每一滴都是自然与科技的完美融合</div>
+    <div class="badge-set"><span class="badge">核心成分</span><span class="badge">权威认证</span><span class="badge">口碑之选</span></div>
+  </div>
+  <div class="pg">01</div>
+</div>
+<div class="mod" style="--bg:#EFF7EE;--ink:#1A3A2A;--mut:#4A7A5A;--acc:soft glowing pastel green;--card-bg:#FFFFFF;--ink-rgb:26, 58, 42;--acc-rgb:123, 200, 130;--card-acc-rgb:123, 200, 130;--img-grad:linear-gradient(145deg, #EFF7EE 0%, soft glowing pastel green22 40%, #EFF7EE 100%);;display:flex;flex-direction:row;">
+  <div class="img-zone" style="position:relative;flex:6;"></div>
+  <div class="card card-center" style="flex:4;margin:var(--sp-11) var(--sp-8);border-radius:6px;">
+    <p class="kicker">核心成分</p>
+    <h1 class="h-xl">源自自然的奢宠馈赠</h1>
+    <div class="body-sm" style="margin-bottom:var(--sp-5)">本产品 的灵魂成分</div>
+    <hr class="sep">
+    <p class="body" style="color:var(--acc);font-weight:500">臻选珍罕原料，以尖端科技锁住巅峰活性</p>
+    <p class="body">每一滴精华，都蕴含着大自然的修护力，触肤即融，深透肌底。</p>
+    
+  </div>
+  <div class="pg">02</div>
+</div>
+<div class="mod" style="--bg:#EFF7EE;--ink:#1A3A2A;--mut:#4A7A5A;--acc:soft glowing pastel green;--card-bg:#FFFFFF;--ink-rgb:26, 58, 42;--acc-rgb:123, 200, 130;--card-acc-rgb:123, 200, 130;--img-grad:linear-gradient(145deg, #EFF7EE 0%, soft glowing pastel green22 40%, #EFF7EE 100%);;display:flex;flex-direction:row-reverse;">
+  <div class="img-zone" style="position:relative;flex:6;"></div>
+  <div class="card card-center" style="flex:4;margin:var(--sp-11) var(--sp-8);border-radius:6px;">
+    <p class="kicker">核心成分</p>
+    <h1 class="h-xl">解码本产品的奢华秘密</h1>
+    <div class="body-sm" style="margin-bottom:var(--sp-5)"></div>
+    <hr class="sep">
+    
+    
+    <div class="body" style="padding:10px 0;border-bottom:1px solid rgba(var(--ink-rgb),.08)">珍稀成分：深海萃取，焕活新生</div><div class="body" style="padding:10px 0;border-bottom:1px solid rgba(var(--ink-rgb),.08)">尖端科技：微囊传导，直达肌底</div><div class="body" style="padding:10px 0;border-bottom:1px solid rgba(var(--ink-rgb),.08)">卓越功效：28天焕亮，见证改变</div>
+  </div>
+  <div class="pg">03</div>
+</div>
+<div class="mod" style="--bg:#EFF7EE;--ink:#1A3A2A;--mut:#4A7A5A;--acc:soft glowing pastel green;--card-bg:#FFFFFF;--ink-rgb:26, 58, 42;--acc-rgb:123, 200, 130;--card-acc-rgb:123, 200, 130;--img-grad:linear-gradient(145deg, #EFF7EE 0%, soft glowing pastel green22 40%, #EFF7EE 100%);;display:flex;flex-direction:row;">
+  <div class="card card-center" style="flex:3;margin:var(--sp-11) 0 var(--sp-11) var(--sp-8);padding:var(--sp-7);border-radius:6px;gap:var(--sp-3);">
+    <p class="kicker">质地特写</p>
+    <h1 class="h-md"></h1>
+    <div class="body-sm">一滴精华的奢华之旅</div>
+    
+  </div>
+  <div class="img-zone" style="position:relative;flex:4;margin:0;"></div>
+  <div class="card card-center" style="flex:3;margin:var(--sp-11) var(--sp-8) var(--sp-11) 0;padding:var(--sp-7);border-radius:6px;gap:var(--sp-3);text-align:right;">
+    <div class="body"></div>
+    
+  </div>
+  <div class="pg">04</div>
+</div>
+<div class="mod" style="--bg:#EFF7EE;--ink:#1A3A2A;--mut:#4A7A5A;--acc:soft glowing pastel green;--card-bg:#FFFFFF;--ink-rgb:26, 58, 42;--acc-rgb:123, 200, 130;--card-acc-rgb:123, 200, 130;--img-grad:linear-gradient(145deg, #EFF7EE 0%, soft glowing pastel green22 40%, #EFF7EE 100%);">
+  <div class="text-card" style="position:absolute;inset:var(--sp-11) var(--sp-12);display:flex;flex-direction:column;justify-content:center;">
+    <p class="kicker">数据洞察</p>
+    <h1 class="h-xl" style="max-width:75%">本产品 效果见证</h1>
+    <div class="body" style="max-width:70%;margin-bottom:var(--sp-7)">使用前后对比，改变的不仅是肌肤</div>
+    <div class="row" style="gap:var(--sp-10);align-items:stretch;">
+      <div class="stack gap-3" style="flex:1;"><div class="body" style="padding:10px 0;border-bottom:1px solid rgba(var(--ink-rgb),.08)">毛孔粗大，肤色暗沉不均</div><div class="body" style="padding:10px 0;border-bottom:1px solid rgba(var(--ink-rgb),.08)">干燥起皮，细纹明显</div><div class="body" style="padding:10px 0;border-bottom:1px solid rgba(var(--ink-rgb),.08)">屏障受损，敏感泛红</div></div>
+      <div class="stack gap-3" style="flex:1;text-align:right;justify-content:center;"><p class="stat-num-lg">水润度 +87%</p><p class="stat-num-lg">光泽度 +62%</p><p class="stat-num-lg">皱纹 -35%</p></div>
+    </div>
+  </div>
+  <div class="pg">05</div>
+</div>
+<div class="mod" style="--bg:#EFF7EE;--ink:#1A3A2A;--mut:#4A7A5A;--acc:soft glowing pastel green;--card-bg:#FFFFFF;--ink-rgb:26, 58, 42;--acc-rgb:123, 200, 130;--card-acc-rgb:123, 200, 130;--img-grad:linear-gradient(145deg, #EFF7EE 0%, soft glowing pastel green22 40%, #EFF7EE 100%);;display:flex;flex-direction:row;">
+  <div class="card card-center" style="flex:5;margin:var(--sp-11) var(--sp-8);border-radius:6px;">
+    <p class="kicker">使用手法</p>
+    <h2 class="h-xl" style="font-style:italic;font-family:var(--serif-en)">让每一天的护肤，都成为一场奢华仪式</h2>
+    <hr class="sep">
+    <div class="stack gap-6"><div class="stack" style="gap:var(--sp-2)"><span class="num-step">STEP 01</span><div class="body" style="color:var(--ink)">取适量产品于掌心，轻轻温热乳化</div></div><div class="stack" style="gap:var(--sp-2)"><span class="num-step">STEP 02</span><div class="body" style="color:var(--ink)">由内向外均匀涂抹于面部</div></div><div class="stack" style="gap:var(--sp-2)"><span class="num-step">STEP 03</span><div class="body" style="color:var(--ink)">以指腹轻拍促进吸收</div></div><div class="stack" style="gap:var(--sp-2)"><span class="num-step">STEP 04</span><div class="body" style="color:var(--ink)">搭配按摩手法，焕现透亮光彩</div></div></div>
+  </div>
+  <div class="img-zone" style="position:relative;flex:5;"></div>
+  <div class="pg">06</div>
+</div>
+<div class="mod" style="--bg:#EFF7EE;--ink:#1A3A2A;--mut:#4A7A5A;--acc:soft glowing pastel green;--card-bg:#FFFFFF;--ink-rgb:26, 58, 42;--acc-rgb:123, 200, 130;--card-acc-rgb:123, 200, 130;--img-grad:linear-gradient(145deg, #EFF7EE 0%, soft glowing pastel green22 40%, #EFF7EE 100%);">
+  <div class="img-zone" style="inset:0;"></div>
+  <div style="position:absolute;bottom:0;left:0;right:0;height:35%;z-index:2;
+    background:linear-gradient(transparent, rgba(0,0,0,0.65));display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:0 var(--sp-12);">
+    <h1 class="h-xl" style="color:#fff;margin-bottom:var(--sp-5)">本产品，宠爱自己从此刻开始</h1>
+    <div class="body" style="color:rgba(255,255,255,0.6)">顺丰包邮 · 过敏包退 · 无忧售后
+即刻下单，尊享多重礼遇</div>
+  </div>
+  <div class="pg">07</div>
+</div>
+<div class="mod" style="--bg:#EFF7EE;--ink:#1A3A2A;--mut:#4A7A5A;--acc:soft glowing pastel green;--card-bg:#FFFFFF;--ink-rgb:26, 58, 42;--acc-rgb:123, 200, 130;--card-acc-rgb:123, 200, 130;--img-grad:linear-gradient(145deg, #EFF7EE 0%, soft glowing pastel green22 40%, #EFF7EE 100%);;display:flex;flex-direction:row;">
+  <div class="img-zone" style="position:relative;flex:4;"></div>
+  <div class="card card-center" style="flex:6;margin:var(--sp-11) var(--sp-8) var(--sp-11) 0;border-radius:6px;">
+    <p class="kicker" style="text-align:right;margin-left:auto;">临床验证</p>
+    <h1 class="h-xl" style="text-align:right">本产品 专业认证</h1>
+    <hr class="sep" style="margin-left:auto;">
+    <div class="stack gap-4" style="align-items:flex-end;"><p class="stat-num">98% 认可度</p><p class="stat-num">100% 温和</p><p class="stat-num">权威机构认证</p></div>
+    <div class="body" style="margin-top:var(--sp-6);text-align:right;">经第三方检测机构实证，敏感肌可用。
+不添加酒精、矿物油、尼泊金酯类防腐剂</div>
+  </div>
+  <div class="pg">08</div>
+</div>
+
+</body></html>

@@ -1,0 +1,10 @@
+{
+  "name": "char_{角色ID}",
+  "project_id": "[项目UUID]",
+  "prompt": "角色外貌描述（英文），{全局渲染令牌（从 global_vars 提取）}。Clean grid layout on a pure white seamless background, main full body turnaround (front, 3/4 view, side, back)...",
+  "aspect_ratio": "4:3",
+  "resolution": "1K",
+  "model": "generate_image_gpt_image_2_medium",
+  "output_dir": "G:/AgentSpace/1_Active/{项目名}/assets/char_{角色ID}.png",
+  "reference_image_paths": []
+}

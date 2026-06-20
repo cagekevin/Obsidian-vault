@@ -1,0 +1,142 @@
+{
+  "pixar": {
+    "visual_style": "Expressive rounded 3D feature animation style. Lighting: subsurface scattering, warm studio lighting, rim light. Render: high-quality 3D CGI with detailed soft surfaces.",
+    "camera_language": {
+      "shot_types": ["hero low angle", "dynamic crane swoop", "clear distinct silhouette wide", "macro close-up"],
+      "movement": ["animated dolly", "character-following orbit", "dramatic push-in", "sweeping reveal"],
+      "composition": ["low angle hero shot", "dramatic sky in background", "foreground silhouette framing", "dynamic diagonal with leading lines"],
+      "lighting_story": "warm golden morning → cool interior → warm amber evening → dramatic sunset finale"
+    },
+    "description_language": "一切用 3D 动画语言表达。主体是 3D model / CGI asset / character model。材质用 SSS / glossy / claymation / stylized texture。环境用 geometry / volumetric fog / particle system。运动用 animated / smooth / dramatic / sweeping / exaggerated physical movements / stylized facial expressions。用 'clear distinct silhouette' 'warm studio light' 'rim light' 'expressive rounded 3D character animation' 等词汇。"
+  },
+  "lyrical-realism": {
+    "visual_style": "Live-action everyday life. Lighting: soft natural light, window diffused light, cinematic ambient. Camera: soft color negative film look, subtle film grain.",
+    "camera_language": {
+      "shot_types": ["wide establishing", "macro detail", "candid mid-shot", "environmental portrait"],
+      "movement": ["slow push", "breathing handheld", "static observation", "gentle tilt"],
+      "composition": ["deep focus landscape", "natural window framing", "atmospheric depth layers", "shallow depth of field on detail"],
+      "lighting_story": "dawn cool mist → afternoon warm haze → golden hour → dusk soft fade"
+    },
+    "description_language": "一切用实拍纪录片语言表达。主体是 real / natural / botanical / human。材质用 organic texture / film grain / natural surface。环境用 real landscape / atmosphere / haze / dust。运动用 breathing / gentle / slow / handheld。用 'warm natural light' 'window diffused light' 'true-to-life' 'candid' 等词汇。"
+  },
+  "pro-cinematic": {
+    "visual_style": "High-budget live-action cinematic production. Lighting: Balanced three-point lighting, naturalistic environmental fill, subtle edge separation. Camera: 35mm-50mm spherical prime lens, dynamic depth of field.",
+    "camera_language": {
+      "shot_types": ["master wide establishing", "medium tracking shot", "clean subject close-up", "environmental deep focus"],
+      "movement": ["smooth steadicam glide", "controlled dolly push", "fluid pan and tilt", "static locked-off"],
+      "composition": ["rule of thirds balance", "foreground element framing", "shallow focus on main subject", "deep depth of field landscape"],
+      "lighting_story": "neutral ambient base → directional key light → subtle edge separation → balanced environmental fill"
+    },
+    "description_language": "一切用标准电影实拍工业语言表达。主体用 real subject / physical object / practical environment。材质用 authentic texture / realistic physical materials / accurate light reflection。环境用 practical location / atmospheric depth / realistic set dressing。运动用 natural physical motion / realistic physics / smooth camera dynamics。用 'cinematic production' 'three-point lighting' 'true-to-life physics' 'sharp focus' 等纯物理描述词汇。"
+  },
+  "natgeo-documentary": {
+    "visual_style": "High-end wildlife and nature documentary photography. Lighting: natural light, directional sunlight. Camera: 35mm film grain, sharp focus.",
+    "camera_language": {
+      "shot_types": ["vast wide landscape", "high-speed motion freeze", "macro nature detail", "environmental portrait"],
+      "movement": ["static observation", "slow pan across landscape", "following subject", "time-lapse wait"],
+      "composition": ["strong foreground anchor", "vast background depth", "natural frame within frame", "golden ratio landscape"],
+      "lighting_story": "blue hour pre-dawn → golden sunrise → harsh noon sun → golden sunset → blue hour dusk"
+    },
+    "description_language": "一切用高端自然纪录片摄影语言表达。主体用 real subject / wildlife / natural element。材质用 authentic texture / natural surface / dust and grain。环境用 vast landscape / atmosphere / weather。运动用 static / waiting / following。用 'high-speed capture' 'motion freeze' 'documentary natural light' 等词汇。"
+  },
+  "stop-motion": {
+    "visual_style": "Stop-motion animation photography, detailed miniature set. Lighting: Miniature practical lights, single directional hard light, dense shadow. Camera: 50mm macro lens, shallow depth of field, tactile details.",
+    "camera_language": {
+      "shot_types": ["miniature establishing", "close-up tactile detail", "low-angle character view", "diorama wide shot"],
+      "movement": ["static locked-off", "incremental stop-motion shift", "mechanical pan", "stuttering tilt"],
+      "composition": ["diorama framing", "central object focus", "miniature depth layers", "oversized foreground element"],
+      "lighting_story": "harsh overhead practical → miniature desk lamp source → window slit shadow → colored gel rim"
+    },
+    "description_language": "一切用定格动画实拍语言表达。主体用 clay model / felt puppet / miniature figure / handcrafted object。材质用 tactile surface / visible fingerprints / fabric / physical material。环境用 miniature set / diorama / crafted props / cardboard texture。运动用 stuttering motion / incremental frame / static。用 'stop-motion' 'tactile texture' 'miniature scale' 'claymation' 等词汇。"
+  },
+  "traditional-2d-anime": {
+    "visual_style": "Traditional 2D cel animation. Lighting: Flat global illumination, soft painted shadows. Camera: Multiplane camera, sharp focus on all layers.",
+    "camera_language": {
+      "shot_types": ["wide painted landscape", "character mid-shot cel", "macro detail with line art", "skyline tracking"],
+      "movement": ["multiplane parallax pan", "static cel layer", "horizontal sliding background", "slow zoom on painted plate"],
+      "composition": ["vast sky proportion", "detailed foreground foliage", "flat isometric layout", "rule of thirds painted scenery"],
+      "lighting_story": "bright flat daylight → golden hour painted shadows → deep blue night with glowing windows"
+    },
+    "description_language": "一切用传统二维动画语言表达。主体用 2D cel character / hand-drawn figure / flat shaded asset。材质用 watercolor background / crisp ink outlines / matte paint / cel shading。环境用 hand-painted landscape / illustrated sky / dense foliage。运动用 horizontal sliding / multiplane parallax / traditional 24fps frame。用 'traditional 2D animation' 'watercolor background' 'flat colors' 'anime-style' 等词汇。"
+  },
+  "product-hero-cinematic": {
+    "visual_style": "High-end television commercial (TVC) film. Lighting: Dynamic continuous studio lighting, sweeping highlights. Camera: High-speed cinema camera, macro cine lens.",
+    "camera_language": {
+      "shot_types": ["dynamic product B-roll", "macro motion tracking", "extreme close-up reveal", "fluid dynamic splash shot"],
+      "movement": ["high-speed robotic arm sweep", "dynamic optical roll", "smooth slider push", "extreme slow-motion"],
+      "composition": ["dynamic diagonal framing", "moving light-streak background", "centered heroic motion", "seamless action transition"],
+      "lighting_story": "dark silhouette → sweeping spotlight reveal → dynamic rim light → bright commercial finish"
+    },
+    "description_language": "一切用高端商业广告片（TVC）语言表达。主体用 commercial product film / dynamic prop / high-end B-roll。材质用 premium glossy / hyper-detailed surface / dynamic liquid。环境用 moving light studio / infinite black void / abstract dynamic backdrop。运动用 high-speed motion control / extreme slow-motion / robotic sweep / dynamic transition。用 'commercial film' 'dynamic lighting' 'high-speed camera' 'macro motion' 等词汇。"
+  },
+  "action-handheld": {
+    "visual_style": "High-energy action commercial film. Lighting: High-contrast harsh sunlight, deep directional shadows, strong rim light. Camera: Handheld camera rig, wide-angle lens, extremely high shutter speed.",
+    "camera_language": {
+      "shot_types": ["wide-angle close-up", "low-angle dynamic tracking", "POV physical interaction", "sweeping environmental wide"],
+      "movement": ["shaky handheld", "fast whip pan", "sudden crash zoom", "rapid physical push-in"],
+      "composition": ["dynamic diagonal off-center", "subject breaking frame", "forced perspective", "foreground motion blur"],
+      "lighting_story": "harsh overhead sun → deep directional shadow → high-contrast silhouette → flashing practical light"
+    },
+    "description_language": "一切用高能动态广告语言表达。主体用 real human subject / physical actor / dynamic vehicle。材质用 flying dust / sweat droplets / gritty surface / reflective metal。环境用 high-contrast outdoor / atmospheric practical location / harsh lighting environment。运动用 explosive physical motion / rapid velocity / sharp physical impact / high-speed interaction。用 'high shutter speed' 'harsh rim light' 'handheld tracking' 'crash zoom' 等纯物理描述词汇。"
+  },
+  "streaming-prestige": {
+    "visual_style": "High-budget digital streaming drama. Lighting: large softbox diffused lighting, uniform ambient fill, subtle practical lights. Camera: large-format digital cinema sensor, 4K resolution, 35mm-50mm prime lens, clean optical capture.",
+    "camera_language": {
+      "shot_types": ["clean over-the-shoulder", "medium dialogue tracking", "master wide establishing", "precise facial close-up"],
+      "movement": ["smooth dolly track", "invisible steadicam glide", "static locked-off", "precise focus pull"],
+      "composition": ["strict rule of thirds", "balanced foreground and background", "clean subject separation", "neutral eye-level framing"],
+      "lighting_story": "soft uniform daylight → balanced interior practicals → dim cool night ambient"
+    },
+    "description_language": "一切用现代高规格数字流媒体剧集语言表达。主体用 real actor / precise wardrobe / detailed skin tone。材质用 clean digital sensor texture / realistic physical materials / matte surface。环境用 practical modern location / controlled studio set / clean atmosphere。运动用 smooth precise motion / realistic human physics / steady camera movement。用 '4K digital cinema' 'soft diffused lighting' 'clean focus' 'large-format digital cinema look' 等词汇。"
+  },
+  "sunlit-lifestyle": {
+    "visual_style": "Modern bright lifestyle photography. Lighting: High-key lighting, large window diffused daylight, bright bounce fill. Camera: 50mm f/1.2 large aperture lens, extreme shallow depth of field, creamy bokeh.",
+    "camera_language": {
+      "shot_types": ["bright interior wide", "clean portrait mid-shot", "macro detail of everyday object", "top-down flat lay"],
+      "movement": ["soft handheld breathing", "slow push-in", "static observation", "gentle horizontal slide"],
+      "composition": ["abundant white negative space", "centered subject focus", "foreground blur framing", "bright uncluttered background"],
+      "lighting_story": "bright morning window light → harsh direct noon sun highlight → soft afternoon diffuse"
+    },
+    "description_language": "一切用明亮生活方式商业摄影语言表达。主体用 real human / lifestyle object / natural botanical / casual wardrobe。材质用 soft fabric / natural skin / clean bright surface / organic texture。环境用 sunlit room / bright modern interior / clean minimal background。运动用 gentle human interaction / slow steady movement / soft breathing motion。用 'high-key lighting' 'window natural light' 'shallow depth of field' 'bright and airy' 等词汇。"
+  },
+  "hollywood-epic": {
+    "visual_style": "Large-scale blockbuster cinematic film. Lighting: high-contrast teal and orange bi-color lighting, harsh directional key light, strong blue rim light. Camera: anamorphic wide lens, horizontal lens flare, 24fps motion blur.",
+    "camera_language": {
+      "shot_types": ["low-angle hero wide", "dynamic tracking mid-shot", "dramatic facial close-up", "sweeping establishing shot"],
+      "movement": ["fast crane sweep", "dynamic steady-cam follow", "dramatic push-in", "high-speed vehicle tracking"],
+      "composition": ["dynamic diagonal alignment", "strong foreground silhouette", "forced perspective wide", "deep cinematic depth"],
+      "lighting_story": "high-contrast cool morning → harsh directional sunlight → golden hour flare → neon night practicals"
+    },
+    "description_language": "一切用大规模商业大片语言表达。主体用 lead actor / large scale physical prop / cinematic wardrobe。材质用 high-contrast texture / reflective metallic surface / atmospheric smoke / sharp physical details。环境用 large scale location / volumetric fog / deep physical set。运动用 dynamic fast motion / explosive physical movement / sweeping camera dynamics。用 'anamorphic lens' 'teal and orange grading' 'cinematic high contrast' 'horizontal flare' 等词汇。"
+  },
+  "selfie-vlog": {
+    "visual_style": "Modern creator POV vlog. Lighting: Direct ring light, harsh on-camera LED flash, or direct un-diffused natural light. Camera: 24mm wide-angle smartphone lens or mirrorless camera, deep depth of field, sharp edge-to-edge focus.",
+    "camera_language": {
+      "shot_types": ["arm-length selfie wide", "POV physical interaction", "chest-level tracking", "casual environmental wide"],
+      "movement": ["shaky handheld walking", "fast whip pan", "sudden physical drop", "unstable optical zoom"],
+      "composition": ["dead-center framing", "breaking the fourth wall", "messy authentic background", "fisheye distortion edges"],
+      "lighting_story": "uneven outdoor sun → mixed indoor fluorescent → direct face ring light"
+    },
+    "description_language": "一切用现代 Vlog 第一人称纪实语言表达。主体用 real human creator / casual everyday clothing / standard physical item。材质用 standard digital video texture / sharp everyday surface / unpolished physical material。环境用 authentic messy room / casual outdoor street / un-staged location。运动用 shaky handheld motion / fast walking physics / sudden camera turn。用 'smartphone camera style' 'POV vlog' 'wide angle lens' 'handheld shake' 等词汇。"
+  },
+  "micro-cosmos": {
+    "visual_style": "Stylized 3D animation microscopic world. Lighting: Subsurface scattering, warm studio key light, vibrant bioluminescent rim light. Render: High-quality octane render, glossy CGI.",
+    "camera_language": {
+      "shot_types": ["extreme macro 3D close-up", "floating cellular wide", "clear distinct silhouette cell", "translucent cross-section"],
+      "movement": ["animated fluid orbit", "bouncy stylized push-in", "smooth liquid drifting", "dynamic dolly track"],
+      "composition": ["central floating subject", "soft glowing bokeh background", "dynamic diagonal interaction", "vibrant color contrast"],
+      "lighting_story": "warm studio fill → bioluminescent pulse → vibrant magenta rim light → glowing cyan core"
+    },
+    "description_language": "一切用 3D 动画语言表达微观世界。主体用 3D cellular model / CGI microorganism / stylized particle / glossy organic shape。材质用 subsurface scattering / jelly-like silicone / translucent soft clay / vibrant emissive material。环境用 microscopic fluid / glowing volumetric fog / colorful dark void。运动用 bouncy stylized physics / exaggerated fluid dynamics / smooth liquid drifting。用 stylized 3D animation / subsurface scattering / vibrant bioluminescence / glossy render 等词汇。"
+  },
+  "pixel-art": {
+    "visual_style": "Retro 2D pixel art video game aesthetic. Resolution: Low-resolution pixel graphics. Palette: Limited 8-16 color palette. Lighting: Flat global lighting, hard-edged shadows. Render: 4-8 bit style, no anti-aliasing.",
+    "camera_language": {
+      "shot_types": ["2D side-scrolling wide", "8-bit character mid-shot", "overworld top-down wide", "close-up pixel detail"],
+      "movement": ["horizontal parallax scrolling", "frame-by-frame animation shift", "static tile reveal", "pixel-perfect pan"],
+      "composition": ["tight character framing", "symmetric retro layout", "parallax layered background", "simple grid-based arrangement"],
+      "lighting_story": "bright tile daylight → warm lantern indoor → dark cavern with glow → flashing neon night"
+    },
+    "description_language": "一切用复古像素游戏语言表达。主体用 pixel art character / sprite object / 8-bit item / blocky shape。材质用 hard-edged pixel / solid ungradated color / dithered shadow / tile texture。环境用 tile map background / parallax layered sky / grid-based landscape / simple geometric shape。运动用 frame-by-frame / horizontal scrolling / step-by-step movement / sprite animation。用 'pixel art' '8-bit style' 'limited palette' 'retro game aesthetic' 'sprite animation' 'blocky resolution' 等词汇。"
+  }
+}

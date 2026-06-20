@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lovart UI - 双模调度中枢</title>
+  
+  <style>
+    /* =========================================
+       SYSTEM DECLARATION: MAC SHELL & OKLCH
+       ========================================= */
+    :root {
+      --clr-accent: oklch(0.50 0.15 200); 
+      --clr-analyze: oklch(0.60 0.15 30); 
+      --clr-bg: oklch(0.98 0.01 200);     
+      --clr-surface: oklch(1 0 0);        
+      --clr-border: oklch(0.90 0.02 200); 
+      --clr-text-main: oklch(0.20 0.02 200); 
+      --clr-text-muted: oklch(0.55 0.02 200);
+      --clr-danger: oklch(0.60 0.20 20);  
+      
+      --font-ui: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", sans-serif;
+      --font-mono: ui-monospace, SFMono-Regular, Consolas, monospace;
+      
+      --spacing-1: 4px; --spacing-2: 8px; --spacing-3: 16px; --spacing-4: 24px;
+      --radius: 6px; 
+      --transition: all 150ms cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    *:focus { outline: none; }
+    input:focus, textarea:focus, select:focus {
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--clr-accent) 30%, transparent);
+      border-color: var(--clr-accent) !important;
+    }
+
+    body {
+      font-family: var(--font-ui); background-color: var(--clr-border);
+      color: var(--clr-text-main); display: flex; justify-content: center;
+      align-items: center; height: 100vh; overflow: hidden; font-size: 13px; padding: var(--spacing-4);
+    }
+
+    .macos-shell {
+      width: 100%; max-width: 1440px; height: calc(100vh - 48px);
+      background: var(--clr-bg); border-radius: 10px; overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05); display: flex; flex-direction: column;
+    }
+    .macos-header {
+      height: 38px; background: var(--clr-surface); border-bottom: 1px solid var(--clr-border);
+      display: flex; align-items: center; padding: 0 var(--spacing-3); gap: 8px;
+    }
+    .mac-dot { width: 12px; height: 12px; border-radius: 50%; }
+    .mac-dot.red { background: #FF5F56; box-shadow: inset 0 0 0 1px #E0443E; }
+    .mac-dot.yellow { background: #FFBD2E; box-shadow: inset 0 0 0 1px #DEA123; }
+    .mac-dot.green { background: #27C93F; box-shadow: inset 0 0 0 1px #1AAB29; }
+
+    /* =========================================
+       LAYOUT ARCHITECTURE
+       ========================================= */
+    .app-body { display: flex; flex: 1; height: 100%; overflow: hidden; }
+    
+    .sidebar {
+      width: 220px; background: var(--clr-surface); border-right: 1px solid var(--clr-border);
+      display: flex; flex-direction: column; z-index: 10; overflow-y: auto; transition: var(--transition);
+    }
+    .sidebar.hidden { width: 0; border-right: none; opacity: 0; overflow: hidden; }
+    
+    .sidebar-header { padding: var(--spacing-3); font-weight: 600; font-size: 14px; border-bottom: 1px solid var(--clr-border); display: flex; justify-content: space-between; align-items: center; }
+    .sidebar-section { padding: var(--spacing-2); }
+    .sidebar-label { font-size: 11px; color: var(--clr-text-muted); margin-bottom: var(--spacing-1); padding-left: var(--spacing-1); }
+    .sidebar-item { padding: 6px var(--spacing-2); font-size: 13px; cursor: pointer; border-radius: var(--radius); transition: var(--transition); display: flex; justify-content: space-between; align-items: center; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;}
+    .sidebar-item:hover { background: var(--clr-bg); }
+    .sidebar-item.active { background: color-mix(in srgb, var(--clr-accent) 10%, transparent); color: var(--clr-accent); font-weight: 600; }
+    .sidebar-item .del-wf { opacity: 0; color: var(--clr-text-muted); font-size: 14px; }
+    .sidebar-item:hover .del-wf { opacity: 1; }
+    .sidebar-item .del-wf:hover { color: var(--clr-danger); }
+
+    .main-area { flex: 1; display: flex; flex-direction: column; background: var(--clr-bg); overflow: hidden; position: relative; }
+    
+    /* Topbar & Switcher */
+    .topbar {
+      height: 56px; background: var(--clr-surface); border-bottom: 1px solid var(--clr-border);
+      display: flex; align-items: center; justify-content: space-between; padding: 0 var(--spacing-3); flex-shrink: 0;
+    }
+    .topbar-input {
+      font-family: var(--font-ui); font-size: 16px; font-weight: 600; border: 1px solid transparent;
+      padding: 4px 8px; margin-left: -8px; background: transparent; transition: var(--transition); width: 220px; border-radius: var(--radius);
+    }
+    .topbar-left { display: flex; align-items: center; gap: var(--spacing-2); width: 30%; }
+    .topbar-right { display: flex; justify-content: flex-end; width: 30%; gap: 8px; }
+    
+    .mode-switcher {
+      display: flex; background: var(--clr-bg); padding: 3px; border-radius: 6px; border: 1px solid var(--clr-border);
+    }
+    .mode-btn {
+      padding: 4px 16px; font-size: 12px; font-weight: 600; cursor: pointer; border-radius: 4px;
+      color: var(--clr-text-muted); transition: var(--transition); border: none; background: transparent;
+    }
+    .mode-btn.active { background: var(--clr-surface); color: var(--clr-text-main); box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+    
+    .dropdown { position: relative; display: inline-block; }
+    .btn {
+      font-family: var(--font-ui); font-size: 13px; padding: 6px 12px; border: 1px solid var(--clr-border);
+      background: var(--clr-surface); cursor: pointer; transition: var(--transition); border-radius: var(--radius); display: inline-flex; align-items: center; justify-content: center; gap: 4px;
+    }
+    .btn:hover { border-color: var(--clr-text-main); color: var(--clr-text-main); }
+    .btn-primary { background: var(--clr-text-main); color: var(--clr-surface); border-color: var(--clr-text-main); }
+    .btn-primary:hover { background: var(--clr-accent); border-color: var(--clr-accent); }
+    .dropdown-menu { display: none; position: absolute; right: 0; top: calc(100% + 4px); background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius); box-shadow: 0 10px 30px rgba(0,0,0,0.05); min-width: 160px; z-index: 100; }
+    .dropdown-menu.show { display: block; }
+    .dropdown-item { padding: 8px 12px; cursor: pointer; transition: var(--transition); }
+    .dropdown-item:hover { background: var(--clr-bg); color: var(--clr-accent); }
+    .dropdown-divider { height: 1px; background: var(--clr-border); margin: 4px 0; }
+    
+    /* Toast notifications */
+    .toast-container { position: fixed; top: 16px; left: 50%; transform: translateX(-50%); z-index: 9999; display: flex; flex-direction: column; gap: 8px; pointer-events: none; }
+    .toast { padding: 10px 20px; background: var(--clr-text-main); color: var(--clr-surface); border-radius: var(--radius); font-size: 13px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); animation: toastIn 0.25s ease-out; pointer-events: auto; }
+    .toast.error { background: var(--clr-danger); }
+    @keyframes toastIn { from { opacity: 0; transform: translateY(-12px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* =========================================
+       VIEW ROUTING
+       ========================================= */
+    .view-container { display: none; flex-direction: column; flex: 1; overflow: hidden; animation: fadeIn 0.2s ease-out; }
+    .view-container.active { display: flex; }
+    @keyframes fadeIn { from{opacity:0;} to{opacity:1;} }
+
+    /* --- PIPELINE VIEW STYLES --- */
+    .board-scroll { flex: 1; overflow-x: auto; overflow-y: hidden; padding: var(--spacing-3); display: flex; gap: var(--spacing-2); align-items: flex-start; }
+    .step-column {
+      width: 260px; flex-shrink: 0; background: var(--clr-surface); border: 1px solid var(--clr-border);
+      border-radius: var(--radius); display: flex; flex-direction: column; transition: var(--transition);
+      max-height: calc(100vh - 140px); overflow-y: auto;
+    }
+    .step-column:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.04); border-color: #ccc; }
+    .step-header { padding: var(--spacing-2); border-bottom: 1px solid var(--clr-border); display: flex; align-items: center; justify-content: space-between; background: var(--clr-bg); border-radius: var(--radius) var(--radius) 0 0; }
+    .step-title-input { font-weight: 600; font-size: 13px; border: 1px solid transparent; background: transparent; width: 100px; padding: 2px 4px; border-radius: 2px; }
+    .step-badge { font-size: 11px; padding: 2px 6px; border-radius: 4px; cursor: pointer; user-select: none; border: 1px solid transparent; }
+    .badge-ask { background: var(--clr-surface); border-color: var(--clr-border); color: var(--clr-text-main); }
+    .badge-analyze { background: var(--clr-analyze); color: var(--clr-surface); border-color: var(--clr-analyze); }
+    .badge-fast { background: var(--clr-accent); color: var(--clr-surface); border-color: var(--clr-accent); }
+    
+    .ctrl-icon { font-size: 13px; color: var(--clr-text-muted); cursor: pointer; opacity: 0; transition: var(--transition); padding: 0 2px; border: none; background: none; font-family: var(--font-mono); }
+    .step-column:hover .ctrl-icon { opacity: 1; }
+    .ctrl-icon:hover { color: var(--clr-text-main); }
+    .ctrl-icon.danger:hover { color: var(--clr-danger); }
+    
+    .step-prompt { padding: var(--spacing-2); border-bottom: 1px solid var(--clr-border); }
+    .prompt-textarea { width: 100%; min-height: 72px; max-height: 400px; font-family: var(--font-ui); font-size: 13px; line-height: 1.5; border: 1px solid transparent; resize: vertical; padding: 4px; border-radius: 4px; overflow-y: auto; }
+    .step-params { padding: var(--spacing-2); display: flex; flex-wrap: wrap; gap: var(--spacing-1); border-bottom: 1px solid var(--clr-border); background: var(--clr-bg); align-items: center; }
+    .param-select { font-family: var(--font-mono); font-size: 11px; padding: 2px 4px; border: 1px solid var(--clr-border); background: var(--clr-surface); border-radius: 4px; }
+    .btn-icon { font-size: 11px; padding: 2px 8px; background: var(--clr-surface); border: 1px solid var(--clr-border); color: var(--clr-text-main); cursor: pointer; border-radius: 4px; margin-left: auto; }
+    .btn-icon:hover { border-color: var(--clr-accent); color: var(--clr-accent); }
+    
+    .step-assets { padding: var(--spacing-2); display: none; background: #fafafa; border-radius: 0 0 var(--radius) var(--radius); }
+    .step-assets.active { display: block; }
+    .asset-section { margin-bottom: var(--spacing-2); }
+    .asset-section:last-child { margin-bottom: 0; }
+    .asset-label { font-size: 11px; color: var(--clr-text-muted); margin-bottom: 4px; font-weight: 600; }
+    .asset-dropzone { border: 1px dashed #ccc; padding: var(--spacing-2); text-align: center; font-size: 11px; color: var(--clr-text-muted); background: var(--clr-surface); cursor: pointer; border-radius: 4px; }
+    .asset-dropzone:hover { border-color: var(--clr-accent); color: var(--clr-accent); }
+    .asset-chip { display: flex; justify-content: space-between; align-items: center; font-size: 11px; padding: 4px 8px; background: var(--clr-surface); border: 1px solid var(--clr-border); margin-bottom: 4px; border-radius: 4px; gap: 6px; }
+    .asset-chip .info { display: flex; align-items: center; gap: 6px; overflow: hidden; flex: 1; }
+    .asset-chip .info img { width: 36px; height: 36px; object-fit: cover; border-radius: 4px; flex-shrink: 0; }
+    .asset-chip .info .name { font-size: 11px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .asset-chip .remove { cursor: pointer; color: var(--clr-text-muted); font-size: 12px; flex-shrink: 0; }
+    .asset-chip .remove:hover { color: var(--clr-danger); }
+    .asset-dropzone.drag-over { border-color: var(--clr-accent); background: color-mix(in srgb, var(--clr-accent) 5%, transparent); }
+    
+    .add-column-area { width: 250px; flex-shrink: 0; display: flex; flex-direction: column; gap: 8px; }
+    .add-column-btn { width: 100%; height: 44px; border: 1px dashed var(--clr-border); display: flex; align-items: center; justify-content: center; gap: 6px; cursor: pointer; color: var(--clr-text-muted); transition: var(--transition); border-radius: var(--radius); background: transparent; font-weight: 600; font-size: 13px; }
+    .add-column-btn:hover { border-color: var(--clr-text-main); color: var(--clr-text-main); background: var(--clr-surface); }
+
+    /* --- BRIEF VIEW STYLES --- */
+    .brief-scroll { flex: 1; overflow-y: auto; padding: var(--spacing-4); display: flex; flex-direction: column; align-items: center; }
+    .brief-list { width: 100%; max-width: 640px; display: flex; flex-direction: column; gap: var(--spacing-4); padding-bottom: 60px; }
+    .step-divider { padding: 6px var(--spacing-2); border-top: 1px solid var(--clr-border); border-bottom: 1px solid var(--clr-border); background: var(--clr-bg); font-size: 11px; color: var(--clr-text-muted); font-weight: 600; }
+    .step-assets-grid { padding: 0 var(--spacing-2) var(--spacing-2) var(--spacing-2); display: grid; grid-template-columns: 1fr 1fr; gap: var(--spacing-2); }
+    .asset-section-grid { display: flex; flex-direction: column; gap: 4px; }
+    .brief-params { padding: var(--spacing-2); display: flex; flex-wrap: wrap; gap: var(--spacing-1); border-top: 1px solid var(--clr-border); background: var(--clr-surface); align-items: center; border-radius: 0 0 var(--radius) var(--radius); }
+    .param-btn { font-family: var(--font-mono); font-size: 11px; padding: 4px 8px; border: 1px solid var(--clr-border); background: var(--clr-bg); border-radius: 4px; cursor: pointer; transition: var(--transition); color: var(--clr-text-muted); user-select: none; }
+    .param-btn:hover { border-color: var(--clr-text-main); color: var(--clr-text-main); }
+    .param-btn.active { background: var(--clr-text-main); color: var(--clr-surface); border-color: var(--clr-text-main); }
+    .preview-code { margin-left: auto; font-family: var(--font-mono); font-size: 11px; color: var(--clr-accent); background: color-mix(in srgb, var(--clr-accent) 5%, transparent); padding: 4px 8px; border-radius: 4px; }
+
+    /* Bottombar Footer */
+    .bottombar { height: 44px; border-top: 1px solid var(--clr-border); background: var(--clr-surface); display: flex; align-items: center; justify-content: space-between; padding: 0 var(--spacing-3); flex-shrink: 0; font-family: var(--font-mono); font-size: 12px; }
+    .bottombar-group { display: flex; align-items: center; gap: 8px; }
+    .bottombar input { font-family: var(--font-mono); border: 1px solid var(--clr-border); padding: 4px 6px; border-radius: 4px; background: var(--clr-bg); }
+    #importInput { display: none; }
+    
+    /* Right-click context menu */
+    .ctx-menu { display: none; position: fixed; background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius); box-shadow: 0 10px 30px rgba(0,0,0,0.1); min-width: 140px; z-index: 1000; padding: 4px 0; }
+    .ctx-menu.show { display: block; }
+    .ctx-item { padding: 8px 14px; cursor: pointer; font-size: 13px; transition: var(--transition); }
+    .ctx-item:hover { background: var(--clr-bg); color: var(--clr-accent); }
+
+    /* 极简滚动条 */
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--clr-border); border-radius: 2px; }
+    ::-webkit-scrollbar-thumb:hover { background: var(--clr-text-muted); }
+  </style>
+</head>
+<body>
+
+  <div class="macos-shell">
+    <div class="macos-header">
+      <div class="mac-dot red"></div>
+      <div class="mac-dot yellow"></div>
+      <div class="mac-dot green"></div>
+    </div>
+    
+    <div class="app-body">
+      <aside class="sidebar" id="appSidebar">
+        <div class="sidebar-header">
+          <span>工作台</span>
+          <button class="ctrl-icon" onclick="app.pipeline.create()" style="opacity: 1;" title="新建管线">➕</button>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-label">当前管线</div>
+          <div id="wfList"></div>
+        </div>
+        <div class="sidebar-section">
+          <div class="sidebar-label">模版库</div>
+          <div id="tplList"></div>
+        </div>
+      </aside>
+
+      <main class="main-area">
+        <header class="topbar">
+          <div class="topbar-left" id="topbarLeft"></div>
+          <div class="mode-switcher">
+            <button class="mode-btn active" id="btnModePipeline" onclick="app.switchAppMode('pipeline')">编排模式</button>
+            <button class="mode-btn" id="btnModeBrief" onclick="app.switchAppMode('brief')">极简录入</button>
+          </div>
+          <div class="topbar-right" id="topbarRight"></div>
+        </header>
+
+        <div class="view-container active" id="viewPipeline">
+          <div class="board-scroll" id="pipelineBoard">
+            <div class="add-column-area" id="pipelineAddAnchor">
+              <button class="add-column-btn" onclick="app.pipeline.addStep()">➕ 新增步骤</button>
+            </div>
+          </div>
+          <footer class="bottombar">
+            <div class="bottombar-group">
+              <label style="color:var(--clr-text-muted);">Project_ID:</label>
+              <input type="text" id="wfProjectId" style="width: 90px;" placeholder="UUID" oninput="app.pipeline.updateGlobal('projectId', this.value)">
+              <label style="color:var(--clr-text-muted); margin-left:4px;">Path:</label>
+              <input type="text" id="wfProjectPath" style="width: 120px;" placeholder="留空=硬编码" oninput="app.pipeline.updateGlobal('projectPath', this.value)">
+            </div>
+            <div class="bottombar-group">
+              <label style="color:var(--clr-text-muted);">Step_Delay (s):</label>
+              <input type="number" id="wfStepDelay" style="width: 50px;" min="0" oninput="app.pipeline.updateGlobal('stepDelay', this.value)">
+            </div>
+          </footer>
+        </div>
+
+        <div class="view-container" id="viewBrief">
+          <div class="brief-scroll" id="briefScrollContainer">
+            <div class="brief-list" id="briefBoard"></div>
+          </div>
+          <footer class="bottombar" style="justify-content: flex-start;">
+            <div class="bottombar-group">
+              <span style="color:var(--clr-text-muted);" id="briefStats">共 0 条需求</span>
+            </div>
+          </footer>
+        </div>
+
+      </main>
+    </div>
+  </div>
+
+  <input type="file" id="importInput" accept=".json" onchange="app.pipeline.importJSON(event)">
+  <input type="file" id="pipelineImgInput" accept="image/*" multiple style="display:none;">
+  <div class="toast-container" id="toastContainer"></div>
+  <div class="ctx-menu" id="ctxMenu"></div>
+
+  <script>
+    // ==========================================
+    // CLOUD SYNC ENGINE (标准引擎，请勿修改内部逻辑)
+    // ==========================================
+    const CloudSyncEngine = {
+      config: {
+        gasUrl: "https://script.google.com/macros/s/AKfycbxC7-1h6UZG8_hJopkyaWoG44lzKqeDqaxcN6_KyH8eeujWPzc19kbSQ2xfFzoHZZQUoQ/exec"
+      },
+      isSyncing: false,
+
+      async callGateway(action, data = null) {
+        if (!this.config.gasUrl || this.config.gasUrl.includes("填入")) throw new Error("未配置有效的 GAS URL");
+        if (this.isSyncing) throw new Error("系统正在通信中，请勿频繁操作");
+
+        this.isSyncing = true;
+        try {
+          const res = await fetch(this.config.gasUrl, {
+            method: 'POST',
+            redirect: 'follow',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({ action: action, data: data })
+          });
+
+          const text = await res.text();
+          if (text.includes("<html")) {
+            throw new Error("权限拦截，请确保 GAS 设为了【所有人】访问");
+          }
+
+          const jsonRes = JSON.parse(text);
+          if (jsonRes.error) throw new Error(jsonRes.error);
+          return jsonRes;
+        } catch (err) {
+          throw new Error(err.message);
+        } finally {
+          this.isSyncing = false;
+        }
+      },
+
+      async push(dataObj, onProgress, onSuccess, onError) {
+        if(onProgress) onProgress("正在同步至云端...");
+        try {
+          const res = await this.callGateway("push_data", dataObj);
+          if(onSuccess) onSuccess(res.msg || "同步成功");
+          return true;
+        } catch(e) {
+          if(onError) onError(e.message);
+          return false;
+        }
+      },
+
+      async pull(onProgress, onSuccess, onError) {
+        if(onProgress) onProgress("正在从云端读取数据...");
+        try {
+          const res = await this.callGateway("pull_data");
+          if(onSuccess) onSuccess("拉取成功");
+          return res.data;
+        } catch(e) {
+          if(onError) onError(e.message);
+          return null;
+        }
+      }
+    };
+
+    // Toast 通知工具
+    function showToast(msg, isError = false) {
+      const container = document.getElementById('toastContainer');
+      const el = document.createElement('div');
+      el.className = `toast${isError ? ' error' : ''}`;
+      el.textContent = msg;
+      container.appendChild(el);
+      setTimeout(() => { el.style.opacity = '0'; el.style.transition = 'opacity 0.3s'; setTimeout(() => el.remove(), 300); }, 2500);
+    }
+    const app = (() => {
+      // --- KEYS ---
+      const K_MODE = 'lovart_app_mode';
+      const K_WF = 'pipeline_workflows_v1';
+      const K_TPL = 'pipeline_templates_v1';
+      const K_ACT_WF = 'pipeline_active_id';
+      const K_BRIEF = 'brief_dashboard_cards_v1';
+
+      let currentMode = localStorage.getItem(K_MODE) || 'pipeline';
+      let pipeState = { workflows: [], templates: [], activeId: null };
+      let briefState = { items: [] };
+      let editingTplId = null; // 正在编辑的模版 id
+
+      const genId = () => 'id_' + Math.random().toString(36).substr(2, 9);
+
+      // ==========================================
+      // PIPELINE MODULE
+      // ==========================================
+      const pipeline = {
+        load: () => {
+          try {
+            if(localStorage.getItem(K_WF)) pipeState.workflows = JSON.parse(localStorage.getItem(K_WF));
+            if(localStorage.getItem(K_TPL)) pipeState.templates = JSON.parse(localStorage.getItem(K_TPL));
+            pipeState.activeId = localStorage.getItem(K_ACT_WF);
+          } catch(e){}
+          if(pipeState.workflows.length === 0) pipeline.create("默认管线");
+          else {
+            if(!pipeState.workflows.find(w=>w.id===pipeState.activeId)) pipeState.activeId = pipeState.workflows[0].id;
+            pipeline.renderAll();
+          }
+        },
+        save: () => {
+          localStorage.setItem(K_WF, JSON.stringify(pipeState.workflows));
+          localStorage.setItem(K_TPL, JSON.stringify(pipeState.templates));
+          localStorage.setItem(K_ACT_WF, pipeState.activeId);
+        },
+        getActive: () => pipeState.workflows.find(w => w.id === pipeState.activeId),
+        // 返回当前编辑的步骤数组：编辑模版时返回模版步骤，否则返回管线步骤
+        _getSteps: () => {
+          if (editingTplId) {
+            const tpl = pipeState.templates.find(t => t.id === editingTplId);
+            return tpl ? tpl.steps : null;
+          }
+          const wf = pipeline.getActive();
+          return wf ? wf.steps : null;
+        },
+        
+        create: (name="未命名管线", steps=[]) => {
+          const wf = {
+            id: genId(), name, projectId: "", projectPath: "", stepDelay: 8,
+            steps: steps.length ? JSON.parse(JSON.stringify(steps)) : [{ id: genId(), name: "加载框架", type: "ask", mode: null, prompt: "", follow_ups: 0, refs: [], products: [] }]
+          };
+          pipeState.workflows.push(wf); pipeline.switchWf(wf.id);
+        },
+        switchWf: (id) => { editingTplId = null; pipeState.activeId = id; pipeline.save(); pipeline.renderAll(); pipeline.renderTopbarRight(); },
+        deleteWf: (id, e) => {
+          e.stopPropagation();
+          if(confirm("确定删除此管线吗？")) {
+            pipeState.workflows = pipeState.workflows.filter(w=>w.id!==id);
+            if(pipeState.workflows.length===0) pipeline.create();
+            else if(pipeState.activeId===id) pipeline.switchWf(pipeState.workflows[0].id);
+            else { pipeline.save(); pipeline.renderSidebar(); }
+          }
+        },
+        saveAsTpl: () => {
+          const wf = pipeline.getActive(); if(!wf) return;
+          const tpl = JSON.parse(JSON.stringify(wf)); tpl.id = genId(); tpl.name = `[模版] ${wf.name}`;
+          pipeState.templates.push(tpl); pipeline.save(); pipeline.renderSidebar(); showToast("已保存到模版库！");
+        },
+        // 左键打开模版编辑
+        openTpl: (id) => {
+          const tpl = pipeState.templates.find(t => t.id === id);
+          if(!tpl) return;
+          editingTplId = id;
+          pipeline.renderAll();
+          pipeline.renderTopbarRight();
+        },
+        // 保存当前编辑内容到模版
+        saveTpl: () => {
+          if (!editingTplId) return;
+          pipeline.save();
+          pipeline.renderSidebar();
+          showToast("模版已保存");
+        },
+        // 编辑模版时更新名称
+        updateTplName: (val) => {
+          if (!editingTplId) return;
+          const tpl = pipeState.templates.find(t => t.id === editingTplId);
+          if (tpl) { tpl.name = `[模版] ${val}`; pipeline.save(); pipeline.renderSidebar(); }
+        },
+        // 复制模版为新管线（右键菜单）
+        loadTpl: (id) => {
+          const tpl = pipeState.templates.find(t=>t.id===id);
+          if(tpl) pipeline.create(tpl.name.replace('[模版] ', '')+"(副本)", tpl.steps);
+        },
+        delTpl: (id, e) => {
+          e.stopPropagation(); if(confirm("删除模版？")) { pipeState.templates = pipeState.templates.filter(t=>t.id!==id); if(editingTplId===id) editingTplId=null; pipeline.save(); pipeline.renderSidebar(); }
+        },
+        updateGlobal: (field, val) => { const wf = pipeline.getActive(); if(wf) { wf[field] = field==='stepDelay'?Number(val):val; pipeline.save(); } },
+        
+        // Steps — 统一使用 _getSteps() 操作当前编辑的目标
+        addStep: () => { const steps = pipeline._getSteps(); if(!steps) return; steps.push({ id: genId(), name: "新步骤", type: "ask", mode: null, prompt: "", follow_ups: 0, refs: [], products: [] }); pipeline.save(); pipeline.renderBoard(); setTimeout(() => { const b = document.getElementById('pipelineBoard'); b.scrollTo({left: b.scrollWidth, behavior:'smooth'}); }, 50); },
+        delStep: (id) => { if(confirm('删除步骤？')){ const steps = pipeline._getSteps(); if(!steps) return; steps.splice(steps.findIndex(s=>s.id===id), 1); pipeline.save(); pipeline.renderBoard(); } },
+        moveStep: (id, dir) => { const steps = pipeline._getSteps(); if(!steps) return; const idx=steps.findIndex(s=>s.id===id); if((dir===-1&&idx>0)||(dir===1&&idx<steps.length-1)){ const temp=steps[idx]; steps[idx]=steps[idx+dir]; steps[idx+dir]=temp; pipeline.save(); pipeline.renderBoard(); } },
+        cycleType: (id) => {
+          const cycle = { ask: {next:'analyze'}, analyze: {next:'fast'}, fast: {next:'ask'} };
+          const steps = pipeline._getSteps(); if(!steps) return; const step = steps.find(s=>s.id===id);
+          step.type = cycle[step.type].next; step.mode = step.type==='fast'?'fast':null;
+          pipeline.save(); pipeline.renderBoard();
+        },
+        updateStep: (id, field, val) => { const steps = pipeline._getSteps(); if(!steps) return; const step=steps.find(s=>s.id===id); if(step){ step[field]=val; pipeline.save(); } },
+        
+        // Assets — 支持拖入/选择/粘贴图片，存为 {n:文件名, d:dataURL}
+        addAsset: (id, type) => {
+          const input = document.getElementById('pipelineImgInput');
+          input.onchange = () => {
+            const files = Array.from(input.files);
+            if (files.length) pipeline.readImageFiles(id, type, files);
+            input.value = '';
+          };
+          input.click();
+        },
+        delAsset: (id, type, name) => {
+          const steps = pipeline._getSteps(); if(!steps) return; const step=steps.find(s=>s.id===id);
+          if(!step) return;
+          step[type] = (step[type] || []).filter(a => (typeof a === 'string' ? a : a.n) !== name);
+          pipeline.save(); pipeline.renderBoard();
+        },
+        // 统一处理图片文件 -> dataURL
+        readImageFiles: (id, type, files) => {
+          const steps = pipeline._getSteps(); if(!steps) return; const step=steps.find(s=>s.id===id);
+          if(!step) return; if(!step[type]) step[type]=[];
+          let pending = files.length;
+          files.forEach(f => {
+            const reader = new FileReader();
+            reader.onload = (e) => {
+              step[type].push({ n: f.name, d: e.target.result });
+              if (--pending === 0) { pipeline.save(); pipeline.renderBoard(); }
+            };
+            reader.readAsDataURL(f);
+          });
+        },
+        // 切换素材面板：展开时折叠文字到最小高度
+        toggleAssets: (btn) => {
+          const assets = btn.parentElement.nextElementSibling;
+          const ta = btn.closest('.step-column').querySelector('.prompt-textarea');
+          const isOpen = assets.classList.toggle('active');
+          if (isOpen) {
+            ta.style.height = '72px';
+            ta.style.overflow = 'hidden';
+          } else {
+            ta.style.height = 'auto';
+            ta.style.height = ta.scrollHeight + 'px';
+          }
+        },
+        // 处理拖入文件列表
+        handleDropFiles: (id, type, files) => {
+          const imgFiles = Array.from(files).filter(f => f.type.startsWith('image/'));
+          if (imgFiles.length) pipeline.readImageFiles(id, type, imgFiles);
+        },
+
+        // Export/Import
+        exportJSON: () => {
+          const wf = pipeline.getActive(); if(!wf || editingTplId) return;
+          const path = wf.projectPath || "";
+          // 有路径→拼绝对路径，无路径→留 [文件名] 让 AI 补
+          const toPath = (f, sub) => {
+            const name = typeof f === 'object' ? f.n : f;
+            return path ? `${path}/input/${sub}/${name}` : `[${name}]`;
+          };
+          const out = {
+            mode: "pipeline", name: wf.name, project_id: wf.projectId || "[项目UUID]", output_dir: path ? `${path}/output` : "[项目路径]/output", step_delay: wf.stepDelay||8,
+            steps: wf.steps.map(s => {
+              const isFast = (s.type === 'fast' || s.mode === 'fast');
+              let r = { name: s.name, type: (isFast && s.type==='fast') ? 'ask' : s.type, follow_ups: s.follow_ups, prompt: s.prompt };
+              if(s.mode) r.mode = s.mode;
+              // 参考图→input/references/，产品图→input/products/
+              const refs = (s.refs||[]).map(f => toPath(f, 'references'));
+              const prods = (s.products||[]).map(f => toPath(f, 'products'));
+              if (refs.length || prods.length) r.images = [...refs, ...prods];
+              if(isFast) {
+                if(s.model) r.model=s.model; 
+                if(s.ratio) r.aspect_ratio=s.ratio; 
+                if(s.resolution) r.resolution=s.resolution; 
+              }
+              return r;
+            })
+          };
+          const a = document.createElement('a'); a.href = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(out, null, 2));
+          a.download = `pipeline_${wf.name}.json`; document.body.appendChild(a); a.click(); a.remove();
+        },
+        importJSON: (e) => {
+          const file = e.target.files[0]; if(!file) return;
+          const reader = new FileReader();
+          reader.onload = (evt) => {
+            try {
+              const d = JSON.parse(evt.target.result);
+              const parseRef = (str) => {
+                // 全路径 → 只取文件名
+                if (str.includes('/') || str.includes('\\')) {
+                  const parts = str.replace(/\\/g, '/').split('/');
+                  return parts[parts.length - 1];
+                }
+                return str.replace(/^\[|\]$/g, '');
+              };
+              const toStep = (s) => ({ id:genId(), name:s.name||"", type:s.type||"ask", mode:s.mode||null, prompt:s.prompt||"", follow_ups:s.follow_ups||0, model:s.model||"", ratio:s.aspect_ratio||"", resolution:s.resolution||"", refs:(s.images||[]).map(parseRef), products:[] });
+              const list = d.workflows || d.templates || (d.mode==='pipeline' && d.steps ? [{...d}] : null);
+              if(!list) throw new Error("Invalid Format");
+              list.forEach(w => { pipeState.templates.push({ id:genId(), name:w.name||"导入模版", projectId:w.project_id||"", projectPath:w.output_dir?.replace('/output','')||"", stepDelay:w.step_delay||8, steps:(w.steps||[]).map(toStep) }); });
+              pipeline.save(); pipeline.renderSidebar();
+            } catch(err) { alert("导入失败: "+err.message); } e.target.value = '';
+          }; reader.readAsText(file);
+        },
+
+        // 云端同步
+        syncTplPush: async () => {
+          const data = { templates: pipeState.templates };
+          await CloudSyncEngine.push(
+            data,
+            (msg) => showToast(msg),
+            (msg) => { showToast(msg); pipeline.renderSidebar(); },
+            (err) => showToast(err, true)
+          );
+        },
+        syncTplPull: async () => {
+          const result = await CloudSyncEngine.pull(
+            (msg) => showToast(msg),
+            (msg) => showToast(msg),
+            (err) => showToast(err, true)
+          );
+          if (result && result.templates) {
+            pipeState.templates = result.templates;
+            pipeline.save();
+            pipeline.renderSidebar();
+            showToast(`已同步 ${result.templates.length} 个模版`);
+          } else if (result) {
+            showToast("云端暂无模版数据", true);
+          }
+        },
+
+        // Renders
+        renderAll: () => { pipeline.renderSidebar(); pipeline.renderBoard(); },
+        renderSidebar: () => {
+          document.getElementById('wfList').innerHTML = pipeState.workflows.map(w =>
+            `<div class="sidebar-item ${!editingTplId && w.id===pipeState.activeId?'active':''}" onclick="app.pipeline.switchWf('${w.id}')"><span>${w.name}</span>${pipeState.workflows.length>1?`<button class="ctrl-icon del-wf" onclick="app.pipeline.deleteWf('${w.id}', event)">×</button>`:''}</div>`
+          ).join('');
+          document.getElementById('tplList').innerHTML = pipeState.templates.map(t =>
+            `<div class="sidebar-item ${t.id===editingTplId?'active':''}" onclick="app.pipeline.openTpl('${t.id}')" oncontextmenu="app.showTplCtx(event,'${t.id}')"><span>${t.name}</span><button class="ctrl-icon del-wf" onclick="app.pipeline.delTpl('${t.id}', event)">×</button></div>`
+          ).join('');
+        },
+        renderBoard: () => {
+          let name = '', steps = null, showBottomInputs = true;
+          if (editingTplId) {
+            const tpl = pipeState.templates.find(t => t.id === editingTplId);
+            if (!tpl) { editingTplId = null; pipeline.renderAll(); return; }
+            name = tpl.name.replace('[模版] ', '');
+            steps = tpl.steps;
+            showBottomInputs = false;
+          } else {
+            const wf = pipeline.getActive();
+            if (!wf) return;
+            name = wf.name;
+            steps = wf.steps;
+          }
+          if(currentMode === 'pipeline') {
+            if (editingTplId) {
+              const tpl = pipeState.templates.find(t => t.id === editingTplId);
+              document.getElementById('topbarLeft').innerHTML = `<input type="text" class="topbar-input" value="${tpl ? tpl.name.replace('[模版] ', '') : ''}" oninput="app.pipeline.updateTplName(this.value)">`;
+            } else {
+              const wf = pipeline.getActive();
+              document.getElementById('topbarLeft').innerHTML = `<input type="text" class="topbar-input" value="${wf ? wf.name : ''}" oninput="app.pipeline.updateGlobal('name', this.value); document.getElementById('wfList').innerHTML=''; app.pipeline.renderSidebar();">`;
+            }
+          }
+          // 底部输入框：编辑模版时隐藏，并填充当前管线值
+          if (showBottomInputs) {
+            const wf = pipeline.getActive();
+            document.getElementById('wfProjectId').value = wf ? wf.projectId||'' : '';
+            document.getElementById('wfProjectPath').value = wf ? wf.projectPath||'' : '';
+            document.getElementById('wfStepDelay').value = wf ? wf.stepDelay||8 : 8;
+          }
+          document.getElementById('wfProjectId').parentElement.parentElement.style.display = showBottomInputs ? 'flex' : 'none';
+          
+          const board = document.getElementById('pipelineBoard'); const anchor = document.getElementById('pipelineAddAnchor');
+          Array.from(board.children).forEach(c => { if(c.id !== 'pipelineAddAnchor') c.remove(); });
+          
+          const types = { ask:{t:'💬 对话', c:'badge-ask'}, analyze:{t:'🔍 分析', c:'badge-analyze'}, fast:{t:'🎨 生图', c:'badge-fast'} };
+          
+          steps.forEach(step => {
+            const tc = types[step.type] || types.ask; const isFast = step.type==='fast'||step.mode==='fast';
+            const col = document.createElement('div'); col.className = 'step-column';
+            
+            const followUpHtml = `
+              <select class="param-select" onchange="app.pipeline.updateStep('${step.id}','follow_ups',Number(this.value))">
+                <option value="0" ${step.follow_ups===0?'selected':''}>追问: 0</option>
+                <option value="1" ${step.follow_ups===1?'selected':''}>追问: 1</option>
+                <option value="2" ${step.follow_ups===2?'selected':''}>追问: 2</option>
+                <option value="3" ${step.follow_ups===3?'selected':''}>追问: 3</option>
+              </select>`;
+            
+            const fastHtml = `
+              <select class="param-select" onchange="app.pipeline.updateStep('${step.id}','model',this.value)">
+                <option value="">模型</option>
+                <option value="gpt2 md" ${step.model==='gpt2 md'?'selected':''}>gpt2 md</option>
+                <option value="gpt2 low" ${step.model==='gpt2 low'?'selected':''}>gpt2 low</option>
+                <option value="nb2" ${step.model==='nb2'?'selected':''}>nb2</option>
+              </select>
+              <select class="param-select" onchange="app.pipeline.updateStep('${step.id}','ratio',this.value)">
+                <option value="">比例</option>
+                <option value="1:1" ${step.ratio==='1:1'?'selected':''}>1:1</option>
+                <option value="3:4" ${step.ratio==='3:4'?'selected':''}>3:4</option>
+                <option value="9:16" ${step.ratio==='9:16'?'selected':''}>9:16</option>
+                <option value="16:9" ${step.ratio==='16:9'?'selected':''}>16:9</option>
+              </select>
+              <select class="param-select" onchange="app.pipeline.updateStep('${step.id}','resolution',this.value)">
+                <option value="">分辨率</option>
+                <option value="1K" ${step.resolution==='1K'?'selected':''}>1K</option>
+                <option value="2K" ${step.resolution==='2K'?'selected':''}>2K</option>
+              </select>
+            `;
+
+            const assetsActive = step.refs?.length || step.products?.length;
+            col.innerHTML = `
+              <div class="step-header">
+                <input type="text" class="step-title-input" value="${step.name}" oninput="app.pipeline.updateStep('${step.id}', 'name', this.value)">
+                <div style="display:flex; gap:2px;"><span class="step-badge ${tc.c}" onclick="app.pipeline.cycleType('${step.id}')">${tc.t}</span><button class="ctrl-icon" onclick="app.pipeline.moveStep('${step.id}', -1)">↑</button><button class="ctrl-icon" onclick="app.pipeline.moveStep('${step.id}', 1)">↓</button><button class="ctrl-icon danger" onclick="app.pipeline.delStep('${step.id}')">×</button></div>
+              </div>
+              <div class="step-prompt">
+                <textarea class="prompt-textarea" style="${assetsActive ? 'height:72px;overflow:hidden;' : ''}" oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'; app.pipeline.updateStep('${step.id}', 'prompt', this.value)">${step.prompt}</textarea>
+              </div>
+              <div class="step-params">
+                ${followUpHtml}
+                ${isFast ? fastHtml : ''}
+                <button class="btn-icon" onclick="app.pipeline.toggleAssets(this)">📸 素材</button>
+              </div>
+              <div class="step-assets ${(step.refs?.length||step.products?.length)?'active':''}">
+                <div class="asset-section"><div class="asset-label">Refs</div>
+                  ${(step.refs||[]).map(a => {
+                    const name = typeof a === 'string' ? a : a.n;
+                    const img = typeof a === 'object' && a.d ? a.d : null;
+                    return `<div class="asset-chip"><div class="info">${img ? `<img src="${img}">` : '📄'}<span class="name">${name}</span></div><span class="remove" onclick="app.pipeline.delAsset('${step.id}','refs','${name.replace(/'/g,"")}')">×</span></div>`;
+                  }).join('')}
+                  <div class="asset-dropzone" onclick="app.pipeline.addAsset('${step.id}','refs')" ondragover="this.classList.add('drag-over');event.preventDefault()" ondragleave="this.classList.remove('drag-over')" ondrop="event.preventDefault();this.classList.remove('drag-over');app.pipeline.handleDropFiles('${step.id}','refs',event.dataTransfer.files)">📎 拖入或点击上传</div>
+                </div>
+                <div class="asset-section"><div class="asset-label">Prods</div>
+                  ${(step.products||[]).map(a => {
+                    const name = typeof a === 'string' ? a : a.n;
+                    const img = typeof a === 'object' && a.d ? a.d : null;
+                    return `<div class="asset-chip"><div class="info">${img ? `<img src="${img}">` : '📄'}<span class="name">${name}</span></div><span class="remove" onclick="app.pipeline.delAsset('${step.id}','products','${name.replace(/'/g,"")}')">×</span></div>`;
+                  }).join('')}
+                  <div class="asset-dropzone" onclick="app.pipeline.addAsset('${step.id}','products')" ondragover="this.classList.add('drag-over');event.preventDefault()" ondragleave="this.classList.remove('drag-over')" ondrop="event.preventDefault();this.classList.remove('drag-over');app.pipeline.handleDropFiles('${step.id}','products',event.dataTransfer.files)">📎 拖入或点击上传</div>
+                </div>
+              </div>
+            `;
+            board.insertBefore(col, anchor);
+          });
+          setTimeout(() => {
+            document.querySelectorAll('.prompt-textarea').forEach(el => {
+              // 素材展开的列保持最小高度，不自动撑开
+              if (el.closest('.step-column').querySelector('.step-assets.active')) return;
+              el.style.height = 'auto';
+              el.style.height = el.scrollHeight + 'px';
+            });
+          }, 0);
+        },
+        renderTopbarRight: () => {
+          document.getElementById('topbarRight').innerHTML = `
+            <div style="display:flex; gap:8px;">
+              <button class="btn" onclick="app.pipeline.exportJSON()">📤 导出管线</button>
+              <div class="dropdown">
+                <button class="btn btn-primary" onclick="app.toggleDropdown(event)">数据调度 ▾</button>
+                <div class="dropdown-menu" id="dataDropdown">
+                  ${editingTplId ? '<div class="dropdown-item" onclick="app.pipeline.saveTpl()">💾 保存到模版</div><div class="dropdown-divider"></div>' : ''}
+                  <div class="dropdown-item" onclick="document.getElementById('importInput').click()">📥 导入 JSON</div>
+                  <div class="dropdown-item" onclick="app.pipeline.saveAsTpl()">💾 另存为模版</div>
+                  <div class="dropdown-divider"></div>
+                  <div class="dropdown-item" onclick="app.pipeline.syncTplPush()">☁️ 推送到云端</div>
+                  <div class="dropdown-item" onclick="app.pipeline.syncTplPull()">☁️ 从云端拉取</div>
+                </div>
+              </div>
+            </div>`;
+        }
+      };
+
+      // ==========================================
+      // BRIEF MODULE
+      // ==========================================
+      const brief = {
+        load: () => {
+          try { if(localStorage.getItem(K_BRIEF)) briefState.items = JSON.parse(localStorage.getItem(K_BRIEF)); } catch(e){}
+          if(briefState.items.length === 0) brief.add(); else brief.render();
+        },
+        save: () => { localStorage.setItem(K_BRIEF, JSON.stringify(briefState.items)); document.getElementById('briefStats').innerText = `共 ${briefState.items.length} 条需求`; },
+        add: () => { briefState.items.push({ id: genId(), input: "", output: "", constraints: {}, refs: [], products: [] }); brief.save(); brief.render(); 
+          setTimeout(() => { const b=document.getElementById('briefScrollContainer'); b.scrollTo({top: b.scrollHeight, behavior:'smooth'}); }, 50);
+        },
+        del: (id) => { if(confirm("删除此需求？")) { briefState.items = briefState.items.filter(i=>i.id!==id); brief.save(); brief.render(); } },
+        updateText: (id, f, val) => { const item = briefState.items.find(i=>i.id===id); if(item){ item[f]=val; brief.save(); } },
+        toggleChip: (id, k, v) => {
+          const item = briefState.items.find(i=>i.id===id);
+          if(!item.constraints) item.constraints={};
+          if(item.constraints[k] === v) delete item.constraints[k]; else item.constraints[k] = v;
+          brief.save(); brief.render();
+        },
+        addCustomChip: (id) => {
+          const item = briefState.items.find(i=>i.id===id);
+          const raw = prompt("自定义约束 (key:value):");
+          if(raw && raw.includes(':')) {
+            const [k, v] = raw.split(':').map(s=>s.trim());
+            if(!item.constraints) item.constraints={}; item.constraints[k]=v; brief.save(); brief.render();
+          }
+        },
+        addAsset: (id, t) => { const fname = prompt("请输入文件名(模拟):", `img_${Math.floor(Math.random()*100)}.jpg`); if(fname){ const item = briefState.items.find(i=>i.id===id); if(!item[t]) item[t]=[]; item[t].push(fname); brief.save(); brief.render(); } },
+        delAsset: (id, t, fname) => { const item = briefState.items.find(i=>i.id===id); item[t]=item[t].filter(f=>f!==fname); brief.save(); brief.render(); },
+        
+        // 修正点 7: 补齐 Brief JSON 的导出功能
+        exportJSON: () => {
+          if(briefState.items.length === 0) return alert("无可导出的数据");
+          const out = { 
+            updated: new Date().toISOString().slice(0, 16), 
+            items: briefState.items.map(i => {
+              let res = {input: i.input, output: i.output};
+              if(i.constraints && Object.keys(i.constraints).length>0) res.constraints = i.constraints;
+              if(i.refs && i.refs.length>0) res.refs = i.refs;
+              if(i.products && i.products.length>0) res.products = i.products;
+              return res;
+            })
+          };
+          const a = document.createElement('a'); a.href = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(out, null, 2));
+          a.download = `briefs_${out.updated.replace(':','-')}.json`; document.body.appendChild(a); a.click(); a.remove();
+        },
+
+        render: () => {
+          brief.save();
+          const board = document.getElementById('briefBoard'); board.innerHTML = '';
+          
+          // 修正点 8: 补全所有的 Brief 预设芯片
+          const P_CHIPS = [
+            {k:'ratio',v:'1:1'},{k:'ratio',v:'3:4'},{k:'ratio',v:'9:16'},{k:'ratio',v:'16:9'},
+            {k:'resolution',v:'1K'},{k:'resolution',v:'2K'},
+            {k:'model',v:'gpt2 md'},{k:'model',v:'gpt2 low'},{k:'model',v:'nb2'},
+            {k:'tag',v:'Amazon'},{k:'tag',v:'白底'}
+          ];
+          
+          briefState.items.forEach((item, idx) => {
+            const col = document.createElement('div'); col.className = 'step-column'; col.style.width = '100%';
+            
+            let chipsHtml = '';
+            P_CHIPS.forEach(c => {
+              const isActive = item.constraints && item.constraints[c.k] === c.v;
+              chipsHtml += `<button class="param-btn ${isActive?'active':''}" onclick="app.brief.toggleChip('${item.id}','${c.k}','${c.v}')">${c.v}</button>`;
+            });
+            if(item.constraints) {
+              Object.keys(item.constraints).forEach(k => {
+                const v = item.constraints[k];
+                if(!P_CHIPS.some(p => p.k===k && p.v===v)) {
+                  chipsHtml += `<button class="param-btn active" onclick="app.brief.toggleChip('${item.id}','${k}','${v}')">${k}:${v}</button>`;
+                }
+              });
+            }
+
+            col.innerHTML = `
+              <div class="step-header">
+                <span style="font-weight:600; font-family:var(--font-mono); padding-left:4px;">需求 #${idx+1}</span>
+                <div style="display:flex; gap:8px;"><span class="step-badge" style="border:1px solid var(--clr-border); background:var(--clr-surface); color:var(--clr-text-main);">📝 Brief</span><button class="ctrl-icon danger" onclick="app.brief.del('${item.id}')">×</button></div>
+              </div>
+              <div class="step-divider">输入 (我有什么)</div>
+              <div class="step-prompt"><textarea class="prompt-textarea" style="min-height:40px;" oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'; app.brief.updateText('${item.id}','input',this.value)">${item.input}</textarea></div>
+              <div class="step-assets-grid">
+                <div class="asset-section-grid">
+                  <div class="asset-dropzone" onclick="app.brief.addAsset('${item.id}','refs')">📥 拖入或点击上传 Refs</div>
+                  ${(item.refs||[]).map(f=>`<div class="asset-chip"><span>📄 ${f}</span><span class="remove" onclick="app.brief.delAsset('${item.id}','refs','${f}')">×</span></div>`).join('')}
+                </div>
+                <div class="asset-section-grid">
+                  <div class="asset-dropzone" onclick="app.brief.addAsset('${item.id}','products')">📥 拖入或点击上传 Prods</div>
+                  ${(item.products||[]).map(f=>`<div class="asset-chip"><span>📄 ${f}</span><span class="remove" onclick="app.brief.delAsset('${item.id}','products','${f}')">×</span></div>`).join('')}
+                </div>
+              </div>
+              <div class="step-divider">输出 (我要什么)</div>
+              <div class="step-prompt"><textarea class="prompt-textarea" style="min-height:40px;" oninput="this.style.height='auto';this.style.height=this.scrollHeight+'px'; app.brief.updateText('${item.id}','output',this.value)">${item.output}</textarea></div>
+              <div class="brief-params">
+                ${chipsHtml}
+                <button class="param-btn" style="border-style:dashed;" onclick="app.brief.addCustomChip('${item.id}')">+ 约束</button>
+                <div class="preview-code">${item.constraints && Object.keys(item.constraints).length ? JSON.stringify(item.constraints) : '{}'}</div>
+              </div>
+            `;
+            board.appendChild(col);
+          });
+        }
+      };
+
+      // ==========================================
+      // ROUTER
+      // ==========================================
+      const switchAppMode = (mode) => {
+        currentMode = mode;
+        localStorage.setItem(K_MODE, mode);
+        
+        document.getElementById('btnModePipeline').classList.toggle('active', mode === 'pipeline');
+        document.getElementById('btnModeBrief').classList.toggle('active', mode === 'brief');
+        document.getElementById('viewPipeline').classList.toggle('active', mode === 'pipeline');
+        document.getElementById('viewBrief').classList.toggle('active', mode === 'brief');
+        
+        const sidebar = document.getElementById('appSidebar');
+        if(mode === 'pipeline') {
+          sidebar.classList.remove('hidden');
+          pipeline.renderBoard();
+          pipeline.renderTopbarRight();
+        } else {
+          sidebar.classList.add('hidden');
+          brief.render();
+          document.getElementById('topbarLeft').innerHTML = `<span style="font-weight:600; padding-left:8px;">需求速记板</span>`;
+          document.getElementById('topbarRight').innerHTML = `
+            <button class="btn" onclick="app.brief.exportJSON()">📥 导出管线</button>
+            <button class="btn btn-primary" onclick="app.brief.add()">➕ 添加需求</button>
+          `;
+        }
+      };
+
+      const toggleDropdown = (e) => { e.stopPropagation(); const d = document.getElementById("dataDropdown"); if(d) d.classList.toggle("show"); };
+      const showTplCtx = (e, id) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const menu = document.getElementById('ctxMenu');
+        menu.innerHTML = `<div class="ctx-item" onclick="app.hideCtxMenu(); app.pipeline.loadTpl('${id}')">📋 复制为新管线</div>`;
+        menu.style.left = e.clientX + 'px';
+        menu.style.top = e.clientY + 'px';
+        menu.classList.add('show');
+      };
+      const hideCtxMenu = () => { document.getElementById('ctxMenu').classList.remove('show'); };
+      window.onclick = (e) => {
+        if (!e.target.matches('.btn-primary')) { document.querySelectorAll(".dropdown-menu").forEach(m => m.classList.remove('show')); }
+        hideCtxMenu();
+      };
+
+      // 全局粘贴图片 — 焦点在 textarea 时，图片加到对应步骤的 Refs
+      document.addEventListener('paste', (e) => {
+        const items = e.clipboardData?.items;
+        if (!items) return;
+        const imgItem = Array.from(items).find(i => i.type.startsWith('image/'));
+        if (!imgItem) return;
+        // 找到焦点所在的 textarea 所属的步骤 id
+        const ta = document.activeElement;
+        if (!ta || !ta.closest('.prompt-textarea')) return;
+        // 从 oninput 中提取步骤 id（匹配 pipeline.updateStep('xxx',...)
+        const match = ta.getAttribute('oninput')?.match(/updateStep\('([^']+)/);
+        if (!match) return;
+        const stepId = match[1];
+        const file = imgItem.getAsFile();
+        if (file) pipeline.readImageFiles(stepId, 'refs', [file]);
+      });
+
+      // 编排模式滚轮 → 左右滑动（输入框内保持上下）
+      const boardEl = document.getElementById('pipelineBoard');
+      boardEl.addEventListener('wheel', (e) => {
+        if (e.deltaY === 0) return;
+        // 焦点在输入框/下拉框/数字框时保持原生行为
+        const tag = e.target.tagName;
+        if (tag === 'TEXTAREA' || tag === 'INPUT' || tag === 'SELECT') return;
+        e.preventDefault();
+        boardEl.scrollLeft += e.deltaY;
+      }, { passive: false });
+
+      // --- INITIALIZE ---
+      pipeline.load();
+      brief.load();
+      switchAppMode(currentMode);
+
+      return { pipeline, brief, switchAppMode, toggleDropdown, showTplCtx, hideCtxMenu };
+    })();
+  </script>
+</body>
+</html>

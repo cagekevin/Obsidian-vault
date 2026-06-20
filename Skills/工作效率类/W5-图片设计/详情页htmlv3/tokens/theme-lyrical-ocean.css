@@ -1,0 +1,259 @@
+/*
+ * Theme: Lyrical Ocean (诗意深海)
+ * prompt_palette: seafoam-white #F7F9F8 / deep-sea-green #041F1A / champagne-gold #C5A46D / sage-mist #7A8B86
+ * Vibe: 海蓝之谜 (La Mer) 风格、诗意现实主义、电影级静谧感、深海绿与香槟金
+ */
+
+:root {
+    --color-bg-base: #F7F9F8;
+    --color-bg-alt: #EBF0ED;
+    --color-bg-dark: #041F1A;
+
+    --color-text: #1A2623;
+    --color-sub: #7A8B86;
+
+    --color-accent: #C5A46D;
+    --color-line: rgba(197, 164, 109, 0.4);
+
+    --font-serif: 'Playfair Display', 'Cormorant Garamond', 'Noto Serif SC', serif;
+    --font-sans: 'Optima', 'Montserrat', 'PingFang SC', sans-serif;
+    --font-script: 'Caveat', 'Kaiti', cursive;
+
+    --sp-1: 8px; --sp-2: 16px; --sp-3: 24px; --sp-4: 40px;
+    --sp-6: 64px; --sp-8: 100px; --sp-10: 160px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+    background-color: #E2E6E4;
+    display: flex;
+    justify-content: center;
+    -webkit-font-smoothing: antialiased;
+    color: var(--color-text);
+}
+.page-wrapper {
+    width: 100%;
+    max-width: 720px;
+    background-color: var(--color-bg-base);
+    box-shadow: 0 0 80px rgba(4, 31, 26, 0.1);
+}
+
+.mod {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: var(--sp-10) 0;
+    background-color: var(--color-bg-base);
+    overflow: hidden;
+}
+
+.mod--hero { padding-bottom: 0; }
+.mod--alt-bg { background-color: var(--color-bg-alt); }
+.mod--dark-bg { background-color: var(--color-bg-dark); color: #F7F9F8; }
+
+.mod-top-c {
+    padding: 0 var(--sp-6) var(--sp-6);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    z-index: 10;
+}
+
+.mod-body {
+    flex: 1;
+    padding: 0 var(--sp-6);
+    display: flex;
+    flex-direction: column;
+    z-index: 10;
+}
+
+.display-xxl, .display-xl, .display-lg {
+    font-family: var(--font-serif);
+    color: var(--color-text);
+    font-weight: 400;
+    line-height: 1.25;
+    letter-spacing: 0.03em;
+}
+
+.display-xxl { font-size: 46px; }
+.display-xl { font-size: 38px; }
+.display-lg { font-size: 30px; }
+
+.h1-sm {
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-style: italic;
+    color: var(--color-sub);
+    margin-top: var(--sp-3);
+    font-weight: 300;
+}
+
+.body {
+    font-family: var(--font-sans);
+    font-size: 15px;
+    color: var(--color-text);
+    line-height: 1.8;
+    font-weight: 300;
+    text-align: center;
+}
+
+.mod--dark-bg .display-xxl, .mod--dark-bg .display-xl, .mod--dark-bg .display-lg { color: #F7F9F8; }
+.mod--dark-bg .body { color: rgba(247, 249, 248, 0.8); }
+.mod--dark-bg .h1-sm { color: var(--color-accent); }
+
+.kicker {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 400;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: var(--sp-4);
+}
+
+.deco-en {
+    font-family: var(--font-serif);
+    font-size: 14px;
+    font-style: italic;
+    letter-spacing: 0.1em;
+    color: var(--color-accent);
+    opacity: 0.8;
+    margin-top: var(--sp-3);
+}
+
+.num {
+    font-family: var(--font-serif);
+    font-size: 48px;
+    color: var(--color-accent);
+    font-style: italic;
+    font-weight: 300;
+    line-height: 1;
+}
+
+.deco-script {
+    font-family: var(--font-script);
+    font-size: 32px;
+    color: var(--color-accent);
+    transform: rotate(-3deg);
+    display: inline-block;
+    margin-top: var(--sp-4);
+    opacity: 0.9;
+}
+
+.deco-line {
+    width: 1px;
+    height: 60px;
+    background-color: var(--color-accent);
+    margin: var(--sp-3) auto;
+    opacity: 0.5;
+}
+
+.stack { display: flex; flex-direction: column; }
+.gap-1 { gap: var(--sp-2); }
+.gap-2 { gap: var(--sp-4); }
+
+.grid-2x2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--sp-4);
+}
+.grid-2x2-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.grid-2x2-item:nth-child(even) { margin-top: 32px; }
+
+.callout-box {
+    background: transparent;
+    border: none;
+    padding: var(--sp-3) 0;
+    display: flex;
+    align-items: center;
+    gap: var(--sp-4);
+}
+
+.tag-item {
+    display: inline-block;
+    font-family: var(--font-sans);
+    font-size: 10px;
+    padding: 6px 16px;
+    border: 1px solid var(--color-line);
+    color: var(--color-text);
+    border-radius: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+.mod--dark-bg .tag-item { color: var(--color-bg-base); }
+
+.quote {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--color-accent);
+    text-align: center;
+    line-height: 1.5;
+    padding: var(--sp-4) 0;
+}
+
+.dp2-mock {
+    width: 100%;
+    background: rgba(197, 164, 109, 0.05);
+    border: 1px solid var(--color-line);
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-accent);
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.dp2-mock--hero { aspect-ratio: 4/5; border: none; background: transparent; }
+.dp2-mock--square { aspect-ratio: 1/1; }
+.dp2-mock--portrait { aspect-ratio: 3/4; }
+.dp2-mock--arch {
+    aspect-ratio: 3/4;
+    border-radius: 120px 120px 4px 4px;
+}
+
+.dp2-data-strip {
+    background: transparent;
+    border-top: 1px solid var(--color-line);
+    border-bottom: 1px solid var(--color-line);
+    color: var(--color-text);
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+    margin-top: 48px;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+}
+
+.dp2-card-overlap { display: flex; margin-top: 48px; position: relative; }
+.dp2-card-overlap__card--them {
+    width: 45%;
+    background: rgba(4, 31, 26, 0.03);
+    border: none;
+    padding: 40px 24px;
+    border-radius: 4px;
+    z-index: 1;
+}
+.dp2-card-overlap__card--us {
+    width: 60%;
+    background: var(--color-bg-base);
+    border: 1px solid var(--color-line);
+    padding: 40px 32px;
+    border-radius: 4px;
+    margin-left: -5%;
+    z-index: 2;
+    box-shadow: 0 20px 60px rgba(4, 31, 26, 0.08);
+}
+.mod--dark-bg .dp2-card-overlap__card--us { background: var(--color-bg-dark); }
+

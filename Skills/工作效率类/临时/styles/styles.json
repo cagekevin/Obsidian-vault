@@ -1,0 +1,49 @@
+{
+  "main_image_catalog": {
+    "classic_40_60_split": {
+      "category": "Standard Conversion Main Image",
+      "trigger_logic": "Has main_title. Has sub_title OR 1-3 short bullet points. Needs strong text readability.",
+      "gestalt_rules": {
+        "alignment": "flush-left",
+        "title_grouping": "tight proximity between main and sub title",
+        "text_zone": "strictly confined to the left 40% of the canvas",
+        "hierarchy": "Main title absolute visual priority, bullet points use secondary weight"
+      },
+      "image_prompt_injection": "Product positioned strictly on the right side of the frame. The left 40% of the frame must be completely empty, clean, and uncluttered negative space. Seamless gradient or uniform subtle background on the left side to accommodate text overlay.",
+      "ai_translator_instruction": "触发此布局时，生图提示词必须强制包含左侧留白指令。排版引擎在渲染文字时，所有文本块左对齐，并限制在画面左侧 40% 的安全区域内，确保不遮挡右侧产品主体。"
+    },
+    "hero_center_focal": {
+      "category": "High-Impact Visual Main Image",
+      "trigger_logic": "Only main_title. No bullet points. Brand-driven or aesthetic-first product.",
+      "gestalt_rules": {
+        "alignment": "center",
+        "text_zone": "top 15% OR bottom 15%, maintaining central axis",
+        "hierarchy": "Main title integrated subtly with the background or floating above the product"
+      },
+      "image_prompt_injection": "Product perfectly centered in the frame. Majestic and symmetrical composition. Vast clean atmospheric negative space filling the top edge and bottom edge of the frame. No distracting elements in the upper and lower framing borders.",
+      "ai_translator_instruction": "极简文案触发此布局。提示词必须强调主体居中与对称构图。排版引擎将主标题居中放置于画面顶部或底部的纯净留白处，最大化产品的视觉冲击力。"
+    },
+    "l_shape_anchor": {
+      "category": "Contextual/Scene Main Image",
+      "trigger_logic": "Product is long/tall or integrated into an environment. Has main_title and medium-length sub_title.",
+      "gestalt_rules": {
+        "alignment": "flush-left",
+        "text_zone": "Top-left quadrant",
+        "hierarchy": "Title group floating in the upper left corner, balanced by product mass in bottom right"
+      },
+      "image_prompt_injection": "Product anchored heavily in the bottom-right corner of the frame. The top-left quadrant of the image must be vast, empty atmospheric negative space, such as a clear sky, blurred distant wall, or plain background, perfect for adding text.",
+      "ai_translator_instruction": "当产品具有环境属性或属于偏长形态时调用。向生图模型注入指令，强制要求左上角留出大面积干净背景。排版文字全部分组并停靠在左上角，形成对角线视觉平衡。"
+    },
+    "bottom_heavy_pedestal": {
+      "category": "Premium/Luxury Main Image",
+      "trigger_logic": "Has main_title and multiple feature icons/badges. Focus on premium quality.",
+      "gestalt_rules": {
+        "alignment": "center",
+        "text_zone": "Bottom 30% of the canvas",
+        "hierarchy": "Main title centered just above the badges, icons aligned horizontally below"
+      },
+      "image_prompt_injection": "Product positioned floating or standing in the top 70% of the frame. The bottom 30% of the frame must be a solid, uncluttered surface, clean pedestal, or smooth gradient floor, acting as a negative space banner.",
+      "ai_translator_instruction": "适用于需要展示认证图标或横向排列卖点的主图。提示词强制要求画面下方 30% 留出干净的平台或地面。排版引擎将所有文本和图标在底部区域居中对称排列。"
+    }
+  }
+}
