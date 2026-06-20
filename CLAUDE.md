@@ -13,7 +13,13 @@
 3. **去 `Daily Notes/` 读最近几天的日志** — 了解我最近在做什么
 4. **等我给你第一个任务** — 在这之前不要自作主张做任何事
 
-之后每次新 session 只做第 1 步和第 3 步（第 2 步 Context/ 只需读一次）。
+**之后每次新 session（包括首次之后的所有 session）：**
+
+1. 读本文件（CLAUDE.md）
+2. **读 `.codebuddy/memory/` 下最近 3 天的校准日志** — 了解 AI 最近犯过什么错、沉淀了什么规则
+3. 读 `Daily Notes/` 最近几天的日志 — 了解我最近在做什么
+4. 读 `Context/` 的必读 4 个文件（只需读一次，后续 session 跳过）
+5. 读 `.codebuddy/memory/MEMORY.md` — 长期记忆（只需读一次，后续 session 跳过）
 
 ---
 
@@ -32,7 +38,13 @@
 - `Context/style.md` — 我的表达风格和做事方式
 - `Context/schema.md` — **AI 加工信息的完整工作流（Ingest → Query → Lint）**
 
-**AI 每次 session 启动时，先读 Context/ 下的所有文件。** 这样你每次都知道我是谁，不用重新介绍。
+**AI 每次 session 启动流程：**
+
+1. 读本文件（CLAUDE.md）
+2. **读 `.codebuddy/memory/` 下最近 3 天的校准日志** — 了解 AI 最近犯过什么错、沉淀了什么规则
+3. 读 `Daily Notes/` 最近几天的日志 — 了解我最近在做什么
+4. 读 `Context/` 的必读 4 个文件（profile/goals/brand/style，**只需读一次**，后续 session 跳过）
+5. 读 `.codebuddy/memory/MEMORY.md` — 长期记忆（**只需读一次**，后续 session 跳过）
 
 ---
 

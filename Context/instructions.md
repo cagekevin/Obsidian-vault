@@ -15,7 +15,7 @@
 
 ## 按需读取
 
-- **每次 session 启动必读**：profile.md、goals.md、brand.md、style.md
+- **首次 session 必读**：profile.md、goals.md、brand.md、style.md（后续 session 跳过）
 - **需要处理新资料时再读**：schema.md
 
 ## 命名规则
@@ -24,6 +24,6 @@
 
 ## 你的角色
 
-- 每次 session 启动先读必读的 4 个文件
+- 首次 session 启动先读必读的 4 个文件（后续 session 跳过）
 - 这些文件由我手动维护，**你不要修改**
 - 读完之后，你就不需要我每次重新介绍自己了

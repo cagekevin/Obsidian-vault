@@ -85,10 +85,12 @@ def download_audio(query, output_dir, audio_format="mp3", source="youtube"):
         print(f"🔗 URL: {url}")
         actual_source = "youtube" if "youtu" in query else source 
     else:
-        prefix = "bilibilisearch" if source == "bilibili" else "ytsearch"
-        url = f"{prefix}:{query}"
-        platform = "B站" if source == "bilibili" else "YouTube"
-        print(f"🔍 从 {platform} 搜索: {query}")
+        if source == "bilibili":
+            url = f"bilisearch:{query}"
+            print(f"🔍 从 B站 搜索: {query}")
+        else:
+            url = f"ytsearch:{query}"
+            print(f"🔍 从 YouTube 搜索: {query}")
         actual_source = source
 
     print(f"📂 保存到: {output_dir}")
@@ -116,7 +118,7 @@ def download_audio(query, output_dir, audio_format="mp3", source="youtube"):
     # B站防 412 拦截的核心参数：带上浏览器身份
     # （如果你用的是 Safari，请把下面这行的 chrome 改成 safari）
     if actual_source == "bilibili" or (is_url and "bilibili.com" in url):
-        cmd.extend(["--cookies-from-browser", "chrome"])
+        pass  # cookie 已在 get_ytdl_extra_args 中统一添加
 
     cmd.append(url)
     
@@ -130,6 +132,8 @@ def download_audio(query, output_dir, audio_format="mp3", source="youtube"):
     result = subprocess.run(cmd, capture_output=True, text=True)
     
     # 从 --print filename 的输出获取实际生成的文件路径
+    # yt-dlp 可能先输出中间格式（如 .m4a），再转成目标格式（如 .mp3）
+    # 所以同时检查目标格式和常见中间格式
     output_lines = result.stdout.strip().split("\n")
     downloaded_file = None
     for line in output_lines:
@@ -137,6 +141,18 @@ def download_audio(query, output_dir, audio_format="mp3", source="youtube"):
         if line.endswith(f".{audio_format}") and os.path.exists(line):
             downloaded_file = line
             break
+    # 如果目标格式没找到，检查中间格式（如 .m4a）
+    if not downloaded_file:
+        for ext in ["m4a", "opus"]:
+            if ext == audio_format:
+                continue
+            for line in output_lines:
+                line = line.strip()
+                if line.endswith(f".{ext}") and os.path.exists(line):
+                    downloaded_file = line
+                    break
+            if downloaded_file:
+                break
     
     if downloaded_file:
         size = os.path.getsize(downloaded_file)

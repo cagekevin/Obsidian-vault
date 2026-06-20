@@ -14,6 +14,7 @@
 | **结构化知识** | `Reading/`、`Skills/` | 人+AI 协作 | 读书笔记、技能定义 |
 | **规则文档** | `Context/schema.md` | 人+AI 协作优化 | 定义加工规则和流程 |
 | **操作日志** | `Daily Notes/`、`Wiki/log.md` | AI 写 | 工作记录和操作日志 |
+| **AI 记忆** | `.codebuddy/memory/` | **AI 全权维护** | 长期记忆（MEMORY.md）+ 短期记忆（YYYY-MM-DD.md） |
 
 ---
 
@@ -59,6 +60,7 @@ AI 定期（或我要求时）检查 `Wiki/`：
 | `Reading/` | `书名-作者.md` 或 `主题-日期.md` | `深度工作-卡尔·纽波特.md` |
 | `Daily Notes/` | `YYYY-MM-DD.md` | `2026-06-20.md` |
 | `Projects/` | `项目名/`（中文，不加日期） | `HKH皮卡斯03版本/` |
+| `.codebuddy/memory/` | `MEMORY.md`（长期）、`YYYY-MM-DD.md`（短期） | `MEMORY.md`、`2026-06-21.md` |
 
 ---
 

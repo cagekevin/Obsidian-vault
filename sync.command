@@ -79,6 +79,9 @@ gen_missing_skill_md() {
 
         local sub_names=()
         for sub in "${subdirs[@]}"; do sub_names+=("$(basename "$sub")"); done
+        # 子模块少于 2 个时不需要路由导航（单个 references/ 目录不算子技能）
+        [ ${#subdirs[@]} -lt 2 ] && continue
+
         local sub_list=$(IFS='、'; echo "${sub_names[*]}")
 
         {
