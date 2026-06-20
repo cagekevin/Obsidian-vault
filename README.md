@@ -27,7 +27,7 @@ pnpm install
 
 | 指令 | 作用 |
 |------|------|
-| `bash sync.sh` | 扫描技能清单 → 更新 SKILLS.md |
+| 双击 `sync.command` | 扫描技能清单 + 工具清单 → 更新 SKILLS.md + TOOLS.md → Git 推送 |
 | 全推 / 注册一下 | git add → commit → push |
 | 全拉 | git stash → git pull → git stash pop |
 | "兔子" / "tools" | 去 Tools/ 找对应脚本 |
