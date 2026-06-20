@@ -1,6 +1,6 @@
 # 工具清单
 
-> 自动生成于 2026-06-21 03:35
+> 自动生成于 2026-06-21 05:50
 
 | 工具 | 类型 | 用途 |
 |------|------|------|
@@ -8,7 +8,7 @@
 | `batch-rename-files.py` | Python | 批量重命名 — 一次性改名/改后缀/编号 |
 | `browser_control.py` | Python | browser_control — AI 浏览器操作统一入口 |
 | `compress-image.py` | Python | 图片压缩工具 — 优先 pngquant/oxipng/jpegoptim，无依赖时自动用 Pillow 兜底 |
-| `download_audio.py` | Python | YouTube / B站 音频下载工具 |
+| `download_audio.py` | Python | Python 脚本 |
 | `find-in-files.py` | Python | 文件搜索 — 代替 grep / 逐文件读，批量搜索关键词，显示匹配位置 |
 | `image-resize.py` | Python | 通用图片缩放 — 按指定宽高或比例缩放图片 |
 | `list-stat-check-find-files.py` | Python | 文件信息查询 — 代替 shell ls/wc/stat 等，一次调用多查 |

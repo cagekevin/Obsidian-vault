@@ -183,6 +183,28 @@ log_success "TOOLS.md（$TOOL_COUNT 个工具）"
 echo ""
 echo "✅ 扫描完成"
 
+# 自动生成 Wiki/index.md
+echo ""
+echo "📖 生成 Wiki/index.md..."
+INDEX_FILE="$VAULT_DIR/Wiki/index.md"
+{
+    echo "# Wiki 页面索引"
+    echo ""
+    echo "> 由 sync.command 自动生成。每次同步时更新。"
+    echo ""
+    echo "| 页面 | 类型 | 摘要 |"
+    echo "|------|------|------|"
+    for page in "$VAULT_DIR/Wiki"/*.md; do
+        name=$(basename "$page" .md)
+        [ "$name" = "index" ] || [ "$name" = "log" ] || [ "$name" = "instructions" ] && continue
+        type=$(grep -m1 '^type:' "$page" 2>/dev/null | sed 's/type: *//' || echo "—")
+        desc=$(grep -m1 '^description:' "$page" 2>/dev/null | sed 's/description: *//' || echo "—")
+        echo "| [[$name]] | $type | $desc |"
+    done
+} > "$INDEX_FILE"
+WIKI_COUNT=$(grep -c '| \[' "$INDEX_FILE" || echo 0)
+log_success "Wiki/index.md（$WIKI_COUNT 个页面）"
+
 # 扫描 Clippings/raw/ 未处理文件
 echo ""
 PENDING=$(python3 "$VAULT_DIR/Clippings/raw/pending.py" --count 2>/dev/null || echo "0")

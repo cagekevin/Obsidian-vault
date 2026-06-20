@@ -1,6 +1,7 @@
 ---
 type: concept
 source: raw-20260621-CodexClaude记忆管理.txt
+description: 用 Agent.md/Index/User.md 三层结构为 AI Agent 搭建的长期记忆系统，包含冲突处理和定期审查机制
 ---
 
 # Codex 长期记忆系统

@@ -1,6 +1,7 @@
 ---
 type: concept
 source: raw-20260403-Karpathy-LLM-Wiki-Gist.txt
+description: Karpathy 提出的让 LLM 增量式构建和维护持久化 Wiki 的方法论，三层架构 + 三个操作 + 两个导航文件
 ---
 
 # LLM Wiki 框架
