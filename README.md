@@ -27,8 +27,8 @@ pnpm install
 
 | 指令 | 作用 |
 |------|------|
-| `bash sync.sh` | 扫描技能清单 → commit → push |
-| 全推 / 注册一下 | 自动扫描、更新配置、commit、push |
+| `bash sync.sh` | 扫描技能清单 → 更新 SKILLS.md |
+| 全推 / 注册一下 | git add → commit → push |
 | 全拉 | git stash → git pull → git stash pop |
 | "兔子" / "tools" | 去 Tools/ 找对应脚本 |
 | "用 S1" / "加载 W5" | 去 Skills/ 找对应技能 |

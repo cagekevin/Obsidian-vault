@@ -5,8 +5,10 @@ __pycache__/
 node_modules/
 .git/
 
-# Obsidian
-.obsidian/
+# Obsidian — 只忽略本地状态和缓存，同步配置
+.obsidian/workspace.json
+.obsidian/workspace-cache/
+.obsidian/cache/
 
 # 临时文件
 *.swp

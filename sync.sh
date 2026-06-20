@@ -33,8 +33,5 @@ done
 echo -e "$SKILL_LIST" > "$VAULT_DIR/SKILLS.md"
 echo "✅ 已生成 SKILLS.md"
 
-echo "📤 推送到 GitHub..."
-git add -A
-git commit -m "sync: $(date '+%Y-%m-%d %H:%M')" || echo "⏭️  没有变更"
-git push
-echo "✅ 完成"
+echo "✅ 技能清单已更新"
+echo "💡 自动 Git 同步由 Obsidian Git 插件处理，无需手动推送"
