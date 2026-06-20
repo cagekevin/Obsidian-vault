@@ -1,37 +1,197 @@
 #!/bin/bash
-# 一键同步：扫描技能清单 → commit → push
-
-set -e
+# sync.sh — 扫描 S/W 编号技能 + Tools，生成 SKILLS.md 和 TOOLS.md
+set -euo pipefail
 
 VAULT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$VAULT_DIR"
+SKILLS_DIR="$VAULT_DIR/Skills"
+TOOLS_DIR="$VAULT_DIR/Tools"
 
+log_info()    { echo "   ℹ️  $1"; }
+log_success() { echo "   ✅ $1"; }
+log_warn()    { echo "   ⚠️  $1"; }
+log_error()   { echo "   ❌ $1"; }
+
+# =====================================
+# 1. 扫描 S/W 编号技能
+# =====================================
 echo "📋 扫描技能清单..."
 
-SKILL_LIST="# 技能清单\n\n"
-SKILL_LIST+="> 自动生成于 $(date '+%Y-%m-%d %H:%M')\n\n"
-
-# 遍历大类
-for bucket in "$VAULT_DIR/Skills/"*/; do
-    bucket_name=$(basename "$bucket")
-    SKILL_LIST+="## $bucket_name\n\n"
-    
-    # 遍历技能子文件夹
-    for skill in "$bucket"*/; do
-        skill_name=$(basename "$skill")
-        # 只显示有 SKILL.md 的
-        if [ -f "$skill/SKILL.md" ]; then
-            desc=$(head -5 "$skill/SKILL.md" | grep 'description:' | sed 's/.*description: *//')
-            SKILL_LIST+="- **$skill_name**"
-            [ -n "$desc" ] && SKILL_LIST+=": $desc"
-            SKILL_LIST+="\n"
+# 提取编号信息：目录名如 "W5-图片设计" → prefix=W, num=5, name=图片设计
+scan_skills() {
+    find "$SKILLS_DIR" -mindepth 2 -maxdepth 2 -type d | sort | while IFS= read -r d; do
+        local fname=$(basename "$d")
+        if echo "$fname" | grep -qE '^[SW][0-9]+-'; then
+            local prefix=$(echo "$fname" | sed 's/^\([SW]\)[0-9]*\-.*/\1/')
+            local num=$(echo "$fname" | sed 's/^[SW]\([0-9]*\)\-.*/\1/')
+            local name=$(echo "$fname" | sed "s/^[SW]${num}\-//")
+            local bucket=$(basename "$(dirname "$d")")
+            echo "${prefix}|${num}|${name}|${bucket}|${d}"
         fi
+    done | sort -t'|' -k1,1 -k2,2n
+}
+
+ALL_SKILLS=$(scan_skills)
+SKILL_COUNT=$(echo "$ALL_SKILLS" | grep -c '|' || echo 0)
+
+# 按大类分组输出
+gen_skill_list() {
+    local last_bucket=""
+    echo "# 技能清单\n"
+    echo "> 自动生成于 $(date '+%Y-%m-%d %H:%M')\n"
+    
+    echo "$ALL_SKILLS" | while IFS='|' read -r prefix num name bucket path; do
+        [ -z "$prefix" ] && continue
+        if [ "$bucket" != "$last_bucket" ]; then
+            echo "\n## $bucket\n"
+            echo "| 编号 | 名称 | 描述 |\n|------|------|------|"
+            last_bucket="$bucket"
+        fi
+        # 取 description
+        local skill_file="$path/SKILL.md"
+        local desc="-"
+        if [ -f "$skill_file" ]; then
+            desc=$(awk 'BEGIN{f=0} /^description:/{f=1; sub(/^description:[[:space:]]*/,""); s=$0; next} f && /^[[:space:]]/ && !/^---/{s=s" "$0; next} f{exit} END{print s}' "$skill_file" 2>/dev/null | sed 's/ *$//' | tr -d '|' | head -c 200 || true)
+            [ -z "$desc" ] && desc="-"
+        fi
+        echo "| $prefix$num | $name | $desc |"
     done
-    SKILL_LIST+="\n"
+}
+
+SKILL_LIST=$(gen_skill_list)
+echo -e "$SKILL_LIST" > "$VAULT_DIR/SKILLS.md"
+log_success "SKILLS.md（$SKILL_COUNT 个技能）"
+
+# =====================================
+# 2. 自动生成缺失的路由 SKILL.md
+# =====================================
+gen_missing_skill_md() {
+    local generated=0
+    find "$SKILLS_DIR" -mindepth 2 -maxdepth 2 -type d | sort | while IFS= read -r dir; do
+        local dir_name=$(basename "$dir")
+        if ! echo "$dir_name" | grep -qE '^[SW][0-9]+-'; then continue; fi
+
+        local prefix="${dir_name:0:1}"
+        local rest="${dir_name:1}"
+        local num="${rest%%-*}"
+        local name="${rest#*-}"
+
+        # 已有 SKILL.md 则跳过
+        [ -f "$dir/SKILL.md" ] && continue
+
+        # 检查是否有子模块
+        local subdirs=()
+        while IFS= read -r sub; do subdirs+=("$sub"); done <<< "$(find "$dir" -mindepth 1 -maxdepth 1 -type d | sort)"
+        [ ${#subdirs[@]} -eq 0 ] && continue
+
+        local sub_names=()
+        for sub in "${subdirs[@]}"; do sub_names+=("$(basename "$sub")"); done
+        local sub_list=$(IFS='、'; echo "${sub_names[*]}")
+
+        {
+            echo -e "---\nname: $name\ndescription: 路由导航。子模块：${sub_list}。\nmetadata:\n  pattern: pipeline\n---\n"
+            echo -e "# $dir_name\n\n<what-to-do>\n\n## 路由表\n\n| 模块 | 路径 |\n|------|------|"
+            for sub in "${subdirs[@]}"; do
+                local sub_name=$(basename "$sub")
+                local md_files=$(find "$sub" -maxdepth 1 -name "*.md" | head -1)
+                if [ -n "$md_files" ]; then
+                    echo "| $sub_name | \`$dir_name/$sub_name/$(basename "$md_files")\` |"
+                else
+                    echo "| $sub_name | $dir_name/$sub_name/ |"
+                fi
+            done
+            echo -e "\n</what-to-do>"
+        } > "$dir/SKILL.md"
+
+        log_success "自动生成路由: $dir/SKILL.md（${#subdirs[@]} 个子模块）"
+        generated=$((generated+1))
+    done
+    [ "$generated" -eq 0 ] && log_info "无需生成缺失的路由 SKILL.md"
+}
+
+gen_missing_skill_md
+
+# =====================================
+# 3. 扫描 Tools 生成 TOOLS.md
+# =====================================
+echo ""
+echo "📋 扫描工具清单..."
+
+TOOL_LIST="# 工具清单\n\n"
+TOOL_LIST+="> 自动生成于 $(date '+%Y-%m-%d %H:%M')\n\n"
+TOOL_LIST+="| 工具 | 类型 | 用途 |\n|------|------|------|\n"
+
+# 扫描 .py 文件
+for f in "$TOOLS_DIR"/*.py; do
+    [ -f "$f" ] || continue
+    fname=$(basename "$f")
+    desc=$(python3 -c "
+import ast
+try:
+    with open('$f') as fh:
+        tree = ast.parse(fh.read())
+    doc = ast.get_docstring(tree)
+    if doc:
+        print(doc.strip().split(chr(10))[0].rstrip('.。'))
+    else:
+        print('Python 脚本')
+except:
+    print('Python 脚本')
+" 2>/dev/null || echo "Python 脚本")
+    TOOL_LIST+="| \`$fname\` | Python | ${desc} |\n"
 done
 
-echo -e "$SKILL_LIST" > "$VAULT_DIR/SKILLS.md"
-echo "✅ 已生成 SKILLS.md"
+# 扫描 .sh 文件
+for f in "$TOOLS_DIR"/*.sh; do
+    [ -f "$f" ] || continue
+    fname=$(basename "$f")
+    desc=$(grep -m1 '^#[^#!]' "$f" 2>/dev/null | sed 's/^#[[:space:]]*//' || echo "Shell 脚本")
+    TOOL_LIST+="| \`$fname\` | Shell | ${desc} |\n"
+done
 
-echo "✅ 技能清单已更新"
-echo "💡 自动 Git 同步由 Obsidian Git 插件处理，无需手动推送"
+# 扫描 .jsx 文件
+for f in "$TOOLS_DIR"/*.jsx; do
+    [ -f "$f" ] || continue
+    fname=$(basename "$f")
+    TOOL_LIST+="| \`$fname\` | JSX | Photoshop 脚本 |\n"
+done
+
+# 扫描子目录（工具包）
+for d in "$TOOLS_DIR"/*/; do
+    [ -d "$d" ] || continue
+    dirname=$(basename "$d")
+    entry=$(ls "$d/$dirname.py" "$d/main.py" "$d/run.py" 2>/dev/null | head -1 || ls "$d"/*.py 2>/dev/null | head -1 || true)
+    desc="工具文件夹"
+    if [ -n "$entry" ] && [ -f "$entry" ]; then
+        desc=$(python3 -c "
+import ast
+try:
+    with open('$entry') as fh:
+        tree = ast.parse(fh.read())
+    doc = ast.get_docstring(tree)
+    if doc:
+        print(doc.strip().split(chr(10))[0].rstrip('.。'))
+    else:
+        print('工具文件夹')
+except:
+    print('工具文件夹')
+" 2>/dev/null || echo "工具文件夹")
+    fi
+    TOOL_LIST+="| \`$dirname/\` | 目录 | ${desc} |\n"
+done
+
+echo -e "$TOOL_LIST" > "$VAULT_DIR/TOOLS.md"
+TOOL_COUNT=$(echo "$TOOL_LIST" | grep -c '| \`' || echo 0)
+log_success "TOOLS.md（$TOOL_COUNT 个工具）"
+
+echo ""
+echo "✅ 扫描完成"
+
+# Git 推送（双重保险）
+echo ""
+echo "📤 推送到 GitHub..."
+cd "$VAULT_DIR"
+git add -A
+git commit -m "sync: $(date '+%Y-%m-%d %H:%M')" 2>/dev/null || echo "⏭️  无变更"
+git push 2>&1 || echo "⚠️  Git 推送失败（可能是网络问题）"
+echo "✅ 同步完成"
