@@ -12,3 +12,27 @@ node_modules/
 *.swp
 *.swo
 *~
+
+# 图片和视频（太大，不进 Git）
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+*.bmp
+*.svg
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
+*.mp3
+*.wav
+*.wmv
+*.flv
+
+# 设计源文件（太大，不进 Git）
+*.psd
+*.ai
+*.sketch
+*.fig
