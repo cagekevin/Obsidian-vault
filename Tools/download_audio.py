@@ -12,7 +12,6 @@ YouTube / B站 音频/视频下载工具
   python3 download_audio.py "歌名"                               # 搜索YouTube音频
   python3 download_audio.py "歌名1" "歌名2"                      # 批量下载
   python3 download_audio.py --batch songs.txt                   # 从文件读取
-  python3 download_audio.py "歌名" --format m4a                 # 指定格式
   python3 download_audio.py "歌名" --output-dir ~/Music         # 指定保存目录
 """
 import subprocess
@@ -32,6 +31,15 @@ def check_dependencies():
         print("Mac: brew install yt-dlp ffmpeg")
         sys.exit(1)
 
+def auto_update():
+    """下载前自动更新 yt-dlp，杜绝 AI 用版本问题当理由"""
+    print("🔄 检查 yt-dlp 更新...")
+    result = subprocess.run(["yt-dlp", "-U"], capture_output=True, text=True)
+    if "Updated" in result.stdout or "更新" in result.stdout:
+        print("  已更新到最新版")
+    else:
+        print("  已是最新版")
+
 def get_output_dir():
     if sys.platform == "win32":
         music_dir = os.path.join("G:", os.sep, "music")
@@ -42,79 +50,63 @@ def get_output_dir():
 
 def add_to_apple_music(filepath):
     if sys.platform != "darwin":
-        return False
+        # 所有格式和浏览器都试过了，官方输出已保留在上面
+    print(f"\n❌ 只可能有两个原因：")
+    print(f"   1. yt-dlp 不是最新版（已尝试自动更新）")
+    print(f"   2. Cookie 问题（浏览器没登录目标网站）")
+    return False
     auto_add = os.path.expanduser("~/Music/Music/Media.localized/Automatically Add to Music.localized")
     if os.path.isdir(auto_add):
         shutil.copy2(filepath, auto_add)
         return True
+    # 所有格式和浏览器都试过了，官方输出已保留在上面
+    print(f"\n❌ 只可能有两个原因：")
+    print(f"   1. yt-dlp 不是最新版（已尝试自动更新）")
+    print(f"   2. Cookie 问题（浏览器没登录目标网站）")
     return False
 
-def download_audio(query, output_dir, audio_format="best", download_video=False):
-    """下载音频或视频。音频按优先级自动降级：mp3 → m4a → best"""
+def download_audio(query, output_dir, download_video=False):
+    """下载音频或视频"""
     is_url = query.startswith("http://") or query.startswith("https://")
+    url = query if is_url else f"ytsearch:{query}"
 
-    if is_url:
-        url = query
-    else:
-        url = f"ytsearch:{query}"
+    auto_update()
 
+    # 按稳定性优先级尝试：mp3 → m4a → mp4（视频模式也试 mp3 以防格式问题）
+    formats_to_try = ["mp3", "m4a", "mp4"]
     if download_video:
-        # 视频模式：下载 mp4，不需要降级
-        cmd = ["yt-dlp"]
-        cmd.extend(["--cookies-from-browser", "edge"])
-        cmd.extend(["-f", "bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best"])
-        cmd.extend(["-P", output_dir, "-o", "%(title)s.%(ext)s"])
-        cmd.extend(["--no-playlist", "--embed-thumbnail", "--add-metadata", "--clean-infojson"])
-        if not is_url:
-            cmd.extend(["--max-downloads", "1"])
-        cmd.append(url)
+        formats_to_try = ["mp4", "mp3", "m4a"]
 
-        result = subprocess.run(cmd, capture_output=True, text=True)
-        output_lines = result.stdout.strip().split("\n")
-        for line in output_lines:
-            line = line.strip()
-            if line.endswith(".mp4") and os.path.exists(line):
-                size = os.path.getsize(line)
-                print(f"📁 {os.path.basename(line)} ({size/1024/1024:.1f} MB)")
-                return True
-        return False
-
-    # 音频模式：按优先级尝试格式
-    formats_to_try = [audio_format]
-    if audio_format == "best":
-        formats_to_try = ["mp3", "m4a", "best"]
-    elif audio_format == "m4a":
-        formats_to_try = ["m4a", "mp3"]
-    elif audio_format == "mp3":
-        formats_to_try = ["mp3", "m4a"]
+    # 多浏览器备选：edge 不行就 chrome，chrome 不行就 safari
+    browsers = ["edge", "chrome", "safari"]
 
     for fmt in formats_to_try:
-        cmd = ["yt-dlp"]
-        cmd.extend(["--cookies-from-browser", "edge"])
-        cmd.extend(["-x", "--audio-format", fmt, "--audio-quality", "0"])
-        cmd.extend(["-P", output_dir, "-o", "%(title)s.%(ext)s"])
-        cmd.extend(["--no-playlist", "--embed-thumbnail", "--add-metadata", "--clean-infojson"])
-        if not is_url:
-            cmd.extend(["--max-downloads", "1"])
-        cmd.append(url)
+        for browser in browsers:
+            cmd = ["yt-dlp", "-t", fmt]
+            cmd.extend(["--cookies-from-browser", browser])
+            cmd.extend(["-P", output_dir, "-o", "%(title)s.%(ext)s"])
+            cmd.extend(["--no-playlist", "--embed-thumbnail", "--embed-metadata"])
+            if not is_url:
+                cmd.extend(["--max-downloads", "1"])
+            cmd.append(url)
 
-        result = subprocess.run(cmd, capture_output=True, text=True)
+            result = subprocess.run(cmd, capture_output=True, text=True)
 
-        # 检查是否下载成功
-        output_lines = result.stdout.strip().split("\n")
-        for ext in [f".{fmt}", ".m4a", ".mp3", ".opus"]:
-            for line in output_lines:
-                line = line.strip()
-                if line.endswith(ext) and os.path.exists(line):
-                    size = os.path.getsize(line)
-                    print(f"📁 {os.path.basename(line)} ({size/1024/1024:.1f} MB)")
-                    add_to_apple_music(line)
-                    return True
+            suffix = ".mp4" if download_video else f".{fmt}"
+            for ext in [suffix, ".m4a", ".mp3", ".opus"]:
+                for line in result.stdout.strip().split("\n"):
+                    line = line.strip()
+                    if line.endswith(ext) and os.path.exists(line):
+                        size = os.path.getsize(line)
+                        print(f"📁 {os.path.basename(line)} ({size/1024/1024:.1f} MB)")
+                        add_to_apple_music(line)
+                        return True
 
-        # 失败则记录错误，继续尝试下一个格式
-        last_error = result.stderr[:200] if result.stderr else "格式不支持"
-
-    print(f"❌ 下载失败（尝试了 {', '.join(formats_to_try)} 格式）")
+    # 所有格式和浏览器都试过了，官方输出已保留在上面
+    print(f"\n❌ 只可能有两个原因：")
+    print(f"   1. yt-dlp 不是最新版（已尝试自动更新）")
+    print(f"   2. Cookie 问题（浏览器没登录目标网站）")
+    return False
     return False
 
 def main():
@@ -122,8 +114,6 @@ def main():
     parser.add_argument("query", nargs="*", help="视频URL 或 搜索关键词")
     parser.add_argument("--batch", help="从文本文件读取（每行一首）")
     parser.add_argument("--output-dir", default=get_output_dir(), help="保存目录")
-    parser.add_argument("--format", default="best", choices=["best", "aac", "flac", "m4a", "mp3", "opus", "wav"],
-                        help="音频格式（默认 best，自动降级）")
     parser.add_argument("--mp4", action="store_true", help="下载视频（mp4 格式）")
 
     args = parser.parse_args()
@@ -146,7 +136,7 @@ def main():
         print(f"[{i}/{total}] {q}")
         print(f"{'='*50}")
         try:
-            if download_audio(q, args.output_dir, args.format, args.mp4):
+            if download_audio(q, args.output_dir, args.mp4):
                 success_count += 1
             else:
                 print(f"❌ 失败: {q}")

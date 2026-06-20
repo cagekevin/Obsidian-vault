@@ -183,6 +183,16 @@ log_success "TOOLS.md（$TOOL_COUNT 个工具）"
 echo ""
 echo "✅ 扫描完成"
 
+# 扫描 Clippings/raw/ 未处理文件
+echo ""
+PENDING=$(python3 "$VAULT_DIR/Clippings/raw/pending.py" --count 2>/dev/null || echo "0")
+if [ "$PENDING" != "0" ]; then
+    echo "📋 检测到 $PENDING 个未处理的原始资料（Clippings/raw/）"
+    echo "   运行: python3 Clippings/raw/pending.py"
+else
+    echo "📋 Clippings/raw/ 全部已处理"
+fi
+
 # Git 推送（双重保险）
 echo ""
 echo "📤 推送到 GitHub..."
