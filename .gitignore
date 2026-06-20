@@ -12,6 +12,7 @@ node_modules/
 *.swp
 *.swo
 *~
+Temp/
 
 # 图片和视频（太大，不进 Git）
 *.png
@@ -38,3 +39,14 @@ node_modules/
 *.ai
 *.sketch
 *.fig
+
+# 模型文件（工具默认下载到项目下的 models/）
+models/
+model/
+checkpoints/
+weights/
+*.bin
+*.pt
+*.pth
+*.onnx
+*.gguf

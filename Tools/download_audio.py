@@ -42,7 +42,9 @@ def check_dependencies():
         sys.exit(1)
 
 def get_output_dir():
-    """根据平台确定默认输出目录"""
+    """根据平台确定默认输出目录
+    Mac 默认 ~/Documents/music（下载音乐用）。
+    如需转文字，指定 --output-dir ~/Documents/Obsidian\ vault/Temp"""
     if sys.platform == "win32":
         music_dir = os.path.join("G:", os.sep, "music")
     else:
@@ -57,10 +59,9 @@ def get_ytdl_extra_args(source="youtube", is_url=False):
         cookie = os.path.join(os.path.expanduser("~"), ".config", "yt-dlp", "youtube_cookies.txt")
         if os.path.exists(cookie):
             args.extend(["--cookies", cookie])
-            
-    # 注释掉了强制伪装 Android 客户端的代码，避免触发 YouTube 最新的封锁策略
-    # if source == "youtube" or (is_url and "youtu" in source.lower()):
-    #     args.extend(["--extractor-args", "youtube:player_client=android"])
+    elif sys.platform == "darwin":
+        # Mac: 从 Edge 浏览器读取 cookie（绕过 YouTube bot 检测）
+        args.extend(["--cookies-from-browser", "edge"])
         
     return args
 

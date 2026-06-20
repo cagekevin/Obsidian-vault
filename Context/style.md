@@ -66,8 +66,3 @@
 - **启动时**：先读项目根目录的 Handoff.md 恢复上下文
 - **变更时**：需求变动，更新临时记忆（不要写永久规则）
 - **结束/暂停时**：删除临时记忆，将最新进度写入 Handoff.md
-
-### 快捷指令
-- **全推 / 注册一下**：运行 skills-init.command（自动扫描、更新配置、commit、push）
-- **全拉**：git stash → git pull → git stash pop
-- **"兔子"、"tools"、"用 S1"、"加载 W5"**：去 Skills/ 或 Tools/ 找对应脚本或技能
