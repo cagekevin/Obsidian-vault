@@ -44,17 +44,10 @@ gen_skill_list() {
         [ -z "$prefix" ] && continue
         if [ "$bucket" != "$last_bucket" ]; then
             echo "\n## $bucket\n"
-            echo "| 编号 | 名称 | 描述 |\n|------|------|------|"
+            echo "| 编号 | 名称 |\n|------|------|"
             last_bucket="$bucket"
         fi
-        # 取 description
-        local skill_file="$path/SKILL.md"
-        local desc="-"
-        if [ -f "$skill_file" ]; then
-            desc=$(awk 'BEGIN{f=0} /^description:/{f=1; sub(/^description:[[:space:]]*/,""); s=$0; next} f && /^[[:space:]]/ && !/^---/{s=s" "$0; next} f{exit} END{print s}' "$skill_file" 2>/dev/null | sed 's/ *$//' | tr -d '|' | head -c 200 || true)
-            [ -z "$desc" ] && desc="-"
-        fi
-        echo "| $prefix$num | $name | $desc |"
+        echo "| $prefix$num | $name |"
     done
 }
 
