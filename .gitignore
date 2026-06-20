@@ -21,6 +21,8 @@ node_modules/
 *.webp
 *.bmp
 *.svg
+*.tif
+*.tiff
 *.mp4
 *.mov
 *.avi
