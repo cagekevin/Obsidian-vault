@@ -1,7 +1,7 @@
 {
   "userName": "kevin",
   "permissionMode": "normal",
-  "model": "my-qwen",
+  "model": "qwen3.5:9b",
   "thinkingBudget": "off",
   "effortLevel": "low",
   "serviceTier": "default",
@@ -11,9 +11,11 @@
   "mediaFolder": "",
   "systemPrompt": "",
   "persistentExternalContextPaths": [],
-  "sharedEnvironmentVariables": "ANTHROPIC_BASE_URL=http://localhost:1234/v1\nANTHROPIC_API_KEY=lm-studio\n",
+  "sharedEnvironmentVariables": "",
   "envSnippets": [],
-  "customContextLimits": {},
+  "customContextLimits": {
+    "qwen3.5:9b": 20000
+  },
   "customModelAliases": {},
   "keyboardNavigation": {
     "scrollUpKey": "w",
@@ -34,8 +36,8 @@
       "enableSonnet1M": false,
       "customModels": "",
       "lastModel": "haiku",
-      "environmentVariables": "ANTHROPIC_BASE_URL=http://localhost:11434/v1\nANTHROPIC_API_KEY=ollama\nANTHROPIC_MODEL=my-qwen\n",
-      "environmentHash": "ANTHROPIC_BASE_URL=http://localhost:11434/v1|ANTHROPIC_MODEL=my-qwen"
+      "environmentVariables": "ANTHROPIC_BASE_URL=http://localhost:11434/v1\nANTHROPIC_API_KEY=ollama\nANTHROPIC_MODEL=qwen3.5:9b",
+      "environmentHash": "ANTHROPIC_BASE_URL=http://localhost:11434/v1|ANTHROPIC_MODEL=qwen3.5:9b"
     },
     "codex": {
       "enabled": false,
@@ -78,7 +80,7 @@
   },
   "settingsProvider": "claude",
   "savedProviderModel": {
-    "claude": "my-qwen"
+    "claude": "qwen3.5:9b"
   },
   "savedProviderEffort": {
     "claude": "low"
@@ -88,7 +90,7 @@
   "savedProviderPermissionMode": {
     "claude": "normal"
   },
-  "lastCustomModel": "my-qwen-fast",
+  "lastCustomModel": "my-qwen",
   "maxTabs": 3,
   "tabBarPosition": "input",
   "enableAutoScroll": true,
