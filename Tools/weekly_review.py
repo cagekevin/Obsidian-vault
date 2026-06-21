@@ -81,8 +81,8 @@ def main():
         if audit:
             lines.append(f"## 校准日志审计\n\n{audit}\n")
 
-    # AI 分析空位
-    lines.append("---\n## AI 分析\n\n### 本周重点\n\n### 与目标对比\n\n### 目标是否需要更新？\n\n### 本期最值得追踪的问题\n\n### 校准日志沉淀建议\n")
+    # AI 分析空位（按顺序填写，最后做文件体检）
+    lines.append("---\n## AI 分析\n\n### 1. 本周重点\n\n### 2. 与目标对比\n\n### 3. 目标是否需要更新？\n\n### 4. 本期最值得追踪的问题\n\n### 5. 校准日志沉淀建议\n\n---\n\n### 6. 文件体检\n检查以下文件有无矛盾或过时内容（列出清单，不直接改）：\n\n- `Context/goals.md`：\n- `Context/style.md`：\n- `Context/profile.md`：\n- `Context/brand.md`：\n- `CLAUDE.md` 核心规则：\n- 校准日志已解决的问题 → 对应规则可删除？：\n")
 
     t = "\n".join(lines)
     if args.output:
