@@ -1,5 +1,7 @@
 [
   "obsidian-excalidraw-plugin",
   "obsidian-git",
-  "obsidian-local-rest-api"
+  "obsidian-local-rest-api",
+  "start-page",
+  "flownote"
 ]
