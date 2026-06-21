@@ -1,9 +1,9 @@
 {
   "userName": "kevin",
-  "permissionMode": "yolo",
-  "model": "haiku",
+  "permissionMode": "normal",
+  "model": "my-qwen-fast",
   "thinkingBudget": "off",
-  "effortLevel": "high",
+  "effortLevel": "low",
   "serviceTier": "default",
   "enableAutoTitleGeneration": true,
   "titleGenerationModel": "",
@@ -11,7 +11,7 @@
   "mediaFolder": "",
   "systemPrompt": "",
   "persistentExternalContextPaths": [],
-  "sharedEnvironmentVariables": "",
+  "sharedEnvironmentVariables": "ANTHROPIC_BASE_URL=http://localhost:1234/v1\nANTHROPIC_API_KEY=lm-studio\n",
   "envSnippets": [],
   "customContextLimits": {},
   "customModelAliases": {},
@@ -34,8 +34,8 @@
       "enableSonnet1M": false,
       "customModels": "",
       "lastModel": "haiku",
-      "environmentVariables": "",
-      "environmentHash": ""
+      "environmentVariables": "ANTHROPIC_BASE_URL=http://localhost:11434/v1\nANTHROPIC_API_KEY=ollama\nANTHROPIC_MODEL=my-qwen-fast\n",
+      "environmentHash": "ANTHROPIC_BASE_URL=http://localhost:11434/v1|ANTHROPIC_MODEL=my-qwen-fast"
     },
     "codex": {
       "enabled": false,
@@ -46,9 +46,9 @@
       "reasoningSummary": "detailed",
       "environmentVariables": "",
       "environmentHash": "",
-      "installationMethod": "native-windows",
-      "installationMethodsByHost": {},
-      "wslDistroOverride": "",
+      "installationMethodsByHost": {
+        "device:ca71db8b-2e05-4359-ab25-368065a55884": "native-windows"
+      },
       "wslDistroOverridesByHost": {}
     },
     "opencode": {
@@ -78,17 +78,17 @@
   },
   "settingsProvider": "claude",
   "savedProviderModel": {
-    "claude": "haiku"
+    "claude": "my-qwen-fast"
   },
   "savedProviderEffort": {
-    "claude": "high"
+    "claude": "low"
   },
   "savedProviderServiceTier": {},
   "savedProviderThinkingBudget": {},
   "savedProviderPermissionMode": {
-    "claude": "yolo"
+    "claude": "normal"
   },
-  "lastCustomModel": "",
+  "lastCustomModel": "my-qwen-fast",
   "maxTabs": 3,
   "tabBarPosition": "input",
   "enableAutoScroll": true,

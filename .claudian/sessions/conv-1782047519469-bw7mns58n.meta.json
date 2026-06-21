@@ -4,15 +4,18 @@
   "title": "你好",
   "titleGenerationStatus": "failed",
   "createdAt": 1782047519472,
-  "updatedAt": 1782047521053,
-  "lastResponseAt": 1782047520913,
-  "sessionId": "fcf4cc83-2ed3-403d-84e3-cfa80e56a71f",
+  "updatedAt": 1782049974887,
+  "lastResponseAt": 1782049974887,
+  "sessionId": "99e0a0e3-60b8-4bce-a231-7230f5c7312b",
   "providerState": {
-    "providerSessionId": "fcf4cc83-2ed3-403d-84e3-cfa80e56a71f"
+    "providerSessionId": "99e0a0e3-60b8-4bce-a231-7230f5c7312b",
+    "previousProviderSessionIds": [
+      "fcf4cc83-2ed3-403d-84e3-cfa80e56a71f"
+    ]
   },
   "currentNote": "Clippings/raw/Codex + Obsidian 搭建卡帕西同款自生长知识库：手把手教程.md",
   "usage": {
-    "model": "haiku",
+    "model": "my-qwen-fast",
     "inputTokens": 0,
     "cacheCreationInputTokens": 0,
     "cacheReadInputTokens": 0,
