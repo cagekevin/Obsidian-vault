@@ -1,7 +1,7 @@
 {
   "userName": "kevin",
   "permissionMode": "normal",
-  "model": "my-qwen-fast",
+  "model": "my-qwen",
   "thinkingBudget": "off",
   "effortLevel": "low",
   "serviceTier": "default",
@@ -34,8 +34,8 @@
       "enableSonnet1M": false,
       "customModels": "",
       "lastModel": "haiku",
-      "environmentVariables": "ANTHROPIC_BASE_URL=http://localhost:11434/v1\nANTHROPIC_API_KEY=ollama\nANTHROPIC_MODEL=my-qwen-fast\n",
-      "environmentHash": "ANTHROPIC_BASE_URL=http://localhost:11434/v1|ANTHROPIC_MODEL=my-qwen-fast"
+      "environmentVariables": "ANTHROPIC_BASE_URL=http://localhost:11434/v1\nANTHROPIC_API_KEY=ollama\nANTHROPIC_MODEL=my-qwen\n",
+      "environmentHash": "ANTHROPIC_BASE_URL=http://localhost:11434/v1|ANTHROPIC_MODEL=my-qwen"
     },
     "codex": {
       "enabled": false,
@@ -78,7 +78,7 @@
   },
   "settingsProvider": "claude",
   "savedProviderModel": {
-    "claude": "my-qwen-fast"
+    "claude": "my-qwen"
   },
   "savedProviderEffort": {
     "claude": "low"

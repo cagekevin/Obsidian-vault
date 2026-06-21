@@ -4,23 +4,25 @@
   "title": "你好",
   "titleGenerationStatus": "failed",
   "createdAt": 1782047519472,
-  "updatedAt": 1782049974887,
-  "lastResponseAt": 1782049974887,
-  "sessionId": "99e0a0e3-60b8-4bce-a231-7230f5c7312b",
+  "updatedAt": 1782050545779,
+  "lastResponseAt": 1782050545779,
+  "sessionId": "0401f1df-5244-4061-a709-c5057a198b08",
   "providerState": {
-    "providerSessionId": "99e0a0e3-60b8-4bce-a231-7230f5c7312b",
+    "providerSessionId": "0401f1df-5244-4061-a709-c5057a198b08",
     "previousProviderSessionIds": [
-      "fcf4cc83-2ed3-403d-84e3-cfa80e56a71f"
+      "fcf4cc83-2ed3-403d-84e3-cfa80e56a71f",
+      "99e0a0e3-60b8-4bce-a231-7230f5c7312b"
     ]
   },
   "currentNote": "Clippings/raw/Codex + Obsidian 搭建卡帕西同款自生长知识库：手把手教程.md",
   "usage": {
-    "model": "my-qwen-fast",
+    "model": "my-qwen",
     "inputTokens": 0,
     "cacheCreationInputTokens": 0,
     "cacheReadInputTokens": 0,
     "contextWindow": 200000,
     "contextTokens": 0,
-    "percentage": 0
+    "percentage": 0,
+    "contextWindowIsAuthoritative": false
   }
 }
