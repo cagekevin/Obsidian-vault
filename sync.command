@@ -205,6 +205,19 @@ INDEX_FILE="$VAULT_DIR/Wiki/index.md"
 WIKI_COUNT=$(grep -c '| \[' "$INDEX_FILE" || echo 0)
 log_success "Wiki/index.md（$WIKI_COUNT 个页面）"
 
+# 周日自动生成周复盘 + 校准日志审计（不包含当天）
+if [ "$(date '+%u')" = "7" ]; then
+    REVIEW_DIR="$VAULT_DIR/复盘"
+    mkdir -p "$REVIEW_DIR"
+    REVIEW_FILE="$REVIEW_DIR/$(date '+%Y-%m-%d').md"
+    if [ ! -f "$REVIEW_FILE" ]; then
+        # 扫 8 天不包含今天 = 上周日到这周六
+        python3 "$VAULT_DIR/Tools/weekly_review.py" --days 8 --exclude-today --output "$REVIEW_FILE" 2>/dev/null && log_success "周复盘已生成"
+        # 校准日志审计
+        python3 "$VAULT_DIR/.codebuddy/memory/audit.py" --days 7 --output "$REVIEW_DIR/audit-$(date '+%Y-%m-%d').md" 2>/dev/null && log_success "校准日志审计已生成"
+    fi
+fi
+
 # 扫描 Clippings/raw/ 未处理文件
 echo ""
 PENDING=$(python3 "$VAULT_DIR/Clippings/raw/pending.py" --count 2>/dev/null || echo "0")
