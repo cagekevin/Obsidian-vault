@@ -209,12 +209,10 @@ log_success "Wiki/index.md（$WIKI_COUNT 个页面）"
 if [ "$(date '+%u')" = "7" ]; then
     REVIEW_DIR="$VAULT_DIR/复盘"
     mkdir -p "$REVIEW_DIR"
-    REVIEW_FILE="$REVIEW_DIR/$(date '+%Y-%m-%d').md"
+    REVIEW_FILE="$REVIEW_DIR/$(date '+%Y-W%V').md"
     if [ ! -f "$REVIEW_FILE" ]; then
         # 扫 8 天不包含今天 = 上周日到这周六
-        python3 "$VAULT_DIR/Tools/weekly_review.py" --days 8 --exclude-today --output "$REVIEW_FILE" 2>/dev/null && log_success "周复盘已生成"
-        # 校准日志审计
-        python3 "$VAULT_DIR/.codebuddy/memory/audit.py" --days 7 --output "$REVIEW_DIR/audit-$(date '+%Y-%m-%d').md" 2>/dev/null && log_success "校准日志审计已生成"
+        python3 "$VAULT_DIR/Tools/weekly_review.py" --days 8 --exclude-today --audit --output "$REVIEW_FILE" 2>/dev/null && log_success "周复盘已生成"
     fi
 fi
 
