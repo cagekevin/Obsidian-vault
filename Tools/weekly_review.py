@@ -30,9 +30,9 @@ def main():
     args = a.parse_args()
     offset = 1 if args.exclude_today else 0
     lines = [f"# 周复盘 — {datetime.now():%Y-%m-%d}\n---\n"]
-    for d,p in recent(days, offset):
+    for d,p in recent(args.days, offset):
         with open(p) as f: lines.append(f"## {d}\n{f.read().strip()[:500]}\n")
-    g = gitlog(days)
+    g = gitlog(args.days)
     if g: lines.append(f"## 变更\n```\n{g}\n```")
     lines.append("---\n*AI 分析待填写*")
     t = "\n".join(lines)
