@@ -1,0 +1,23 @@
+{
+  "id": "conv-1782047519469-bw7mns58n",
+  "providerId": "claude",
+  "title": "你好",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1782047519472,
+  "updatedAt": 1782047521053,
+  "lastResponseAt": 1782047520913,
+  "sessionId": "fcf4cc83-2ed3-403d-84e3-cfa80e56a71f",
+  "providerState": {
+    "providerSessionId": "fcf4cc83-2ed3-403d-84e3-cfa80e56a71f"
+  },
+  "currentNote": "Clippings/raw/Codex + Obsidian 搭建卡帕西同款自生长知识库：手把手教程.md",
+  "usage": {
+    "model": "haiku",
+    "inputTokens": 0,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 0,
+    "contextWindow": 200000,
+    "contextTokens": 0,
+    "percentage": 0
+  }
+}
