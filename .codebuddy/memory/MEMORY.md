@@ -41,4 +41,4 @@
 
 - 同步方式：GitHub + Obsidian Git 插件自动同步
 - .gitignore 中 .obsidian/ 只忽略 workspace.json 和 cache
-- 插件配置已改为每 10 分钟自动 commit + push，启动时自动 pull
+- 插件配置已改为每 30 分钟自动 commit + push，启动时自动 pull
