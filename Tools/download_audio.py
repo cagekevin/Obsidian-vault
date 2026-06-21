@@ -5,6 +5,10 @@ YouTube / B站 音频/视频下载工具
 安装: brew install yt-dlp ffmpeg (Mac) / choco install yt-dlp ffmpeg (Win)
 出错只有两个原因：1. 软件没更新  2. Cookie 问题（浏览器没登录）
 
+禁止 AI 主动修改 PY 脚本
+禁止 AI 主动修改 PY 脚本
+禁止 AI 主动修改 PY 脚本！！！！
+
 用法:
   python3 download_audio.py "https://youtu.be/xxx"              # 下载音频（默认 mp3）
   python3 download_audio.py "https://www.bilibili.com/xxx"      # 下载B站音频
