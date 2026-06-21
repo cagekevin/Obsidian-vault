@@ -4,8 +4,8 @@
   "title": "你好",
   "titleGenerationStatus": "failed",
   "createdAt": 1782047519472,
-  "updatedAt": 1782068515289,
-  "lastResponseAt": 1782068515289,
+  "updatedAt": 1782069809549,
+  "lastResponseAt": 1782069809549,
   "sessionId": "b0f06c80-097e-4677-8ea4-fa5447b46c4a",
   "providerState": {
     "providerSessionId": "b0f06c80-097e-4677-8ea4-fa5447b46c4a",
@@ -22,6 +22,7 @@
     "cacheReadInputTokens": 0,
     "contextWindow": 20000,
     "contextTokens": 0,
-    "percentage": 0
+    "percentage": 0,
+    "contextWindowIsAuthoritative": false
   }
 }

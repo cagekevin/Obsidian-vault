@@ -36,7 +36,7 @@
       "enableSonnet1M": false,
       "customModels": "",
       "lastModel": "haiku",
-      "environmentVariables": "ANTHROPIC_BASE_URL=http://localhost:11434/v1\nANTHROPIC_API_KEY=ollama\nANTHROPIC_MODEL=qwen3.5:9b",
+      "environmentVariables": "ANTHROPIC_BASE_URL=http://localhost:11434/v1\nANTHROPIC_API_KEY=ollama\nANTHROPIC_MODEL=qwen3.5:9b\nCLAUDE_CODE_USE_BEDROCK=1",
       "environmentHash": "ANTHROPIC_BASE_URL=http://localhost:11434/v1|ANTHROPIC_MODEL=qwen3.5:9b"
     },
     "codex": {
