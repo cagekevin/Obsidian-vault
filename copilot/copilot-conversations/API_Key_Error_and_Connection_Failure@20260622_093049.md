@@ -341,3 +341,65 @@ more message: Failed to fetch</errorChunk>
 **user**: 现在可以改吗
 [Context: Notes: Daily Notes/2026-06-22.md]
 [Timestamp: 2026/06/22 10:05:14]
+
+**ai**: 根据你提供的上下文，**是的，你可以修改**。以下是关于“修改”操作的具体说明：
+
+### ✅ 支持的修改场景与命令
+
+| 你想做什么 | 正确命令 / 方式 | ⚠️ 禁止的操作 |
+|-----------|-----------------|---------------|
+| **修改待办任务信息**（标题、优先级、截止时间） | `dws todo task update --task-id <taskId> ...` [^1] | ❌ 不能直接删除后重新创建来改顺序 |
+| **修改字段配置/名称**（钉钉表格） | 先 `field delete`，再 `field create`[^2] | ❌ `field update` **不能改类型**；❌ 不支持移动/调整顺序 |
+| **修改日程信息** | `dws calendar event update --id <EVENT_ID> ...` [^3] | - |
+| **批量更新文档块内容或样式**（Lexiang） | `lexiang.block_update_blocks`[^4] | ❌ 单次最多只能执行一种操作；❌ 不能直接修改正文文件 |
+
+---
+
+### 🔍 关键限制提醒
+
+1. **字段类型不可改**：钉钉表格中，若想改变字段类型（如从 text 改为 singleSelect），必须删除后重建 [^2]。
+2. **顺序无法调整**：钉钉表格不支持通过命令移动/重排字段顺序，需在界面手动拖拽[^2]。
+3. **附件上传流程固定**：不能直接用钉盘文件写入 attachment 字段，需先 `upload_attachment.py` 获取 token [^5]。
+
+---
+
+### 📋 示例操作（钉钉待办）
+
+```bash
+# 修改标题和优先级
+dws todo task update --task-id <taskId> \
+  --title "新任务名称" \
+  --priority 40 \
+  --due "2026-03-15T18:00:00+08:00"
+
+# 标记为完成
+dws todo task done --task-id <taskId> --status true
+```
+
+需要我帮你生成具体的修改命令吗？请告诉我：  
+👉 **你想改什么？**（待办标题、字段配置、日程时间等）  
+👉 **当前任务 ID / 文件路径是什么？**
+
+#### Sources:
+
+[^1]: [[ai-generation-guide]]
+[^2]: [[SKILL]]
+[^3]: [[CHANGELOG]]
+[^4]: [[multi-agent-horizontal-sync]]
+[^5]: [[api_references]]
+[^6]: [[fbs-auxiliary-tasks]]
+[^7]: [[bibliography]]
+[^8]: [[s0-material-phase-guard]]
+[^9]: [[路由决策树]]
+[^10]: [[minutes]]
+[^11]: [[section-8-onboarding]]
+[^12]: [[teams-inbox-mapping]]
+[^13]: [[qc-agent-briefing-template]]
+[^14]: [[field-rules]]
+[^15]: [[intake-and-routing]]
+[^16]: [[section-6-tech]]
+[^17]: [[block-update]]
+[^18]: [[never-rules]]
+[^19]: [[FASC_API_Reference]]
+[^20]: [[fbs-reviewer]]
+[Timestamp: 2026/06/22 10:08:18]
