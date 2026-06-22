@@ -1,6 +1,6 @@
 {
   "userName": "kevin",
-  "permissionMode": "normal",
+  "permissionMode": "yolo",
   "model": "qwen3.5:9b",
   "thinkingBudget": "off",
   "effortLevel": "low",
@@ -13,9 +13,7 @@
   "persistentExternalContextPaths": [],
   "sharedEnvironmentVariables": "",
   "envSnippets": [],
-  "customContextLimits": {
-    "qwen3.5:9b": 20000
-  },
+  "customContextLimits": {},
   "customModelAliases": {},
   "keyboardNavigation": {
     "scrollUpKey": "w",
@@ -36,7 +34,7 @@
       "enableSonnet1M": false,
       "customModels": "",
       "lastModel": "haiku",
-      "environmentVariables": "ANTHROPIC_BASE_URL=http://localhost:11434/v1\nANTHROPIC_API_KEY=ollama\nANTHROPIC_MODEL=qwen3.5:9b\nCLAUDE_CODE_USE_BEDROCK=1",
+      "environmentVariables": "ANTHROPIC_API_KEY=ollama\nANTHROPIC_BASE_URL=http://localhost:11434/v1\nANTHROPIC_MODEL=qwen3.5:9b\nCLAUDE_CODE_USE_BEDROCK=1",
       "environmentHash": "ANTHROPIC_BASE_URL=http://localhost:11434/v1|ANTHROPIC_MODEL=qwen3.5:9b"
     },
     "codex": {
@@ -88,9 +86,9 @@
   "savedProviderServiceTier": {},
   "savedProviderThinkingBudget": {},
   "savedProviderPermissionMode": {
-    "claude": "normal"
+    "claude": "yolo"
   },
-  "lastCustomModel": "my-qwen",
+  "lastCustomModel": "qwen3.5:9b",
   "maxTabs": 3,
   "tabBarPosition": "input",
   "enableAutoScroll": true,

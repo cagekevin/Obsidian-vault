@@ -1,0 +1,23 @@
+{
+  "id": "conv-1782070110892-jifvft0me",
+  "providerId": "claude",
+  "title": "1",
+  "titleGenerationStatus": "failed",
+  "createdAt": 1782070110892,
+  "updatedAt": 1782091656221,
+  "lastResponseAt": 1782091656221,
+  "sessionId": "1432fd60-2193-48a8-aff7-6c70cda51834",
+  "providerState": {
+    "providerSessionId": "1432fd60-2193-48a8-aff7-6c70cda51834"
+  },
+  "currentNote": "Skills/工作效率类/W0-任务日志/SKILL.md",
+  "usage": {
+    "model": "qwen3.5:9b",
+    "inputTokens": 0,
+    "cacheCreationInputTokens": 0,
+    "cacheReadInputTokens": 0,
+    "contextWindow": 200000,
+    "contextTokens": 0,
+    "percentage": 0
+  }
+}
