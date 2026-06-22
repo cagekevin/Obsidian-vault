@@ -14,7 +14,7 @@
 | **结构化知识** | `Reading/`、`Skills/` | 人+AI 协作 | 读书笔记、技能定义 |
 | **规则文档** | `Context/schema.md` | 人+AI 协作优化 | 定义加工规则和流程 |
 | **操作日志** | `Daily Notes/`、`Wiki/log.md` | AI 写 | 工作记录和操作日志 |
-| **AI 记忆** | `.codebuddy/memory/` | **AI 全权维护** | 长期记忆（MEMORY.md）+ 短期记忆（YYYY-MM-DD.md） |
+| **AI 记忆** | `.codebuddy/memory/` | **AI 全权维护**（MEMORY.md 仅限 Kevin 要求"写到长期记忆"时修改） | 长期记忆（MEMORY.md）+ 短期记忆（YYYY-MM-DD.md） |
 
 ---
 
