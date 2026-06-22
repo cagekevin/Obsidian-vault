@@ -24,7 +24,7 @@
   "githubCopilotToken": "",
   "githubCopilotTokenExpiresAt": 1782093873000,
   "defaultChainType": "llm_chain",
-  "defaultModelKey": "ollama|openai",
+  "defaultModelKey": "qwen3.5:9b|ollama",
   "embeddingModelKey": "openai/text-embedding-3-small|openrouterai",
   "temperature": 0.1,
   "maxTokens": 6000,
@@ -38,7 +38,7 @@
   "autosaveChat": true,
   "generateAIChatTitleOnSave": true,
   "autoAddActiveContentToContext": true,
-  "defaultOpenArea": "view",
+  "defaultOpenArea": "editor",
   "defaultSendShortcut": "enter",
   "customPromptsFolder": "copilot/copilot-custom-prompts",
   "indexVaultToVectorStore": "ON MODE SWITCH",
@@ -332,28 +332,15 @@
       "apiKey": ""
     },
     {
-      "name": "ollama",
-      "provider": "openai",
+      "name": "qwen3.5:9b",
+      "provider": "ollama",
       "enabled": true,
       "isBuiltIn": false,
-      "baseUrl": "http://localhost:11434/v1",
+      "baseUrl": "http://localhost:11434",
       "apiKey": "",
       "isEmbeddingModel": false,
       "capabilities": [],
-      "stream": true,
-      "openAIOrgId": "qwen3.5:9b"
-    },
-    {
-      "name": "gpt-4o",
-      "provider": "github-copilot",
-      "enabled": true,
-      "apiKey": ""
-    },
-    {
-      "name": "text-embedding-3-small",
-      "provider": "github-copilot",
-      "enabled": true,
-      "apiKey": ""
+      "stream": true
     }
   ],
   "activeEmbeddingModels": [
@@ -467,6 +454,17 @@
       "isBuiltIn": true,
       "isEmbeddingModel": true,
       "apiKey": ""
+    },
+    {
+      "name": "qwen3.5:9b",
+      "provider": "ollama",
+      "enabled": true,
+      "isBuiltIn": false,
+      "baseUrl": "http://localhost:11434",
+      "apiKey": "",
+      "isEmbeddingModel": true,
+      "capabilities": [],
+      "enableCors": true
     }
   ],
   "embeddingRequestsPerMin": 60,
