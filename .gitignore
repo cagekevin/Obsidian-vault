@@ -13,6 +13,9 @@ node_modules/
 .obsidian/workspace-cache/
 .obsidian/cache/
 
+# Obsidian 插件构建产物（不同步插件二进制文件）
+.obsidian/plugins/notebook-navigator/
+
 # 临时文件
 *.swp
 *.swo
