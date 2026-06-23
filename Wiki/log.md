@@ -17,6 +17,15 @@ Navigation: [[index]] | [[hot]]
 
 ---
 
+## [2026-06-23] Ingest | 5 Agent Skill Design Patterns
+- Source: Google Cloud Tech (Twitter/X), Chinese translation via CSDN
+- Raw file: `Clippings/raw/5 Agent Skill设计模式.md`
+- Pages created:
+  - Concepts: [[Agent Skill Design Patterns]]
+  - Sources: [[5 Agent Skill Design Patterns]]
+- Pages updated: [[index]], [[hot]], [[log]]
+- Key insight: Five standardized patterns for structuring Agent skill logic (Tool Wrapper, Generator, Reviewer, Inversion, Pipeline). The progressive disclosure mechanism is foundational — skills load in layers (metadata → instructions → references on-demand). Patterns are composable, not mutually exclusive. Directly relevant to Kevin's skills-main project.
+
 ## [2026-06-23] Wiki structure initialized
 - Adopted claude-obsidian LLM Wiki structure
 - Folders: concepts/, entities/, sources/, questions/, meta/
@@ -45,3 +54,27 @@ Navigation: [[index]] | [[hot]]
   - Sources: [[sources/Ollama Official Documentation]], [[sources/Antigravity Tools]], [[sources/Claude Code + Ollama Tutorial]], [[sources/Claude Code + LM Studio Tutorial]], [[sources/oMLX Tutorial]], [[sources/OptiQ Tutorial]]
 - Pages updated: [[index]], [[concepts/_index]], [[entities/_index]], [[sources/_index]], [[log]]
 - Key insight: The local LLM ecosystem for Claude Code has multiple runtimes (Ollama/LM Studio/oMLX/OptiQ) plus cloud proxy (Antigravity Tools), all sharing the same Anthropic-compatible API pattern. Ollama is the primary runtime; Antigravity Tools provides an alternative cloud path via Tencent Copilot.
+
+## [2026-06-23] Concept ingest | AI Camera Movements from Bilibili video
+- Source: Bilibili video [BV1xBjW6pEym](https://www.bilibili.com/video/BV1xBjW6pEym) (AI 运镜提示词)
+- Pages created:
+  - Concepts: [[AI Camera Movements]]
+- Pages updated: [[concepts/_index]], [[log]]
+- Key insight: 30+ 种运镜手法，分为基础运镜、动态情绪运镜、角度视角、进阶技巧四类。讲故事并不需要大量运镜，许多优秀电影仅用硬切也能达到很好效果。
+
+## [2026-06-23] Batch ingest | Storytelling concepts from W6 screenwriting skill
+- Source: W6-视频创作/俄语详细剧本 skill (methodology.md, style-rules.md, timing-and-cutting.md)
+- Pages created (13 concepts):
+  - Core principles: [[Show Don't Tell]], [[Controlling Idea]], [[Scene Value]], [[Chekhov's Gun]], [[If You Remove It Does It Change]], [[Progressive Complications]], [[Pacing and Rhythm]]
+  - Classic structures: [[Three-Act Structure]], [[Hero's Journey]], [[Inciting Incident]]
+  - Tragedy theory (Aristotle): [[Hamartia]], [[Peripeteia and Anagnorisis]], [[Catharsis]]
+- Pages updated: [[concepts/_index]], [[log]]
+- Key insight: Many screenwriting principles map directly to AI image/video generation best practices. "Show don't tell" = Visual Description First Principle; "Controlling Idea" = Description Weight Principle. The same underlying logic applies across domains.
+
+## [2026-06-23] Concept ingest | Character Bible & Worldbuilding from W6 templates
+- Source: W6-视频创作/俄语详细剧本 templates (characters.template.md, worldbuilding.template.md)
+- Pages created (2 concepts):
+  - [[Character Bible]] — 8层角色构建系统：基础→外观→心理学→传记→弧线→声音→关系→关联物体
+  - [[Worldbuilding]] — 世界观构建：世界规则→系统→历史→势力→地点→物体地雷→知识层级
+- Pages updated: [[concepts/_index]], [[index]], [[log]]
+- Key insight: 角色圣经的核心是"欲望 vs 需求"——角色以为自己想要的和真正需要的，这是角色弧线的引擎。世界观的核心是"规则与限制"——没有限制的系统=作弊器，没有戏剧张力。

@@ -27,6 +27,7 @@ All source pages — summaries of ingested documents, transcripts, articles, and
 ## Ecosystem Research
 
 - [[claude-obsidian-ecosystem-research]] — ecosystem research
+- [[5 Agent Skill Design Patterns]] — Google Cloud Tech on 5 ADK Agent Skill design patterns
 
 ---
 
