@@ -20,6 +20,8 @@ Navigation: [[index]] | [[log]] | [[overview]]
 
 ## Last Updated
 
+2026-06-23 (补充): **Entity page added — Google ADK**. Created [[Google ADK]] entity page with full details on SkillToolset, ADK Core Skills, skill format, and ecosystem. Fills the gap from the earlier 5 Agent Skill Design Patterns ingest — the source mentioned ADK extensively but didn't have a dedicated entity page. Total wiki pages: 50 → 51.
+
 2026-06-23 (23:10): **Ingest — 5 Agent Skill Design Patterns**. Ingested Google Cloud Tech's Twitter thread on 5 ADK Agent Skill design patterns (Tool Wrapper, Generator, Reviewer, Inversion, Pipeline). Created [[Agent Skill Design Patterns]] concept page and [[5 Agent Skill Design Patterns]] source page. Key insight: progressive disclosure is the foundational mechanism behind all patterns; patterns are composable, not mutually exclusive. Directly relevant to skills-main project — these patterns provide a vocabulary for discussing skill architecture. Total wiki pages: 48 → 50.
 
 2026-06-23 (21:30): **Concept extraction — 5 Image Generation principles from HKH project**. Extracted 5 core principles from HKH brand image generation experience: [[描述比重原则]], [[视觉描述优先原则]], [[参考图优先原则]], [[克制原则]], [[一致性锚点原则]]. These principles appear across multiple skills (burning scenes, white background, lyrical realism, collaboration flow), confirming they are generalizable. Added backlinks to 7 skill/case files in Projects/HKH品牌/作图经验/. Total wiki pages: 30 → 35. Next: Continue extracting concepts from other skill areas as patterns emerge; consider running wiki-lint to validate the new pages.

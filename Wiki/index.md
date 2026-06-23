@@ -16,7 +16,7 @@ related:
 
 # Wiki Index
 
-Last updated: 2026-06-23 | Total pages: 50 | Sources ingested: 9
+Last updated: 2026-06-23 | Total pages: 51 | Sources ingested: 9
 
 Navigation: [[log]] | [[hot]]
 
@@ -25,7 +25,6 @@ Navigation: [[log]] | [[hot]]
 ## Concepts
 
 - [[LLM Wiki Pattern]] — the pattern for building persistent, compounding knowledge bases using LLMs (status: mature)
-- [[Agent Skill Design Patterns]] — 5 standardized patterns for structuring Agent skill logic (Tool Wrapper, Generator, Reviewer, Inversion, Pipeline) (status: developing)
 - [[Compounding Knowledge]] — why wiki knowledge grows more valuable over time, unlike RAG (status: mature)
 - [[Hot Cache]] — ~500-word session context file, updated after every ingest and session (status: mature)
 - [[Persistent Wiki Artifact]] — the wiki is a persistent artifact, not a chat transcript (status: developing)
@@ -45,6 +44,11 @@ Navigation: [[log]] | [[hot]]
 - [[Anthropic Compatible API]] — Ollama's Anthropic-compatible endpoint protocol (status: developing)
 - [[Apple Silicon Optimization]] — techniques for running LLMs on M-series Macs (status: developing)
 - [[Model Quantization]] — reducing model memory footprint via lower precision (status: developing)
+
+## Agent Design
+
+- [[Agent Skill Design Patterns]] — 5 standardized patterns for structuring Agent skill logic (Tool Wrapper, Generator, Reviewer, Inversion, Pipeline) (status: developing)
+- [[Intent Recognition]] — 意图识别，判断用户要什么然后路由到对应工作流或技能 (status: developing)
 
 ## Image Generation
 
@@ -97,6 +101,7 @@ Navigation: [[log]] | [[hot]]
 - [[oMLX]] — Apple Silicon optimized inference engine (tool)
 - [[OptiQ]] — mixed-precision quantization tool for MLX models (tool)
 - [[Tencent Cloud Copilot]] — cloud LLM API service (service)
+- [[Google ADK]] — Google's Agent Development Kit for building production AI agents (tool)
 
 ## Sources
 

@@ -41,6 +41,7 @@ All entity pages — people, organizations, products, and tools.
 - [[LM Studio]] — GUI-based local LLM runner
 - [[oMLX]] — Apple Silicon optimized inference engine
 - [[OptiQ]] — mixed-precision quantization tool
+- [[Google ADK]] — Google's Agent Development Kit for building production AI agents
 
 ---
 

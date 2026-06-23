@@ -17,6 +17,18 @@ Navigation: [[index]] | [[hot]]
 
 ---
 
+## [2026-06-23] Entity creation | Google ADK
+- Created [[Google ADK]] entity page (framework type)
+- Pages updated: [[index]], [[entities/_index]], [[hot]], [[log]]
+- Key insight: Fills the gap from the earlier 5 Agent Skill Design Patterns ingest — the source mentioned ADK extensively but didn't have a dedicated entity page. ADK Core Skills are all Tool Wrapper pattern; Google dogfoods the same SKILL.md format for both development workflow and production runtime.
+
+## [2026-06-23] Entity creation | Google ADK
+- Created entity page for Google ADK (Agent Development Kit)
+- Pages created:
+  - Entities: [[Google ADK]]
+- Pages updated: [[index]], [[log]]
+- Key insight: ADK is Google's framework for building production AI agents with modular skills. Implements the Agent Skills specification adopted by 30+ tools. Directly relevant to Kevin's skills-main project — same SKILL.md format and design patterns.
+
 ## [2026-06-23] Ingest | 5 Agent Skill Design Patterns
 - Source: Google Cloud Tech (Twitter/X), Chinese translation via CSDN
 - Raw file: `Clippings/raw/5 Agent Skill设计模式.md`
@@ -78,3 +90,17 @@ Navigation: [[index]] | [[hot]]
   - [[Worldbuilding]] — 世界观构建：世界规则→系统→历史→势力→地点→物体地雷→知识层级
 - Pages updated: [[concepts/_index]], [[index]], [[log]]
 - Key insight: 角色圣经的核心是"欲望 vs 需求"——角色以为自己想要的和真正需要的，这是角色弧线的引擎。世界观的核心是"规则与限制"——没有限制的系统=作弊器，没有戏剧张力。
+
+## [2026-06-23] Concept ingest | Intent Recognition from Bilibili video + W6 workflow
+- Source: Bilibili video [BV1HTGy68EUF](https://www.bilibili.com/video/BV1HTGy68EUF) (《浅入深出》Agent系列之十二：意图识别) + W6-视频创作/俄语详细剧本 workflow.md
+- Pages created:
+  - Concepts: [[Intent Recognition]]
+- Pages updated: [[concepts/_index]], [[index]], [[log]]
+- Key insight: 意图识别不只是"第一次路由"，而是贯穿整个交互过程——每一轮用户输入都要先识别意图，再走对应的工作流。技能选择本质上就是意图识别。
+
+## [2026-06-23] Concept ingest | Intent Recognition from Bilibili video + W6 workflow
+- Source: Bilibili video [BV1HTGy68EUF](https://www.bilibili.com/video/BV1HTGy68EUF) (《浅入深出》Agent系列之十二：意图识别) + W6-视频创作/俄语详细剧本 workflow.md
+- Pages created:
+  - Concepts: [[Intent Recognition]]
+- Pages updated: [[concepts/_index]], [[index]], [[log]]
+- Key insight: 意图识别不只是"第一次路由"，而是贯穿整个交互过程——每一轮用户输入都要先识别意图，再走对应工作流。技能选择本质上就是意图识别。
