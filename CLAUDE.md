@@ -120,15 +120,52 @@ AI 第一次进入这个 vault 时，按这个顺序做，不要跳步：
 
 ## 依赖安装
 
-首次使用这个 vault 时：
+### 核心原则
 
-**Python 依赖（uv）**
-`uv pip install -r requirements.txt`
+依赖统一装在最合适的层级，**能共享就不重复装**。
 
-**Node 依赖（pnpm）**
-`pnpm install`
+| 类型 | 安装位置 | 管理工具 |
+|------|---------|---------|
+| Node | vault 根目录（`g:/Obsidian-vault/node_modules/`） | npm（Windows）/ pnpm（Mac） |
+| Python | 系统全局（不建虚拟环境） | uv |
 
-如果某个项目有特殊依赖，会在该项目目录下放自己的 `requirements.txt` 或 `package.json`。
+Node.js 会自动向上搜索 `node_modules`，子项目不需要安装。
+
+### Node 依赖
+
+```bash
+# 首次安装
+cd <vault根目录>
+npm install
+
+# 新增依赖
+npm install <包名>
+```
+
+### Python 依赖
+
+```bash
+# 首次安装
+uv pip install -r requirements.txt
+
+# 新增依赖
+uv pip install <包名>
+```
+
+Python 统一用 `uv` 管理，不建虚拟环境。依赖记录在 vault 根目录的 `requirements.txt` 中。
+
+### 各项目特殊依赖
+
+如果某个项目有无法共享的特殊依赖，在该项目目录下放自己的 `requirements.txt`（Python）或 `package.json`（Node），并在该项目文件夹的 `instructions.md` 中注明。
+
+### 环境差异
+
+| 环境 | Node 包管理器 | Python 包管理器 |
+|------|-------------|----------------|
+| Mac | pnpm（主环境） | uv |
+| Windows | npm（双机环境） | uv |
+
+`package.json` 和 `requirements.txt` 保持跨平台一致。
 
 ---
 

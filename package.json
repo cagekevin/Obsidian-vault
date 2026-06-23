@@ -1,0 +1,24 @@
+{
+  "name": "obsidian-vault",
+  "version": "1.0.0",
+  "description": "Obsidian vault 管理我的知识体系、技能库、项目文档和个人笔记。",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cagekevin/Obsidian-vault.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/cagekevin/Obsidian-vault/issues"
+  },
+  "homepage": "https://github.com/cagekevin/Obsidian-vault#readme",
+  "dependencies": {
+    "playwright": "^1.61.0"
+  }
+}

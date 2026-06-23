@@ -303,7 +303,7 @@ Default implementation pattern:
 - Create a task folder (STEP 0 already did this), for example `2026-06-22-小红书-岩玫瑰溯源/`.
 - Put source images in `assets/`.
 - Start from the seed template copied in Step 4.5, not a blank file. Change only the `<!-- POSTERS_HERE -->` region. Use built-in template classes (`.ledger`, `.pipeline-v`, `.callout`, `.pullquote`, `.issue-row`, `.issue-strip`, etc.) unless the required layout genuinely cannot be expressed with them. If built-in classes suffice — and they almost always do — no custom CSS is allowed. Only add a small task-scoped block when all built-in options are exhausted, and keep it minimal.
-- **Playwright 已在技能根目录安装**，子项目无需再装。
+- **Playwright 已在 vault 根目录安装**，子项目无需再装。Node.js 会自动向上搜索 `node_modules`。
 - 渲染命令（用户确认后再执行）。PSD 图层碎片自动根据语义选择器拆分，无需手动标记。
 
   ```bash
