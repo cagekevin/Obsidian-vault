@@ -2,7 +2,6 @@
 
 > 自动生成于 2026-06-22 03:10
 
-
 ## 工程类技能
 
 | 编号 | 名称 |
@@ -34,3 +33,12 @@
 | W7 | API链接 |
 | W8 | 基础网页设计 |
 | W9 | 文档处理 |
+
+## Wiki 知识管理
+
+| 触发词 | 说明 | 入口 |
+|--------|------|------|
+| `吸收` / `ingest` | 把 Clippings 里的资料吸收到 Wiki 知识库 | `Wiki/skills/ingest.md` |
+| `lint` | Wiki 健康检查（孤儿/死链/过期等） | `Wiki/skills/lint.md` |
+| `query` / `问` | 从 Wiki 知识库查询 | `Wiki/skills/query.md` |
+| `save` / `保存` | 存档当前对话到 Wiki | `Wiki/skills/save.md` |

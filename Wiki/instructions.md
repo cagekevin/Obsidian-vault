@@ -1,35 +1,126 @@
-# Wiki/instructions.md
-
-## 这是 AI 构建的知识图谱
-
-这个文件夹里的内容由 AI 全权负责创建和维护。**Kevin 只看不改。**
-
-AI 从 `Clippings/raw/` 的原始资料中提取实体和概念，为每个概念创建一个 Wiki 页面，并在页面之间建立双向链接。
-
+---
+type: meta
+title: "Wiki Instructions"
+updated: 2026-06-23
+tags:
+  - meta
+  - instructions
+status: evergreen
+related:
+  - "[[index]]"
+  - "[[log]]"
+  - "[[hot]]"
 ---
 
-## 文件结构
+# Wiki Instructions
+
+## Structure
 
 ```
 Wiki/
-├── index.md          ← AI 自动维护的目录（所有页面 + 一句话摘要）
-├── log.md            ← AI 自动写的操作日志
-├── 概念名.md          ← 每个概念一个页面
-└── ...
+├── skills/       ← skill 指令文件（ingest/lint/query/save）
+├── concepts/     ← 概念页
+├── entities/     ← 实体页
+├── sources/      ← 来源页
+├── questions/    ← 问答存档
+├── meta/         ← 元数据
+├── index.md      ← 主索引
+├── hot.md        ← 热上下文
+└── log.md        ← 操作日志
+```
+
+## Frontmatter 模板
+
+### 概念页
+
+```yaml
+---
+type: concept
+title: "Concept Name"
+complexity: intermediate
+domain: knowledge-management
+aliases:
+  - "Alternative Name"
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+tags:
+  - concept
+  - <domain>
+status: developing
+related:
+  - "[[Related Page]]"
+sources:
+---
+```
+
+### 实体页
+
+```yaml
+---
+type: entity
+title: "Entity Name"
+entity_type: person
+role: "Brief role description"
+first_mentioned: "[[First Source]]"
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+tags:
+  - entity
+  - <type>
+status: mature
+related:
+  - "[[Related Page]]"
+sources:
+---
+```
+
+### 来源页
+
+```yaml
+---
+type: source
+title: "Source Title"
+source_url: "https://..."
+fetched: YYYY-MM-DD
+tags:
+  - source
+  - <type>
+status: ingested
+related:
+  - "[[concepts/Extracted Concept]]"
+---
+```
+
+### 问答存档
+
+```yaml
+---
+type: question
+title: "Question Title"
+question: "The original question as asked."
+answer_quality: solid
+created: YYYY-MM-DD
+updated: YYYY-MM-DD
+tags:
+  - question
+  - <domain>
+related:
+  - "[[Referenced Page]]"
+sources:
+  - "[[sources/Source Page]]"
+---
 ```
 
 ## 命名规则
 
-`概念名.md` — 简短精确的中文概念名。
-- ✅ `LLM-Wikid框架.md`
-- ✅ `Schema规则文档.md`
-- ✅ `知识原子化.md`
-- ❌ `关于Karpathy框架的一些思考.md`（太长）
-- ❌ `20260620-笔记.md`（不要日期前缀）
+- 文件名：英文 Title Case 带空格（`Machine Learning.md`）
+- 子文件夹：英文小写（`concepts/`）
+- Wikilink：和文件名完全一致（`[[Machine Learning]]`）
+- 文件名全 vault 唯一
 
-## AI 的角色
+## 页面内容规范
 
-- 这个文件夹由 AI 全权维护，Kevin 不手动修改这里的内容
-- 每次 Ingest 后：创建/更新 Wiki 页面 + 更新 index.md + 写 log.md
-- 每个页面必须用 `[[链接]]` 关联到相关页面
-- 定期做 Lint：检查矛盾、孤立页面、缺失链接
+- 使用 `---` 分隔线分段
+- 每个概念页应有 `## Connections` 段落
+- 用 `[[Wikilink]]` 建立交叉引用
+- 不写空段落

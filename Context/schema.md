@@ -22,36 +22,37 @@
 
 ### 1. Ingest（摄入）
 
-当新资料进入 `Clippings/raw/` 时，AI 按以下步骤处理：
+当 Kevin 说"吸收"或"ingest"时，AI 按 `Wiki/skills/ingest.md` 的流程执行：
 
-1. 先跑 `Clippings/raw/pending.py` 确认哪些文件未处理
-2. 读原始资料的全文
-3. **跟我讨论关键点**：读完后先跟我简要说明资料的核心内容，问我重点方向，我再指导你强调什么、忽略什么
-4. 提取关键**实体**（人、公司、项目、工具）和**概念**（方法论、技术名词）
-5. 检查 `Wiki/` 中是否已有相关页面：
-   - 如果有 → 更新现有页面，补充新信息，添加双向链接
-   - 如果没有 → 在 `Wiki/` 创建新页面（每个实体/概念一个文件）
-6. 更新 `Wiki/index.md`（所有页面清单 + 一句话摘要）
-7. 追加 `Wiki/log.md` 记录本次操作
-8. 更新 `Daily Notes/` 记录
-9. **在原始文件末尾追加处理标记**：`<!-- processed: 日期 → Wiki/页面名.md -->`
+1. 读 `Clippings/` 下的原始资料
+2. 在 `Wiki/sources/` 下建来源摘要页
+3. 识别关键概念 → 建/更新 `Wiki/concepts/`
+4. 识别实体（人物/机构/产品）→ 建/更新 `Wiki/entities/`
+5. 建立交叉引用（`[[链接]]`）
+6. 更新 `Wiki/index.md`（添加新页面条目）
+7. 追加到 `Wiki/log.md`
+8. 检查矛盾（如有，标注 `> [!contradiction]` callout）
 
 ### 2. Query（问答）
 
-当我提问时，AI 优先基于 `Wiki/` 的知识图谱回答，同时附带原始来源引用（`Clippings/raw/`）。如果 Wiki 中没有相关内容，再去 `Reading/` 和 `Skills/` 找。
+当 Kevin 提问时，AI 按 `Wiki/skills/query.md` 的流程执行。优先基于 `Wiki/` 的知识图谱回答，附带原始来源引用。如果 Wiki 中没有，再去 `Reading/` 和 `Skills/` 找。
 
-**回存机制**：当问答产出了以下类型的内容时，回存到 `Wiki/` 作为新页面：
-- **对比分析**：比较两个或多个概念/实体的异同（type: comparison）
-- **综合结论**：从多个资料中提炼出的新洞察（type: synthesis）
-- **问答提炼**：反复问同一类问题，值得固化下来的答案（type: concept）
-- 回存时在 frontmatter 标注 `source: query-YYYY-MM-DD` 并链接到 `Wiki/log.md`
+说"保存这个"或"save"时，AI 按 `Wiki/skills/save.md` 的流程把对话存为 Wiki 笔记。
 
 ### 3. Lint（审查）
 
-AI 定期（或我要求时）检查 `Wiki/`：
+当 Kevin 说"lint"时，AI 按 `Wiki/skills/lint.md` 的流程执行：
 
-1. **矛盾检查**：同一概念在不同页面中是否有矛盾的表述
-2. **孤立页面**：有没有没有与其他页面建立双向链接的页面
+1. **孤儿页面**：没有入链的 Wiki 页面
+2. **死链**：引用了不存在的页面
+3. **过期声明**：旧页面被新来源反驳
+4. **缺失页面**：多处提及但无独立页面
+5. **缺失交叉引用**：提及实体但未链接
+6. **Frontmatter 缺失**：缺少必要字段
+7. **空段落**：有标题无内容
+8. **索引失效**：index.md 指向已删除的页面
+
+输出 lint 报告到 `Wiki/meta/lint-report-YYYY-MM-DD.md`。
 3. **缺失链接**：有没有提到了概念但没有创建对应页面
 4. **过时信息**：有没有被新资料推翻的旧表述
 
@@ -63,7 +64,7 @@ AI 定期（或我要求时）检查 `Wiki/`：
 |--------|---------|------|
 | `Clippings/raw/` | 保持原文件名 | `raw-20260620-转录稿.txt` |
 | `Clippings/` | `来源-日期-标题.md` | `twitter-20260620-Obsidian第二大脑.md` |
-| `Wiki/` | `概念名.md`（简短精确的中文） | `LLM-Wikid框架.md` |
+| `Wiki/` | `概念名.md`（英文 Title Case，带空格） | `LLM Wiki Pattern.md` |
 | `Reading/` | `书名-作者.md` 或 `主题-日期.md` | `深度工作-卡尔·纽波特.md` |
 | `Daily Notes/` | `YYYY-MM-DD.md` | `2026-06-20.md` |
 | `Projects/` | `项目名/`（中文，不加日期） | `HKH皮卡斯03版本/` |
@@ -74,7 +75,7 @@ AI 定期（或我要求时）检查 `Wiki/`：
 ## 四、风格约定
 
 - 内部链接使用 Obsidian 的双向链接规范 `[[页面名]]`
-- Wiki/ 中的每个页面必须有 frontmatter 标注类型：`type: entity | concept | source-summary | comparison | synthesis`
+- Wiki/ 中的每个页面必须有 frontmatter 标注类型：`type: concept | entity | source | question | meta`（详见 `Wiki/instructions.md` 的模板）
 - 区分 AI 生成和人工编写的内容
 
 ---
