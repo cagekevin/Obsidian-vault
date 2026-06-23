@@ -125,30 +125,32 @@ Read these files as needed:
 **创建项目目录前必须先询问用户：当前项目放哪里？**
 
 - 如果用户有指定位置 → 使用用户指定的位置
-- 如果用户说"默认"/"随便" → 使用 `G:\AgentSpace\1_Active\01_小红书项目\`
+- 如果用户说"默认"/"随便" → 询问用户要放哪个项目目录
 - 如果用户说了其他路径 → 使用该路径
 
-**目录命名规则：** `YY-MM-project-name`（年份-月份-项目英文名）
-- 例如 `26-06-summer-oil-skincare`、`26-07-hk-product-launch`
-- 项目名用英文小写 + 连字符，简洁描述项目内容
+**目录命名规则：** 遵循项目所在目录的命名规范。
+- 如在 `Projects/HKH品牌/` 下 → `YYYY-MM-DD-项目名/`
+- 如在其他位置 → 按用户要求
 
 **STEP 0.5: 保存用户文案**
 
-将用户提供的原始文案写入项目目录的 `文案.txt`（UTF-8 编码），作为后续步骤的参考底本。
-- 项目名用英文小写 + 连字符，简洁描述项目内容
+将用户提供的原始文案写入项目目录的 `01-输入/文案.txt`（UTF-8 编码），作为后续步骤的参考底本。
 
-**创建目录结构：**
+**创建目录结构（以 HKH 品牌项目为例）：**
 ```text
-G:\AgentSpace\1_Active\01_小红书项目\
-├── node_modules\              ← playwright 预装在根目录，子项目共享
-├── package.json               ← 根目录 package（playwright + canvas + ag-psd）
-└── 26-06-项目名\
-    ├── index.html              ← 种子模板复制过来
-    ├── assets\                 ← 图片素材放这里
-    └── output\                 ← 导出文件输出到这里
+Projects/HKH品牌/
+├── 参考/                    ← 共用：别人的素材
+├── 资产/                    ← 共用：品牌资产
+└── YYYY-MM-DD-项目名/       ← 具体项目
+    ├── 01-输入/             ← 原始需求/brief/素材
+    ├── 02-中间过程/         ← 生图过程的产物
+    ├── 03-输出/             ← 最终成品
+    ├── index.html           ← 种子模板复制过来
+    ├── assets/              ← 图片素材放这里
+    └── output/              ← 导出文件输出到这里
 ```
 
-**playwright / canvas / ag-psd 已在根目录安装**，子项目不需要 `npm install`。Node.js 会自动向上搜索 `node_modules`，直接运行即可。
+**playwright / canvas / ag-psd 已在技能根目录安装**，子项目不需要 `npm install`。Node.js 会自动向上搜索 `node_modules`，直接运行即可。
 
 **导出方式（需要用户确认后再执行）：**
 
@@ -283,7 +285,7 @@ Do not write HTML from scratch. Pick one seed template based on the style mode c
 - Editorial Magazine × E-ink → copy `assets/template-editorial-card.html` into the task folder as `index.html`.
 - Swiss International → copy `assets/template-swiss-card.html` into the task folder as `index.html`.
 
-The task folder is under `G:\AgentSpace\1_Active\01_小红书项目\YY-MM-project-name\` (created in STEP 0).
+The task folder is the project directory created in STEP 0 (e.g. `Projects/HKH品牌/YYYY-MM-DD-项目名/`).
 
 The seed already wires up: font loading, theme tokens, all three poster sizes (`.poster.xhs` / `.poster.square` / `.poster.wide`), the pair-preview frame, grain/background layers, and all class definitions referenced by the layout recipes.
 
@@ -298,10 +300,10 @@ Replace the single placeholder poster after `<!-- POSTERS_HERE -->` with one `<s
 
 Default implementation pattern:
 
-- Create a task folder under `G:\AgentSpace\1_Active\01_小红书项目\` (STEP 0 already did this), for example `26-06-project-name/`.
+- Create a task folder (STEP 0 already did this), for example `2026-06-22-小红书-岩玫瑰溯源/`.
 - Put source images in `assets/`.
 - Start from the seed template copied in Step 4.5, not a blank file. Change only the `<!-- POSTERS_HERE -->` region. Use built-in template classes (`.ledger`, `.pipeline-v`, `.callout`, `.pullquote`, `.issue-row`, `.issue-strip`, etc.) unless the required layout genuinely cannot be expressed with them. If built-in classes suffice — and they almost always do — no custom CSS is allowed. Only add a small task-scoped block when all built-in options are exhausted, and keep it minimal.
-- **Playwright 已在 `G:\AgentSpace\1_Active\01_小红书项目\` 根目录安装，子项目无需再装。**
+- **Playwright 已在技能根目录安装**，子项目无需再装。
 - 渲染命令（用户确认后再执行）。PSD 图层碎片自动根据语义选择器拆分，无需手动标记。
 
   ```bash
