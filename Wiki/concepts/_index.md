@@ -42,6 +42,7 @@ All concept pages — ideas, patterns, and frameworks extracted from sources.
 
 - [[Agent Skill Design Patterns]] — 5 standardized patterns for structuring Agent skill logic (Tool Wrapper, Generator, Reviewer, Inversion, Pipeline)
 - [[Intent Recognition]] — 意图识别，判断用户要什么然后路由到对应工作流或技能
+- [[Skill Five-Layer Structure]] — Skill 的五层架构：方法论→规则→工作流→输出工具→质量控制
 
 ---
 

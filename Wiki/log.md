@@ -17,6 +17,13 @@ Navigation: [[index]] | [[hot]]
 
 ---
 
+## [2026-06-23] Concept creation | Skill Five-Layer Structure
+- Extracted from analysis of W5, W6, and HKH image workflow skills
+- Pages created:
+  - Concepts: [[Skill Five-Layer Structure]]
+- Pages updated: [[index]], [[concepts/_index]], [[log]]
+- Key insight: A complete Skill has 5 layers: methodology → execution rules → workflow → output tools → quality control. Wiki stores layer 1 (methodology), Skills store all 5 layers. This framework can be used to evaluate and improve any existing skill.
+
 ## [2026-06-23] Entity creation | Google ADK
 - Created [[Google ADK]] entity page (framework type)
 - Pages updated: [[index]], [[entities/_index]], [[hot]], [[log]]

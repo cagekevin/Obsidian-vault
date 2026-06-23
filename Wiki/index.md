@@ -48,7 +48,8 @@ Navigation: [[log]] | [[hot]]
 ## Agent Design
 
 - [[Agent Skill Design Patterns]] — 5 standardized patterns for structuring Agent skill logic (Tool Wrapper, Generator, Reviewer, Inversion, Pipeline) (status: developing)
-- [[Intent Recognition]] — 意图识别，判断用户要什么然后路由到对应工作流或技能 (status: developing)
+- [[Intent Recognition]] — 意图识别，判断用户要什么然后路由到对应工作流或技能，三种实现方法及混合使用策略 (status: developing)
+- [[Skill Five-Layer Structure]] — Skill 的五层架构：方法论→规则→工作流→输出工具→质量控制 (status: developing)
 
 ## Image Generation
 
