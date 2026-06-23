@@ -38,7 +38,7 @@
 
 | 触发词 | 说明 | 入口 |
 |--------|------|------|
-| `吸收` / `ingest` | 把 Clippings 里的资料吸收到 Wiki 知识库 | `Wiki/skills/ingest.md` |
-| `lint` | Wiki 健康检查（孤儿/死链/过期等） | `Wiki/skills/lint.md` |
-| `query` / `问` | 从 Wiki 知识库查询 | `Wiki/skills/query.md` |
-| `save` / `保存` | 存档当前对话到 Wiki | `Wiki/skills/save.md` |
+| `整理知识库` / `整理wiki` / `整理到wiki` / `整理raw` / `ingest` | 把 Clippings 里的资料吸收到 Wiki 知识库 | `Wiki/skills/ingest.md` |
+| `检查wiki` / `看看wiki健康吗` / `检查知识库健康` / `lint` | Wiki 健康检查（孤儿/死链/过期等） | `Wiki/skills/lint.md` |
+| `看看知识库的...` / `从知识库查看...` / `query` | 从 Wiki 知识库查询 | `Wiki/skills/query.md` |
+| `把这个保存到知识库` / `save` | 存档当前对话到 Wiki | `Wiki/skills/save.md` |

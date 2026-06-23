@@ -54,3 +54,4 @@ omlx serve --model-dir ~/models --paged-ssd-cache-dir ~/.omlx/cache
 # 国内镜像
 omlx serve --model-dir ~/models --hf-endpoint https://hf-mirror.com
 ```
+<!-- processed: 2026-06-23 → Wiki/sources/oMLX Tutorial.md + Wiki/entities/oMLX.md + Wiki/concepts/Apple Silicon Optimization.md -->

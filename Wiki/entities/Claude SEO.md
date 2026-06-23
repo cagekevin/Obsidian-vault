@@ -1,6 +1,9 @@
 ---
 type: entity
 title: "Claude SEO"
+entity_type: project
+role: "Tier 4 Claude Code skill for comprehensive SEO analysis across all industries"
+first_mentioned: "[[sources/claude-obsidian-ecosystem-research]]"
 created: 2026-04-14
 updated: 2026-04-15
 tags:
@@ -18,6 +21,8 @@ related:
   - "[[E-commerce SEO]]"
   - "[[2026-04-15-slides-and-release-session]]"
   - "[[2026-04-15-release-report-session]]"
+sources:
+  - "[[sources/claude-obsidian-ecosystem-research]]"
 ---
 
 # Claude SEO

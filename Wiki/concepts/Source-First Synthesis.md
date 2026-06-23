@@ -1,9 +1,12 @@
 ---
 type: concept
 title: "Source-First Synthesis"
+complexity: intermediate
+domain: knowledge-management
 created: 2026-04-24
 updated: 2026-04-24
 tags:
+  - concept
   - llm-wiki
   - synthesis
   - provenance
@@ -14,6 +17,8 @@ related:
   - "[[Compounding Knowledge]]"
   - "[[Persistent Wiki Artifact]]"
   - "[[Query-Time Retrieval]]"
+sources:
+  - "[[sources/Ollama Official Documentation]]"
 ---
 
 # Source-First Synthesis

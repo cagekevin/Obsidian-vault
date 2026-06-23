@@ -52,6 +52,12 @@ gen_skill_list() {
 }
 
 SKILL_LIST=$(gen_skill_list)
+# 追加 Wiki 知识管理自定义技能（不被自动扫描覆盖）
+SKILL_LIST+="\n## Wiki 知识管理\n\n| 触发词 | 说明 | 入口 |\n|--------|------|------|\n"
+SKILL_LIST+="| \`整理知识库\` / \`整理wiki\` / \`整理到wiki\` / \`整理raw\` / \`ingest\` | 把 Clippings 里的资料吸收到 Wiki 知识库 | \`Wiki/skills/ingest.md\` |\n"
+SKILL_LIST+="| \`检查wiki\` / \`看看wiki健康吗\` / \`检查知识库健康\` / \`lint\` | Wiki 健康检查（孤儿/死链/过期等） | \`Wiki/skills/lint.md\` |\n"
+SKILL_LIST+="| \`看看知识库的...\` / \`从知识库查看...\` / \`query\` | 从 Wiki 知识库查询 | \`Wiki/skills/query.md\` |\n"
+SKILL_LIST+="| \`把这个保存到知识库\` / \`save\` | 存档当前对话到 Wiki | \`Wiki/skills/save.md\` |\n"
 echo -e "$SKILL_LIST" > "$VAULT_DIR/SKILLS.md"
 log_success "SKILLS.md（$SKILL_COUNT 个技能）"
 
@@ -183,27 +189,7 @@ log_success "TOOLS.md（$TOOL_COUNT 个工具）"
 echo ""
 echo "✅ 扫描完成"
 
-# 自动生成 Wiki/index.md
-echo ""
-echo "📖 生成 Wiki/index.md..."
-INDEX_FILE="$VAULT_DIR/Wiki/index.md"
-{
-    echo "# Wiki 页面索引"
-    echo ""
-    echo "> 由 sync.command 自动生成。每次同步时更新。"
-    echo ""
-    echo "| 页面 | 类型 | 摘要 |"
-    echo "|------|------|------|"
-    for page in "$VAULT_DIR/Wiki"/*.md; do
-        name=$(basename "$page" .md)
-        [ "$name" = "index" ] || [ "$name" = "log" ] || [ "$name" = "instructions" ] && continue
-        type=$(grep -m1 '^type:' "$page" 2>/dev/null | sed 's/type: *//' || echo "—")
-        desc=$(grep -m1 '^description:' "$page" 2>/dev/null | sed 's/description: *//' || echo "—")
-        echo "| [[$name]] | $type | $desc |"
-    done
-} > "$INDEX_FILE"
-WIKI_COUNT=$(grep -c '| \[' "$INDEX_FILE" || echo 0)
-log_success "Wiki/index.md（$WIKI_COUNT 个页面）"
+# Wiki/index.md 由 AI 手动维护，不再自动覆盖
 
 # 周日自动生成周复盘 + 校准日志审计（不包含当天）
 if [ "$(date '+%u')" = "7" ]; then
@@ -216,15 +202,7 @@ if [ "$(date '+%u')" = "7" ]; then
     fi
 fi
 
-# 扫描 Clippings/raw/ 未处理文件
-echo ""
-PENDING=$(python3 "$VAULT_DIR/Clippings/raw/pending.py" --count 2>/dev/null || echo "0")
-if [ "$PENDING" != "0" ]; then
-    echo "📋 检测到 $PENDING 个未处理的原始资料（Clippings/raw/）"
-    echo "   运行: python3 Clippings/raw/pending.py"
-else
-    echo "📋 Clippings/raw/ 全部已处理"
-fi
+# Clippings 整理由 AI 按 Wiki/skills/ingest.md 流程处理
 
 # Git 推送（双重保险）
 echo ""

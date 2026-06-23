@@ -46,5 +46,5 @@ claude --model qwen3-coder:7b
 
 | 配置 | 推荐模型 |
 |------|----------|
-| 16~32GB 内存 | `qwen3-coder:7b` 或 `gemma2:9b` |
-| RTX 4090 / Mac M 高配 | `qwen3-coder:30b` 或 GLM-4 系列 |
+
+<!-- processed: 2026-06-23 → Wiki/sources/Claude Code + Ollama Tutorial.md + Wiki/concepts/Ollama.md + Wiki/concepts/Claude Code Local Setup.md -->

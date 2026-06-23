@@ -239,5 +239,5 @@ macOS: `~/.ollama/models`
 ### 修改存储位置
 设置 `OLLAMA_MODELS` 环境变量
 
-### 禁用云功能
-`OLLAMA_NO_CLOUD=1`
+
+<!-- processed: 2026-06-23 → 与 Ollama官方文档完整整理.md 重复，已通过该文件处理 -->

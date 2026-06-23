@@ -836,4 +836,5 @@ GPT-OSS requires think to be set to "low", "medium", or "high". Passing true/fal
 | `/set nothink` | Inside interactive sessions, toggle with /set nothink |
 | `ollama run gpt-oss --think=low "Draft a headline"` | GPT-OSS only accepts levels (low/medium/high) |
 
-**Thinking is enabled by default in the CLI and API for supported models.**
+
+<!-- processed: 2026-06-23 → Wiki/sources/Ollama Official Documentation.md + Wiki/concepts/Ollama.md + Wiki/concepts/Anthropic Compatible API.md + Wiki/concepts/Claude Code Local Setup.md -->

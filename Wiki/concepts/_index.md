@@ -1,7 +1,7 @@
 ---
 type: meta
 title: "Concepts Index"
-updated: 2026-04-07
+updated: 2026-06-23
 tags:
   - meta
   - index
@@ -15,9 +15,7 @@ related:
   - "[[Hot Cache]]"
   - "[[LLM Wiki Pattern]]"
   - "[[Compounding Knowledge]]"
-  - "[[LLM Wiki Pattern]]"
-  - "[[Hot Cache]]"
-  - "[[Compounding Knowledge]]"
+  - "[[Local LLM Deployment]]"
 ---
 
 # Concepts Index
@@ -37,6 +35,17 @@ All concept pages — ideas, patterns, and frameworks extracted from sources.
 - [[Persistent Wiki Artifact]]: durable Markdown page as the LLM's memory object (developing)
 - [[Source-First Synthesis]]: provenance discipline for LLM wiki layers (developing)
 - [[Query-Time Retrieval]]: query synthesis with citations, complementary to Obsidian search (developing)
+
+---
+
+## Local LLM Ecosystem
+
+- [[Ollama]] — local LLM runner with Anthropic/OpenAI API compatibility
+- [[Local LLM Deployment]] — full ecosystem: runtimes, proxies, and integration patterns
+- [[Claude Code Local Setup]] — configuring Claude Code to use local models
+- [[Anthropic Compatible API]] — the protocol bridge between local LLMs and AI tools
+- [[Apple Silicon Optimization]] — techniques for running LLMs on M-series Macs
+- [[Model Quantization]] — reducing model memory footprint via lower precision
 
 ---
 

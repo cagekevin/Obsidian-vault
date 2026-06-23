@@ -81,8 +81,5 @@ claude "写一首诗" --temperature 0.8 --max-tokens 500
 
 ## 创建快捷别名
 
-```bash
-echo 'alias ai="claude"' >> ~/.zshrc
-echo 'alias aic="claude --interactive"' >> ~/.zshrc
-source ~/.zshrc
-```
+
+<!-- processed: 2026-06-23 → Wiki/sources/Claude Code + LM Studio Tutorial.md + Wiki/entities/LM Studio.md + Wiki/concepts/Local LLM Deployment.md -->

@@ -1,9 +1,12 @@
 ---
 type: concept
 title: "Persistent Wiki Artifact"
+complexity: intermediate
+domain: knowledge-management
 created: 2026-04-24
 updated: 2026-04-24
 tags:
+  - concept
   - llm-wiki
   - knowledge-management
   - agent-memory
@@ -14,6 +17,8 @@ related:
   - "[[Compounding Knowledge]]"
   - "[[Source-First Synthesis]]"
   - "[[Query-Time Retrieval]]"
+sources:
+  - "[[sources/Ollama Official Documentation]]"
 ---
 
 # Persistent Wiki Artifact

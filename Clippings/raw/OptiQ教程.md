@@ -60,4 +60,5 @@ optiq serve --model mlx-community/Qwen3.5-9B-OptiQ-4bit \
 ## 采样参数推荐
 
 - 推理类：`temp=0.6, top_p=0.95, top_k=20`
-- 闲聊类：`temp=0.7, top_p=0.9`
+
+<!-- processed: 2026-06-23 → Wiki/sources/OptiQ Tutorial.md + Wiki/entities/OptiQ.md + Wiki/concepts/Model Quantization.md -->

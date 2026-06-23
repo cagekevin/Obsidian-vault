@@ -107,11 +107,5 @@ response = client.chat.completions.create(
 print(response.choices[0].message.content)
 ```
 
-#### 6. 直接 curl 测试
-
-```bash
-curl http://127.0.0.1:8002/v1/chat/completions \
-  -H "Content-Type: application/json" \
-  -H "Authorization: Bearer 你的子Key" \
-  -d '{"model": "deepseek-v4-flash", "messages": [{"role": "user", "content": "你好"}]}'
-```
+#
+<!-- processed: 2026-06-23 → Wiki/sources/Antigravity Tools.md + Wiki/entities/Antigravity Tools.md + Wiki/entities/Tencent Cloud Copilot.md -->

@@ -1,9 +1,12 @@
 ---
 type: concept
 title: "Query-Time Retrieval"
+complexity: intermediate
+domain: knowledge-management
 created: 2026-04-24
 updated: 2026-04-24
 tags:
+  - concept
   - rag
   - retrieval
   - llm-wiki
@@ -14,6 +17,8 @@ related:
   - "[[LLM Wiki Pattern]]"
   - "[[Persistent Wiki Artifact]]"
   - "[[Source-First Synthesis]]"
+sources:
+  - "[[sources/Ollama Official Documentation]]"
 ---
 
 # Query-Time Retrieval

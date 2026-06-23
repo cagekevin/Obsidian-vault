@@ -5,6 +5,9 @@ __pycache__/
 node_modules/
 .git/
 
+# vault-meta — 只排除运行时锁，保留状态文件
+.vault-meta/locks/
+
 # Obsidian — 只忽略本地状态和缓存，同步配置
 .obsidian/workspace.json
 .obsidian/workspace-cache/

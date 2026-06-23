@@ -1,7 +1,7 @@
 ---
 type: meta
 title: "Entities Index"
-updated: 2026-04-07
+updated: 2026-06-23
 tags:
   - meta
   - index
@@ -12,6 +12,7 @@ related:
   - "[[Andrej Karpathy]]"
   - "[[hot]]"
   - "[[LLM Wiki Pattern]]"
+  - "[[Local LLM Deployment]]"
 ---
 
 # Entities Index
@@ -30,13 +31,16 @@ All entity pages — people, organizations, products, and tools.
 
 ## Organizations
 
-<!-- Add organization pages here -->
+- [[Tencent Cloud Copilot]] — cloud LLM API service
 
 ---
 
 ## Products & Tools
 
-<!-- Add tool and product pages here -->
+- [[Antigravity Tools]] — local API proxy to Tencent Cloud Copilot
+- [[LM Studio]] — GUI-based local LLM runner
+- [[oMLX]] — Apple Silicon optimized inference engine
+- [[OptiQ]] — mixed-precision quantization tool
 
 ---
 
