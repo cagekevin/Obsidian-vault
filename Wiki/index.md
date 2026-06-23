@@ -16,7 +16,7 @@ related:
 
 # Wiki Index
 
-Last updated: 2026-06-23 | Total pages: 30 | Sources ingested: 7
+Last updated: 2026-06-23 | Total pages: 35 | Sources ingested: 7
 
 Navigation: [[log]] | [[hot]]
 
@@ -44,6 +44,14 @@ Navigation: [[log]] | [[hot]]
 - [[Anthropic Compatible API]] — Ollama's Anthropic-compatible endpoint protocol (status: developing)
 - [[Apple Silicon Optimization]] — techniques for running LLMs on M-series Macs (status: developing)
 - [[Model Quantization]] — reducing model memory footprint via lower precision (status: developing)
+
+## Image Generation
+
+- [[描述比重原则]] — 画面元素的描述字数要和重要性成正比，次要元素描述过多会喧宾夺主 (status: mature)
+- [[视觉描述优先原则]] — AI 需要的是视觉画面，不是文字描述；技术术语和抽象词会让 AI 跑偏 (status: mature)
+- [[参考图优先原则]] — 一张参考图比一千字描述都管用，能图生图就不要纯文字生图 (status: mature)
+- [[克制原则]] — AI 对程度词和动态词容易走极端，要用静态、状态、克制的描述 (status: mature)
+- [[一致性锚点原则]] — 同一系列图片必须有锚点保持风格一致，可以是参考图、关键词或成功案例 (status: mature)
 
 ## Entities
 

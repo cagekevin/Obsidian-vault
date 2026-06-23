@@ -49,4 +49,16 @@ All concept pages — ideas, patterns, and frameworks extracted from sources.
 
 ---
 
+## Image Generation
+
+Core principles for AI image generation and prompt engineering, extracted from HKH brand project experience.
+
+- [[描述比重原则]] — 画面元素的描述字数要和重要性成正比，次要元素描述过多会喧宾夺主
+- [[视觉描述优先原则]] — AI 需要的是视觉画面，不是文字描述；技术术语和抽象词会让 AI 跑偏
+- [[参考图优先原则]] — 一张参考图比一千字描述都管用，能图生图就不要纯文字生图
+- [[克制原则]] — AI 对程度词和动态词容易走极端，要用静态、状态、克制的描述
+- [[一致性锚点原则]] — 同一系列图片必须有锚点保持风格一致，可以是参考图、关键词或成功案例
+
+---
+
 ## Add new concepts here as they are extracted from sources.

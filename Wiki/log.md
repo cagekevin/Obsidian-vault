@@ -23,6 +23,14 @@ Navigation: [[index]] | [[hot]]
 - Imported 14 concept pages, 7 entity pages, 1 source page, 1 question page from claude-obsidian reference
 - Status: initial setup complete
 
+## [2026-06-23] Concept extraction | Image Generation principles from HKH project
+- Extracted 5 core principles from HKH brand image generation experience
+- Pages created:
+  - Concepts: [[描述比重原则]], [[视觉描述优先原则]], [[参考图优先原则]], [[克制原则]], [[一致性锚点原则]]
+- Pages updated: [[index]], [[concepts/_index]], [[log]], [[hot]]
+- Backlinks added to 7 skill/case files in Projects/HKH品牌/作图经验/
+- Key insight: These 5 principles appear across multiple skills (burning scenes, white background, lyrical realism, collaboration flow), confirming they are generalizable principles rather than project-specific tricks. They form the foundation of a prompt engineering methodology for AI image generation.
+
 ## [2026-06-23] Lint | Full health check
 - Pages scanned: 30
 - Issues found: 6 (3 frontmatter gaps, 1 missing page reference, 1 isolated concept, 1 entity missing fields)
