@@ -28,4 +28,5 @@
 
 - Python（主力），uv 管理依赖，不用虚拟环境
 - Node（pnpm 替代 npm）
-- 常用工具：yt-dlp、whisper-cpp、ffmpeg、Lovart AI
+- 常用工具：yt-dlp、whisper-cpp、ffmpeg
+- 出图工具：Lovart AI（中转站），底层模型用 Gemini、GPT-4o、即梦 Seedance

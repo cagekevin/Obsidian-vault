@@ -52,4 +52,10 @@ All source pages — summaries of ingested documents, transcripts, articles, and
 
 ---
 
+## Image Generation
+
+- [[sources/OpenAI-GPT-4o-Image-Generation-28案例]] — B站视频拆解 OpenAI 官方 28 个图像生成提示词案例 (status: ingested)
+
+---
+
 ## Add new sources here after each ingest.

@@ -17,6 +17,13 @@ Navigation: [[index]] | [[hot]]
 
 ---
 
+## [2026-06-24] ingest | AI 图像生成提示词 28 案例
+- Source: `Clippings/raw/我拆了OpenAI官方28个案例，发现提示词的核心根本不是词汇量.md`
+- Summary: [[sources/OpenAI-GPT-4o-Image-Generation-28案例]]
+- Pages created: [[变量与不变量分离]], [[产物先行]], [[小步迭代]], [[提示词模板八要素]], [[角色锚定]], [[摄影语言锚定质感]], [[编辑三要素]], [[反向约束]]
+- Pages updated: [[index]]
+- Key insight: 从 GPT-4o 官方案例中提炼了8个可复用的提示词方法论，核心模式是"变量与不变量分离"和"编辑三要素"，与现有的克制原则/一致性锚点原则互补
+
 ## [2026-06-24] Concept rewrite & cleanup | W6 方法论提炼
 - 背景：用户指出纯概念定义对技能仓库没用，LLM 本来就知道，有用的是"怎么用"
 - 删除的页面（移到 Temp/old-wiki-concepts/ 备份）：
