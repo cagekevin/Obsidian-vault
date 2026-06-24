@@ -17,6 +17,13 @@ Navigation: [[index]] | [[hot]]
 
 ---
 
+## [2026-06-24] ingest | Hermes Agent 技能自管理机制
+- Source: GitHub - NousResearch/hermes-agent
+- Summary: [[sources/Hermes-Agent]]
+- Pages created: [[AI技能自管理]]
+- Pages updated: [[index]], [[sources/_index]]
+- Key insight: 三个可复用机制——技能自动生成（AI 按模板填坑写 SKILL.md）、使用追踪（记录最后使用时间）、生命周期管理（30天没用标记 stale，90天归档）
+
 ## [2026-06-24] ingest | Dramatic Gobo Lighting
 - Source: GitHub - Mixiaxiaoyu/dramatic-gobo-lighting
 - Summary: [[sources/Dramatic-Gobo-Lighting]]
