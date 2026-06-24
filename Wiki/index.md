@@ -66,27 +66,35 @@ Navigation: [[log]] | [[hot]]
 
 ## Storytelling & Screenwriting
 
-**核心原则**
-- [[Show Don't Tell]] — 展示而非讲述，用动作和物体代替内心独白和描述 (status: developing)
-- [[Controlling Idea]] — 主控思想，一句话概括故事核心，每个场景都要为它服务 (status: developing)
-- [[Scene Value]] — 场景价值转换，每个场景都要有价值的正负变化 (status: developing)
-- [[Chekhov's Gun]] — 契诃夫之枪，每个出现的元素都要有其作用 (status: developing)
-- [[If You Remove It Does It Change]] — 必要性测试，去掉它结果会变吗？没变就删掉 (status: developing)
-- [[Progressive Complications]] — 渐进式复杂化，冲突越来越强，赌注越来越高 (status: developing)
+从 W6-俄语详细剧本技能中提炼的**可复用方法论**。不只是写剧本，做设计、写文案、出图、做产品都能用。
 
-**经典结构**
+### 核心创作方法
+- [[Scene Value]] — 场景价值转换，每个场景/段落都要有价值的正负变化 (status: developing)
+- [[Show Don't Tell]] — 展示而非讲述，用动作和物件展示信息 (status: developing)
+- [[Causal Chain Audit]] — 因果链审计，检查每个步骤是不是由前一个导致的 (status: developing)
+
+### 质量控制与编辑
+- [[If You Remove It Does It Change]] — 必要性测试，删掉它结果会变吗？没变就删掉 (status: developing)
+- [[Cut Priority Method]] — 删减优先级方法，先删最不重要的，核心绝对不动 (status: developing)
+
+### 工作流与沟通
+- [[Spot Edit Principle]] — 点式修改原则，只改用户要求改的那一点 (status: developing)
+- [[Single Version Principle]] — 单一版本原则，只给一个最优解 + 理由 (status: developing)
+- [[Binary Question]] — 二进制提问法，信息不够时问窄的二选一问题 (status: developing)
+
+### 叙事结构与角色（编剧专用）
+- [[Controlling Idea]] — 主控思想，一句话概括故事核心 (status: developing)
+- [[Chekhov's Gun]] — 契诃夫之枪，每个出现的元素都要有其作用 (status: developing)
+- [[Progressive Complications]] — 渐进式复杂化，冲突越来越强 (status: developing)
 - [[Three-Act Structure]] — 三幕式结构：铺垫→对抗→结局 (status: developing)
 - [[Hero's Journey]] — 英雄之旅，坎贝尔的 12 阶段单一神话 (status: developing)
-- [[Inciting Incident]] — 激励事件，打破主角生活平衡的事件，故事正式开始 (status: developing)
-
-**角色与世界观**
+- [[Inciting Incident]] — 激励事件，打破主角生活平衡的事件 (status: developing)
 - [[Character Bible]] — 角色圣经，从内到外的 8 层角色构建系统 (status: developing)
-- [[Worldbuilding]] — 世界观构建，6 大模块 + 知识层级，有规则的世界才有戏剧 (status: developing)
-
-**悲剧理论（亚里士多德）**
-- [[Hamartia]] — 悲剧缺陷，主角性格中的弱点在极端情况下变成灾难 (status: developing)
-- [[Peripeteia and Anagnorisis]] — 突转与发现，行动走向反面+真相揭露的双重打击 (status: developing)
-- [[Catharsis]] — 宣泄/净化，悲剧的最终目的，通过怜悯和恐惧释放情感 (status: developing)
+- [[Worldbuilding]] — 世界观构建，6 大模块 + 知识层级 (status: developing)
+- [[Hamartia]] — 悲剧缺陷，主角性格中的弱点变成灾难 (status: developing)
+- [[Peripeteia and Anagnorisis]] — 突转与发现，双重打击 (status: developing)
+- [[Catharsis]] — 宣泄/净化，悲剧的最终目的 (status: developing)
+- [[Pacing and Rhythm]] — 叙事节奏与韵律，时间计算和删减优先级 (status: developing)
 
 ## Entities
 

@@ -17,6 +17,22 @@ Navigation: [[index]] | [[hot]]
 
 ---
 
+## [2026-06-24] Concept rewrite & cleanup | W6 方法论提炼
+- 背景：用户指出纯概念定义对技能仓库没用，LLM 本来就知道，有用的是"怎么用"
+- 删除的页面（移到 Temp/old-wiki-concepts/ 备份）：
+  - 15 个纯概念编剧页面：Catharsis, Character Bible, Chekhov's Gun, Controlling Idea, Hamartia, Hero's Journey, Inciting Incident, Pacing and Rhythm, Peripeteia and Anagnorisis, Progressive Complications, Three-Act Structure, Worldbuilding 等
+- 新建的页面（从 W6-俄语详细剧本技能中提炼的可复用方法论）：
+  - [[If You Remove It Does It Change]] — 必要性测试
+  - [[Spot Edit Principle]] — 点式修改原则
+  - [[Show Don't Tell]] — 展示而非讲述（重写，从纯概念改为方法论）
+  - [[Scene Value]] — 场景价值转换（重写，从纯概念改为方法论）
+  - [[Causal Chain Audit]] — 因果链审计
+  - [[Single Version Principle]] — 单一版本原则
+  - [[Binary Question]] — 二进制提问法
+  - [[Cut Priority Method]] — 删减优先级方法
+- Pages updated: [[index]], [[concepts/_index]], [[log]]
+- Key insight: Wiki 存的是**方法论**，不是纯概念定义。只有被多个 Skill 复用的方法论才值得放到 Wiki 里。从 W6 里提炼的这 8 个方法论都是跨领域可复用的，不只是写剧本能用，做设计、写文案、出图、做产品、写代码都能用。
+
 ## [2026-06-23] Concept creation | Skill Five-Layer Structure
 - Extracted from analysis of W5, W6, and HKH image workflow skills
 - Pages created:
