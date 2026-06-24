@@ -1,5 +1,6 @@
 # 排除
 .DS_Store
+.claudian/
 __pycache__/
 *.pyc
 node_modules/
