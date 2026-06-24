@@ -60,4 +60,10 @@ All source pages — summaries of ingested documents, transcripts, articles, and
 
 ---
 
+## Video Generation
+
+- [[sources/Seedance-2.5-Prompt-Guide]] — Seedance 2.5 提示词指南：6步公式、运镜词汇表、灯光词汇表（第三方整理，非官方）(status: ingested)
+
+---
+
 ## Add new sources here after each ingest.

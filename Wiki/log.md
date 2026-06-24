@@ -17,6 +17,12 @@ Navigation: [[index]] | [[hot]]
 
 ---
 
+## [2026-06-24] Concept update | AI Camera Movements 补充英文运镜词汇 + 灯光词汇表
+- Source: GitHub - anil-matcha/Awesome-Seedance-2.5-API-Prompts（第三方 Seedance 2.5 提示词指南，非官方）
+- Summary: [[sources/Seedance-2.5-Prompt-Guide]]
+- Pages updated: [[AI Camera Movements]]
+- Key insight: 一个灯光关键词 > 十个形容词。运镜词用英文精确术语比中文描述效果更好。灯光词汇表和运镜词汇表可以直接在写提示词时复制使用。
+
 ## [2026-06-24] ingest | Hermes Agent 技能自管理机制
 - Source: GitHub - NousResearch/hermes-agent
 - Summary: [[sources/Hermes-Agent]]

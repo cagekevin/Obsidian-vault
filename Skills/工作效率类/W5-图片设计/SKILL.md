@@ -17,6 +17,7 @@ metadata:
 
 | 路由 | 文件 | 触发关键词 |
 |---|---|---|
+| ImageForge 生图决策引擎 | imageforge-skill/SKILL.md | 按5步流程生图, 通用出图, 场景路由, 质量门控, 提示词组装, 角色设计, 产品摄影, 风景, 海报 |
 | Amazon 护肤品主图 | amazon-skincare/amazon-skincare.md | Amazon, 亚马逊, English prompt, skincare, 护肤品主图, 英文提示词 |
 | 电商中文主图 | ecommerce-image/ecommerce-image.md | 淘宝, 天猫, Taobao, Tmall, 1688, 电商主图, 中文提示词 |
 | GPT图像生成 | GPT图像生成-GPTImage2/GPT图像生成-GPTImage2.md | GPT image, GPT Image 2, 图像生成, 图片生成, AI绘画, 海报, 漫画, 信息图 |

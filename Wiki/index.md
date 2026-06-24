@@ -74,7 +74,7 @@ Navigation: [[log]] | [[hot]]
 
 ## Video Generation
 
-- [[AI Camera Movements]] — AI 视频生成中常用的 30+ 种运镜手法提示词 (status: developing)
+- [[AI Camera Movements]] — AI 视频生成运镜手法提示词 + 英文速查词汇表 + 灯光词汇表 (status: developing)
 - [[Pacing and Rhythm]] — 叙事节奏与韵律，不同场景的速度分类和控制方法 (status: developing)
 
 ## Storytelling & Screenwriting
