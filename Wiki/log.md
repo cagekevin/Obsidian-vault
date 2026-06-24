@@ -17,6 +17,13 @@ Navigation: [[index]] | [[hot]]
 
 ---
 
+## [2026-06-24] ingest | Dramatic Gobo Lighting
+- Source: GitHub - Mixiaxiaoyu/dramatic-gobo-lighting
+- Summary: [[sources/Dramatic-Gobo-Lighting]]
+- Pages created: [[Gobo投影光影]]
+- Pages updated: [[index]], [[sources/_index]]
+- Key insight: 核心价值是 64 张 Gobo 素材图，不是标签。用法是把 Gobo 图作为垫图 + 提示词模板告诉模型"只改光影不改其他"
+
 ## [2026-06-24] ingest | AI 图像生成提示词 28 案例
 - Source: `Clippings/raw/我拆了OpenAI官方28个案例，发现提示词的核心根本不是词汇量.md`
 - Summary: [[sources/OpenAI-GPT-4o-Image-Generation-28案例]]

@@ -55,6 +55,7 @@ All source pages — summaries of ingested documents, transcripts, articles, and
 ## Image Generation
 
 - [[sources/OpenAI-GPT-4o-Image-Generation-28案例]] — B站视频拆解 OpenAI 官方 28 个图像生成提示词案例 (status: ingested)
+- [[sources/Dramatic-Gobo-Lighting]] — 64 张 Gobo 光影素材图 + 使用方法，给产品图加投影光影 (status: ingested)
 
 ---
 

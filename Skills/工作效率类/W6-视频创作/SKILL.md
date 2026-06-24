@@ -12,6 +12,7 @@ description: 视频创作自动化流水线，默认走全流程管线。Use whe
 | 优先级 | 路由 | 文件 | 触发关键词 |
 |--------|------|------|-----------|
 | 🥇 默认 | **剧本到视频全流程** | **screenplay-to-video/SKILL.md** | **视频, video, 分镜, storyboard, 短剧, 微短剧, 科普视频, 自动化出片, 视频生成, 视频流水线, 从剧本到视频, pipeline, 镜头, 定妆, 参考图, 美术指导, 画面描述, 提示词, prompt, 场景描述, scene, 0_skill, 0-skill, 0号skill** |
+| 🥇 仅点名 | **OpenMontage 全自动视频制作** | **OpenMontage视频制作系统/CLAUDE.md** | **openmontage, OpenMontage, 全自动视频, 自动出片, AI视频制作系统** |
 | 🥈 仅点名 | 视频提示词生成 | Seedance提示词转化/SKILL.md | seedance（仅在用户明确提到"seedance"时触发） |
 | 🥉 仅点名 | 剧本创作 | 俄语详细剧本/SKILL.md | 俄语剧本, 俄语编剧（仅在用户明确提到"俄语剧本"时触发） |
 
