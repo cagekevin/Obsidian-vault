@@ -1,7 +1,7 @@
-w---
+---
 type: meta
 title: "Wiki Index"
-updated: 2026-06-23
+updated: 2026-06-24
 tags:
   - meta
   - index
@@ -16,7 +16,7 @@ related:
 
 # Wiki Index
 
-Last updated: 2026-06-23 | Total pages: 51 | Sources ingested: 9
+Last updated: 2026-06-24 | Total pages: 40 | Sources ingested: 10
 
 Navigation: [[log]] | [[hot]]
 
@@ -24,20 +24,7 @@ Navigation: [[log]] | [[hot]]
 
 ## Concepts
 
-- [[LLM Wiki Pattern]] — the pattern for building persistent, compounding knowledge bases using LLMs (status: mature)
-- [[Compounding Knowledge]] — why wiki knowledge grows more valuable over time, unlike RAG (status: mature)
 - [[Hot Cache]] — ~500-word session context file, updated after every ingest and session (status: mature)
-- [[Persistent Wiki Artifact]] — the wiki is a persistent artifact, not a chat transcript (status: developing)
-- [[Source-First Synthesis]] — synthesis should reflect everything that was read, not training data (status: developing)
-- [[Query-Time Retrieval]] — RAG vs persistent wiki comparison (status: developing)
-- [[DragonScale Memory]] — advanced memory mechanisms for wiki vaults (status: developing)
-- [[cherry-picks]] — prioritized feature backlog from ecosystem research (status: current)
-- [[Pro Hub Challenge]] — community challenge pattern (status: evergreen)
-- [[Semantic Topic Clustering]] — SERP-based keyword grouping (status: evergreen)
-- [[Search Experience Optimization]] — search ranking and UX patterns (status: evergreen)
-- [[SEO Drift Monitoring]] — tracking SEO changes over time (status: evergreen)
-- [[SVG Diagram Style Guide]] — canonical visual style for diagrams (status: evergreen)
-- [[Claude SEO]] — SEO tooling for Claude-generated content (status: evergreen)
 - [[Ollama]] — local LLM runner with API compatibility layers (status: developing)
 - [[Local LLM Deployment]] — full ecosystem of local model tools and integrations (status: developing)
 - [[Claude Code Local Setup]] — configuring Claude Code to use local models (status: developing)
@@ -71,6 +58,7 @@ Navigation: [[log]] | [[hot]]
 - [[变量与不变量分离]] — 编辑任务的核心：先锁死不变量，再开放一个变量 (status: mature)
 - [[编辑三要素]] — 变量（改什么）+ 不变量（保持什么）+ 关键句（只改什么） (status: mature)
 - [[角色锚定]] — 详细角色描述锁定角色一致性，后续场景复用锚定描述 (status: developing)
+- [[AI 生图决策规则]] — 6 条可执行 if-then 规则：冗余信号稀释/Generic对抗/注意力前置/省略接管/加法非增强/批量一致性锚点 (status: developing)
 
 ## Video Generation
 
@@ -94,20 +82,6 @@ Navigation: [[log]] | [[hot]]
 - [[Spot Edit Principle]] — 点式修改原则，只改用户要求改的那一点 (status: developing)
 - [[Single Version Principle]] — 单一版本原则，只给一个最优解 + 理由 (status: developing)
 - [[Binary Question]] — 二进制提问法，信息不够时问窄的二选一问题 (status: developing)
-
-### 叙事结构与角色（编剧专用）
-- [[Controlling Idea]] — 主控思想，一句话概括故事核心 (status: developing)
-- [[Chekhov's Gun]] — 契诃夫之枪，每个出现的元素都要有其作用 (status: developing)
-- [[Progressive Complications]] — 渐进式复杂化，冲突越来越强 (status: developing)
-- [[Three-Act Structure]] — 三幕式结构：铺垫→对抗→结局 (status: developing)
-- [[Hero's Journey]] — 英雄之旅，坎贝尔的 12 阶段单一神话 (status: developing)
-- [[Inciting Incident]] — 激励事件，打破主角生活平衡的事件 (status: developing)
-- [[Character Bible]] — 角色圣经，从内到外的 8 层角色构建系统 (status: developing)
-- [[Worldbuilding]] — 世界观构建，6 大模块 + 知识层级 (status: developing)
-- [[Hamartia]] — 悲剧缺陷，主角性格中的弱点变成灾难 (status: developing)
-- [[Peripeteia and Anagnorisis]] — 突转与发现，双重打击 (status: developing)
-- [[Catharsis]] — 宣泄/净化，悲剧的最终目的 (status: developing)
-- [[Pacing and Rhythm]] — 叙事节奏与韵律，时间计算和删减优先级 (status: developing)
 
 ## Entities
 
@@ -135,7 +109,3 @@ Navigation: [[log]] | [[hot]]
 - [[sources/oMLX Tutorial]] — WeChat tutorial (status: ingested)
 - [[sources/OptiQ Tutorial]] — WeChat tutorial (status: ingested)
 - [[5 Agent Skill Design Patterns]] — Google Cloud Tech Twitter thread on 5 ADK skill patterns (status: ingested)
-
----
-
-> **Note**: This wiki follows the claude-obsidian LLM Wiki pattern. Pages are organized into concepts/, entities/, sources/, questions/, and meta/ folders.

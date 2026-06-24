@@ -1,7 +1,7 @@
 ---
 type: meta
 title: "Concepts Index"
-updated: 2026-06-23
+updated: 2026-06-24
 tags:
   - meta
   - index
@@ -10,12 +10,7 @@ domain: knowledge-management
 status: evergreen
 related:
   - "[[index]]"
-  - "[[dashboard]]"
-  - "[[Wiki Map]]"
   - "[[Hot Cache]]"
-  - "[[LLM Wiki Pattern]]"
-  - "[[Compounding Knowledge]]"
-  - "[[Local LLM Deployment]]"
 ---
 
 # Concepts Index
@@ -26,23 +21,12 @@ All concept pages — ideas, patterns, and frameworks extracted from sources.
 
 ---
 
-## Knowledge Management
-
-- [[LLM Wiki Pattern]] — the core architecture for persistent, compounding knowledge bases
-- [[Hot Cache]] — ~500-word session context file, updated after every ingest
-- [[Compounding Knowledge]] — why the wiki grows more valuable over time, unlike RAG
-- [[DragonScale Memory]] — memory-layer spec: fold operator, deterministic page addresses, semantic tiling, boundary-first autoresearch (status: shipped v0.4, all four mechanisms opt-in)
-- [[Persistent Wiki Artifact]]: durable Markdown page as the LLM's memory object (developing)
-- [[Source-First Synthesis]]: provenance discipline for LLM wiki layers (developing)
-- [[Query-Time Retrieval]]: query synthesis with citations, complementary to Obsidian search (developing)
-
----
-
 ## Agent Design
 
 - [[Agent Skill Design Patterns]] — 5 standardized patterns for structuring Agent skill logic (Tool Wrapper, Generator, Reviewer, Inversion, Pipeline)
 - [[Intent Recognition]] — 意图识别，判断用户要什么然后路由到对应工作流或技能
 - [[Skill Five-Layer Structure]] — Skill 的五层架构：方法论→规则→工作流→输出工具→质量控制
+- [[AI技能自管理]] — AI 自动创建、优化、归档技能的方法论
 
 ---
 
@@ -66,6 +50,7 @@ Core principles for AI image generation and prompt engineering, extracted from H
 - [[参考图优先原则]] — 一张参考图比一千字描述都管用，能图生图就不要纯文字生图
 - [[克制原则]] — AI 对程度词和动态词容易走极端，要用静态、状态、克制的描述
 - [[一致性锚点原则]] — 同一系列图片必须有锚点保持风格一致，可以是参考图、关键词或成功案例
+- [[AI 生图决策规则]] — 6 条可执行 if-then 规则：冗余信号稀释/Generic对抗/注意力前置/省略接管/加法非增强/批量一致性锚点 (status: developing)
 
 ---
 
@@ -93,20 +78,6 @@ Core principles for AI image generation and prompt engineering, extracted from H
 - [[Spot Edit Principle]] — 点式修改原则，只改用户要求改的那一点，不全量返工
 - [[Single Version Principle]] — 单一版本原则，只给一个最优解 + 理由，不给一堆选项让用户选
 - [[Binary Question]] — 二进制提问法，信息不够时问窄的二选一问题，不问开放问题
-
-### 叙事结构与角色（编剧专用）
-- [[Controlling Idea]] — 主控思想，一句话概括故事核心，每个场景都要为它服务
-- [[Chekhov's Gun]] — 契诃夫之枪，每个出现的元素都要有其作用
-- [[Progressive Complications]] — 渐进式复杂化，冲突越来越强，赌注越来越高
-- [[Three-Act Structure]] — 三幕式结构：铺垫→对抗→结局
-- [[Hero's Journey]] — 英雄之旅，坎贝尔的 12 阶段单一神话
-- [[Inciting Incident]] — 激励事件，打破主角生活平衡的事件，故事正式开始
-- [[Character Bible]] — 角色圣经，从内到外的 8 层角色构建系统
-- [[Worldbuilding]] — 世界观构建，6 大模块 + 知识层级，有规则的世界才有戏剧
-- [[Hamartia]] — 悲剧缺陷，主角性格中的弱点在极端情况下变成灾难
-- [[Peripeteia and Anagnorisis]] — 突转与发现，行动走向反面+真相揭露的双重打击
-- [[Catharsis]] — 宣泄/净化，悲剧的最终目的，通过怜悯和恐惧释放情感
-- [[Pacing and Rhythm]] — 叙事节奏与韵律，不同场景的速度分类、时间计算和删减优先级
 
 ---
 

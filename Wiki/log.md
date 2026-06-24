@@ -17,6 +17,13 @@ Navigation: [[index]] | [[hot]]
 
 ---
 
+## [2026-06-24] Concept creation | AI 生图决策规则
+- Source: GitHub - c3115644151/imageforge-skill
+- Summary: [[sources/ImageForge-生图决策引擎]]
+- Pages created: [[AI 生图决策规则]]
+- Pages updated: [[index]], [[concepts/_index]], [[sources/_index]], [[hot]], [[log]]
+- Key insight: 从 imageforge 的 19 条 if-then 规则中提炼了 6 条可复用规则，每条标注了与已有 Wiki 概念（克制原则/视觉描述优先原则/一致性锚点原则/变量与不变量分离）的关联。核心模式是用 if-then 的可执行格式替代教育原理式的解释。
+
 ## [2026-06-24] Concept update | AI Camera Movements 补充英文运镜词汇 + 灯光词汇表
 - Source: GitHub - anil-matcha/Awesome-Seedance-2.5-API-Prompts（第三方 Seedance 2.5 提示词指南，非官方）
 - Summary: [[sources/Seedance-2.5-Prompt-Guide]]

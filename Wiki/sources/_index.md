@@ -57,6 +57,7 @@ All source pages — summaries of ingested documents, transcripts, articles, and
 - [[sources/OpenAI-GPT-4o-Image-Generation-28案例]] — B站视频拆解 OpenAI 官方 28 个图像生成提示词案例 (status: ingested)
 - [[sources/Dramatic-Gobo-Lighting]] — 64 张 Gobo 光影素材图 + 使用方法，给产品图加投影光影 (status: ingested)
 - [[sources/Hermes-Agent]] — AI 技能自管理机制：自动创建、使用追踪、生命周期管理 (status: ingested)
+- [[sources/ImageForge-生图决策引擎]] — AI 生图决策引擎：5 步流程 + 19 条 if-then 规则 + 6 个场景文件 (status: ingested)
 
 ---
 
