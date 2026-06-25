@@ -51,6 +51,7 @@ Core principles for AI image generation and prompt engineering, extracted from H
 - [[克制原则]] — AI 对程度词和动态词容易走极端，要用静态、状态、克制的描述
 - [[一致性锚点原则]] — 同一系列图片必须有锚点保持风格一致，可以是参考图、关键词或成功案例
 - [[AI 生图决策规则]] — 6 条可执行 if-then 规则：冗余信号稀释/Generic对抗/注意力前置/省略接管/加法非增强/批量一致性锚点 (status: developing)
+- [[文案完整保留与信息层级原则]] — 文案必须完整保留，排版只写信息层级不写具体位置 (status: developing)
 
 ---
 

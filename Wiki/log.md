@@ -17,6 +17,12 @@ Navigation: [[index]] | [[hot]]
 
 ---
 
+## [2026-06-25] Concept creation | 文案完整保留与信息层级原则
+- Source: `Skills/工作效率类/W5-图片设计/amazon-skincare/skill_副本.md`（天猫详情页 9:16 图片生成引擎）
+- Pages created: [[文案完整保留与信息层级原则]]
+- Pages updated: [[一致性锚点原则]]（补充"全局风格只写一次"技巧）, [[产物先行]]（补充"九宫格预览"交付物写法）, [[concepts/_index]], [[log]], [[hot]]
+- Key insight: 两条规则——1) 用户提供的文案必须一字不漏完整保留，不受描述比重原则约束；2) 排版布局不写具体位置和对齐方式，改为写信息层级（哪个最重要、哪个次重要），让 AI 自行决定。这两个规则来自实战——AI 无法精确执行布局指令，但能理解优先级。
+
 ## [2026-06-24] Concept creation | AI 生图决策规则
 - Source: GitHub - c3115644151/imageforge-skill
 - Summary: [[sources/ImageForge-生图决策引擎]]
