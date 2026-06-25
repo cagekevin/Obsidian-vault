@@ -130,6 +130,8 @@ AI 第一次进入这个 vault 时，按这个顺序做，不要跳步：
 
 所有运行时环境统一用版本管理工具安装，不手动安装。
 
+**设计理念：** Obsidian vault 是一个整体工作台，里面的 Skills、Tools 都是相互关联的。所以 vault 内统一用一个 Python 环境和 Node 环境，不拆成一个个独立项目。vault 外的项目（如画布里的）才各自隔离。这样管理成本最低，也符合 vault 一体化的设计。不要用"每个项目建 venv"那一套来套这个 vault。
+
 | 生态 | 管理工具 | 安装方式 |
 |------|---------|---------|
 | **Python** | `pyenv`（brew 安装） | `pyenv install <版本>` → `pyenv global <版本>` |
@@ -150,6 +152,16 @@ fnm default 20.19.0
 
 - **Obsidian vault 内**（Skills、Tools 等）：Python 和 Node 依赖统一装到 vault 根目录，不建 venv / 不单独装 node_modules。依赖记录在根目录的 `requirements.txt`（Python）或 `package.json`（Node）中。Node 包管理器用 `npm`（都在一个根目录，不需要 pnpm 的硬链接优势）
 - **Obsidian vault 外**（画布里的项目等）：各自建 `venv` 虚拟环境或各自 `pnpm install`
+
+### 新旧项目处理方式
+
+**老项目（已有自己的 venv 或 node_modules）：**
+- vault 内：删除项目自己的 venv/node_modules，依赖统一由根目录管理。运行脚本时直接用 `python script.py` 或 `node script.js`，不需要激活环境
+- vault 外：保持现状不动
+
+**新项目：**
+- vault 内：不在项目目录建 venv 或装 node_modules。需要什么依赖，直接加到根目录的 `requirements.txt` 或 `package.json` 里
+- vault 外：按项目需要各自建 venv 或 pnpm install
 
 ---
 
