@@ -26,7 +26,7 @@
 
 ## 技术栈
 
-- Python（主力），uv 管理依赖，不用虚拟环境
-- Node（pnpm 替代 npm）
+- Python：pyenv 管理，默认 3.12.13（vault 内不建 venv，vault 外各自建）
+- Node：fnm 管理，默认 20.19.0（vault 内用 npm，vault 外用 pnpm）
 - 常用工具：yt-dlp、whisper-cpp、ffmpeg
 - 出图工具：Lovart AI（中转站），底层模型用 Gemini、GPT-4o、即梦 Seedance
