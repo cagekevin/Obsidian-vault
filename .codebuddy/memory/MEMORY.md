@@ -83,6 +83,7 @@
 | `Wiki/hot.md` | `Navigation: [[index]] \| [[log]]` 整行 | 在该行**之后**插入 |
 | `Wiki/log.md` | 第一个 `## [` | 在该行**之前**插入 |
 | `.codebuddy/memory/YYYY-MM-DD.md` | 第一个 `## ` | 在该行**之前**插入 |
+| `Daily Notes/YYYY-MM-DD.md` | `## 今天做了什么` | 在该行**之后**插入 |
 
 ---
 
