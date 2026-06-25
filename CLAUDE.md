@@ -120,54 +120,36 @@ AI 第一次进入这个 vault 时，按这个顺序做，不要跳步：
 
 ---
 
-## 依赖安装
+## 依赖安装（macOS 环境）
+
+### ⚠️ 硬性规则
+
+**AI 不得擅自安装、升级、卸载任何运行时环境。** 所有涉及 Python、Node、pnpm 等工具的操作，必须严格按照以下指定的方式执行。**任何时候发现环境有问题，先问 Kevin，不要自己动手修。**
 
 ### 核心原则
 
-依赖统一装在最合适的层级，**能共享就不重复装**。
+所有运行时环境统一用版本管理工具安装，不手动安装。
 
-| 类型 | 安装位置 | 管理工具 |
+| 生态 | 管理工具 | 安装方式 |
 |------|---------|---------|
-| Node | vault 根目录（`g:/Obsidian-vault/node_modules/`） | npm（Windows）/ pnpm（Mac） |
-| Python | 系统全局（不建虚拟环境） | uv |
+| **Python** | `pyenv`（brew 安装） | `pyenv install <版本>` → `pyenv global <版本>` |
+| **Node** | `fnm`（brew 安装） | `fnm install <版本>` → `fnm default <版本>` |
+| **pnpm** | `npm install -g pnpm` 或 `brew install pnpm` | 全局安装后直接使用 |
 
-Node.js 会自动向上搜索 `node_modules`，子项目不需要安装。
-
-### Node 依赖
-
-```bash
-# 首次安装
-cd <vault根目录>
-npm install
-
-# 新增依赖
-npm install <包名>
-```
-
-### Python 依赖
+### 当前使用的版本
 
 ```bash
-# 首次安装
-uv pip install -r requirements.txt
+# Python（pyenv 管理）
+pyenv global 3.12.13
 
-# 新增依赖
-uv pip install <包名>
+# Node（fnm 管理）
+fnm default 20.19.0
 ```
 
-Python 统一用 `uv` 管理，不建虚拟环境。依赖记录在 vault 根目录的 `requirements.txt` 中。
+### 各项目依赖
 
-### 各项目特殊依赖
-
-如果某个项目有无法共享的特殊依赖，在该项目目录下放自己的 `requirements.txt`（Python）或 `package.json`（Node），并在该项目文件夹的 `instructions.md` 中注明。
-
-### 环境差异
-
-| 环境 | Node 包管理器 | Python 包管理器 |
-|------|-------------|----------------|
-| Mac | pnpm（主环境） | uv |
-| Windows | npm（双机环境） | uv |
-
-`package.json` 和 `requirements.txt` 保持跨平台一致。
+- **Obsidian vault 内**（Skills、Tools 等）：Python 和 Node 依赖统一装到 vault 根目录，不建 venv / 不单独装 node_modules。依赖记录在根目录的 `requirements.txt`（Python）或 `package.json`（Node）中。Node 包管理器用 `npm`（都在一个根目录，不需要 pnpm 的硬链接优势）
+- **Obsidian vault 外**（画布里的项目等）：各自建 `venv` 虚拟环境或各自 `pnpm install`
 
 ---
 

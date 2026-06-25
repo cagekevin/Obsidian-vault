@@ -30,16 +30,13 @@
 - 进入任何技能子文件夹前，先读该文件夹的 SKILL.md
 - 如果找不到合适技能，告诉 Kevin，问是否需要创建新技能
 
-## 依赖管理（全局）
+## 依赖管理
 
-所有依赖文件统一放在 vault 根目录：
+Python 和 Node 统一用版本管理工具安装，详见 `CLAUDE.md` 的"依赖安装"章节。
 
-- **Python**：`requirements.txt`（根目录），安装：`uv pip install -r requirements.txt`
-- **Node**：`package.json`（根目录，如果有），安装：`pnpm install`
-
-执行 Python 脚本用 `uv run python script.py`，不需要激活虚拟环境。
-新增依赖：先 `uv pip install <包名>`，再追加到根目录的 `requirements.txt`。
-项目有特殊依赖 → 在项目目录放自己的 `requirements.txt` 或 `package.json`。
+各项目自己的依赖：
+- Python 项目：在项目目录建 `venv` 虚拟环境，`pip install -r requirements.txt`
+- Node 项目：在项目目录 `pnpm install`
 
 ## 关于 Tools/（实用脚本）
 
