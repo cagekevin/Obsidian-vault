@@ -1,0 +1,258 @@
+# 琥珀光影电商主图
+
+## 判定条件
+
+路由到此场景的信号：
+- 关键词：琥珀光影, 琥珀色, 琥珀光, amber, 暖光产品, 香槟金, 奶油白, 轻奢, 电商主图, ecommerce main image, 产品主图
+- 场景特征：奶油白→琥珀色→香槟金暖色调渐变，轻奢电商视觉
+- 典型请求："琥珀光影风格出主图" / "暖色调电商主图" / "用琥珀光影"
+
+核心难点（为什么要路由到这里）：
+- 色彩一致性——训练数据中的"暖色调产品"分布极广，从夕阳红到蜡烛黄都算"暖"，不加精确色彩锁定（cream white → amber → champagne gold）模型会随机落在暖色区间的任何一点，同一批次不同图之间色调漂移明显
+- 垫图干扰——垫了产品参考图后，提示词如果写了产品材质/形状描述，模型会混合参考图信息+文本描述，导致产品变形或出现幻觉纹理。垫图模式下提示词只能写光影/环境/氛围，产品形状材质完全由参考图提供
+
+---
+
+## Prompt组装
+
+电商主图专用的提示词组合系统。**使用方法：全局引擎 + 插入变量 + 每个分组随机选1个，组合成完整提示词。**
+
+### 使用方法
+
+```
+全局引擎 + 插入变量 + col-1随机1个 + col-2随机1个 + col-3随机1个 + col-4随机1个 + col-5随机1个 + col-6
+```
+
+- 全局引擎：固定不变，控制整体风格和画质
+- 插入变量：替换成具体产品（如"the premium astaxanthin capsule serum jar"）
+- col-1 到 col-5：每个分组随机选1个，组合出不同效果
+- col-6：固定的留白要求（根据实际需要调整位置）
+
+---
+
+### 全局引擎（global-constant）
+
+```
+High-end commercial product photography of [变量], shot on medium format 85mm lens with extreme micro-detail resolution, luxury aesthetic with a seamless color transition from creamy white to soft amber and champagne gold, elegant and breathable visual flow, immaculate studio curation with zero visual clutter, stunning natural optical depth and flawless material truth,
+```
+
+---
+
+### 插入变量（insert-variable）
+
+默认值：`the premium main product`
+
+**婷美虾青素胶囊：** `the premium astaxanthin capsule serum jar`
+
+---
+
+### col-1 - 物理陈列清单（底座/材质/装饰元素）
+
+共50+个选项，随机选1个：
+
+1. `nestled upon a thick, asymmetrical slab of natural warm amber burl wood, anchoring the immediate foreground, accompanied by a single cream-colored phalaenopsis orchid bending softly`
+2. `firmly anchored on a massive rectangular block of raw warm-toned walnut wood, occupying the lower foundation of the frame, framed by a leaning cream anthurium flower`
+3. `sitting on a wide cylindrical cross-section of a warm-toned oak log, spanning the lower center, accompanied by a dried golden palm leaf in the mid-ground`
+4. `resting heavily on a solid, low-profile block of natural blonde wood, with scattered natural botanical elements resting nearby`
+5. `sitting on a raised champagne-gold metallic cylindrical display plinth, wrapped with a flowing champagne-gold silk ribbon`
+6. `resting on a thick warm amber glass platform, spanning the entire foreground depth, with a golden metallic ribbon framing the immediate foreground`
+7. `nestled on a wide, low-profile champagne-gold tray, anchoring the bottom edge, accompanied by a flowing piece of soft champagne silk`
+8. `placed securely on a tall gold metallic pedestal, elevating the subject in the lower center, accompanied by scattered golden foil flakes`
+9. `resting heavily on a solid monolithic block of raw beige travertine stone, grounding the composition, accompanied by a few warm quartz fragments resting naturally nearby`
+10. `firmly anchored on a thick, jagged slab of raw golden-veined marble, dominating the lower foreground, revealing the raw inner texture`
+11. `resting on a wide, rough-hewn creamy alabaster stone plinth, anchoring the bottom third of the frame, accompanied by a raw travertine fragment resting naturally nearby`
+12. `placed directly on an expansive warm limestone slab, resting in a shallow pool of clear water spanning the immediate foreground`
+13. `nestled upon a thick asymmetrical slab of natural warm amber burl wood, framed by naturally scattered cream peony petals resting gently on the surface`
+14. `firmly anchored on a rugged, chunky block of raw beige travertine stone, in the lower center, with a single warm-white magnolia petal resting naturally nearby`
+15. `resting on a wide, stepped warm beige stone platform, submerged in a shallow pool of clear water spanning the foreground, with translucent champagne-toned wild rose petals floating on the surface`
+16. `sitting on a thick, circular cross-section of a warm-toned oak log, elevating the subject, accompanied by layered cream ranunculus petals`
+17. `positioned on a continuous champagne-tinted glass floor, filling the lower half of the frame, capturing the reflection of a single cream-white rockrose`
+18. `resting in a shallow pool of still water over a wide, flat slab of raw beige travertine, dominating the foreground, reflecting the curved stem of a single white calla lily`
+19. `sitting on a solid, translucent amber glass brick, elevating the subject in the lower center, with the reflection of a cream phalaenopsis orchid`
+20. `resting on a smooth, wide natural walnut wood surface, filling the lower frame covered in a thin layer of water, reflecting the geometry of a single cream-white camellia blossom`
+21. `nestled on a low champagne gold metallic base spanning the bottom edge, resting on a bed of flowing pearl-white silk`
+22. `resting heavily on a massive cubic block of raw golden-veined marble, grounding the lower third of the frame, accompanied by a small gold leaf fragment resting nearby`
+23. `placed securely on a continuous, gently curved surface of smooth warm alabaster, filling the lower foreground, framed by naturally scattered white jasmine petals`
+24. `firmly anchored on a thick, solid plinth of warm beige sandstone, accompanied by a dried lunaria pod resting nearby`
+25. `nestled on a layered architectural composition of overlapping beige travertine slabs and a natural amber wood base, creating an asymmetrical structural step, accompanied by a single cream-colored phalaenopsis orchid`
+26. `firmly anchored on a multi-tiered display of rough-hewn creamy alabaster blocks, surrounded by scattered raw quartz fragments and loose golden-veined marble chips grounding the entire lower frame`
+27. `resting on a clear glass slab physically elevated above a massive block of walnut wood, allowing the raw wood below to remain visible`
+28. `positioned on a dynamic arrangement of fragmented warm limestone pieces fitted together like a natural puzzle, anchored in a shallow pool of clear water`
+29. `sitting on dual contrasting podiums, featuring a matte champagne-gold metallic cylinder resting partially upon a rugged chunk of rough sandstone, blending industrial precision with raw geological nature`
+30. `resting heavily on a staggered staircase configuration of natural warm amber burl wood and raw travertine stone, drawing the eye upward through physical contrasts`
+31. `firmly anchored on a monolithic geometric podium of hand-troweled warm beige Venetian plaster, highlighting a soft powdery surface`
+32. `sitting securely on a solid block of warm limestone, accompanied by an arrangement of dried golden pampas grass resting naturally in the mid-ground`
+33. `nestled upon a curved, sweeping slab of polished champagne metal, accompanied by a single drop of golden fluid resting on the surface`
+34. `placed directly within a shallow basin of warm golden liquid, surrounded by a concentric ripple, reflecting the subject naturally`
+35. `firmly anchored on a thick, clear acrylic slab creating a floating illusion in the lower frame`
+36. `positioned on a smooth warm amber glass pedestal, surrounded by a structured arrangement of golden-tinted abstract botanical stems`
+37. `partially submerged in a shallow basin of viscous warm golden liquid, displacing the fluid to form a meniscus ring around its base`
+38. `placed directly at the center of a concentric ripple in a pool of champagne-toned liquid, capturing the physical water tension`
+39. `resting heavily in a thin layer of pure water flooding a raw beige travertine slab, highlighting the natural surface of the stone below`
+40. `nestled in a shallow pool of warm translucent fluid, surrounded by a scattered arrangement of champagne-gold suspended bubbles`
+41. `resting securely on the surface of still water, accompanied by drops of golden liquid floating naturally`
+42. `partially embedded in a shallow puddle of opaque pearlescent fluid smoothly swirling with amber liquid ribbons, blending solid structure with fluid motion`
+43. `nestled within the flowing, wave-like folds of champagne silk fabric, accompanied by sporadically suspended golden foil flakes resting naturally`
+44. `partially embedded in an arranged landscape of fine champagne-gold sand dunes, creating a minimalist earthy texture`
+45. `resting upon an unbleached handmade organic cotton pulp paper, emphasizing slightly fibrous raw edges`
+46. `framed by an intricate matrix of semi-translucent biomimetic resin veins resembling thin skeletal leaves, tinted in champagne-gold`
+47. `nestled upon a thick, asymmetrical slab of natural warm amber burl wood, anchoring the immediate foreground, accompanied by a single cream-colored phalaenopsis orchid bending softly, with a faint trace of fine wood dust settled in the natural crevices`
+48. `firmly anchored on a massive rectangular block of raw warm-toned walnut wood, occupying the lower foundation of the frame, framed by a leaning cream anthurium flower, resting alongside a small, tarnished brass shim tucked underneath`
+49. `resting heavily on a solid monolithic block of raw beige travertine stone, grounding the composition, accompanied by a few warm quartz fragments and a subtle scattering of pale stone dust resting naturally nearby`
+50. `placed directly on an expansive warm limestone slab, resting in a shallow pool of clear water spanning the immediate foreground, with a single loose limestone chip partially submerged near the edge`
+
+---
+
+### col-2 - 镜头排版（视角/留白空间）
+
+共12个选项，随机选1个：
+
+| 编号 | 提示词 | 留白特点 |
+|------|--------|----------|
+| 1 | `flawless eye-level front view, powerful center alignment, impeccable subject-to-background ratio with elegant top proportions` | 平视正面，上方留白为主 |
+| 2 | `elevated high angle shot, bold and monumental subject presence, clean and harmonious side margins` | 高角度俯视，侧边留白多 |
+| 3 | `absolute symmetrical straight-on view, strong 3D volume, balanced editorial layout with refined breathing room` | 绝对对称正面，四周均匀留白 |
+| 4 | `slightly high angle view, intimate and focused perspective, precise spatial isolation without losing subject scale` | 稍高角度，下方留白多 |
+| 5 | `eye-level front elevation, absolute symmetrical editorial composition, subtle and tightly controlled clean studio borders` | 平视正面，四周紧凑留白 |
+| 6 | `elevated front perspective, sophisticated and prominent editorial presentation, natural visual balance with meticulous spatial control` | 抬高正面，上方留白多 |
+| 7 | `pristine eye-level perspective, commanding center alignment, perfectly controlled clean studio borders` | 平视居中，四周均匀留白 |
+| 8 | `slightly high angle perspective, highlighting the detailed base setup, harmonious subject-to-background ratio with balanced headroom` | 稍高角度，上方留白 |
+| 9 | `flawless eye-level commercial framing, modern editorial composition, crisp edges with perfect spatial isolation` | 平视商业构图，四周留白 |
+| 10 | `heroic low-angle perspective, elevating the subject into a monumental architectural presence, commanding extreme 3D volume against the upper spatial void` | 低角度仰视，上方大量留白 |
+| 11 | `subtle cinematic Dutch angle, introducing a slight elegant tilt to the optical plane, injecting dynamic high-fashion energy and visual tension into the otherwise static luxury composition` | 荷兰角（倾斜），留白不规则 |
+| 12 | `flawless architectural isometric perspective, rendering the three-dimensional resting surface and subject with rigorous mathematical precision and absolute clinical luxury` | 等距视角，特殊视角 |
+
+---
+
+### col-3 - 核心光影（明暗/雕塑感）
+
+共26个选项，随机选1个：
+
+1. `luxurious large softbox lighting ensuring smooth cream-to-amber gradients, combined with a single subtle hard light casting a defined elegant shadow`
+2. `diffused ambient studio light creating a rich warm atmosphere, punctuated by a crisp directional beam to carve out the glass textures`
+3. `soft luminous continuous light wrapping the subject, paired with a precision optical snoot to create a sharp glowing focal point`
+4. `even and luxurious broad light with gentle fall-off, featuring a subtle hard rim light to beautifully define the metallic gold edges`
+5. `beautifully controlled softbox gradient lighting, enhanced by a crisp geometric gobo shadow anchoring the immediate foreground`
+6. `warm glowing ambient light bathing the setup, crossed by a crisp raking light to emphasize the micro-details of the resting surface`
+7. `cinematic chiaroscuro lighting mixing soft luminous bright areas with a defined hard-edged shadow for ultimate 3D volume`
+8. `diffused overhead butterfly lighting to prevent blown-out highlights, combined with a sharp side-kicker light for dramatic contrast`
+9. `soft directed studio spotlight creating a gentle luminous glow, anchored by a distinct and sharp shadow line cutting through the composition`
+10. `sophisticated dimensional backlighting layered over a soft front fill, ensuring perfect exposure and crisp material separation`
+11. `smooth elegant continuous lighting enveloping the scene, offset by a crisp angular shadow grounding the main product`
+12. `gentle warm luminous base light, intersected by a sharp diagonal light flag to create a moody and expensive atmospheric contrast`
+13. `broad and even soft illumination across the materials, punctuated by precise specular highlights controlled by a studio grid`
+14. `soft ambient environment light combined with a crisp directional strobe to freeze the liquid and glass clarity flawlessly`
+15. `rich warm gradient lighting smoothing out the background, while a sharp focused beam isolates and elevates the central subject`
+16. `subtle elegant soft-focus lighting overall, contrasted by a sharply defined shadow cast directly from the core product`
+17. `luminous and dreamy base illumination, structurally anchored by a deep rich dark shadow on the opposing side`
+18. `gentle and soft omnidirectional light, cut by a single razor-sharp optical snoot beam highlighting the metallic textures`
+19. `smooth gradient sweeps of warm light, balanced perfectly with a crisp and dense shadow core for maximum physical weight`
+20. `soft cinematic fill light creating a luxurious mood, combined with a sharp defined key light to capture the exact material truth`
+21. `classic Rembrandt-inspired directional lighting, casting a rich, dramatic amber shadow on one side while perfectly illuminating the primary facet for a timeless, painterly luxury`
+22. `high-end dark field edge lighting, isolating the subject with a glowing, razor-sharp bright contour against the subtle ambient space, maximizing glass and fluid transparency`
+23. `illuminated by a massive parabolic reflector, delivering a signature crisp yet universally wrapping 3D light, creating microscopic highlight details and incredibly rich tonal fall-off`
+24. `sophisticated bottom-up illumination shining directly through the resting surface, causing the base and the product to emit a mesmerizing, self-luminous warm gold internal glow`
+25. `dominated by rich moody shadows, pierced by a precise, razor-thin sliver of warm optical spotlight cutting horizontally across the scene to create an expensive cinematic tension`
+26. `masterful cinematic chiaroscuro lighting relying entirely on pure organic gobos instead of physical props, casting a softly swaying, out-of-focus tropical botanical shadow across the scene, paired with a piercing, razor-sharp rim light contour to sculpt the absolute 3D volume`
+
+---
+
+### col-4 - 空气微观介质（氛围/物理特效）
+
+共17个选项，随机选1个：
+
+1. `crystal clear optical purity with subtle warm light refraction through the lens`
+2. `pristine studio air clarity focusing entirely on crisp material textures`
+3. `stunning optical light dispersion naturally interacting with the glass and liquid textures`
+4. `pure minimal atmosphere with a gentle luminous warm glow permeating the setup`
+5. `smooth seamless warm light gradient subtly illuminating the clean spatial depth`
+6. `clean and sharp atmospheric presence with zero distracting visual noise`
+7. `subtle and elegant optical glow wrapping around the core subject naturally`
+8. `microscopic optical clarity with pure clean spatial presence`
+9. `stunning crystalline caustics reflecting subtly on the resting surface`
+10. `flawless atmospheric transparency emphasizing absolute luxury and razor-sharp material truth`
+11. `featuring a dynamic, sweeping motion blur of a translucent champagne fabric cutting through the mid-ground, contrasting perfectly with the razor-sharp central subject`
+12. `framed by a stunning, organic warm amber prism light leak grazing the edge of the lens, introducing a luxurious, cinematic optical texture with zero visual clutter`
+13. `highlighted by a subtle, expensive cinematic halation blooming gently around the brightest golden specular highlights, replicating the organic warmth of vintage medium format lenses`
+14. `illuminated by airborne micro-particles of crushed golden mica caught suspended in a crisp directional light beam, adding a rich, expensive physical texture to the atmosphere`
+15. `incorporating elegant, long-exposure warm light streaks organically wrapping through the spatial depth, creating a high-end, dynamic kinetic energy`
+16. `featuring a whisper-light, warm golden anamorphic lens flare softly cutting across the extreme foreground, adding a highly produced cinematic optical texture`
+17. `showcasing microscopic optical dispersion and faint warm chromatic aberration along the glass and liquid edges, capturing the physical truth of extreme macro lens photography`
+18. `featuring extreme macro lens blur applied exclusively to secondary botanical props, transforming them into a dreamy, out-of-focus warm gold bokeh that perfectly contrasts with the razor-sharp core subject`
+
+---
+
+### col-5 - 深邃空间与光影幕墙（背景）
+
+共23个选项，随机选1个：
+
+1. `set against a distant soft studio backdrop with elegant warm light sweeps and rich dimensional depth`
+2. `melting into a pure warm beige spatial void with a gentle luminous gradient highlighting the center`
+3. `fading into a pure clean spatial void transitioning smoothly from warm amber to deep umber`
+4. `set against a crisp photographic infinity curve bathed in an even and distraction-free neutral warm tone`
+5. `set against a pure untextured studio background focusing entirely on clean commercial spatial isolation`
+6. `set against a frosted spatial depth with a seamless vertical gradient fading from crisp bright white at the top to warm beige at the base`
+7. `melting into a luxurious background with a soft radial light gradient, drawing the eye naturally to the perfectly isolated central subject`
+8. `backed by a seamless elegant studio sweep featuring a buttery smooth gradient from soft cream to pale champagne gold`
+9. `set against a clean minimalist studio wall divided by a razor-sharp horizontal warm shadow line`
+10. `backed by a pure seamless canvas backdrop illuminated by a soft diffused linear gobo, creating a clean and expensive spatial rhythm`
+11. `backed by a smooth studio sweep with subtle whisper-light abstract shadow projections melting into the warm amber gradient`
+12. `backed by a seamless warm backdrop with faint, low-contrast fluted glass refractions, creating a barely-there luminous structural shadow`
+13. `set against a pure minimal studio wall illuminated by a soft diffused abstract gobo, casting a warm beige, ultra-light shadow that melts into the background`
+14. `fading into a soft warm space with translucent water caustic light patterns gently projected on the rear wall, keeping the shadows extremely shallow and luminous`
+15. `backed by a smooth sweep with a ghost-like, softly diffused gobo silhouette of elegant orchid stems, rendered in very soft champagne tones rather than deep shadows`
+16. `set against a luminous canvas backdrop featuring whisper-light, heavily diffused linear gobo patterns that blend seamlessly into the warm ambient glow`
+17. `melting into an elegant spatial depth featuring a very subtle, continuous warm light wash, creating a gentle luminous glow and barely visible shadow`
+18. `set against an infinite, cloudless sunset sky transitioning seamlessly from soft champagne to warm pale amber, creating a pure and elevated natural spatial depth`
+19. `backed by a beautifully hazy, luminous dawn sky bathed in warm creamy white and soft gold tones, devoid of any distracting clouds to maintain pristine commercial isolation`
+20. `fading into an endless, serene pale amber sky that melts into a horizonless atmospheric depth, bathed in a gentle golden-hour glow with absolute minimal visual noise`
+21. `set against a pristine, soft-focus twilight sky gradient in luxurious warm tones, offering a boundless and breathable outdoor luxury aesthetic while focusing entirely on the central subject`
+22. `set against a minimalist, completely isolated pure amber spatial void, defined only by the breathing rhythm of a softly diffused warm light gradient, creating an ultimate high-end empty space`
+
+---
+
+### col-6 - 产品布局与留白
+
+默认：`产品需要紧凑一些，右上角留空白文字的位置`
+
+**注意：** 留白位置不固定，根据实际需要调整（右上角/左上角/上方/侧边等）
+
+---
+
+## 垫图规则
+
+- 必须用真实产品图垫图（参考图优先原则）
+- 有垫图时，提示词只写光影/环境/氛围，不写产品形状材质
+- 模型从参考图取产品，提示词控制光影和场景
+
+---
+
+## 诊断路由
+
+| 观察到 | 可能原因 | 修复动作 |
+|--------|---------|---------|
+| 色彩偏冷/偏灰 | 未锁定配色 | 确认prompt中有 `cream white to amber to champagne gold` |
+| 产品变形 | 垫图+提示词描述了产品形状 | 删掉产品描述，只留光影和环境 |
+| 光影太散 | col-3选到了弱光选项 | 换一个对比更强的光影选项 |
+| 留白位置不对 | col-6未指定 | 明确说"左上角留白"还是"右上角留白" |
+| 风格不统一 | 两批图选了差异太大的组合 | 固定col-3和col-5的某几个选项 |
+
+---
+
+## 场景必检项
+
+```
+□ 全局引擎写了吗？
+□ 变量替换成具体产品了吗？
+□ col-1到col-5各选了一个吗？
+□ col-6留白指定了吗？
+□ 有垫图时，提示词没写产品描述吧？
+□ 配色范围锁定了？（cream white → amber → champagne gold）
+```
+
+## 相关概念
+
+- [[描述比重原则]] — 主体描述占主导，次要元素不抢戏
+- [[参考图优先原则]] — 必须用真实产品图垫图
+- [[克制原则]] — 程度词容易走极端，用静态描述
+- [[一致性锚点原则]] — 同系列图片保持风格一致
