@@ -17,18 +17,12 @@ log_error()   { echo "   ❌ $1"; }
 # =====================================
 echo "📋 扫描技能清单..."
 
-# 提取编号信息：目录名如 "W5-图片设计" → prefix=W, num=5, name=图片设计
-# 核心技能平铺在 skills/ 下（mindepth 1 maxdepth 1），参考技能/ 不扫
+# 扫描 skills/ 下所有目录（排除 参考技能/），不要求编号
 scan_skills() {
     find "$SKILLS_DIR" -mindepth 1 -maxdepth 1 -type d ! -name "参考技能" | sort | while IFS= read -r d; do
-        local fname=$(basename "$d")
-        if echo "$fname" | grep -qE '^[SW][0-9]+-'; then
-            local prefix=$(echo "$fname" | sed 's/^\([SW]\)[0-9]*\-.*/\1/')
-            local num=$(echo "$fname" | sed 's/^[SW]\([0-9]*\)\-.*/\1/')
-            local name=$(echo "$fname" | sed "s/^[SW]${num}\-//")
-            echo "${prefix}|${num}|${name}|${d}"
-        fi
-    done | sort -t'|' -k1,1 -k2,2n
+        local name=$(basename "$d")
+        echo "${name}|${d}"
+    done
 }
 
 ALL_SKILLS=$(scan_skills)
@@ -39,11 +33,11 @@ gen_skill_list() {
     echo "# 技能清单\n"
     echo "> 自动生成于 $(date '+%Y-%m-%d %H:%M')\n"
     echo "## 核心 Skill（AI 直达）\n"
-    echo "| 编号 | 名称 | 说明 |"
-    echo "|------|------|------|"
-    echo "$ALL_SKILLS" | while IFS='|' read -r prefix num name path; do
-        [ -z "$prefix" ] && continue
-        echo "| $prefix$num | $name | |"
+    echo "| 名称 | 说明 |"
+    echo "|------|------|"
+    echo "$ALL_SKILLS" | while IFS='|' read -r name path; do
+        [ -z "$name" ] && continue
+        echo "| $name | |"
     done
     echo ""
     echo "## 参考技能（\`skills/参考技能/\` 下，按需查阅）"
@@ -68,12 +62,7 @@ gen_missing_skill_md() {
     local generated=0
     find "$SKILLS_DIR" -mindepth 1 -maxdepth 1 -type d ! -name "参考技能" | sort | while IFS= read -r dir; do
         local dir_name=$(basename "$dir")
-        if ! echo "$dir_name" | grep -qE '^[SW][0-9]+-'; then continue; fi
-
-        local prefix="${dir_name:0:1}"
-        local rest="${dir_name:1}"
-        local num="${rest%%-*}"
-        local name="${rest#*-}"
+        local name="$dir_name"
 
         # 已有 SKILL.md 则跳过
         [ -f "$dir/SKILL.md" ] && continue
