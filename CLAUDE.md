@@ -109,9 +109,14 @@ AI 无需关注后台结构，直接响应以下口语化指令：
 ## 五、环境与依赖规范 (macOS)
 
 ### ⚠️ 硬性安全规则
-**AI 不得擅自安装、升级、卸载运行时环境。** 包括但不限于：brew 包、Python/Node 版本、系统级工具。任何时候发现环境有问题，先问 Kevin，不要自己动手修。
 
-**但项目级依赖可以装**：按照下方"项目依赖处理方案"的规范，在 vault 根目录 `pip install -r requirements.txt` 或 `npm install` 是允许的。
+**核心原则：先判断环境，再动手。判断错了 = 失败。**
+
+- **vault 内项目**（Skills、Tools 等）→ 不建 venv、不装 node_modules，依赖统一写根目录 requirements.txt/package.json
+- **vault 外项目**（画布/、AgentSpace/ 等）→ 必须建 venv 或 pnpm install 隔离环境，**绝不碰系统 Python/Node**
+- 搞反了就是严重失误，Kevin 零容忍
+
+**AI 不得擅自安装、升级、卸载运行时环境。** 包括但不限于：brew 包、Python/Node 版本、系统级工具。任何时候发现环境有问题，先问 Kevin，不要自己动手修。
 
 ### 核心架构理念
 Obsidian vault 是一个整体工作台，内部统一用同一个 Python 和 Node 环境，不独立建虚拟环境，以降低管理成本。Vault 外的项目才各自隔离。
@@ -128,7 +133,3 @@ Obsidian vault 是一个整体工作台，内部统一用同一个 Python 和 No
     * 不建 `venv`，不单独装 `node_modules`。
     * 依赖统一写入根目录的 `requirements.txt` 或 `package.json`，Node 用 `npm` 管理。
     * 运行脚本直接用 `python script.py` 或 `node script.js`。
-    * **老项目清理**：若内部老项目自带 venv/node_modules，直接删除，统一由根目录接管。
-* **Obsidian vault 外**（如画布里的项目等）：
-    * 按项目各自建 `venv` 或各自 `pnpm install` 隔离环境。
-    * **老项目**：保持现状不动。
