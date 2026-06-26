@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki/meta/claude-obsidian-v1.4-release-session.md",
+  "page_address": "syn-7d6acc",
+  "chunk_index": 8,
+  "raw_text": " SessionStart, PostCompact, PostToolUse, Stop\n- **6 multi-agent bootstrap files** covering Codex, OpenCode, Gemini, Cursor, Windsurf, GitHub Copilot\n- **2 agents** in `agents/`: wiki-ingest, wiki-lint\n\n## Deferred to v1.5.0\n\nFrom the audit cherry-picks list, these items were identified but intentionally not included in v1.4.0:\n\n- `/adopt` command for importing existing vaults (medium complexity, adds new surface)\n- Vault graph analysis enhancement to wiki-lint (hub pages, cross-domain bridges, dead-ends)\n- Semantic search via qmd MCP server (optional external dependency)\n- Marp slide output from wiki queries (niche)\n- Thinking mode vs Writing mode UX experiment",
+  "contextualized_text": "This passage is from the wiki page \"claude-obsidian v1.4 Release Session\". The page opens: # claude-obsidian v1.4 Release Session\n\nA complete release cycle covering v1.1, v1.4.0, and v1.4.1.\n\n SessionStart, PostCompact, PostToolUse, Stop\n- **6 multi-agent bootstrap files** covering Codex, OpenCode, Gemini, Cursor, Windsurf, GitHub Copilot\n- **2 agents** in `agents/`: wiki-ingest, wiki-lint\n\n## Deferred to v1.5.0\n\nFrom the audit cherry-picks list, these items were identified but intentionally not included in v1.4.0:\n\n- `/adopt` command for importing existing vaults (medium complexity, adds new surface)\n- Vault graph analysis enhancement to wiki-lint (hub pages, cross-domain bridges, dead-ends)\n- Semantic search via qmd MCP server (optional external dependency)\n- Marp slide output from wiki queries (niche)\n- Thinking mode vs Writing mode UX experiment",
+  "prefix": "This passage is from the wiki page \"claude-obsidian v1.4 Release Session\". The page opens: # claude-obsidian v1.4 Release Session\n\nA complete release cycle covering v1.1, v1.4.0, and v1.4.1.",
+  "prefix_source": "synthetic",
+  "char_count": 669,
+  "body_hash": "sha256:8a035a87cdec40dcae3887527b98b24d04f62a4a34aa9ff5b015f6a336420e2b",
+  "page_body_hash": "sha256:205437e84429227cee9bbd7bf301046d55b5fea58181691066ffb09b1f4f86ba",
+  "created_at": "2026-06-26T15:42:48Z"
+}

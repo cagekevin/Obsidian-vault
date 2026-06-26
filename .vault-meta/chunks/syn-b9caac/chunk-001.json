@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki/instructions.md",
+  "page_address": "syn-b9caac",
+  "chunk_index": 1,
+  "raw_text": "`Machine Learning.md`）\n- 子文件夹：英文小写（`concepts/`）\n- Wikilink：和文件名完全一致（`[[Machine Learning]]`）\n- 文件名全 vault 唯一\n\n## 页面内容规范\n\n- 使用 `---` 分隔线分段\n- 每个概念页应有 `## Connections` 段落\n- 用 `[[Wikilink]]` 建立交叉引用\n- 不写空段落",
+  "contextualized_text": "This passage is from the wiki page \"Wiki Instructions\". The page opens: # Wiki Instructions\n\n## 这是什么\n\n**AI 构建的知识图谱。** 从原始资料中提取的原子化概念页面，互相链接形成网络。\n\nWiki 里放的是**通用方法论、概念、原则、框架**——结构化、可链接、跨项目复用的知识。不是个人偏好，不是具体项目经验，不是操作步骤。\n\n## 什么不放 Wiki（放哪里）\n\n- **身份、目标、风格、做事方式** → 放 `Context/`（个人化、关于\"Kevin 是谁\"）\n- **具体工作流、操作方法、执行步骤** → 放 `Skills/`（可执行、有输入输出、有流程）\n- **最核心、最稳定的原则和习惯** → 放 `.codebu\n\n`Machine Learning.md`）\n- 子文件夹：英文小写（`concepts/`）\n- Wikilink：和文件名完全一致（`[[Machine Learning]]`）\n- 文件名全 vault 唯一\n\n## 页面内容规范\n\n- 使用 `---` 分隔线分段\n- 每个概念页应有 `## Connections` 段落\n- 用 `[[Wikilink]]` 建立交叉引用\n- 不写空段落",
+  "prefix": "This passage is from the wiki page \"Wiki Instructions\". The page opens: # Wiki Instructions\n\n## 这是什么\n\n**AI 构建的知识图谱。** 从原始资料中提取的原子化概念页面，互相链接形成网络。\n\nWiki 里放的是**通用方法论、概念、原则、框架**——结构化、可链接、跨项目复用的知识。不是个人偏好，不是具体项目经验，不是操作步骤。\n\n## 什么不放 Wiki（放哪里）\n\n- **身份、目标、风格、做事方式** → 放 `Context/`（个人化、关于\"Kevin 是谁\"）\n- **具体工作流、操作方法、执行步骤** → 放 `Skills/`（可执行、有输入输出、有流程）\n- **最核心、最稳定的原则和习惯** → 放 `.codebu",
+  "prefix_source": "synthetic",
+  "char_count": 200,
+  "body_hash": "sha256:565c7c488d4089b0c9d6b24de78f568c448779b84d84c88f7c95822808692563",
+  "page_body_hash": "sha256:2bc9e15e8bbc2e3be1b6afa32c3d0f89f76437edfed92a5c7192cddf7f52958c",
+  "created_at": "2026-06-26T15:42:48Z"
+}

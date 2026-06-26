@@ -20,5 +20,5 @@
 
 - Kevin 说"兔子"、"用 xx 工具"时，AI 来这里找对应的脚本
 - 使用任何脚本前，先读该脚本头部注释获取用法
-- Python 脚本执行：`uv run python 脚本名.py`
+- Python 脚本执行：`python 脚本名.py`
 - 依赖已在全局 Skills/requirements.txt 中

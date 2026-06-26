@@ -21,7 +21,7 @@ related:
 
 # OptiQ + Claude Code Local Model Tutorial
 
-> Source: `Clippings/raw/OptiQ教程.md` — from WeChat public account "玩AI的老章"
+> Source: `.raw/OptiQ教程.md` — from WeChat public account "玩AI的老章"
 
 OptiQ (mlx-optiq) is a mixed-precision quantization tool that applies different bit-widths per layer. It enables running Qwen3.5-9B on Apple Silicon Macs with 16GB+ RAM.
 

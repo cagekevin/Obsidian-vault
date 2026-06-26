@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki/concepts/Cut Priority Method.md",
+  "page_address": "syn-47913e",
+  "chunk_index": 1,
+  "raw_text": "把核心转折点删了。\n\n核心是支柱，删了整个东西就垮了。\n\n**永远从最不重要的开始删，核心最后才考虑（最好永远不考虑）。**\n\n---\n\n## 和其他概念的关系\n\n- **[[If You Remove It Does It Change]]** — 判断某个东西能不能删的标准\n- **[[Scene Value]]** — 有价值转换的场景通常比较重要，优先级靠后；没有价值转换的场景通常可以先删",
+  "contextualized_text": "This passage is from the wiki page \"Cut Priority Method\". The page opens: # Cut Priority Method\n\n删减优先级方法。需要删减内容时，按优先级从最不重要的开始删，保留核心。\n\n不是平均删减，也不是从头删到尾，而是有策略地删。\n\n---\n\n## 怎么用\n\n### 核心原则\n\n**先删最不重要的，保留核心。**\n\n删减不是\"每个地方都删一点\"，而是\"先删最没用的，实在不够再删次重要的\"。\n\n### 优先级分层\n\n从安全到风险，分四层：\n\n| 优先级 | 类型 | 说明 | 删了会怎么样 |\n|---|---|---|---|\n| **最优先删（安全）** | 重复的、多余的 | 同样的信息说了好几遍，只留最强的那一个 | 几乎没影响 |\n| **次优先\n\n把核心转折点删了。\n\n核心是支柱，删了整个东西就垮了。\n\n**永远从最不重要的开始删，核心最后才考虑（最好永远不考虑）。**\n\n---\n\n## 和其他概念的关系\n\n- **[[If You Remove It Does It Change]]** — 判断某个东西能不能删的标准\n- **[[Scene Value]]** — 有价值转换的场景通常比较重要，优先级靠后；没有价值转换的场景通常可以先删",
+  "prefix": "This passage is from the wiki page \"Cut Priority Method\". The page opens: # Cut Priority Method\n\n删减优先级方法。需要删减内容时，按优先级从最不重要的开始删，保留核心。\n\n不是平均删减，也不是从头删到尾，而是有策略地删。\n\n---\n\n## 怎么用\n\n### 核心原则\n\n**先删最不重要的，保留核心。**\n\n删减不是\"每个地方都删一点\"，而是\"先删最没用的，实在不够再删次重要的\"。\n\n### 优先级分层\n\n从安全到风险，分四层：\n\n| 优先级 | 类型 | 说明 | 删了会怎么样 |\n|---|---|---|---|\n| **最优先删（安全）** | 重复的、多余的 | 同样的信息说了好几遍，只留最强的那一个 | 几乎没影响 |\n| **次优先",
+  "prefix_source": "synthetic",
+  "char_count": 200,
+  "body_hash": "sha256:477c05acdff8ef27662ced434b4799fc0add29b8a0a7d47ff698eb35bac7482e",
+  "page_body_hash": "sha256:d785ecd641f6ad3c2407b489b18e660acf9c1a887e8db2c31e5597f7ac440f28",
+  "created_at": "2026-06-26T15:42:48Z"
+}

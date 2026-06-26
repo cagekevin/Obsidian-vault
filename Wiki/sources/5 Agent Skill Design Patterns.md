@@ -15,7 +15,7 @@ related:
 
 # 5 Agent Skill Design Patterns
 
-> Source: `Clippings/raw/5 Agent Skill设计模式.md` — Twitter/X thread by Google Cloud Tech, Chinese translation via CSDN
+> Source: `.raw/5 Agent Skill设计模式.md` — Twitter/X thread by Google Cloud Tech, Chinese translation via CSDN
 
 A set of 5 standardized design patterns for organizing Agent skills (SKILL.md format), derived from Google Cloud, Anthropic, and Vercel internal practices. The patterns address the problem of how to structure skill logic beyond just the file format standard.
 

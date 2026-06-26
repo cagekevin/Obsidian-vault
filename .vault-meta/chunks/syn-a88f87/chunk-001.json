@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki/meta/2026-04-15-release-report-session.md",
+  "page_address": "syn-a88f87",
+  "chunk_index": 1,
+  "raw_text": "heir own section page.\n7. **Check filenames carefully** — \"AI MArketing hub  pro logo with white text.png\" has a double space between \"hub\" and \"pro\". `Path.exists()` is the fastest way to catch this.\n\n## Pro Hub Challenge v2 (April)\n\nAdded to the report's \"What's Next\" section. Details:\n- Keyword: **LEADS**\n- Prizes: $400 (1st) + $200 (2nd) in Claude Credits\n- Deadline: April 28, 2026\n- Scope: anything touching lead generation — Claude Code skills, n8n workflows, MCP servers, scrapers, dashboards, pipelines\n- Rules: GitHub repo or .zip + 1-2 min demo video, must be functional, solo or team welcome\n- Previous winner: Lutfiya Miller (seo-cluster, integrated in v1.9.0)",
+  "contextualized_text": "This passage is from the wiki page \"Claude SEO v1.9.0 Release Report Session\". The page opens: # Claude SEO v1.9.0 Release Report Session\n\nDate: 2026-04-15 | Output: `~/Desktop/Claude-SEO-v1.9.0-Release-Report.pdf`\n\n## What Was Built\n\n13-page dark-theme PDF release report for Claude SEO v1.9.0.\n\nheir own section page.\n7. **Check filenames carefully** — \"AI MArketing hub  pro logo with white text.png\" has a double space between \"hub\" and \"pro\". `Path.exists()` is the fastest way to catch this.\n\n## Pro Hub Challenge v2 (April)\n\nAdded to the report's \"What's Next\" section. Details:\n- Keyword: **LEADS**\n- Prizes: $400 (1st) + $200 (2nd) in Claude Credits\n- Deadline: April 28, 2026\n- Scope: anything touching lead generation — Claude Code skills, n8n workflows, MCP servers, scrapers, dashboards, pipelines\n- Rules: GitHub repo or .zip + 1-2 min demo video, must be functional, solo or team welcome\n- Previous winner: Lutfiya Miller (seo-cluster, integrated in v1.9.0)",
+  "prefix": "This passage is from the wiki page \"Claude SEO v1.9.0 Release Report Session\". The page opens: # Claude SEO v1.9.0 Release Report Session\n\nDate: 2026-04-15 | Output: `~/Desktop/Claude-SEO-v1.9.0-Release-Report.pdf`\n\n## What Was Built\n\n13-page dark-theme PDF release report for Claude SEO v1.9.0.",
+  "prefix_source": "synthetic",
+  "char_count": 675,
+  "body_hash": "sha256:be5d5100b8f4c951f0d4f7f1742fef6603c72bda8d710f141ae092124c6d314e",
+  "page_body_hash": "sha256:ff2771ab585eaee7a258cb5b68ae0eb301319a8f0e6813ae657e579844db87a8",
+  "created_at": "2026-06-26T15:42:48Z"
+}

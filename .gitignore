@@ -49,6 +49,18 @@ Temp/
 *.sketch
 *.fig
 
+# 数据库文件（二进制，不进 Git）
+*.db
+*.db-shm
+*.db-wal
+
+# Windows 系统文件
+desktop.ini
+*.ini
+
+# Billfish 资产管理（二进制）
+Projects/.bf/
+
 # 模型文件（工具默认下载到项目下的 models/）
 models/
 model/

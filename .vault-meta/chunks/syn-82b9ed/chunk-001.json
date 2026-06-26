@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki/concepts/_index.md",
+  "page_address": "syn-82b9ed",
+  "chunk_index": 1,
+  "raw_text": "件展示信息，不用描述性语言直接说\n- [[Causal Chain Audit]] — 因果链审计，检查每个步骤是不是由前一个导致的，而不只是时间顺序\n\n### 质量控制与编辑\n- [[If You Remove It Does It Change]] — 必要性测试，删掉它结果会变吗？没变就删掉\n- [[Cut Priority Method]] — 删减优先级方法，先删最不重要的，核心绝对不动\n\n### 工作流与沟通\n- [[Spot Edit Principle]] — 点式修改原则，只改用户要求改的那一点，不全量返工\n- [[Single Version Principle]] — 单一版本原则，只给一个最优解 + 理由，不给一堆选项让用户选\n- [[Binary Question]] — 二进制提问法，信息不够时问窄的二选一问题，不问开放问题\n\n---\n\n## Add new concepts here as they are extracted from sources.",
+  "contextualized_text": "This passage is from the wiki page \"Concepts Index\". The page opens: # Concepts Index\n\nNavigation: [[index]] | [[entities/_index|Entities]] | [[sources/_index|Sources]]\n\nAll concept pages — ideas, patterns, and frameworks extracted from sources.\n\n件展示信息，不用描述性语言直接说\n- [[Causal Chain Audit]] — 因果链审计，检查每个步骤是不是由前一个导致的，而不只是时间顺序\n\n### 质量控制与编辑\n- [[If You Remove It Does It Change]] — 必要性测试，删掉它结果会变吗？没变就删掉\n- [[Cut Priority Method]] — 删减优先级方法，先删最不重要的，核心绝对不动\n\n### 工作流与沟通\n- [[Spot Edit Principle]] — 点式修改原则，只改用户要求改的那一点，不全量返工\n- [[Single Version Principle]] — 单一版本原则，只给一个最优解 + 理由，不给一堆选项让用户选\n- [[Binary Question]] — 二进制提问法，信息不够时问窄的二选一问题，不问开放问题\n\n---\n\n## Add new concepts here as they are extracted from sources.",
+  "prefix": "This passage is from the wiki page \"Concepts Index\". The page opens: # Concepts Index\n\nNavigation: [[index]] | [[entities/_index|Entities]] | [[sources/_index|Sources]]\n\nAll concept pages — ideas, patterns, and frameworks extracted from sources.",
+  "prefix_source": "synthetic",
+  "char_count": 448,
+  "body_hash": "sha256:ec8a4c73cd60c0b68f906b33ab3b0249e0d49b35e9cd347189fae3cf935d6d1a",
+  "page_body_hash": "sha256:a72b559521e03c5c6898ff58309a600a43ea480d0034539c1b43bfa2e17b3548",
+  "created_at": "2026-06-26T15:42:48Z"
+}

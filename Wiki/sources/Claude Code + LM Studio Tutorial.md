@@ -18,7 +18,7 @@ related:
 
 # Claude Code + LM Studio Local Model Tutorial
 
-> Source: `Clippings/raw/LMStudio教程.md` — from WeChat public account "Dom AI 驾驶舱" by DomCockpit
+> Source: `.raw/LMStudio教程.md` — from WeChat public account "Dom AI 驾驶舱" by DomCockpit
 
 A guide for running Claude Code with LM Studio local models.
 

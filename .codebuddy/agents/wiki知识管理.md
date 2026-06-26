@@ -17,4 +17,4 @@ enabledAutoRun: true
 ## 核心约束
 - 只操作 Wiki/ 目录下的文件（concepts/、entities/、sources/、skills/、meta/、index.md、log.md、hot.md）
 - 不要修改 Context/、Skills/、Projects/、.codebuddy/memory/ 下的任何文件
-- Clippings/raw/ 下的源文件只读不改
+- .raw/ 下的源文件只读不改

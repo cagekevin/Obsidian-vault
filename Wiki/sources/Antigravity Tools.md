@@ -18,7 +18,7 @@ related:
 
 # Antigravity Tools Supported Models
 
-> Source: `Clippings/raw/Antigravity Tools 支持的模型.md` — model list from Antigravity Tools v1.2.2 local API proxy
+> Source: `.raw/Antigravity Tools 支持的模型.md` — model list from Antigravity Tools v1.2.2 local API proxy
 
 Antigravity Tools is a local API proxy that forwards requests to Tencent Cloud Copilot (`https://copilot.tencent.com/v2`). It exposes an OpenAI-compatible endpoint at `http://127.0.0.1:8002/v1` and supports 15 models across 4 vendors.
 

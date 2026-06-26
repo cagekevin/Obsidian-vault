@@ -32,11 +32,10 @@
 
 ## 依赖管理
 
-Python 和 Node 统一用版本管理工具安装，详见 `CLAUDE.md` 的"依赖安装"章节。
+详见 `CLAUDE.md` 的"环境与依赖规范"章节。核心规则：
 
-各项目自己的依赖：
-- Python 项目：在项目目录建 `venv` 虚拟环境，`pip install -r requirements.txt`
-- Node 项目：在项目目录 `pnpm install`
+- **vault 内项目**（Skills、Tools 等）→ 不建 venv、不装 node_modules，依赖统一写根目录 `requirements.txt`/`package.json`，Python 用 `python script.py`，Node 用 `npm`
+- **vault 外项目**（画布/、AgentSpace/ 等）→ 必须建 venv 或 `pnpm install` 隔离环境，**绝不碰系统 Python/Node**
 
 ## 关于 Tools/（实用脚本）
 

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki/sources/Hermes-Agent.md",
+  "page_address": "syn-169d9c",
+  "chunk_index": 0,
+  "raw_text": "# Hermes Agent\n\n> GitHub：https://github.com/NousResearch/hermes-agent\n\nNous Research 做的自进化 AI 智能体。核心不是模型能力，而是它的**技能自管理机制**——AI 可以自动创建、优化、归档技能。\n\n方法论提炼见 [[AI技能自管理]]。",
+  "contextualized_text": "This passage is from the wiki page \"Hermes Agent\". The page opens: # Hermes Agent\n\n> GitHub：https://github.com/NousResearch/hermes-agent\n\nNous Research 做的自进化 AI 智能体。核心不是模型能力，而是它的**技能自管理机制**——AI 可以自动创建、优化、归档技能。\n\n方法论提炼见 [[AI技能自管理]]。\n\n# Hermes Agent\n\n> GitHub：https://github.com/NousResearch/hermes-agent\n\nNous Research 做的自进化 AI 智能体。核心不是模型能力，而是它的**技能自管理机制**——AI 可以自动创建、优化、归档技能。\n\n方法论提炼见 [[AI技能自管理]]。",
+  "prefix": "This passage is from the wiki page \"Hermes Agent\". The page opens: # Hermes Agent\n\n> GitHub：https://github.com/NousResearch/hermes-agent\n\nNous Research 做的自进化 AI 智能体。核心不是模型能力，而是它的**技能自管理机制**——AI 可以自动创建、优化、归档技能。\n\n方法论提炼见 [[AI技能自管理]]。",
+  "prefix_source": "synthetic",
+  "char_count": 163,
+  "body_hash": "sha256:ff40ffc725aaff824086bcaadb2c337c553492c5b2c809d0162027ce32ff76ef",
+  "page_body_hash": "sha256:8f82025e62b8c5babbcc6bb6cf040c7000a66435ce4d23b3fcc30a1717ef51be",
+  "created_at": "2026-06-26T15:42:48Z"
+}

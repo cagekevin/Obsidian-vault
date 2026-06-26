@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki/meta/claude-obsidian-v1.2.0-release-session.md",
+  "page_address": "syn-8da966",
+  "chunk_index": 2,
+  "raw_text": "|\n| AI-Marketing-Hub/claude-obsidian | Public | https://github.com/AI-Marketing-Hub/claude-obsidian |\n| avalonreset-pro/claude-obsidian | Private | https://github.com/avalonreset-pro/claude-obsidian |\n\nCommunity install command: `claude plugin install github:AI-Marketing-Hub/claude-obsidian`\n\nFuture updates: `git push origin main && git push community main`\n\n---\n\n## Key Decisions\n\n- **Rename to claude-obsidian**: clearer branding, immediately communicates the Claude + Obsidian pairing\n- **avalonreset-pro repo is private**: community members only, not public\n- **Excalidraw main.js excluded from git**: 8MB downloaded by `setup-vault.sh` at setup time\n- **Bundled plugin redistribution**: acceptable — all 4 plugins are publicly distributed through Obsidian's community plugin system\n- **GIF compression strategy**: palette reduction (256→128 colors) + resolution scaling gives 50-68% savings with no visible quality loss at GitHub's rendering width",
+  "contextualized_text": "This passage is from the wiki page \"claude-obsidian v1.2.0 Release Session\". The page opens: # claude-obsidian v1.2.0 Release Session\n\nFull build, audit, polish, and community release of the claude-obsidian plugin + vault kit.\n\n|\n| AI-Marketing-Hub/claude-obsidian | Public | https://github.com/AI-Marketing-Hub/claude-obsidian |\n| avalonreset-pro/claude-obsidian | Private | https://github.com/avalonreset-pro/claude-obsidian |\n\nCommunity install command: `claude plugin install github:AI-Marketing-Hub/claude-obsidian`\n\nFuture updates: `git push origin main && git push community main`\n\n---\n\n## Key Decisions\n\n- **Rename to claude-obsidian**: clearer branding, immediately communicates the Claude + Obsidian pairing\n- **avalonreset-pro repo is private**: community members only, not public\n- **Excalidraw main.js excluded from git**: 8MB downloaded by `setup-vault.sh` at setup time\n- **Bundled plugin redistribution**: acceptable — all 4 plugins are publicly distributed through Obsidian's community plugin system\n- **GIF compression strategy**: palette reduction (256→128 colors) + resolution scaling gives 50-68% savings with no visible quality loss at GitHub's rendering width",
+  "prefix": "This passage is from the wiki page \"claude-obsidian v1.2.0 Release Session\". The page opens: # claude-obsidian v1.2.0 Release Session\n\nFull build, audit, polish, and community release of the claude-obsidian plugin + vault kit.",
+  "prefix_source": "synthetic",
+  "char_count": 954,
+  "body_hash": "sha256:184de1a4130f774b009bbb80319ad6c092a7c11a7b2449e87c901cd960cc1b2f",
+  "page_body_hash": "sha256:3ec52639e4d8033833bc1362952dbaec4a329c86f7587ee2f5b2abee62eed1ab",
+  "created_at": "2026-06-26T15:42:48Z"
+}

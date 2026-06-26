@@ -19,7 +19,7 @@ related:
 
 # Ollama Official Documentation
 
-> Source: `Clippings/raw/Ollama官方文档完整整理.md` — downloaded and dehydrated via browser_control.py
+> Source: `.raw/Ollama官方文档完整整理.md` — downloaded and dehydrated via browser_control.py
 
 Ollama is a local LLM runner that provides both Ollama-native API and Anthropic-compatible API endpoints for connecting local models to AI tools like Claude Code, Claudian, and other agents.
 

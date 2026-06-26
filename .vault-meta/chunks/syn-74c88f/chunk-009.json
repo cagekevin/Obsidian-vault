@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki/skills/lint.md",
+  "page_address": "syn-74c88f",
+  "chunk_index": 9,
+  "raw_text": "n't force. |\n| 9 | CREATE | Lint report at `wiki/meta/lint-report-YYYY-MM-DD.md` with tiered findings. |\n| 10 | GROW | Recurring lint findings → process improvement targets, not just one-time fixes. |",
+  "contextualized_text": "This passage is from the wiki page \"(untitled)\". The page opens: # wiki-lint: Wiki Health Check\n\nRun lint after every 10-15 ingests, or weekly.\n\nn't force. |\n| 9 | CREATE | Lint report at `wiki/meta/lint-report-YYYY-MM-DD.md` with tiered findings. |\n| 10 | GROW | Recurring lint findings → process improvement targets, not just one-time fixes. |",
+  "prefix": "This passage is from the wiki page \"(untitled)\". The page opens: # wiki-lint: Wiki Health Check\n\nRun lint after every 10-15 ingests, or weekly.",
+  "prefix_source": "synthetic",
+  "char_count": 200,
+  "body_hash": "sha256:a0b8fe7c6a9f2780a2e7f2f048268b1fb2d754b26adec388f2a3c0ddf5312b97",
+  "page_body_hash": "sha256:8dbb34354f643ea81700803d5946cbf888443a6bc1fdbcd93b619b26bb459bdd",
+  "created_at": "2026-06-26T15:42:48Z"
+}

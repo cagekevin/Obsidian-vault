@@ -19,7 +19,7 @@ related:
 
 # oMLX + Claude Code Local Model Tutorial
 
-> Source: `Clippings/raw/oMLX教程.md` — from WeChat public account "朱攀"
+> Source: `.raw/oMLX教程.md` — from WeChat public account "朱攀"
 
 oMLX is a local inference engine optimized for Apple Silicon (M1-M4). It serves models via an API and can be connected to Claude Code.
 

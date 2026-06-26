@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki/sources/ImageForge-生图决策引擎.md",
+  "page_address": "syn-82e2e7",
+  "chunk_index": 0,
+  "raw_text": "# ImageForge 生图决策引擎\n\n> GitHub 仓库：[c3115644151/imageforge-skill](https://github.com/c3115644151/imageforge-skill)\n> 来源类型：第三方开发的 AI 生图决策引擎 Skill（MIT 协议）\n> 语言：中文\n\n## 内容概要\n\n一个面向 AI Agent 的生图决策引擎，核心是 5 步可执行流程：请求解析→场景路由→Prompt组装→质量门控→失败诊断。内置 19 条 if-then 决策规则和 6 个场景文件。\n\n## 提炼到 Wiki 的概念\n\n- [[AI 生图决策规则]] — 从 imageforge rules.md 提炼的 6 条可复用规则\n\n## 关键洞察\n\n- 场景经验 > 模型经验：模型会过时，场景最佳实践不会\n- 决策规则 > 教育原理：if-then 比\"理解为什么\"更适合 AI 执行\n- 模板填充 > 自由写作：AI 需要 slot 和填充规则，不是灵感\n- 诊断路由 > 修复建议：按场景分类的失败→修复映射，带规则引用",
+  "contextualized_text": "This passage is from the wiki page \"ImageForge 生图决策引擎\". The page opens: # ImageForge 生图决策引擎\n\n> GitHub 仓库：[c3115644151/imageforge-skill](https://github.com/c3115644151/imageforge-skill)\n> 来源类型：第三方开发的 AI 生图决策引擎 Skill（MIT 协议）\n> 语言：中文\n\n## 内容概要\n\n一个面向 AI Agent 的生图决策引擎，核心是 5 步可执行流程：请求解析→场景路由→Prompt组装→质量门控→失败诊断。内置 19 条 if-then 决策规则和 6 个场景文件。\n\n## 提炼到 Wiki 的概念\n\n- [[AI 生图决策规则]] — \n\n# ImageForge 生图决策引擎\n\n> GitHub 仓库：[c3115644151/imageforge-skill](https://github.com/c3115644151/imageforge-skill)\n> 来源类型：第三方开发的 AI 生图决策引擎 Skill（MIT 协议）\n> 语言：中文\n\n## 内容概要\n\n一个面向 AI Agent 的生图决策引擎，核心是 5 步可执行流程：请求解析→场景路由→Prompt组装→质量门控→失败诊断。内置 19 条 if-then 决策规则和 6 个场景文件。\n\n## 提炼到 Wiki 的概念\n\n- [[AI 生图决策规则]] — 从 imageforge rules.md 提炼的 6 条可复用规则\n\n## 关键洞察\n\n- 场景经验 > 模型经验：模型会过时，场景最佳实践不会\n- 决策规则 > 教育原理：if-then 比\"理解为什么\"更适合 AI 执行\n- 模板填充 > 自由写作：AI 需要 slot 和填充规则，不是灵感\n- 诊断路由 > 修复建议：按场景分类的失败→修复映射，带规则引用",
+  "prefix": "This passage is from the wiki page \"ImageForge 生图决策引擎\". The page opens: # ImageForge 生图决策引擎\n\n> GitHub 仓库：[c3115644151/imageforge-skill](https://github.com/c3115644151/imageforge-skill)\n> 来源类型：第三方开发的 AI 生图决策引擎 Skill（MIT 协议）\n> 语言：中文\n\n## 内容概要\n\n一个面向 AI Agent 的生图决策引擎，核心是 5 步可执行流程：请求解析→场景路由→Prompt组装→质量门控→失败诊断。内置 19 条 if-then 决策规则和 6 个场景文件。\n\n## 提炼到 Wiki 的概念\n\n- [[AI 生图决策规则]] — ",
+  "prefix_source": "synthetic",
+  "char_count": 483,
+  "body_hash": "sha256:8d113fe08c24c073c09d06e1a0fe7e168e85e0d8fbafd4efc3a770ee3162e53a",
+  "page_body_hash": "sha256:225f7afb73b7a7861400638ea97867d861d8bd5708eba12080628a30fab0a251",
+  "created_at": "2026-06-26T15:42:48Z"
+}

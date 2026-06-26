@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "detected_at": "2026-06-26T15:42:21Z",
+  "host": "kevinsundeMacBook-Air.local",
+  "vault_root": "/Users/kevin/Documents/Obsidian vault",
+  "manual_override": false,
+  "preferred": "cli",
+  "fallback_chain": ["cli", "filesystem"],
+  "available": {
+    "cli": {
+      "present": true,
+      "binary": "obsidian",
+      "version_string": "Error: Command \"--version\" not found. Did you mean: version?",
+      "obsidian_app_running": true
+    },
+    "filesystem": {
+      "present": true,
+      "vault_root": "/Users/kevin/Documents/Obsidian vault",
+      "note": "ultimate fallback; uses Claude's Read/Write/Edit tools directly"
+    },
+    "mcp_obsidian": {
+      "present": null,
+      "detection": "deferred",
+      "note": "v1.7 does not auto-detect MCP servers. Configure manually per wiki/references/mcp-setup.md and edit this file by hand if needed."
+    },
+    "mcpvault": {
+      "present": null,
+      "detection": "deferred",
+      "note": "v1.7 does not auto-detect MCP servers. Configure manually per wiki/references/mcp-setup.md and edit this file by hand if needed."
+    }
+  }
+}

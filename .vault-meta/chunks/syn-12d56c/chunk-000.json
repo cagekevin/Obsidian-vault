@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki/sources/Google OKF 2026.md",
+  "page_address": "syn-12d56c",
+  "chunk_index": 0,
+  "raw_text": "# Google Open Knowledge Format (OKF)\n\nGoogle Cloud 推出的开源、中立的规范标准。将 Karpathy 的 \"LLM Wiki\" 设想变成可执行的工程标准。\n\n## 核心结构\n\n- **Markdown + YAML**：目录 + 概念文件，顶部 YAML frontmatter\n- **文件规范**：UTF-8 编码，.md 扩展名\n- **仅强制 `type` 字段**：其他字段（title, description, tags, timestamp）自选\n- **网状链接**：使用标准相对路径 Markdown 链接 `[文本](./文件.md)`\n- **推荐可选字段**：title, description, tags（数组）, owner/author，以及任意自定义 KV 字段\n\n## 三大设计原则\n\n1. **最少干预（Minimally Opinionated）**：只强制 type，不干涉内容模型\n2. **生产者与消费者解耦（Producer/Consumer Independence）**：写入者和读取者彻底分离\n3. **是格式，不是平台（Format, not platform）**：不绑定任何云服务/模型/框架\n\n## 设计哲学\n\nOKF 的精髓是极简——不需要数据库，普通编辑器 + Git 就能管理。通过强制 type 分类和 Markdown 文件链接，AI 智能体可以像网络爬虫一样遍历出完整的企业知识图谱。",
+  "contextualized_text": "This passage is from the wiki page \"Google Open Knowledge Format (OKF)\". The page opens: # Google Open Knowledge Format (OKF)\n\nGoogle Cloud 推出的开源、中立的规范标准。将 Karpathy 的 \"LLM Wiki\" 设想变成可执行的工程标准。\n\n## 核心结构\n\n- **Markdown + YAML**：目录 + 概念文件，顶部 YAML frontmatter\n- **文件规范**：UTF-8 编码，.md 扩展名\n- **仅强制 `type` 字段**：其他字段（title, description, tags, timestamp）自选\n- **网状链接**：使用标准相对路径 Markdown 链接 `[文本](./文件.\n\n# Google Open Knowledge Format (OKF)\n\nGoogle Cloud 推出的开源、中立的规范标准。将 Karpathy 的 \"LLM Wiki\" 设想变成可执行的工程标准。\n\n## 核心结构\n\n- **Markdown + YAML**：目录 + 概念文件，顶部 YAML frontmatter\n- **文件规范**：UTF-8 编码，.md 扩展名\n- **仅强制 `type` 字段**：其他字段（title, description, tags, timestamp）自选\n- **网状链接**：使用标准相对路径 Markdown 链接 `[文本](./文件.md)`\n- **推荐可选字段**：title, description, tags（数组）, owner/author，以及任意自定义 KV 字段\n\n## 三大设计原则\n\n1. **最少干预（Minimally Opinionated）**：只强制 type，不干涉内容模型\n2. **生产者与消费者解耦（Producer/Consumer Independence）**：写入者和读取者彻底分离\n3. **是格式，不是平台（Format, not platform）**：不绑定任何云服务/模型/框架\n\n## 设计哲学\n\nOKF 的精髓是极简——不需要数据库，普通编辑器 + Git 就能管理。通过强制 type 分类和 Markdown 文件链接，AI 智能体可以像网络爬虫一样遍历出完整的企业知识图谱。",
+  "prefix": "This passage is from the wiki page \"Google Open Knowledge Format (OKF)\". The page opens: # Google Open Knowledge Format (OKF)\n\nGoogle Cloud 推出的开源、中立的规范标准。将 Karpathy 的 \"LLM Wiki\" 设想变成可执行的工程标准。\n\n## 核心结构\n\n- **Markdown + YAML**：目录 + 概念文件，顶部 YAML frontmatter\n- **文件规范**：UTF-8 编码，.md 扩展名\n- **仅强制 `type` 字段**：其他字段（title, description, tags, timestamp）自选\n- **网状链接**：使用标准相对路径 Markdown 链接 `[文本](./文件.",
+  "prefix_source": "synthetic",
+  "char_count": 655,
+  "body_hash": "sha256:093c84ca449c20de69cfc530b69937f59a21841356ea50e72f03eef4ad16a1ef",
+  "page_body_hash": "sha256:5744a17633d862dd95b873bc8e1a266e8d901aef747431a648d691f70fcd00c0",
+  "created_at": "2026-06-26T15:42:48Z"
+}

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki/meta/retrieval-benchmark-v1.7.md",
+  "page_address": "syn-7be92b",
+  "chunk_index": 9,
+  "raw_text": "very push?\n- correct: null\n- relevant: wiki/log.md, wiki/hot.md\n- category: negative\n- rationale: No GitHub Actions / CI-CD / automated ingest documented. Auto-commit hook exists but not scheduled CI.\n\n---\n\n## Benchmark Notes\n\n**Coverage**: 47 wiki pages, ~50 queries → roughly 1 query per page on average; spread covers concepts, entities, comparisons, meta, folds, sources.\n\n**Balance**: 25 derived (natural questions) + 5 synonym + 10 cross-page + 5 partial-recall + 5 negative.\n\n**Targets** (rough expectation, not a gate):\n- v1.6 baseline top-1: ~50-65% on derived, much lower on hard\n- v1.7 hybrid top-1: ~75-90% on derived, ~50-70% on hard\n- Plan §7 ship gate (from v1.7 implementation plan): ≥30% reduction in \"wrong page cited\" errors. Verify by comparing the percentage-points improvement on top-1 across all 50 queries.",
+  "contextualized_text": "This passage is from the wiki page \"v1.7 Retrieval Benchmark Corpus\". The page opens: # v1.7 Retrieval Benchmark — 50 Queries\n\nUsed by the v1.7.0 audit (`docs/audits/v1.7.0-audit-2026-05-17.md`) to score\ntop-1 / top-5 accuracy of the hybrid retrieval pipeline (`scripts/retrieve.py`)\nvs.\n\nvery push?\n- correct: null\n- relevant: wiki/log.md, wiki/hot.md\n- category: negative\n- rationale: No GitHub Actions / CI-CD / automated ingest documented. Auto-commit hook exists but not scheduled CI.\n\n---\n\n## Benchmark Notes\n\n**Coverage**: 47 wiki pages, ~50 queries → roughly 1 query per page on average; spread covers concepts, entities, comparisons, meta, folds, sources.\n\n**Balance**: 25 derived (natural questions) + 5 synonym + 10 cross-page + 5 partial-recall + 5 negative.\n\n**Targets** (rough expectation, not a gate):\n- v1.6 baseline top-1: ~50-65% on derived, much lower on hard\n- v1.7 hybrid top-1: ~75-90% on derived, ~50-70% on hard\n- Plan §7 ship gate (from v1.7 implementation plan): ≥30% reduction in \"wrong page cited\" errors. Verify by comparing the percentage-points improvement on top-1 across all 50 queries.",
+  "prefix": "This passage is from the wiki page \"v1.7 Retrieval Benchmark Corpus\". The page opens: # v1.7 Retrieval Benchmark — 50 Queries\n\nUsed by the v1.7.0 audit (`docs/audits/v1.7.0-audit-2026-05-17.md`) to score\ntop-1 / top-5 accuracy of the hybrid retrieval pipeline (`scripts/retrieve.py`)\nvs.",
+  "prefix_source": "synthetic",
+  "char_count": 830,
+  "body_hash": "sha256:c27a4cb54b63976fab8104d77bb141332f1e6302e89d6923af3d24693590c0ba",
+  "page_body_hash": "sha256:754e78f57dea9249d0089478358a8a5a81e21c5b7a05b725ed1c99197a8ba864",
+  "created_at": "2026-06-26T15:42:48Z"
+}

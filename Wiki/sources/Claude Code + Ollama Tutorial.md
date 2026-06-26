@@ -18,7 +18,7 @@ related:
 
 # Claude Code + Ollama Local Model Tutorial
 
-> Source: `Clippings/raw/ClaudeCode+Ollama教程.md` — from WeChat public account "GitHubStore" by 小G
+> Source: `.raw/ClaudeCode+Ollama教程.md` — from WeChat public account "GitHubStore" by 小G
 
 A 5-minute quickstart guide for running Claude Code with local Ollama models.
 

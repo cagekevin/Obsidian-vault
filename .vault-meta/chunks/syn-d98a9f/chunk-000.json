@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki/concepts/If You Remove It Does It Change.md",
+  "page_address": "syn-d98a9f",
+  "chunk_index": 0,
+  "raw_text": "# If You Remove It Does It Change\n\n必要性测试。删掉它，结果会变吗？\n\n**如果删掉一个场景，电影结局没变 → 场景多余，删掉。**\n\n---\n\n## W6 怎么用\n\n### 每个场景都要过这个测试\n\n问自己：把这个场景删掉，电影结局会变吗？\n\n- **会变** → 场景需要，保留\n- **不会变** → 场景多余，毫不犹豫删掉\n- **只改变语气/情绪** → 呼吸场景。缺时间时可以删，但会损失质感\n\n### 删减时的优先级\n\n在 `timing-and-cutting.md` 的删减优先级里：\n- 最安全的删减：重复的、平行的、多余的反应镜头\n- 绝对不能碰：高潮、突转、发现、关键转折点\n\n---\n\n## 来源\n\n从 W6-俄语详细剧本技能的方法论层和时间剪辑层提炼。亚里士多德《诗学》中的\"行动统一性\"原则 + W6 的具体删减方法。",
+  "contextualized_text": "This passage is from the wiki page \"If You Remove It Does It Change\". The page opens: # If You Remove It Does It Change\n\n必要性测试。删掉它，结果会变吗？\n\n**如果删掉一个场景，电影结局没变 → 场景多余，删掉。**\n\n---\n\n## W6 怎么用\n\n### 每个场景都要过这个测试\n\n问自己：把这个场景删掉，电影结局会变吗？\n\n- **会变** → 场景需要，保留\n- **不会变** → 场景多余，毫不犹豫删掉\n- **只改变语气/情绪** → 呼吸场景。缺时间时可以删，但会损失质感\n\n### 删减时的优先级\n\n在 `timing-and-cutting.md` 的删减优先级里：\n- 最安全的删减：重复的、平行的、多余的反应镜头\n- 绝对不能\n\n# If You Remove It Does It Change\n\n必要性测试。删掉它，结果会变吗？\n\n**如果删掉一个场景，电影结局没变 → 场景多余，删掉。**\n\n---\n\n## W6 怎么用\n\n### 每个场景都要过这个测试\n\n问自己：把这个场景删掉，电影结局会变吗？\n\n- **会变** → 场景需要，保留\n- **不会变** → 场景多余，毫不犹豫删掉\n- **只改变语气/情绪** → 呼吸场景。缺时间时可以删，但会损失质感\n\n### 删减时的优先级\n\n在 `timing-and-cutting.md` 的删减优先级里：\n- 最安全的删减：重复的、平行的、多余的反应镜头\n- 绝对不能碰：高潮、突转、发现、关键转折点\n\n---\n\n## 来源\n\n从 W6-俄语详细剧本技能的方法论层和时间剪辑层提炼。亚里士多德《诗学》中的\"行动统一性\"原则 + W6 的具体删减方法。",
+  "prefix": "This passage is from the wiki page \"If You Remove It Does It Change\". The page opens: # If You Remove It Does It Change\n\n必要性测试。删掉它，结果会变吗？\n\n**如果删掉一个场景，电影结局没变 → 场景多余，删掉。**\n\n---\n\n## W6 怎么用\n\n### 每个场景都要过这个测试\n\n问自己：把这个场景删掉，电影结局会变吗？\n\n- **会变** → 场景需要，保留\n- **不会变** → 场景多余，毫不犹豫删掉\n- **只改变语气/情绪** → 呼吸场景。缺时间时可以删，但会损失质感\n\n### 删减时的优先级\n\n在 `timing-and-cutting.md` 的删减优先级里：\n- 最安全的删减：重复的、平行的、多余的反应镜头\n- 绝对不能",
+  "prefix_source": "synthetic",
+  "char_count": 391,
+  "body_hash": "sha256:d96ca0a695178346e3a8a49abd47fff93328594fbdbf545e3a307c8525fd98c3",
+  "page_body_hash": "sha256:1d376514905c1139648095966cb8c3cad27b600bd768988c0ae1e6700cf8d67e",
+  "created_at": "2026-06-26T15:42:48Z"
+}

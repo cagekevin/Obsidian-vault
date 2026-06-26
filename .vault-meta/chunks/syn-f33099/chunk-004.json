@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki/skills/save.md",
+  "page_address": "syn-f33099",
+  "chunk_index": 4,
+  "raw_text": "|\n| 9 | CREATE | Write the note, append to log at top, update index, refresh hot cache. |\n| 10 | GROW | Skipped saves are also signal — what threshold filtered them? Refine the type table over time. |",
+  "contextualized_text": "This passage is from the wiki page \"(untitled)\". The page opens: # save: File Conversations Into the Wiki\n\nGood answers and insights shouldn't disappear into chat history.\n\n|\n| 9 | CREATE | Write the note, append to log at top, update index, refresh hot cache. |\n| 10 | GROW | Skipped saves are also signal — what threshold filtered them? Refine the type table over time. |",
+  "prefix": "This passage is from the wiki page \"(untitled)\". The page opens: # save: File Conversations Into the Wiki\n\nGood answers and insights shouldn't disappear into chat history.",
+  "prefix_source": "synthetic",
+  "char_count": 200,
+  "body_hash": "sha256:2368e5f293e4f75d80c1372f7fc32f607e1caa0296e52f7501da10b41edbbfe8",
+  "page_body_hash": "sha256:8e6f5a61b67e6de2f5cb36a0024f6c80697e33ba11afa2946c015fe297b09e39",
+  "created_at": "2026-06-26T15:42:48Z"
+}

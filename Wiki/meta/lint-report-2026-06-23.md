@@ -25,8 +25,8 @@ All 30 pages have at least one inbound wikilink. The newly created pages are wel
 No contradictions detected. The new Local LLM Deployment ecosystem pages are self-consistent and don't conflict with existing Knowledge Management pages.
 
 ## 4. Missing Pages — 1 found
-- **"Codex长期记忆系统"** — referenced in `Clippings/raw/raw-20260621-CodexClaude记忆管理.txt` as processed target, and mentioned in `Daily Notes/2026-06-21.md`, but no corresponding page exists in `Wiki/`. This was likely created by a previous AI session but not synced to this vault. Recommend: create stub or remove the `<!-- processed:` reference.
-- **"LLM-Wiki框架"** — same situation. Referenced in `Clippings/raw/raw-20260403-Karpathy-LLM-Wiki-Gist.txt` as processed target, but no page exists. The content has been covered by `[[LLM Wiki Pattern]]` and existing Knowledge Management pages.
+- **"Codex长期记忆系统"** — referenced in `.raw/raw-20260621-CodexClaude记忆管理.txt` as processed target, and mentioned in `Daily Notes/2026-06-21.md`, but no corresponding page exists in `Wiki/`. This was likely created by a previous AI session but not synced to this vault. Recommend: create stub or remove the `<!-- processed:` reference.
+- **"LLM-Wiki框架"** — same situation. Referenced in `.raw/raw-20260403-Karpathy-LLM-Wiki-Gist.txt` as processed target, but no page exists. The content has been covered by `[[LLM Wiki Pattern]]` and existing Knowledge Management pages.
 
 ## 5. Missing Cross-References — 1 found
 - `[[SVG Diagram Style Guide]]` in `Wiki/concepts/` has no `related:` field in its frontmatter linking it to any other concept. It's isolated from the rest of the wiki's concept graph (only reachable via index.md).

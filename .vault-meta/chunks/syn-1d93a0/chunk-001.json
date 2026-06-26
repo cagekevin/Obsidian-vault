@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki/entities/ballred-obsidian-claude-pkm.md",
+  "page_address": "syn-1d93a0",
+  "chunk_index": 1,
+  "raw_text": "rry-Picks for claude-obsidian\n\n- [[cherry-picks#2. Auto-Commit PostToolUse Hook]]\n- [[cherry-picks#7. /adopt — Import Existing Vault]]\n- [[cherry-picks#8. Productivity Wrapper (Daily/Weekly Reviews)]]",
+  "contextualized_text": "This passage is from the wiki page \"ballred/obsidian-claude-pkm\". The page opens: # ballred/obsidian-claude-pkm\n\n**Type**: Claude Code plugin (skill-based PKM system)\n**URL**: https://github.com/ballred/obsidian-claude-pkm\n**Version**: 3.1\n**Tagline**: \"Not another PKM starter kit.\n\nrry-Picks for claude-obsidian\n\n- [[cherry-picks#2. Auto-Commit PostToolUse Hook]]\n- [[cherry-picks#7. /adopt — Import Existing Vault]]\n- [[cherry-picks#8. Productivity Wrapper (Daily/Weekly Reviews)]]",
+  "prefix": "This passage is from the wiki page \"ballred/obsidian-claude-pkm\". The page opens: # ballred/obsidian-claude-pkm\n\n**Type**: Claude Code plugin (skill-based PKM system)\n**URL**: https://github.com/ballred/obsidian-claude-pkm\n**Version**: 3.1\n**Tagline**: \"Not another PKM starter kit.",
+  "prefix_source": "synthetic",
+  "char_count": 200,
+  "body_hash": "sha256:ce82b37828a37db87b3632680a97390911fbb3c57f784439583ed3c02dcbb797",
+  "page_body_hash": "sha256:2dc16938ee7e1efb6efd29d67d84d6b636ce50a4aefcf0aaa4ab4271825ae4fd",
+  "created_at": "2026-06-26T15:42:48Z"
+}
