@@ -1,6 +1,6 @@
 # 工具清单
 
-> 自动生成于 2026-06-27 00:29
+> 自动生成于 2026-06-27 00:36
 
 | 工具 | 类型 | 用途 |
 |------|------|------|
@@ -23,8 +23,6 @@
 | `text-to-srt-subtitle.py` | Python | 将纯文本字幕文件转换为 SRT 格式，智能分配每条字幕时长 |
 | `weekly_review.py` | Python | 周复盘工具。扫最近 N 天 Daily Notes + Git log 统计 + 目标检查 |
 | `视频转笔记.py` | Python | 极简本地音视频转文字工具 (whisper-cpp 版) |
-| `link-skills.sh` | Shell | 扫描 skills/ 下所有 S*/W* 技能文件夹，软链接到 ~/.claude/skills/ |
-| `sync-registry.sh` | Shell | 扫描 skills/ 目录，自动生成 plugin.json 并检查 README.md 一致性 |
 | `ps 抠图.jsx` | JSX | Photoshop 脚本 |
 | `ps_ocr.jsx` | JSX | Photoshop 脚本 |
 | `ps_导出.jsx` | JSX | Photoshop 脚本 |

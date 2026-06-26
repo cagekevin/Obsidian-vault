@@ -6,11 +6,18 @@
 
 ## 文件结构
 
-扁平，不分子文件夹。
+根目录放独立脚本（.py / .jsx），子文件夹放工具包：
 
-## 来源
-
-从 skills-main/tools/ 迁移而来，保持原结构。
+```
+Tools/
+├── *.py              ← 独立脚本（压缩、OCR、下载等）
+├── ps_*.jsx          ← Photoshop 脚本
+├── MarkItDown文档转换/  ← Word/Excel/PDF 转 Markdown
+├── tts/              ← 文字转语音
+├── 网盘下载/           ← 网盘文件下载
+├── aliyun/           ← 阿里云相关
+└── instructions.md
+```
 
 ## 触发方式
 
@@ -21,4 +28,4 @@
 - Kevin 说"兔子"、"用 xx 工具"时，AI 来这里找对应的脚本
 - 使用任何脚本前，先读该脚本头部注释获取用法
 - Python 脚本执行：`python 脚本名.py`
-- 依赖已在全局 Skills/requirements.txt 中
+- 依赖已在根目录 `requirements.txt` 中
