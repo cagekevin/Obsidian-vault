@@ -4,7 +4,7 @@ set -euo pipefail
 
 VAULT_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$VAULT_DIR"
-SKILLS_DIR="$VAULT_DIR/Skills"
+SKILLS_DIR="$VAULT_DIR/skills"
 TOOLS_DIR="$VAULT_DIR/Tools"
 
 log_info()    { echo "   ℹ️  $1"; }
@@ -18,15 +18,15 @@ log_error()   { echo "   ❌ $1"; }
 echo "📋 扫描技能清单..."
 
 # 提取编号信息：目录名如 "W5-图片设计" → prefix=W, num=5, name=图片设计
+# 核心技能平铺在 skills/ 下（mindepth 1 maxdepth 1），参考技能/ 不扫
 scan_skills() {
-    find "$SKILLS_DIR" -mindepth 2 -maxdepth 2 -type d | sort | while IFS= read -r d; do
+    find "$SKILLS_DIR" -mindepth 1 -maxdepth 1 -type d ! -name "参考技能" | sort | while IFS= read -r d; do
         local fname=$(basename "$d")
         if echo "$fname" | grep -qE '^[SW][0-9]+-'; then
             local prefix=$(echo "$fname" | sed 's/^\([SW]\)[0-9]*\-.*/\1/')
             local num=$(echo "$fname" | sed 's/^[SW]\([0-9]*\)\-.*/\1/')
             local name=$(echo "$fname" | sed "s/^[SW]${num}\-//")
-            local bucket=$(basename "$(dirname "$d")")
-            echo "${prefix}|${num}|${name}|${bucket}|${d}"
+            echo "${prefix}|${num}|${name}|${d}"
         fi
     done | sort -t'|' -k1,1 -k2,2n
 }
@@ -34,21 +34,21 @@ scan_skills() {
 ALL_SKILLS=$(scan_skills)
 SKILL_COUNT=$(echo "$ALL_SKILLS" | grep -c '|' || echo 0)
 
-# 按大类分组输出
+# 核心技能一个表
 gen_skill_list() {
-    local last_bucket=""
     echo "# 技能清单\n"
     echo "> 自动生成于 $(date '+%Y-%m-%d %H:%M')\n"
-    
-    echo "$ALL_SKILLS" | while IFS='|' read -r prefix num name bucket path; do
+    echo "## 核心 Skill（AI 直达）\n"
+    echo "| 编号 | 名称 | 说明 |"
+    echo "|------|------|------|"
+    echo "$ALL_SKILLS" | while IFS='|' read -r prefix num name path; do
         [ -z "$prefix" ] && continue
-        if [ "$bucket" != "$last_bucket" ]; then
-            echo "\n## $bucket\n"
-            echo "| 编号 | 名称 |\n|------|------|"
-            last_bucket="$bucket"
-        fi
-        echo "| $prefix$num | $name |"
+        echo "| $prefix$num | $name | |"
     done
+    echo ""
+    echo "## 参考技能（\`skills/参考技能/\` 下，按需查阅）"
+    echo ""
+    echo "包含 S 系列、W0-W3/W7/W9、baoyu、编码准则等。不常用，需要时 AI 去目录里找。"
 }
 
 SKILL_LIST=$(gen_skill_list)
@@ -66,7 +66,7 @@ log_success "SKILLS.md（$SKILL_COUNT 个技能）"
 # =====================================
 gen_missing_skill_md() {
     local generated=0
-    find "$SKILLS_DIR" -mindepth 2 -maxdepth 2 -type d | sort | while IFS= read -r dir; do
+    find "$SKILLS_DIR" -mindepth 1 -maxdepth 1 -type d ! -name "参考技能" | sort | while IFS= read -r dir; do
         local dir_name=$(basename "$dir")
         if ! echo "$dir_name" | grep -qE '^[SW][0-9]+-'; then continue; fi
 

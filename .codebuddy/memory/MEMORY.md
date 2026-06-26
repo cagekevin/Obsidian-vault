@@ -2,7 +2,7 @@
 
 > **🎯 核心定位：** 本文件仅存储不在其他文件里的独有原则。少而精，拒绝臃肿。
 > **⚠️ 写入权限：** 仅在用户**明确指令**下，AI 方可修改此文件。**严禁 AI 擅自提炼并写入。**
-> **📍 重复内容已迁移：** 价值导向三标准 → `Context/schema.md`；安全底线/执行方式/代码操作 → `Context/style.md`；Wiki 操作流程 → `Context/schema.md`
+> **📍 重复内容已迁移：** 安全底线/做事习惯/代码操作 → `Context/style.md`（P0-P3 分层）；价值导向三标准 → `Context/style.md` P1 + `Context/schema.md`；Wiki 操作流程 → `Context/schema.md`
 
 ---
 
