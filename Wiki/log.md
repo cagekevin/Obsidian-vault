@@ -17,6 +17,13 @@ Navigation: [[index]] | [[hot]]
 
 ---
 
+## [2026-06-26] Ingest | Google Open Knowledge Format (OKF)
+- Source: Google Cloud Blog + Kevin 提供的摘要
+- Summary: [[sources/Google OKF 2026]]
+- Pages created: [[Open Knowledge Format]], [[sources/Google OKF 2026]]
+- Pages updated: [[LLM Wiki Pattern]]（补充 OKF 作为其标准化实现）, [[index]], [[log]], [[hot]]
+- Key insight: OKF 是 Karpathy 的 LLM Wiki 模式的具体标准化实现，三大原则（最少干预、生产者与消费者解耦、格式非平台）解决了此前 Obsidian/Notion/AGENTS.md 各自为战的知识孤岛问题。
+
 ## [2026-06-25] Concept creation | 文案完整保留与信息层级原则
 - Source: `Skills/工作效率类/W5-图片设计/amazon-skincare/skill_副本.md`（天猫详情页 9:16 图片生成引擎）
 - Pages created: [[文案完整保留与信息层级原则]]

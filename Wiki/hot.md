@@ -15,6 +15,8 @@ related:
 
 Navigation: [[index]] | [[log]]
 
+2026-06-26 (13:02): **Ingest — Google Open Knowledge Format (OKF)**. Google Cloud 推出的开源知识格式标准，将 Karpathy 的 LLM Wiki 设想变成可执行工程标准。三大原则：最少干预、生产者与消费者解耦、格式非平台。Created [[Open Knowledge Format]] concept page, [[sources/Google OKF 2026]] source page. Updated [[LLM Wiki Pattern]], [[index]], [[log]], [[hot]].
+
 2026-06-25 (20:48): **Concept creation — 文案完整保留与信息层级原则**. 从天猫详情页 9:16 图片生成引擎 skill 中提炼。两条规则：1) 文案必须完整保留，不得简化；2) 排版只写信息层级（最重要/次重要），不写具体位置。Created [[文案完整保留与信息层级原则]]. Updated: [[一致性锚点原则]]（补充"全局风格只写一次"技巧）, [[产物先行]]（补充"九宫格预览"交付物写法）, [[concepts/_index]], [[log]], [[hot]].
 
 2026-06-24 (21:57): **Concept creation — AI 生图决策规则**. 从 imageforge-skill 的 19 条 if-then 规则中提炼 6 条可复用规则，每条标注了与已有 Wiki 概念的关联。创建了 [[AI 生图决策规则]] 概念页和 [[sources/ImageForge-生图决策引擎]] source 页面。Updated: [[concepts/_index]], [[sources/_index]], [[log]], [[hot]].
