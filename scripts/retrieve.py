@@ -52,10 +52,7 @@ Exit codes:
 import argparse
 import importlib.util
 import json
-import subprocess
 import sys
-import time
-import urllib.request
 from pathlib import Path
 
 VAULT_ROOT = Path(__file__).resolve().parent.parent
@@ -64,8 +61,6 @@ META_DIR = VAULT_ROOT / ".vault-meta"
 CHUNKS_DIR = META_DIR / "chunks"
 BM25_INDEX = META_DIR / "bm25" / "index.json"
 
-OLLAMA_URL = "http://127.0.0.1:11434"
-
 EXIT_OK = 0
 EXIT_USAGE = 2
 EXIT_NOT_PROVISIONED = 10
@@ -73,35 +68,6 @@ EXIT_NOT_PROVISIONED = 10
 
 def log(msg):
     print(msg, file=sys.stderr)
-
-
-def _ollama_alive():
-    try:
-        req = urllib.request.Request(f"{OLLAMA_URL}/api/tags", method="GET")
-        with urllib.request.urlopen(req, timeout=2) as resp:
-            return True
-    except Exception:
-        return False
-
-
-def _ensure_ollama():
-    """Start ollama if not running, wait up to 10s for it to be ready."""
-    if _ollama_alive():
-        return
-    log("Starting ollama...")
-    subprocess.Popen(["ollama", "serve"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
-    for _ in range(10):
-        time.sleep(1)
-        if _ollama_alive():
-            log("ollama ready")
-            return
-    log("WARN: ollama did not start in time, proceeding without rerank")
-
-
-def _stop_ollama():
-    """Kill ollama to free resources after retrieval."""
-    subprocess.run(["pkill", "-f", "ollama serve"], capture_output=True)
-    subprocess.run(["pkill", "-f", "ollama"], capture_output=True)
 
 
 def import_sibling(name, filename):
@@ -149,9 +115,6 @@ def main():
     parser.add_argument("--allow-remote-ollama", action="store_true",
                         help="Forwarded to rerank.py")
     args = parser.parse_args()
-
-    # 自动管理 ollama 生命周期：启动 → 检索 → 关闭
-    _ensure_ollama()
 
     if not BM25_INDEX.is_file():
         log(f"ERR: no BM25 index at {BM25_INDEX}. Run `bash bin/setup-retrieve.sh` "
@@ -225,9 +188,6 @@ def main():
         }
 
     print(json.dumps(out, indent=2, ensure_ascii=False))
-
-    _stop_ollama()
-
     return EXIT_OK
 
 
