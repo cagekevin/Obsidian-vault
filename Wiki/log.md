@@ -17,6 +17,12 @@ Navigation: [[index]] | [[hot]]
 
 ---
 
+## [2026-06-27] Concept creation | AI 室内光控制
+- Summary: 光源锚定、衰减路径、漫反射三大法则
+- Pages created: [[AI室内光控制]]
+- Pages updated: [[concepts/_index]], [[index]], [[log]], [[hot]]
+- Key insight: 室内光的本质不是"亮度控制"，而是"空间理解"。拒绝AI的"无源之光"，手动接管布光权。
+
 ## [2026-06-27] Concept creation | AI 创意方法论
 - Summary: 打破物理定律、让时间失控、把镜头变成角色
 - Pages created: [[AI创意方法论]]

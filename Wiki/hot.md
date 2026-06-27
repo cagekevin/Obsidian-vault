@@ -15,6 +15,8 @@ related:
 
 Navigation: [[index]] | [[log]]
 
+2026-06-27 (16:15): **Concept creation — AI 室内光控制**. 三大法则：光源锚定（为光找宿主）、衰减路径（描述光从亮到暗）、漫反射（用反射填充暗部）。Created [[AI室内光控制]]. Updated: [[concepts/_index]], [[index]], [[log]], [[hot]].
+
 2026-06-27 (15:56): **Concept creation — AI 创意方法论**. 三个创意思路：打破物理定律（反重力/质量悖论）、让时间失控（时空割裂/动作阻断）、把镜头变成角色（巨物视角/物品视角）。Created [[AI创意方法论]]. Updated: [[concepts/_index]], [[index]], [[log]], [[hot]].
 
 2026-06-27 (15:54): **Concept update — AI 镜头语言进阶**. 情绪蒙太奇三法从3行骨架扩展为完整方法论：客观对应物法则、库里肖夫效应、视觉聚焦法则，每个方法含底层原理+错误写法+正确公式+提示词示例。Updated: [[AI镜头语言进阶]], [[concepts/_index]], [[log]], [[hot]].

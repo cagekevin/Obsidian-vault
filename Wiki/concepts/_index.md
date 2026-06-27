@@ -59,6 +59,7 @@ All concept pages — ideas, patterns, and frameworks extracted from sources.
 - [[摄影语言锚定质感]] — 用摄影镜头语言替代抽象词获得真实质感
 - [[AI打光五法]] — 五种导演级打光方法：侧逆光、轮廓光、侧光、硬光、低位光 (status: developing)
 - [[光线布置模块化]] — 把光线写成独立的 `【光线布置】` 段落，说清四要素 (status: developing)
+- [[AI室内光控制]] — 光源锚定、衰减路径、漫反射，三大法则掌控室内光影 (status: developing)
 - [[AI光源提示词模板库]] — 20 种可直接复用的光源提示词模板 (status: developing)
 - [[AI镜头语言进阶]] — 反向写提示词、低角度原理、空镜三作用、情绪蒙太奇三法、分镜落差 (status: developing)
 - [[AI空镜设计]] — 空镜三类提取方法、五要素提示词公式、叙事改写、放置策略 (status: developing)
