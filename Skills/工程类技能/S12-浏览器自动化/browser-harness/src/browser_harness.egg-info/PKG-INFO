@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: browser-harness
+Version: 0.1.0
+Summary: The simplest, thinnest, and most powerful harness to control your real browser with your agent.
+Requires-Python: >=3.11
+License-File: LICENSE
+Requires-Dist: cdp-use==1.4.5
+Requires-Dist: fetch-use==0.4.0
+Requires-Dist: pillow==12.2.0
+Requires-Dist: websockets==15.0.1
+Dynamic: license-file
