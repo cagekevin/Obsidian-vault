@@ -59,6 +59,7 @@ All source pages — summaries of ingested documents, transcripts, articles, and
 - [[sources/Hermes-Agent]] — AI 技能自管理机制：自动创建、使用追踪、生命周期管理 (status: ingested)
 - [[sources/ImageForge-生图决策引擎]] — AI 生图决策引擎：5 步流程 + 19 条 if-then 规则 + 6 个场景文件 (status: ingested)
 - [[sources/AI打光5种导演级方法]] — 5 种导演级打光方法 + 20 种光源提示词模板 (status: ingested)
+- [[sources/刺猬星球AI创作系列]] — 66 篇 AI 创作视频教程，覆盖角色/提示词/镜头/光线/构图/动作/导演思维 (status: ingested)
 
 ---
 

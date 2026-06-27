@@ -16,6 +16,7 @@ tags:
 status: developing
 related:
   - "[[Scene Value]]"
+  - "[[AI导演创作思维]]"
   - "[[If You Remove It Does It Change]]"
 sources:
   - "W6-视频创作/俄语详细剧本/workflow.md"

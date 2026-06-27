@@ -16,6 +16,9 @@ tags:
 status: developing
 related:
   - "[[Scene Value]]"
+  - "[[AI镜头语言进阶]]"
+  - "[[AI导演创作思维]]"
+  - "[[AI视觉语法体系]]"
   - "[[克制原则]]"
 sources:
   - "W6-视频创作/俄语详细剧本/methodology.md"

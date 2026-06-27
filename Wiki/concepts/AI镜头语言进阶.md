@@ -14,7 +14,10 @@ related:
   - "[[sources/刺猬星球AI创作系列]]"
   - "[[AI Camera Movements]]"
   - "[[AI视觉语法体系]]"
-  - "[[情绪蒙太奇]]"
+  - "[[AI氛围与色彩控制]]"
+  - "[[摄影语言锚定质感]]"
+  - "[[Show Don't Tell]]"
+  - "[[Scene Value]]"
 ---
 
 # AI 镜头语言进阶

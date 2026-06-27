@@ -17,6 +17,8 @@ related:
   - "[[Visual Description First Principle]]"
   - "[[AI打光五法]]"
   - "[[AI光源提示词模板库]]"
+  - "[[AI镜头语言进阶]]"
+  - "[[AI视频动作设计]]"
 sources:
   - "https://www.bilibili.com/video/BV1xBjW6pEym"
 ---

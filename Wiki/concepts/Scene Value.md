@@ -15,6 +15,8 @@ tags:
 status: developing
 related:
   - "[[Show Don't Tell]]"
+  - "[[AI导演创作思维]]"
+  - "[[AI镜头语言进阶]]"
   - "[[Progressive Complications]]"
   - "[[If You Remove It Does It Change]]"
 sources:

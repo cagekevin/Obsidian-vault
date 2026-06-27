@@ -14,6 +14,8 @@ related:
   - "[[光线布置模块化]]"
   - "[[AI Camera Movements]]"
   - "[[sources/AI打光5种导演级方法]]"
+  - "[[sources/刺猬星球AI创作系列]]"
+  - "[[AI氛围与色彩控制]]"
 ---
 
 # AI 打光五法
