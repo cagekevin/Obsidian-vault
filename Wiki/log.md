@@ -17,6 +17,13 @@ Navigation: [[index]] | [[hot]]
 
 ---
 
+## [2026-06-27] Concept creation | AI 空镜设计
+- Source: 用户提供的 AI 短剧空镜设计资料
+- Summary: [[AI空镜设计]]
+- Pages created: [[AI空镜设计]]
+- Pages updated: [[AI镜头语言进阶]]（空镜章节改为引用）, [[concepts/_index]], [[index]], [[log]], [[hot]]
+- Key insight: 空镜不只是风景画面，三类提取（环境/道具/情绪）+ 五要素公式（主体/状态/动态/光线/运镜）+ 放置策略构成完整方法论。
+
 ## [2026-06-27] Concept creation | 利益视觉化原则
 - Source: Skills/W5-图片设计/通用图片设计流程.md
 - Summary: [[利益视觉化原则]]

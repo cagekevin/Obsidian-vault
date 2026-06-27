@@ -61,6 +61,7 @@ All concept pages — ideas, patterns, and frameworks extracted from sources.
 - [[光线布置模块化]] — 把光线写成独立的 `【光线布置】` 段落，说清四要素 (status: developing)
 - [[AI光源提示词模板库]] — 20 种可直接复用的光源提示词模板 (status: developing)
 - [[AI镜头语言进阶]] — 反向写提示词、低角度原理、空镜三作用、情绪蒙太奇 (status: developing)
+- [[AI空镜设计]] — 空镜三类提取方法、五要素提示词公式、叙事改写、放置策略 (status: developing)
 
 ### 角色与人物
 - [[AI角色资产搭建]] — 人物资产三件套、妆造设计、AI捏脸、活人感、微表情 (status: developing)

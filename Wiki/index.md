@@ -92,6 +92,8 @@ Navigation: [[log]] | [[hot]]
 - [[AI 生图决策规则]] — 6 条可执行 if-then 规则：冗余信号稀释/Generic对抗/注意力前置/省略接管/加法非增强/批量一致性锚点 (status: developing)
 - [[利益视觉化原则]] — 配图的本质是利益视觉化，利益是主角、产品是配角、渠道是装饰；附配图思维链模板 (status: developing)
 
+- [[AI空镜设计]] — 空镜三类提取方法、五要素提示词公式、叙事改写、放置策略 (status: developing)
+
 ## Video Generation
 
 - [[AI Camera Movements]] — AI 视频生成运镜手法提示词 + 英文速查词汇表 + 灯光词汇表 (status: developing)
