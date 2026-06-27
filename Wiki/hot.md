@@ -15,6 +15,12 @@ related:
 
 Navigation: [[index]] | [[log]]
 
+2026-06-27 (15:56): **Concept creation — AI 创意方法论**. 三个创意思路：打破物理定律（反重力/质量悖论）、让时间失控（时空割裂/动作阻断）、把镜头变成角色（巨物视角/物品视角）。Created [[AI创意方法论]]. Updated: [[concepts/_index]], [[index]], [[log]], [[hot]].
+
+2026-06-27 (15:54): **Concept update — AI 镜头语言进阶**. 情绪蒙太奇三法从3行骨架扩展为完整方法论：客观对应物法则、库里肖夫效应、视觉聚焦法则，每个方法含底层原理+错误写法+正确公式+提示词示例。Updated: [[AI镜头语言进阶]], [[concepts/_index]], [[log]], [[hot]].
+
+2026-06-27 (15:34): **Concept creation — AI 角色声音控制**. 声音公式（年龄感+声线质感+语速+情绪底色+发声习惯）、声音过程控制语气、多句台词递进、标点符号即节奏器、声音模板。Created [[AI角色声音控制]]. Updated: [[concepts/_index]], [[index]], [[log]], [[hot]].
+
 2026-06-27 (15:27): **Concept update — AI 导演创作思维**. 新增"画面结构拆解法"章节，包含反推提示词误区、画面结构四维度、时间线逐帧拆解法、物理世界描述原则。Updated: [[AI导演创作思维]], [[concepts/_index]], [[log]], [[hot]].
 
 2026-06-27 (14:59): **Concept creation — AI 空镜设计**. 从 AI 短剧空镜设计资料中提炼。空镜的三类提取方法（环境/道具/情绪）、五要素提示词公式、叙事改写示例、放置位置与推荐结构、常见问题。Created [[AI空镜设计]]. Updated: [[AI镜头语言进阶]]（空镜章节改为引用）, [[concepts/_index]], [[index]], [[log]], [[hot]].

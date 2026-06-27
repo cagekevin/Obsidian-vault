@@ -17,6 +17,23 @@ Navigation: [[index]] | [[hot]]
 
 ---
 
+## [2026-06-27] Concept creation | AI 创意方法论
+- Summary: 打破物理定律、让时间失控、把镜头变成角色
+- Pages created: [[AI创意方法论]]
+- Pages updated: [[concepts/_index]], [[index]], [[log]], [[hot]]
+- Key insight: 创意往往来自"不合理"——观众在信息流里不是被"清晰度"吸引的，而是被"违和感"抓住的。
+
+## [2026-06-27] Concept update | AI 镜头语言进阶
+- Summary: 情绪蒙太奇三法扩展：客观对应物法则、库里肖夫效应、视觉聚焦法则
+- Pages updated: [[AI镜头语言进阶]], [[concepts/_index]], [[log]], [[hot]]
+- Key insight: 不要只告诉 AI 角色"看起来怎么样"，要告诉 AI 画面"让观众感受到什么"。
+
+## [2026-06-27] Concept creation | AI 角色声音控制
+- Summary: 声音公式、语气控制、多句台词递进、标点符号节奏、声音模板
+- Pages created: [[AI角色声音控制]]
+- Pages updated: [[concepts/_index]], [[index]], [[log]], [[hot]]
+- Key insight: 控制 AI 声音的核心不是堆砌情绪词，而是搭建声音结构。不要只告诉 AI 角色是谁，要告诉 AI 角色怎么说话。
+
 ## [2026-06-27] Concept update | AI 导演创作思维
 - Summary: 新增"画面结构拆解法"章节
 - Pages updated: [[AI导演创作思维]], [[concepts/_index]], [[log]], [[hot]]

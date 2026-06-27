@@ -60,12 +60,13 @@ All concept pages — ideas, patterns, and frameworks extracted from sources.
 - [[AI打光五法]] — 五种导演级打光方法：侧逆光、轮廓光、侧光、硬光、低位光 (status: developing)
 - [[光线布置模块化]] — 把光线写成独立的 `【光线布置】` 段落，说清四要素 (status: developing)
 - [[AI光源提示词模板库]] — 20 种可直接复用的光源提示词模板 (status: developing)
-- [[AI镜头语言进阶]] — 反向写提示词、低角度原理、空镜三作用、情绪蒙太奇 (status: developing)
+- [[AI镜头语言进阶]] — 反向写提示词、低角度原理、空镜三作用、情绪蒙太奇三法、分镜落差 (status: developing)
 - [[AI空镜设计]] — 空镜三类提取方法、五要素提示词公式、叙事改写、放置策略 (status: developing)
 
 ### 角色与人物
 - [[AI角色资产搭建]] — 人物资产三件套、妆造设计、AI捏脸、活人感、微表情 (status: developing)
 - [[人感审美与材质重塑]] — 减法审美、手工感回归、材质层级重置 (status: developing)
+- [[AI角色声音控制]] — 声音公式控制音色、声音过程控制语气、标点符号控制语速 (status: developing)
 
 ### 环境与构图
 - [[AI环境空间设计]] — 环境三层写法、因果逻辑、场景一致性、伪透视 (status: developing)
@@ -85,6 +86,7 @@ All concept pages — ideas, patterns, and frameworks extracted from sources.
 
 ### 创作思维与工具
 - [[AI导演创作思维]] — 调度优先、核心行动驱动、补拍重构、画面结构拆解法、Codex自动化 (status: developing)
+- [[AI创意方法论]] — 打破物理定律、让时间失控、把镜头变成角色 (status: developing)
 - [[物理模拟控制流（Cinema Studio）]] — 真实摄影机模拟 (status: developing) — 画面元素的描述字数要和重要性成正比，次要元素描述过多会喧宾夺主
 - [[视觉描述优先原则]] — AI 需要的是视觉画面，不是文字描述；技术术语和抽象词会让 AI 跑偏
 - [[参考图优先原则]] — 一张参考图比一千字描述都管用，能图生图就不要纯文字生图

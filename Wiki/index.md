@@ -59,6 +59,8 @@ Navigation: [[log]] | [[hot]]
 ### 角色与人物
 - [[AI角色资产搭建]] — 人物资产三件套、妆造设计、AI捏脸、活人感、微表情、多人动作控制 (status: developing)
 - [[人感审美与材质重塑]] — 减法审美、手工感回归、材质层级重置、打破摆拍感 (status: developing)
+- [[AI角色声音控制]] — 声音公式控制音色、声音过程控制语气、标点符号控制语速 (status: developing)
+
 
 ### 镜头与光线
 - [[AI镜头语言进阶]] — 反向写提示词、低角度原理、空镜三作用、情绪蒙太奇 (status: developing)
@@ -81,6 +83,8 @@ Navigation: [[log]] | [[hot]]
 
 ### 创作思维
 - [[AI导演创作思维]] — 调度优先、核心行动驱动、补拍重构、Codex自动化 (status: developing)
+- [[AI创意方法论]] — 打破物理定律、让时间失控、把镜头变成角色 (status: developing)
+
 - [[物理模拟控制流（Cinema Studio）]] — 真实摄影机模拟、物理模拟引擎 (status: developing)
 
 ### 工作流与方法
