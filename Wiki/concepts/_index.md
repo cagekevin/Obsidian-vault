@@ -84,7 +84,7 @@ All concept pages — ideas, patterns, and frameworks extracted from sources.
 - [[风格提取与约束系统]] — 不可变约束点、风格边界锁定 (status: developing)
 
 ### 创作思维与工具
-- [[AI导演创作思维]] — 调度优先、核心行动驱动、Codex自动化 (status: developing)
+- [[AI导演创作思维]] — 调度优先、核心行动驱动、补拍重构、画面结构拆解法、Codex自动化 (status: developing)
 - [[物理模拟控制流（Cinema Studio）]] — 真实摄影机模拟 (status: developing) — 画面元素的描述字数要和重要性成正比，次要元素描述过多会喧宾夺主
 - [[视觉描述优先原则]] — AI 需要的是视觉画面，不是文字描述；技术术语和抽象词会让 AI 跑偏
 - [[参考图优先原则]] — 一张参考图比一千字描述都管用，能图生图就不要纯文字生图

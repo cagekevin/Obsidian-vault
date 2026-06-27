@@ -15,6 +15,8 @@ related:
 
 Navigation: [[index]] | [[log]]
 
+2026-06-27 (15:27): **Concept update — AI 导演创作思维**. 新增"画面结构拆解法"章节，包含反推提示词误区、画面结构四维度、时间线逐帧拆解法、物理世界描述原则。Updated: [[AI导演创作思维]], [[concepts/_index]], [[log]], [[hot]].
+
 2026-06-27 (14:59): **Concept creation — AI 空镜设计**. 从 AI 短剧空镜设计资料中提炼。空镜的三类提取方法（环境/道具/情绪）、五要素提示词公式、叙事改写示例、放置位置与推荐结构、常见问题。Created [[AI空镜设计]]. Updated: [[AI镜头语言进阶]]（空镜章节改为引用）, [[concepts/_index]], [[index]], [[log]], [[hot]].
 
 2026-06-27 (13:55): **Concept creation — 利益视觉化原则**. 从通用图片设计流程 skill 中提炼。配图的本质是利益视觉化，利益是主角、产品是配角、渠道是装饰。附配图思维链模板。Created [[利益视觉化原则]]. Updated: [[通用图片设计流程]]（3.2/3.3 加 wiki 引用）, [[concepts/_index]], [[index]], [[log]], [[hot]].

@@ -17,6 +17,11 @@ Navigation: [[index]] | [[hot]]
 
 ---
 
+## [2026-06-27] Concept update | AI 导演创作思维
+- Summary: 新增"画面结构拆解法"章节
+- Pages updated: [[AI导演创作思维]], [[concepts/_index]], [[log]], [[hot]]
+- Key insight: 反推提示词的误区（标签词 vs 画面结构）、画面结构四维度、时间线逐帧拆解法、物理世界描述原则。
+
 ## [2026-06-27] Concept creation | AI 空镜设计
 - Source: 用户提供的 AI 短剧空镜设计资料
 - Summary: [[AI空镜设计]]
