@@ -42,7 +42,6 @@ Exit codes:
 """
 
 import argparse
-import fcntl
 import json
 import math
 import os
@@ -54,6 +53,14 @@ import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
+
+# Cross-platform file locking
+if os.name == "nt":
+    import msvcrt
+    _LOCK_FN = "msvcrt"
+else:
+    import fcntl
+    _LOCK_FN = "fcntl"
 
 VAULT_ROOT = Path(__file__).resolve().parent.parent
 META_DIR = VAULT_ROOT / ".vault-meta"
@@ -152,10 +159,13 @@ def save_cache(cache):
     try:
         for attempt in range(3):
             try:
-                fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                if os.name == "nt":
+                    msvcrt.locking(fd, msvcrt.LK_NBLCK, 1)
+                else:
+                    fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
                 locked = True
                 break
-            except BlockingIOError:
+            except (BlockingIOError, OSError, IOError):
                 time.sleep(0.1)
         if not locked:
             msg = ("WARN: rerank embed-cache lock unavailable after 3 tries; "
@@ -179,7 +189,10 @@ def save_cache(cache):
     finally:
         if locked:
             try:
-                fcntl.flock(fd, fcntl.LOCK_UN)
+                if os.name == "nt":
+                    msvcrt.locking(fd, msvcrt.LK_UNLCK, 1)
+                else:
+                    fcntl.flock(fd, fcntl.LOCK_UN)
             except OSError:
                 pass
         os.close(fd)

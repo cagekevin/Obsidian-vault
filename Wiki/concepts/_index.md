@@ -43,9 +43,22 @@ All concept pages — ideas, patterns, and frameworks extracted from sources.
 
 ## Image Generation
 
-Core principles for AI image generation and prompt engineering, extracted from HKH brand project experience.
+### 核心原则
+提取自 HKH 品牌项目经验。
 
-- [[描述比重原则]] — 画面元素的描述字数要和重要性成正比，次要元素描述过多会喧宾夺主
+- [[描述比重原则]]
+- [[视觉描述优先原则]]
+- [[参考图优先原则]]
+- [[克制原则]]
+- [[一致性锚点原则]]
+- [[AI 生图决策规则]] — 6 条可执行 if-then 规则 (status: developing)
+- [[文案完整保留与信息层级原则]] — 文案必须完整保留，排版只写信息层级 (status: developing)
+
+### 摄影与光线
+- [[摄影语言锚定质感]] — 用摄影镜头语言替代抽象词获得真实质感
+- [[AI打光五法]] — 五种导演级打光方法：侧逆光、轮廓光、侧光、硬光、低位光 (status: developing)
+- [[光线布置模块化]] — 把光线写成独立的 `【光线布置】` 段落，说清四要素 (status: developing)
+- [[AI光源提示词模板库]] — 20 种可直接复用的光源提示词模板，覆盖自然光/夜景/城市/舞台/特殊效果 (status: developing) — 画面元素的描述字数要和重要性成正比，次要元素描述过多会喧宾夺主
 - [[视觉描述优先原则]] — AI 需要的是视觉画面，不是文字描述；技术术语和抽象词会让 AI 跑偏
 - [[参考图优先原则]] — 一张参考图比一千字描述都管用，能图生图就不要纯文字生图
 - [[克制原则]] — AI 对程度词和动态词容易走极端，要用静态、状态、克制的描述

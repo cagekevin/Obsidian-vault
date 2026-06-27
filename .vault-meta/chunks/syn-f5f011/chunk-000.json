@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki\\sources\\oMLX Tutorial.md",
+  "page_address": "syn-f5f011",
+  "chunk_index": 0,
+  "raw_text": "# oMLX + Claude Code Local Model Tutorial\n\n> Source: `.raw/oMLX教程.md` — from WeChat public account \"朱攀\"\n\noMLX is a local inference engine optimized for Apple Silicon (M1-M4). It serves models via an API and can be connected to Claude Code.\n\n## Setup\n\n```bash\nbrew tap jundot/omlx https://github.com/jundot/omlx\nbrew install omlx\nbrew services start omlx\nomlx serve --model-dir ~/models\n```\n\nDefault port: 8000. Model download via browser at `http://localhost:8000/admin`.\n\n## Claude Code Connection\n\n```bash\nexport ANTHROPIC_MODEL=\"Qwen3.6-27B-8bit\"\nexport ANTHROPIC_SMALL_FAST_MODEL=\"Qwen3.6-27B-8bit\"\nexport ANTHROPIC_BASE_URL=\"http://localhost:8000\"\nexport ANTHROPIC_AUTH_TOKEN=\"<your_api_key>\"\nclaude\n```\n\n## Optimization Parameters\n\n- Memory limit: `--max-process-memory 80%`\n- SSD cache for long context: `--paged-ssd-cache-dir ~/.omlx/cache`\n- China mirror: `--hf-endpoint https://hf-mirror.com`",
+  "contextualized_text": "This passage is from the wiki page \"oMLX + Claude Code Local Model Tutorial\". The page opens: # oMLX + Claude Code Local Model Tutorial\n\n> Source: `.raw/oMLX教程.md` — from WeChat public account \"朱攀\"\n\noMLX is a local inference engine optimized for Apple Silicon (M1-M4).\n\n# oMLX + Claude Code Local Model Tutorial\n\n> Source: `.raw/oMLX教程.md` — from WeChat public account \"朱攀\"\n\noMLX is a local inference engine optimized for Apple Silicon (M1-M4). It serves models via an API and can be connected to Claude Code.\n\n## Setup\n\n```bash\nbrew tap jundot/omlx https://github.com/jundot/omlx\nbrew install omlx\nbrew services start omlx\nomlx serve --model-dir ~/models\n```\n\nDefault port: 8000. Model download via browser at `http://localhost:8000/admin`.\n\n## Claude Code Connection\n\n```bash\nexport ANTHROPIC_MODEL=\"Qwen3.6-27B-8bit\"\nexport ANTHROPIC_SMALL_FAST_MODEL=\"Qwen3.6-27B-8bit\"\nexport ANTHROPIC_BASE_URL=\"http://localhost:8000\"\nexport ANTHROPIC_AUTH_TOKEN=\"<your_api_key>\"\nclaude\n```\n\n## Optimization Parameters\n\n- Memory limit: `--max-process-memory 80%`\n- SSD cache for long context: `--paged-ssd-cache-dir ~/.omlx/cache`\n- China mirror: `--hf-endpoint https://hf-mirror.com`",
+  "prefix": "This passage is from the wiki page \"oMLX + Claude Code Local Model Tutorial\". The page opens: # oMLX + Claude Code Local Model Tutorial\n\n> Source: `.raw/oMLX教程.md` — from WeChat public account \"朱攀\"\n\noMLX is a local inference engine optimized for Apple Silicon (M1-M4).",
+  "prefix_source": "synthetic",
+  "char_count": 902,
+  "body_hash": "sha256:9899b6872bda959cacff532e0d366e33b79fab6f8296ff3c96ca971cec430547",
+  "page_body_hash": "sha256:ab25db08206a77096582620f35ca82da34455ccbb460454e667d63e47766b96d",
+  "created_at": "2026-06-27T01:29:47Z"
+}

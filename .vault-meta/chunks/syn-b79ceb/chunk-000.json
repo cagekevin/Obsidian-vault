@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki\\sources\\Claude Code + LM Studio Tutorial.md",
+  "page_address": "syn-b79ceb",
+  "chunk_index": 0,
+  "raw_text": "# Claude Code + LM Studio Local Model Tutorial\n\n> Source: `.raw/LMStudio教程.md` — from WeChat public account \"Dom AI 驾驶舱\" by DomCockpit\n\nA guide for running Claude Code with LM Studio local models.\n\n## Hardware Requirements\n\n| Component | Minimum | Recommended |\n|-----------|---------|-------------|\n| RAM | 16GB | 24GB+ |\n| Processor | Apple Silicon | M4 Mini / M3 Pro |\n| System | macOS 12.0+ | macOS 14+ |\n\n## Setup\n\n1. Install LM Studio from lmstudio.ai\n2. Download Qwen 3.5 9B (Q4_K_M or Q5_K_M, ~6-8GB)\n3. Start local server at `http://127.0.0.1:1234`\n4. Set env vars: `ANTHROPIC_BASE_URL=http://127.0.0.1:1234/v1` + `ANTHROPIC_API_KEY=local-key`\n\n## Server Settings\n\n- Context Length: 32768\n- GPU Offload: 32-48 layers\n- CPU Thread Pool: 7-8\n- Max Concurrent Requests: 4-8",
+  "contextualized_text": "This passage is from the wiki page \"Claude Code + LM Studio Local Model Tutorial\". The page opens: # Claude Code + LM Studio Local Model Tutorial\n\n> Source: `.raw/LMStudio教程.md` — from WeChat public account \"Dom AI 驾驶舱\" by DomCockpit\n\nA guide for running Claude Code with LM Studio local models.\n\n# Claude Code + LM Studio Local Model Tutorial\n\n> Source: `.raw/LMStudio教程.md` — from WeChat public account \"Dom AI 驾驶舱\" by DomCockpit\n\nA guide for running Claude Code with LM Studio local models.\n\n## Hardware Requirements\n\n| Component | Minimum | Recommended |\n|-----------|---------|-------------|\n| RAM | 16GB | 24GB+ |\n| Processor | Apple Silicon | M4 Mini / M3 Pro |\n| System | macOS 12.0+ | macOS 14+ |\n\n## Setup\n\n1. Install LM Studio from lmstudio.ai\n2. Download Qwen 3.5 9B (Q4_K_M or Q5_K_M, ~6-8GB)\n3. Start local server at `http://127.0.0.1:1234`\n4. Set env vars: `ANTHROPIC_BASE_URL=http://127.0.0.1:1234/v1` + `ANTHROPIC_API_KEY=local-key`\n\n## Server Settings\n\n- Context Length: 32768\n- GPU Offload: 32-48 layers\n- CPU Thread Pool: 7-8\n- Max Concurrent Requests: 4-8",
+  "prefix": "This passage is from the wiki page \"Claude Code + LM Studio Local Model Tutorial\". The page opens: # Claude Code + LM Studio Local Model Tutorial\n\n> Source: `.raw/LMStudio教程.md` — from WeChat public account \"Dom AI 驾驶舱\" by DomCockpit\n\nA guide for running Claude Code with LM Studio local models.",
+  "prefix_source": "synthetic",
+  "char_count": 779,
+  "body_hash": "sha256:a674c6cfa9fb81d4b7b5f4cdb7636afa46858366fe32fde0084d9cf4fabf2432",
+  "page_body_hash": "sha256:cbcde7c53aa5805040f0fec9d07d3e4f7536db6c1e747cae8ca7315a034550c9",
+  "created_at": "2026-06-27T01:29:47Z"
+}

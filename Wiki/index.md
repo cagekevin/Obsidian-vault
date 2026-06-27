@@ -43,6 +43,9 @@ Navigation: [[log]] | [[hot]]
 ## Image Generation
 
 ### 基础原则
+- [[AI打光五法]] — 五种导演级打光方法：侧逆光、轮廓光、侧光、硬光、低位光 (status: developing)
+- [[光线布置模块化]] — 把光线写成独立的 `【光线布置】` 段落，说清四要素 (status: developing)
+- [[AI光源提示词模板库]] — 20 种可直接复用的光源提示词模板 (status: developing)
 - [[描述比重原则]] — 画面元素的描述字数要和重要性成正比，次要元素描述过多会喧宾夺主 (status: mature)
 - [[视觉描述优先原则]] — AI 需要的是视觉画面，不是文字描述；技术术语和抽象词会让 AI 跑偏 (status: mature)
 - [[参考图优先原则]] — 一张参考图比一千字描述都管用，能图生图就不要纯文字生图 (status: mature)

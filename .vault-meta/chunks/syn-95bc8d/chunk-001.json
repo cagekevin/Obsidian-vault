@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki\\entities\\Claude SEO.md",
+  "page_address": "syn-95bc8d",
+  "chunk_index": 1,
+  "raw_text": "s project)\n- Claude Blog — companion blog engine, consumes SEO findings\n- Claude Banana — AI image generation, bundled as extension\n- AI Marketing Claude — community marketing suite by Zubair Trabzada\n\n## Security Posture (v1.9.0 audit)\n\n- **Score**: 85/100 (Grade B+)\n- **SSRF protection**: validate_url() + fetch_page.py DNS resolution\n- **SQL**: all queries parameterized\n- **Cost guardrails**: threshold approval, daily limits, file locking, audit trail\n- **Pre-existing debt**: validate_url DNS rebinding gap, install script injection, OAuth file permissions",
+  "contextualized_text": "This passage is from the wiki page \"Claude SEO\". The page opens: # Claude SEO\n\nA Tier 4 Claude Code skill for comprehensive SEO analysis across all industries.\n\ns project)\n- Claude Blog — companion blog engine, consumes SEO findings\n- Claude Banana — AI image generation, bundled as extension\n- AI Marketing Claude — community marketing suite by Zubair Trabzada\n\n## Security Posture (v1.9.0 audit)\n\n- **Score**: 85/100 (Grade B+)\n- **SSRF protection**: validate_url() + fetch_page.py DNS resolution\n- **SQL**: all queries parameterized\n- **Cost guardrails**: threshold approval, daily limits, file locking, audit trail\n- **Pre-existing debt**: validate_url DNS rebinding gap, install script injection, OAuth file permissions",
+  "prefix": "This passage is from the wiki page \"Claude SEO\". The page opens: # Claude SEO\n\nA Tier 4 Claude Code skill for comprehensive SEO analysis across all industries.",
+  "prefix_source": "synthetic",
+  "char_count": 563,
+  "body_hash": "sha256:ef99f03e915e5e30893e4394b5a24f2d1ed460551a21115703eb72313d5ead05",
+  "page_body_hash": "sha256:03a7e7cc3495ce60fce7ea7f8d370e9c0991abac782dd392a877efa7fad85834",
+  "created_at": "2026-06-27T01:29:47Z"
+}

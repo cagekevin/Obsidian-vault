@@ -7,13 +7,17 @@ description: "Ingest sources into the Obsidian wiki vault. Reads a source, extra
 
 Read the source. Write the wiki. Cross-reference everything. A single source typically touches 8-15 wiki pages.
 
+> **⚠️ Windows 环境说明**：本 skill 部分脚本（`allocate-address.sh`、`wiki-lock.sh`、`detect-transport.sh`）为 Linux/macOS Shell 脚本，Windows 上不可用。替代方案见各章节标注。
+
 **Syntax standard**: Write all Obsidian Markdown using proper Obsidian Flavored Markdown. Wikilinks as `[[Note Name]]`, callouts as `> [!type] Title`, embeds as `![[file]]`, properties as YAML frontmatter. If the kepano/obsidian-skills plugin is installed, prefer its canonical obsidian-markdown skill for Obsidian syntax reference. Otherwise, follow the guidance in this skill.
 
 ---
 
 ## Transport (v1.7+)
 
-Before mutating any vault file, consult `.vault-meta/transport.json` (auto-created by `bash scripts/detect-transport.sh`). Use the `preferred` transport per the fallback chain:
+> **Windows**: `bash scripts/detect-transport.sh` 不可用。直接走 filesystem 路径（用 Write/Edit 工具写文件），`.vault-meta/transport.json` 不存在时默认走 filesystem。
+
+Before mutating any vault file, consult `.vault-meta/transport.json` (auto-created by `bash scripts/detect-transport.sh` on Mac/Linux). Use the `preferred` transport per the fallback chain:
 
 - **cli** — `obsidian-cli write "$VAULT" "$NOTE" < content.md` (or `append`, `property:set`); see [`skills/wiki-cli/SKILL.md`](../wiki-cli/SKILL.md)
 - **mcp-obsidian** / **mcpvault** — `mcp__obsidian-vault__write_note` and friends; see [`skills/wiki/references/mcp-setup.md`](../wiki/references/mcp-setup.md)
@@ -48,6 +52,8 @@ Mode-specific follow-up:
 ## Concurrency (v1.7+)
 
 **Multi-writer is safe in v1.7.** The latent corruption bug from v1.6 — where two parallel sub-agents writing to the same page could silently trample each other — is closed by per-file advisory locking. Every wiki page write MUST be preceded by `wiki-lock acquire <path>`.
+
+> **Windows**: `bash scripts/wiki-lock.sh` 不可用。当前为单用户环境，无需文件锁。多写并发时 AI 自行避免同时写入同一文件即可。
 
 ```bash
 # Acquire — blocks (returns 75 EX_TEMPFAIL) if another writer holds the lock
@@ -109,6 +115,7 @@ Before ingesting any file, check `.raw/.manifest.json` to avoid re-processing un
 **After ingesting a file:**
 1. Record `{hash, ingested_at, pages_created, pages_updated}` in `.manifest.json`.
 2. Write the updated manifest back.
+3. **Rebuild BM25 search index**: `python scripts/bm25-index.py build` (always run this after creating new pages, so retrieval can find them).
 
 Skip delta checking if the user says "force ingest" or "re-ingest".
 
@@ -185,6 +192,10 @@ Steps:
     - Key insight: One sentence on what is new.
     ```
 11. **Check for contradictions.** If new info conflicts with existing pages, add `> [!contradiction]` callouts on both pages.
+12. **Rebuild search index** (two-step):
+    - `python scripts/contextual-prefix.py --all` — regenerate chunks for new/updated pages
+    - `python scripts/bm25-index.py build` — rebuild BM25 inverted index
+    (Both steps required; chunks must exist before BM25 can index them.)
 
 ---
 
@@ -198,7 +209,8 @@ Steps:
 2. Process each source following the single ingest flow. Defer cross-referencing between sources until step 3.
 3. After all sources: do a cross-reference pass. Look for connections between the newly ingested sources.
 4. Update index, hot cache, and log once at the end (not per-source).
-5. Report: "Processed N sources. Created X pages, updated Y pages. Here are the key connections I found."
+5. **Rebuild search index**: `python scripts/contextual-prefix.py --all && python scripts/bm25-index.py build`.
+6. Report: "Processed N sources. Created X pages, updated Y pages. Here are the key connections I found."
 
 Batch ingest is less interactive. For 30+ sources, expect significant processing time. Check in with the user after every 10 sources.
 

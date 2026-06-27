@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki\\entities\\oMLX.md",
+  "page_address": "syn-630259",
+  "chunk_index": 0,
+  "raw_text": "# oMLX\n\nA local inference engine built on Apple's MLX framework, optimized for Apple Silicon (M1-M4). Default port: 8000.\n\nKey features: model download via web admin UI, SSD cache for long context, China mirror support. Recommended model: Qwen3.6-27B-8bit.",
+  "contextualized_text": "This passage is from the wiki page \"oMLX\". The page opens: # oMLX\n\nA local inference engine built on Apple's MLX framework, optimized for Apple Silicon (M1-M4).\n\n# oMLX\n\nA local inference engine built on Apple's MLX framework, optimized for Apple Silicon (M1-M4). Default port: 8000.\n\nKey features: model download via web admin UI, SSD cache for long context, China mirror support. Recommended model: Qwen3.6-27B-8bit.",
+  "prefix": "This passage is from the wiki page \"oMLX\". The page opens: # oMLX\n\nA local inference engine built on Apple's MLX framework, optimized for Apple Silicon (M1-M4).",
+  "prefix_source": "synthetic",
+  "char_count": 256,
+  "body_hash": "sha256:b5f461bffb3ec2ce0b2b39e0c21e5c3bbf504dfceee62eda90f45065c93b5455",
+  "page_body_hash": "sha256:9fef8c9dc254f1cfeae3caf62a40d978685f3c5252723c54b49d7c167b6a3e69",
+  "created_at": "2026-06-27T01:29:47Z"
+}

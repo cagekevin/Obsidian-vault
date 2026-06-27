@@ -58,6 +58,7 @@ All source pages — summaries of ingested documents, transcripts, articles, and
 - [[sources/Dramatic-Gobo-Lighting]] — 64 张 Gobo 光影素材图 + 使用方法，给产品图加投影光影 (status: ingested)
 - [[sources/Hermes-Agent]] — AI 技能自管理机制：自动创建、使用追踪、生命周期管理 (status: ingested)
 - [[sources/ImageForge-生图决策引擎]] — AI 生图决策引擎：5 步流程 + 19 条 if-then 规则 + 6 个场景文件 (status: ingested)
+- [[sources/AI打光5种导演级方法]] — 5 种导演级打光方法 + 20 种光源提示词模板 (status: ingested)
 
 ---
 

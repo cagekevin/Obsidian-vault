@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki\\entities\\_index.md",
+  "page_address": "syn-8ba08f",
+  "chunk_index": 0,
+  "raw_text": "# Entities Index\n\nNavigation: [[index]] | [[concepts/_index|Concepts]] | [[sources/_index|Sources]]\n\nAll entity pages — people, organizations, products, and tools.\n\n---\n\n## People\n\n- [[Andrej Karpathy]] — AI researcher, educator; originated the LLM Wiki pattern\n\n---\n\n## Organizations\n\n- [[Tencent Cloud Copilot]] — cloud LLM API service\n\n---\n\n## Products & Tools\n\n- [[Antigravity Tools]] — local API proxy to Tencent Cloud Copilot\n- [[LM Studio]] — GUI-based local LLM runner\n- [[oMLX]] — Apple Silicon optimized inference engine\n- [[OptiQ]] — mixed-precision quantization tool\n- [[Google ADK]] — Google's Agent Development Kit for building production AI agents\n\n---\n\n## Add new entities here as they are identified during ingests.",
+  "contextualized_text": "This passage is from the wiki page \"Entities Index\". The page opens: # Entities Index\n\nNavigation: [[index]] | [[concepts/_index|Concepts]] | [[sources/_index|Sources]]\n\nAll entity pages — people, organizations, products, and tools.\n\n# Entities Index\n\nNavigation: [[index]] | [[concepts/_index|Concepts]] | [[sources/_index|Sources]]\n\nAll entity pages — people, organizations, products, and tools.\n\n---\n\n## People\n\n- [[Andrej Karpathy]] — AI researcher, educator; originated the LLM Wiki pattern\n\n---\n\n## Organizations\n\n- [[Tencent Cloud Copilot]] — cloud LLM API service\n\n---\n\n## Products & Tools\n\n- [[Antigravity Tools]] — local API proxy to Tencent Cloud Copilot\n- [[LM Studio]] — GUI-based local LLM runner\n- [[oMLX]] — Apple Silicon optimized inference engine\n- [[OptiQ]] — mixed-precision quantization tool\n- [[Google ADK]] — Google's Agent Development Kit for building production AI agents\n\n---\n\n## Add new entities here as they are identified during ingests.",
+  "prefix": "This passage is from the wiki page \"Entities Index\". The page opens: # Entities Index\n\nNavigation: [[index]] | [[concepts/_index|Concepts]] | [[sources/_index|Sources]]\n\nAll entity pages — people, organizations, products, and tools.",
+  "prefix_source": "synthetic",
+  "char_count": 732,
+  "body_hash": "sha256:17aa2ed7591bcf9ade8ce332ee894ea436e813571367d91f80dbaa89f95059b0",
+  "page_body_hash": "sha256:a95ca93eff4612f9f01926c0f23c64cbc2f84d8b1f46469dc26363a1b43e0089",
+  "created_at": "2026-06-27T01:29:47Z"
+}

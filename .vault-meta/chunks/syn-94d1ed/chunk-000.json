@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki\\entities\\LM Studio.md",
+  "page_address": "syn-94d1ed",
+  "chunk_index": 0,
+  "raw_text": "# LM Studio\n\nA desktop application for downloading, managing, and running local LLMs. Provides a GUI-based model browser and a local server mode at `http://127.0.0.1:1234/v1`.\n\nRecommended for users who prefer visual interfaces over CLI. Default model: Qwen 3.5 9B (Q4_K_M or Q5_K_M, ~6-8GB).",
+  "contextualized_text": "This passage is from the wiki page \"LM Studio\". The page opens: # LM Studio\n\nA desktop application for downloading, managing, and running local LLMs.\n\n# LM Studio\n\nA desktop application for downloading, managing, and running local LLMs. Provides a GUI-based model browser and a local server mode at `http://127.0.0.1:1234/v1`.\n\nRecommended for users who prefer visual interfaces over CLI. Default model: Qwen 3.5 9B (Q4_K_M or Q5_K_M, ~6-8GB).",
+  "prefix": "This passage is from the wiki page \"LM Studio\". The page opens: # LM Studio\n\nA desktop application for downloading, managing, and running local LLMs.",
+  "prefix_source": "synthetic",
+  "char_count": 292,
+  "body_hash": "sha256:94be2bf5779fc299dd55b97da6d27250e1cfbc0196103ef98c0e446d75bdccb6",
+  "page_body_hash": "sha256:c236faf6944f7ce78730bab8b1fbfa7363da6e2db25ac1cb56cb4018b504ff93",
+  "created_at": "2026-06-27T01:29:47Z"
+}

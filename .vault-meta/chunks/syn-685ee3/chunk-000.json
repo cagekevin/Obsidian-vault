@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki\\sources\\Claude Code + Ollama Tutorial.md",
+  "page_address": "syn-685ee3",
+  "chunk_index": 0,
+  "raw_text": "# Claude Code + Ollama Local Model Tutorial\n\n> Source: `.raw/ClaudeCode+Ollama教程.md` — from WeChat public account \"GitHubStore\" by 小G\n\nA 5-minute quickstart guide for running Claude Code with local Ollama models.\n\n## Quick Steps\n\n1. Install Ollama from ollama.com\n2. Pull a model: `ollama pull qwen3-coder:7b`\n3. Install Claude Code: `curl -fsSL https://claude.ai/install.sh | sh`\n4. Connect: `ollama launch claude --model qwen3-coder:7b`\n\n## Recommended Models\n\n| Memory | Model |\n|--------|-------|\n| 16-32GB | `qwen3-coder:7b` or `gemma2:9b` |\n| RTX 4090 / M high-end | `qwen3-coder:30b` or GLM-4 series |",
+  "contextualized_text": "This passage is from the wiki page \"Claude Code + Ollama Local Model Tutorial\". The page opens: # Claude Code + Ollama Local Model Tutorial\n\n> Source: `.raw/ClaudeCode+Ollama教程.md` — from WeChat public account \"GitHubStore\" by 小G\n\nA 5-minute quickstart guide for running Claude Code with local Ollama models.\n\n# Claude Code + Ollama Local Model Tutorial\n\n> Source: `.raw/ClaudeCode+Ollama教程.md` — from WeChat public account \"GitHubStore\" by 小G\n\nA 5-minute quickstart guide for running Claude Code with local Ollama models.\n\n## Quick Steps\n\n1. Install Ollama from ollama.com\n2. Pull a model: `ollama pull qwen3-coder:7b`\n3. Install Claude Code: `curl -fsSL https://claude.ai/install.sh | sh`\n4. Connect: `ollama launch claude --model qwen3-coder:7b`\n\n## Recommended Models\n\n| Memory | Model |\n|--------|-------|\n| 16-32GB | `qwen3-coder:7b` or `gemma2:9b` |\n| RTX 4090 / M high-end | `qwen3-coder:30b` or GLM-4 series |",
+  "prefix": "This passage is from the wiki page \"Claude Code + Ollama Local Model Tutorial\". The page opens: # Claude Code + Ollama Local Model Tutorial\n\n> Source: `.raw/ClaudeCode+Ollama教程.md` — from WeChat public account \"GitHubStore\" by 小G\n\nA 5-minute quickstart guide for running Claude Code with local Ollama models.",
+  "prefix_source": "synthetic",
+  "char_count": 608,
+  "body_hash": "sha256:0c33234e92f75710cd27c800ea2ef2c1f51721917ba8f69b70ff87948b97d484",
+  "page_body_hash": "sha256:23c009316cd85acf2cd3d3ab7980d76a38ed0886fa5cefbff10889d9f6e46ee8",
+  "created_at": "2026-06-27T01:29:47Z"
+}

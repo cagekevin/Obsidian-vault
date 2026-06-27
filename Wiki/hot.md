@@ -1,4 +1,4 @@
----
+w---
 type: meta
 title: "Hot Cache"
 updated: 2026-06-24
@@ -14,6 +14,8 @@ related:
 # Recent Context
 
 Navigation: [[index]] | [[log]]
+
+2026-06-27 (09:19): **Ingest — AI 打光 5 种导演级方法 + 20 种光源模板**. 文章讲解 5 种打光方法（侧逆光/轮廓光/侧光/硬光/低位光）和光线模块化写法。附件为 20 种可直接复用的 `【光线布置】` 提示词模板。Created [[AI打光五法]], [[光线布置模块化]], [[AI光源提示词模板库]] concept pages, [[sources/AI打光5种导演级方法]] source page. Updated [[摄影语言锚定质感]], [[AI Camera Movements]], [[concepts/_index]], [[sources/_index]], [[index]], [[log]], [[hot]].
 
 2026-06-26 (13:02): **Ingest — Google Open Knowledge Format (OKF)**. Google Cloud 推出的开源知识格式标准，将 Karpathy 的 LLM Wiki 设想变成可执行工程标准。三大原则：最少干预、生产者与消费者解耦、格式非平台。Created [[Open Knowledge Format]] concept page, [[sources/Google OKF 2026]] source page. Updated [[LLM Wiki Pattern]], [[index]], [[log]], [[hot]].
 

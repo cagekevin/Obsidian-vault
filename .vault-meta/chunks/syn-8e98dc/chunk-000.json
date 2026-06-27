@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki\\concepts\\Model Quantization.md",
+  "page_address": "syn-8e98dc",
+  "chunk_index": 0,
+  "raw_text": "# Model Quantization\n\nTechniques to reduce the memory footprint of LLMs by using lower-precision numerical representations for weights and/or activations.\n\n## Types\n\n- **Uniform Quantization**: Same bit-width for all layers (e.g., Q4_K_M, Q5_K_M)\n- **Mixed-Precision Quantization** ([[OptiQ]]): Different bit-widths per layer based on sensitivity analysis\n- **KV Cache Quantization**: Quantize the key-value cache to reduce memory during long context inference\n\n## Recommended Settings\n\n| Setting | Value | Effect |\n|---------|-------|--------|\n| KV cache type | `q8_0` | Halves KV cache memory vs `f16` |\n| Model precision | 4-bit | ~4x memory reduction vs fp16 |\n| OptiQ target bits | 5.0 | Balanced quality/size |\n\n## Connections\n\n- [[OptiQ]] — implements mixed-precision quantization\n- [[Apple Silicon Optimization]] — quantization is key for Apple Silicon\n- [[Local LLM Deployment]] — quantization enables running larger models on limited hardware",
+  "contextualized_text": "This passage is from the wiki page \"Model Quantization\". The page opens: # Model Quantization\n\nTechniques to reduce the memory footprint of LLMs by using lower-precision numerical representations for weights and/or activations.\n\n# Model Quantization\n\nTechniques to reduce the memory footprint of LLMs by using lower-precision numerical representations for weights and/or activations.\n\n## Types\n\n- **Uniform Quantization**: Same bit-width for all layers (e.g., Q4_K_M, Q5_K_M)\n- **Mixed-Precision Quantization** ([[OptiQ]]): Different bit-widths per layer based on sensitivity analysis\n- **KV Cache Quantization**: Quantize the key-value cache to reduce memory during long context inference\n\n## Recommended Settings\n\n| Setting | Value | Effect |\n|---------|-------|--------|\n| KV cache type | `q8_0` | Halves KV cache memory vs `f16` |\n| Model precision | 4-bit | ~4x memory reduction vs fp16 |\n| OptiQ target bits | 5.0 | Balanced quality/size |\n\n## Connections\n\n- [[OptiQ]] — implements mixed-precision quantization\n- [[Apple Silicon Optimization]] — quantization is key for Apple Silicon\n- [[Local LLM Deployment]] — quantization enables running larger models on limited hardware",
+  "prefix": "This passage is from the wiki page \"Model Quantization\". The page opens: # Model Quantization\n\nTechniques to reduce the memory footprint of LLMs by using lower-precision numerical representations for weights and/or activations.",
+  "prefix_source": "synthetic",
+  "char_count": 952,
+  "body_hash": "sha256:4305a2b99f417250aab61e7ec066ce133054de55cfa664d7535d643deea9a82b",
+  "page_body_hash": "sha256:847745fca5198484756af0a0fcea1450bbda450c68296b384dac1a5a264a5573",
+  "created_at": "2026-06-27T01:29:47Z"
+}

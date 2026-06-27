@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki\\entities\\Tencent Cloud Copilot.md",
+  "page_address": "syn-17fbdf",
+  "chunk_index": 0,
+  "raw_text": "# Tencent Cloud Copilot\n\nTencent Cloud's LLM API service at `https://copilot.tencent.com/v2`. Serves as the upstream backend for [[Antigravity Tools]], providing access to 15 models across DeepSeek, GLM, Kimi, and MiniMax.",
+  "contextualized_text": "This passage is from the wiki page \"Tencent Cloud Copilot\". The page opens: # Tencent Cloud Copilot\n\nTencent Cloud's LLM API service at `https://copilot.tencent.com/v2`.\n\n# Tencent Cloud Copilot\n\nTencent Cloud's LLM API service at `https://copilot.tencent.com/v2`. Serves as the upstream backend for [[Antigravity Tools]], providing access to 15 models across DeepSeek, GLM, Kimi, and MiniMax.",
+  "prefix": "This passage is from the wiki page \"Tencent Cloud Copilot\". The page opens: # Tencent Cloud Copilot\n\nTencent Cloud's LLM API service at `https://copilot.tencent.com/v2`.",
+  "prefix_source": "synthetic",
+  "char_count": 222,
+  "body_hash": "sha256:991fb41da765213274a83943c4c561a7b2064ba9311b776235bc34958c3bb88a",
+  "page_body_hash": "sha256:1b3b0e1a6459c5ab47478cc8deda3d06c480179d1c6662599e71f241a2e84959",
+  "created_at": "2026-06-27T01:29:47Z"
+}

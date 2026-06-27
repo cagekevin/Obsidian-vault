@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki\\concepts\\Hot Cache.md",
+  "page_address": "syn-e04773",
+  "chunk_index": 1,
+  "raw_text": "irst to get recent context at minimal token cost.\n\n---\n\n## Connections\n\nThe hot cache is part of the [[LLM Wiki Pattern]] token discipline strategy. See [[index]] for how the broader navigation works.",
+  "contextualized_text": "This passage is from the wiki page \"Hot Cache\". The page opens: # Hot Cache\n\nA ~500-word summary of the most recent context in the wiki vault.\n\nirst to get recent context at minimal token cost.\n\n---\n\n## Connections\n\nThe hot cache is part of the [[LLM Wiki Pattern]] token discipline strategy. See [[index]] for how the broader navigation works.",
+  "prefix": "This passage is from the wiki page \"Hot Cache\". The page opens: # Hot Cache\n\nA ~500-word summary of the most recent context in the wiki vault.",
+  "prefix_source": "synthetic",
+  "char_count": 200,
+  "body_hash": "sha256:be6b2012be9083d9985b4f20a752bc0f2f437baf3bb0481aab38718f4ccc97e8",
+  "page_body_hash": "sha256:3269060466bf570cc60c20b1f14d58f45a896ec8f7581f841c60764c80a68963",
+  "created_at": "2026-06-27T01:29:47Z"
+}

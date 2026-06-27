@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki\\concepts\\Apple Silicon Optimization.md",
+  "page_address": "syn-af0849",
+  "chunk_index": 0,
+  "raw_text": "# Apple Silicon Optimization\n\nTechniques and tools for running LLMs efficiently on Apple Silicon (M1-M4) hardware. Apple's unified memory architecture allows running models up to the system's total RAM, but requires specialized optimizations.\n\n## Key Tools\n\n- **[[oMLX]]** — MLX-native inference engine, optimized for Apple Silicon\n- **[[OptiQ]]** — Mixed-precision quantization for MLX models\n\n## Optimization Techniques\n\n- **Model Quantization**: Reduce model precision (e.g., 4-bit) to fit in available RAM\n- **KV Cache Quantization**: `OLLAMA_KV_CACHE_TYPE=q8_0` halves KV cache memory\n- **Flash Attention**: `OLLAMA_FLASH_ATTENTION=1` for faster attention computation\n- **SSD Cache**: Page KV cache to SSD for long context (oMLX)\n- **MTP Decode**: Multi-token prediction for faster generation (OptiQ)",
+  "contextualized_text": "This passage is from the wiki page \"Apple Silicon Optimization\". The page opens: # Apple Silicon Optimization\n\nTechniques and tools for running LLMs efficiently on Apple Silicon (M1-M4) hardware.\n\n# Apple Silicon Optimization\n\nTechniques and tools for running LLMs efficiently on Apple Silicon (M1-M4) hardware. Apple's unified memory architecture allows running models up to the system's total RAM, but requires specialized optimizations.\n\n## Key Tools\n\n- **[[oMLX]]** — MLX-native inference engine, optimized for Apple Silicon\n- **[[OptiQ]]** — Mixed-precision quantization for MLX models\n\n## Optimization Techniques\n\n- **Model Quantization**: Reduce model precision (e.g., 4-bit) to fit in available RAM\n- **KV Cache Quantization**: `OLLAMA_KV_CACHE_TYPE=q8_0` halves KV cache memory\n- **Flash Attention**: `OLLAMA_FLASH_ATTENTION=1` for faster attention computation\n- **SSD Cache**: Page KV cache to SSD for long context (oMLX)\n- **MTP Decode**: Multi-token prediction for faster generation (OptiQ)",
+  "prefix": "This passage is from the wiki page \"Apple Silicon Optimization\". The page opens: # Apple Silicon Optimization\n\nTechniques and tools for running LLMs efficiently on Apple Silicon (M1-M4) hardware.",
+  "prefix_source": "synthetic",
+  "char_count": 805,
+  "body_hash": "sha256:231a40221718518a9cc31e5ed05724616c5718846b4c08cce9a45c43b02f2c29",
+  "page_body_hash": "sha256:0cf5b2ea4a333a91aa57d6f11ad50d895b90701ee8c9a9dc5384d8df6eb0ba6d",
+  "created_at": "2026-06-27T01:29:47Z"
+}

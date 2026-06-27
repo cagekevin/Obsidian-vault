@@ -1,4 +1,4 @@
----
+我---
 type: meta
 title: "Wiki Log"
 updated: 2026-06-23
@@ -16,6 +16,13 @@ related:
 Navigation: [[index]] | [[hot]]
 
 ---
+
+## [2026-06-27] Ingest | AI 打光 5 种导演级方法 + 20 种光源模板
+- Source: `.raw/articles/AI打光5种导演级方法-2026-06-27.md` + `.raw/articles/20种光照参考资料-2026-06-27.md`
+- Summary: [[sources/AI打光5种导演级方法]]
+- Pages created: [[AI打光五法]], [[光线布置模块化]], [[AI光源提示词模板库]], [[sources/AI打光5种导演级方法]]
+- Pages updated: [[摄影语言锚定质感]]（补充打光相关概念关联）, [[AI Camera Movements]]（补充打光概念关联）, [[concepts/_index]], [[sources/_index]], [[index]], [[log]], [[hot]]
+- Key insight: 光线是 AI 画面从"生成感"走向"影像感"的关键。五法提供方法论（怎么想），光线布置模块化提供写法结构（怎么写），20 种模板提供可直接复制使用的实战工具（直接用）。三者构成"原理→结构→模板"的完整打光知识链。
 
 ## [2026-06-26] Ingest | Google Open Knowledge Format (OKF)
 - Source: Google Cloud Blog + Kevin 提供的摘要

@@ -46,7 +46,6 @@ Exit codes:
 """
 
 import argparse
-import fcntl
 import json
 import math
 import os
@@ -55,6 +54,15 @@ import sys
 from collections import Counter, defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
+
+# Cross-platform file locking: fcntl (Linux/macOS) → msvcrt (Windows)
+_HAVE_LOCK = False
+if os.name == "nt":
+    import msvcrt
+    _HAVE_LOCK = True
+else:
+    import fcntl
+    _HAVE_LOCK = True
 
 VAULT_ROOT = Path(__file__).resolve().parent.parent
 META_DIR = VAULT_ROOT / ".vault-meta"
@@ -77,7 +85,14 @@ of on or that the their them they this to was were will with you your
 # Devanagari, etc.) plus underscore. Internal apostrophes and hyphens are
 # preserved so "user's" and "well-formed" stay single tokens. Pure-symbol or
 # pure-emoji tokens fail the leading \w anchor and are correctly skipped.
+#
+# v1.8: CJK bigram — for Chinese/Japanese/Korean text, split each character
+# and generate overlapping bigrams ("侧逆光" → "侧逆", "逆光"). This gives
+# BM25 meaningful tokens for languages without word boundaries, at the cost of
+# larger vocab. English/Latin tokens pass through the original \w+ path.
 TOKEN_RE = re.compile(r"\w[\w'\-]*", re.UNICODE)
+# Match a run of CJK characters (CJK Unified Ideographs block)
+CJK_RE = re.compile(r"[\u4e00-\u9fff\u3400-\u4dbf\uf900-\ufaff]+")
 
 EXIT_OK = 0
 EXIT_LOCK = 1
@@ -91,17 +106,39 @@ def log(msg):
 
 
 def tokenize(text):
-    """Lowercase, strip punctuation, drop stopwords. Returns a list of terms."""
-    return [t.lower() for t in TOKEN_RE.findall(text)
-            if t.lower() not in STOPWORDS and len(t) > 1]
+    """Tokenize text into searchable terms.
+
+    - English/Latin: original \w+ path (lowercase, drop stopwords)
+    - CJK: character bigrams (e.g. "侧逆光" → "侧逆", "逆光")
+    Both token types are merged into a single term list for BM25.
+    """
+    terms = []
+    # 1) English/Latin tokens
+    for t in TOKEN_RE.findall(text):
+        t = t.lower()
+        if t not in STOPWORDS and len(t) > 1:
+            terms.append(t)
+    # 2) CJK bigrams
+    for cjk_run in CJK_RE.findall(text):
+        if len(cjk_run) == 1:
+            terms.append(cjk_run)
+        else:
+            for i in range(len(cjk_run) - 1):
+                terms.append(cjk_run[i:i+2])
+    return terms
 
 
 def acquire_lock():
+    if not _HAVE_LOCK:
+        return None  # no locking available, skip
     META_DIR.mkdir(parents=True, exist_ok=True)
     fd = os.open(str(LOCK_PATH), os.O_CREAT | os.O_WRONLY, 0o644)
     try:
-        fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
-    except OSError:
+        if os.name == "nt":
+            msvcrt.locking(fd, msvcrt.LK_NBLCK, 1)
+        else:
+            fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except (OSError, IOError):
         os.close(fd)
         log("ERR: could not acquire bm25 lock")
         sys.exit(EXIT_LOCK)
@@ -109,8 +146,13 @@ def acquire_lock():
 
 
 def release_lock(fd):
+    if fd is None:
+        return
     try:
-        fcntl.flock(fd, fcntl.LOCK_UN)
+        if os.name == "nt":
+            msvcrt.locking(fd, msvcrt.LK_UNLCK, 1)
+        else:
+            fcntl.flock(fd, fcntl.LOCK_UN)
     finally:
         os.close(fd)
 

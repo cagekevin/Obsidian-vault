@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki\\concepts\\Open Knowledge Format.md",
+  "page_address": "syn-6f1ece",
+  "chunk_index": 1,
+  "raw_text": "e` | `type` + 更多字段 |\n| frontmatter 丰富度 | 极简 | `complexity`, `status`, `aliases`, `related`, `sources` 等 |\n| 目录分类 | 无强制 | concepts/ entities/ sources/ 分类 |\n| 链接工具 | 纯文本编辑器 + Git | Obsidian（图谱、双向链接面板） |\n\nKevin 的 Wiki 是 OKF 的超集——OKF 是最小公分母标准，Kevin 的标准是面向 Obsidian + AI 协同的实践标准，更丰富但需要 Obsidian 生态支持。\n\n## Connections\n\n- [[LLM Wiki Pattern]] — OKF 是其具体标准化实现\n- [[Andrej Karpathy]] — 提出了 LLM Wiki 设想\n- [[sources/Google OKF 2026]] — 来源页",
+  "contextualized_text": "This passage is from the wiki page \"Open Knowledge Format\". The page opens: # Open Knowledge Format (OKF)\n\nGoogle Cloud 推出的开源、中立的规范标准，将 [[LLM Wiki Pattern]] 从概念变成可执行的工程标准。\n\n## 文件格式规范\n\n- **扩展名**：`.md`\n- **编码**：UTF-8\n- **组成**：顶部 YAML 元数据（Frontmatter）+ 下方 Markdown 正文（Body）\n\n## YAML 元数据规范\n\n- **唯一必填字段**：`type`（字符串），告诉 AI 或解析器这个文件是什么知识实体（如 `type: table`、`type: api_endpoint`、`type\n\ne` | `type` + 更多字段 |\n| frontmatter 丰富度 | 极简 | `complexity`, `status`, `aliases`, `related`, `sources` 等 |\n| 目录分类 | 无强制 | concepts/ entities/ sources/ 分类 |\n| 链接工具 | 纯文本编辑器 + Git | Obsidian（图谱、双向链接面板） |\n\nKevin 的 Wiki 是 OKF 的超集——OKF 是最小公分母标准，Kevin 的标准是面向 Obsidian + AI 协同的实践标准，更丰富但需要 Obsidian 生态支持。\n\n## Connections\n\n- [[LLM Wiki Pattern]] — OKF 是其具体标准化实现\n- [[Andrej Karpathy]] — 提出了 LLM Wiki 设想\n- [[sources/Google OKF 2026]] — 来源页",
+  "prefix": "This passage is from the wiki page \"Open Knowledge Format\". The page opens: # Open Knowledge Format (OKF)\n\nGoogle Cloud 推出的开源、中立的规范标准，将 [[LLM Wiki Pattern]] 从概念变成可执行的工程标准。\n\n## 文件格式规范\n\n- **扩展名**：`.md`\n- **编码**：UTF-8\n- **组成**：顶部 YAML 元数据（Frontmatter）+ 下方 Markdown 正文（Body）\n\n## YAML 元数据规范\n\n- **唯一必填字段**：`type`（字符串），告诉 AI 或解析器这个文件是什么知识实体（如 `type: table`、`type: api_endpoint`、`type",
+  "prefix_source": "synthetic",
+  "char_count": 427,
+  "body_hash": "sha256:794b4ea061f92c68b5d0c73d7cdf28789ffc2516bf2bec20b0b0baeb2fca4b7b",
+  "page_body_hash": "sha256:b2f0add10ecf5055485239414744537c89b6c2443c70ed71331accb232cea925",
+  "created_at": "2026-06-27T01:29:47Z"
+}

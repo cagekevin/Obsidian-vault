@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki\\entities\\OptiQ.md",
+  "page_address": "syn-45bf15",
+  "chunk_index": 0,
+  "raw_text": "# OptiQ (mlx-optiq)\n\nA mixed-precision quantization tool that applies different bit-widths per layer, optimizing memory usage while preserving model quality. Built on Apple's MLX framework.\n\nKey features: supports Claude Code directly (dual protocol), MTP decode acceleration, hybrid-precision KV cache for long context. Recommended model: Qwen3.5-9B-OptiQ-4bit (6.6 GB).",
+  "contextualized_text": "This passage is from the wiki page \"OptiQ\". The page opens: # OptiQ (mlx-optiq)\n\nA mixed-precision quantization tool that applies different bit-widths per layer, optimizing memory usage while preserving model quality.\n\n# OptiQ (mlx-optiq)\n\nA mixed-precision quantization tool that applies different bit-widths per layer, optimizing memory usage while preserving model quality. Built on Apple's MLX framework.\n\nKey features: supports Claude Code directly (dual protocol), MTP decode acceleration, hybrid-precision KV cache for long context. Recommended model: Qwen3.5-9B-OptiQ-4bit (6.6 GB).",
+  "prefix": "This passage is from the wiki page \"OptiQ\". The page opens: # OptiQ (mlx-optiq)\n\nA mixed-precision quantization tool that applies different bit-widths per layer, optimizing memory usage while preserving model quality.",
+  "prefix_source": "synthetic",
+  "char_count": 371,
+  "body_hash": "sha256:3c50ac2d21c43c64af506db1b91b9fcc7204098f27a188b48c08eab9f02197e0",
+  "page_body_hash": "sha256:c6193059dd50816e2198f97f8dedb9261a54bdabf0347327ae9386aa034c48d0",
+  "created_at": "2026-06-27T01:29:47Z"
+}

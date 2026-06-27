@@ -27,7 +27,6 @@ Usage:
 """
 
 import argparse
-import fcntl
 import hashlib
 import json
 import math
@@ -39,6 +38,14 @@ import urllib.parse
 import urllib.request
 from datetime import datetime
 from pathlib import Path
+
+# Cross-platform file locking
+if os.name == "nt":
+    import msvcrt
+    _LOCK_FN = "msvcrt"
+else:
+    import fcntl
+    _LOCK_FN = "fcntl"
 
 DEFAULT_OLLAMA_URL = "http://127.0.0.1:11434"
 DEFAULT_MODEL = "nomic-embed-text"
@@ -164,8 +171,11 @@ def _lock_cache():
     META_DIR.mkdir(exist_ok=True)
     fd = os.open(str(CACHE_LOCK), os.O_CREAT | os.O_RDWR, 0o644)
     try:
-        fcntl.flock(fd, fcntl.LOCK_EX)
-    except OSError:
+        if os.name == "nt":
+            msvcrt.locking(fd, msvcrt.LK_NBLCK, 1)
+        else:
+            fcntl.flock(fd, fcntl.LOCK_EX)
+    except (OSError, IOError):
         os.close(fd)
         raise
     return fd
@@ -173,7 +183,10 @@ def _lock_cache():
 
 def _unlock_cache(fd: int) -> None:
     try:
-        fcntl.flock(fd, fcntl.LOCK_UN)
+        if os.name == "nt":
+            msvcrt.locking(fd, msvcrt.LK_UNLCK, 1)
+        else:
+            fcntl.flock(fd, fcntl.LOCK_UN)
     finally:
         os.close(fd)
 

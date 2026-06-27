@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki\\meta\\2026-04-15-slides-and-release-session.md",
+  "page_address": "syn-a5a333",
+  "chunk_index": 2,
+  "raw_text": "s opened as `file://` cannot load images from other `file://` paths in Chrome. Firefox allows it. For portable local HTML with images, use `python3 -m http.server` or embed images as base64 data URIs.",
+  "contextualized_text": "This passage is from the wiki page \"Claude SEO v1.9.0 Slides and GitHub Release Session\". The page opens: # Claude SEO v1.9.0 Slides and GitHub Release Session\n\nDate: 2026-04-15 | Outputs: `claude-seo-slides/v190.html`, GitHub release v1.9.0\n\n## What Was Built\n\n### HTML Slide Deck (claude-seo-slides/v190.html)\n\n15-slide community presentation for the v1.9.0 release.\n\ns opened as `file://` cannot load images from other `file://` paths in Chrome. Firefox allows it. For portable local HTML with images, use `python3 -m http.server` or embed images as base64 data URIs.",
+  "prefix": "This passage is from the wiki page \"Claude SEO v1.9.0 Slides and GitHub Release Session\". The page opens: # Claude SEO v1.9.0 Slides and GitHub Release Session\n\nDate: 2026-04-15 | Outputs: `claude-seo-slides/v190.html`, GitHub release v1.9.0\n\n## What Was Built\n\n### HTML Slide Deck (claude-seo-slides/v190.html)\n\n15-slide community presentation for the v1.9.0 release.",
+  "prefix_source": "synthetic",
+  "char_count": 200,
+  "body_hash": "sha256:14d60a3d47b6e640cb6e461b5daee42bb0c08fca485526840e90cddc8d8a9507",
+  "page_body_hash": "sha256:9aaa3ea5a2079a9bbf380d5add16c33fa59aa36dbd2239c5d44e77bd4f767f74",
+  "created_at": "2026-06-27T01:29:47Z"
+}

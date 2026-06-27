@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki\\meta\\2026-04-14-community-cta-rollout.md",
+  "page_address": "syn-35e9ce",
+  "chunk_index": 1,
+  "raw_text": "s report repetition across back-to-back commands.\n- Track conversion rate. If zero joins after months, experiment with wording.\n- Forks will strip the CTA. That is fine and expected under MIT license.",
+  "contextualized_text": "This passage is from the wiki page \"Community CTA Footer Rollout\". The page opens: # Community CTA Footer Rollout\n\nAI Marketing Hub Skool community links (free + pro) added as a footer to 6 Claude Code skill repos.\n\ns report repetition across back-to-back commands.\n- Track conversion rate. If zero joins after months, experiment with wording.\n- Forks will strip the CTA. That is fine and expected under MIT license.",
+  "prefix": "This passage is from the wiki page \"Community CTA Footer Rollout\". The page opens: # Community CTA Footer Rollout\n\nAI Marketing Hub Skool community links (free + pro) added as a footer to 6 Claude Code skill repos.",
+  "prefix_source": "synthetic",
+  "char_count": 200,
+  "body_hash": "sha256:476299ab045069543d39c0338c5e3f60fe0505eaf8c826f275501700e3e48702",
+  "page_body_hash": "sha256:e5dbacc51f8db013578b172b0c544de886afd82da3fc4ddd28711f85b9aec5b7",
+  "created_at": "2026-06-27T01:29:47Z"
+}

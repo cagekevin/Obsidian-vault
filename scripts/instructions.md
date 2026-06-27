@@ -22,4 +22,11 @@ Wiki 底层脚本，支持检索、索引、锁定、地址分配等机制。**A
 
 ## 重建索引
 
-新增 Wiki 页面后，跑 `bash bin/setup-retrieve.sh --no-llm` 重建 BM25 索引。
+新增/更新 Wiki 页面后，按顺序执行两步：
+
+```bash
+python scripts/contextual-prefix.py --all    # 1. 重新生成所有页面的 chunk（含新增页面）
+python scripts/bm25-index.py build            # 2. 重建 BM25 倒排索引
+```
+
+两步缺一不可：chunk 必须先生成，BM25 才能索引。`ingest.md` 的第 12 步已包含此流程。

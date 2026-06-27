@@ -15,6 +15,8 @@ tags:
 status: developing
 related:
   - "[[Visual Description First Principle]]"
+  - "[[AI打光五法]]"
+  - "[[AI光源提示词模板库]]"
 sources:
   - "https://www.bilibili.com/video/BV1xBjW6pEym"
 ---
