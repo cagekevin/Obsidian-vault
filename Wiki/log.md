@@ -17,6 +17,13 @@ Navigation: [[index]] | [[hot]]
 
 ---
 
+## [2026-06-27] Concept creation | 利益视觉化原则
+- Source: Skills/W5-图片设计/通用图片设计流程.md
+- Summary: [[利益视觉化原则]]
+- Pages created: [[利益视觉化原则]]
+- Pages updated: [[通用图片设计流程]], [[concepts/_index]], [[index]], [[log]], [[hot]]
+- Key insight: 配图的本质是利益视觉化——利益是主角，产品是配角，渠道是装饰。附配图思维链模板作为落地工具。
+
 ## [2026-06-27] Batch ingest | 刺猬星球 AI 创作系列（66 篇视频教程）
 - Source: `.raw/articles/刺猬星球系列/_刺猬星球系列合辑-2026-06-27.md`（66 个视频的文字转录稿，共 4.2 万字）
 - Summary: [[sources/刺猬星球AI创作系列]]

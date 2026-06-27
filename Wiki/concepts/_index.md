@@ -53,6 +53,7 @@ All concept pages — ideas, patterns, and frameworks extracted from sources.
 - [[一致性锚点原则]]
 - [[AI 生图决策规则]] — 6 条可执行 if-then 规则 (status: developing)
 - [[文案完整保留与信息层级原则]] — 文案必须完整保留，排版只写信息层级 (status: developing)
+- [[利益视觉化原则]] — 配图的本质是利益视觉化，利益是主角、产品是配角、渠道是装饰 (status: developing)
 
 ### 摄影与光线
 - [[摄影语言锚定质感]] — 用摄影镜头语言替代抽象词获得真实质感

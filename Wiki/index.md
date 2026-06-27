@@ -90,6 +90,7 @@ Navigation: [[log]] | [[hot]]
 - [[编辑三要素]] — 变量（改什么）+ 不变量（保持什么）+ 关键句（只改什么） (status: mature)
 - [[角色锚定]] — 详细角色描述锁定角色一致性，后续场景复用锚定描述 (status: developing)
 - [[AI 生图决策规则]] — 6 条可执行 if-then 规则：冗余信号稀释/Generic对抗/注意力前置/省略接管/加法非增强/批量一致性锚点 (status: developing)
+- [[利益视觉化原则]] — 配图的本质是利益视觉化，利益是主角、产品是配角、渠道是装饰；附配图思维链模板 (status: developing)
 
 ## Video Generation
 

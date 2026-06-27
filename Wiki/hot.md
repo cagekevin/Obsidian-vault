@@ -15,6 +15,8 @@ related:
 
 Navigation: [[index]] | [[log]]
 
+2026-06-27 (13:55): **Concept creation — 利益视觉化原则**. 从通用图片设计流程 skill 中提炼。配图的本质是利益视觉化，利益是主角、产品是配角、渠道是装饰。附配图思维链模板。Created [[利益视觉化原则]]. Updated: [[通用图片设计流程]]（3.2/3.3 加 wiki 引用）, [[concepts/_index]], [[index]], [[log]], [[hot]].
+
 2026-06-27 (11:00): **Batch ingest — 刺猬星球 AI 创作系列 (66 篇视频教程)**. 刺猬星球 super-i 的 66 个 AI 创作视频教程，覆盖角色设计、提示词工程、镜头语言、环境空间、氛围色彩、视频动作、导演思维、底层机制、工具工作流等完整技能树。Created 13 concept pages: [[AI角色资产搭建]], [[AI视觉语法体系]], [[AI镜头语言进阶]], [[AI环境空间设计]], [[AI氛围与色彩控制]], [[AI视频动作设计]], [[AI底层机制与高级控制]], [[AI导演创作思维]], [[时间补偿机制与动态词学]], [[视觉平衡与动线构图]], [[风格提取与约束系统]], [[人感审美与材质重塑]], [[物理模拟控制流（Cinema Studio）]]. Created [[sources/刺猬星球AI创作系列]] source page. Updated [[AI打光五法]], [[AI Camera Movements]], [[光线布置模块化]], [[concepts/_index]], [[sources/_index]], [[index]], [[log]], [[hot]].
 
 2026-06-27 (09:19): **Ingest — AI 打光 5 种导演级方法 + 20 种光源模板**. 文章讲解 5 种打光方法（侧逆光/轮廓光/侧光/硬光/低位光）和光线模块化写法。附件为 20 种可直接复用的 `【光线布置】` 提示词模板。Created [[AI打光五法]], [[光线布置模块化]], [[AI光源提示词模板库]] concept pages, [[sources/AI打光5种导演级方法]] source page. Updated [[摄影语言锚定质感]], [[AI Camera Movements]], [[concepts/_index]], [[sources/_index]], [[index]], [[log]], [[hot]].
