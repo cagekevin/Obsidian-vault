@@ -110,6 +110,34 @@ AI 无需关注后台结构，直接响应以下口语化指令：
 * "帮我读一下这本书的笔记，总结核心观点"
 * "把这篇推文保存到我的 Clippings"
 
+### 3. Wiki 知识检索
+
+当 Kevin 需要查 Wiki 知识时，AI 按以下优先级提供检索结果：
+
+**方式一：`retrieve.py`（默认）**
+```bash
+cd /Users/kevin/Documents/Obsidian\ vault && python3 scripts/retrieve.py "问题" --top 5
+```
+- 检索方式：BM25 关键词 + nomic-embed-text 语义重排
+- 需要 ollama 启动（`ollama serve &>/dev/null &`）
+
+**方式二：`gbrain search`（通过 MCP，新，更强）**
+```bash
+# AI 通过 MCP 自动调用，无需手动敲命令
+gbrain search "问题"
+```
+- 检索方式：混合搜索（向量 HNSW + BM25 + RRF 融合 + 源层级提升）
+- 需要 ollama 启动（`ollama serve &>/dev/null &`）
+- MCP 配置在 `~/.codebuddy/mcp.json`，已指向 `/Users/kevin/.bun/bin/gbrain`
+- 注意：gbrain 的 `think` 模式需要 Anthropic API Key（暂未配置），仅 `search` 可用
+
+**两种方式都依赖 ollama**（`nomic-embed-text` 做嵌入/重排），使用前需确保 ollama 已启动。
+
+**选择指引：**
+- 快速检索 → 方式一（`retrieve.py`）
+- 需要更精准结果、或搜不到想要的内容时 → 方式二（`gbrain search`，通过 MCP 自动调）
+- AI 默认用方式一，结果不够好再切方式二
+
 ---
 
 ## 五、环境与依赖规范 (macOS)
