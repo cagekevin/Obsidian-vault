@@ -11,6 +11,7 @@ edge-tts
 feedparser
 flask
 numpy
+opencv-python
 packaging
 pandas
 pdf2image
