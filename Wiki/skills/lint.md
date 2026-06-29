@@ -39,6 +39,10 @@ Work through these in order:
 8. **Stale index entries**. Items in `wiki/index.md` pointing to renamed or deleted pages.
 9. **Address validity** (DragonScale Mechanism 2). For every page that has an `address:` frontmatter field, validate the format. See the **Address Validation** section below.
 10. **Semantic tiling** (DragonScale Mechanism 3, opt-in). Flag candidate duplicate pages (across all scanned types, not just concepts) via embedding cosine similarity. See the **Semantic Tiling** section below.
+11. **Schema rule enforcement** (vault-specific, v1.0+). Run these 3 checks derived from `Context/schema.md` §七:
+    - **Path casing**: every tool call that creates/reads wiki pages uses `Wiki/` (capital W). Grep all `.md` content for `[[wiki/` (lowercase) and report. macOS APFS case-insensitive hides this bug; cross-platform sync breaks.
+    - **Manifest presence**: `.raw/.manifest.json` must exist. If missing → **error** (delta tracking disabled).
+    - **Wikilink anchors**: scan all `[[...#...]]` patterns. If the anchor segment contains Chinese punctuation (`：`, `？`, `！`, `「`, `」`, `（`, `）`), → **error**. Suggest: drop anchor or use English slug. See `Context/schema.md` §七 规则 3.
 
 ---
 
@@ -81,6 +85,11 @@ status: developing
 
 ## Cross-Reference Gaps
 - [[Entity Name]] mentioned in [[Page A]] without a wikilink.
+
+## Schema Rule Enforcement
+- **Manifest**: present (N entries) | missing (error)
+- **Path casing**: lowercase `[[wiki/...]]` occurrences — list
+- **Wikilink anchors with Chinese punctuation**: count and list
 ```
 
 ---

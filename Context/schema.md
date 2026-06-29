@@ -107,6 +107,27 @@
 
 - 内部链接使用 Obsidian 的双向链接规范 `[[页面名]]`
 - Wiki/ 中的每个页面必须有 frontmatter 标注类型：`type: concept | entity | source | question | meta`（详见 `Wiki/instructions.md` 的模板）
+
+### Type 字典（type 字段的完整取值与映射）
+
+`type:` 字段是 wiki 页面的"存储层身份"，决定页面的归属文件夹、frontmatter 模板和索引分组。**`type` 不等同于 save 流程的"内容类型"**——`save.md` 里的 `synthesis | concept | source | decision | session` 是「用户保存的是什么」（应用层），需要映射到下面的存储层 `type`：
+
+| type（存储层） | 存储文件夹 | 适用场景 | 对应的 save 内容类型 |
+|---------------|-----------|---------|---------------------|
+| `concept` | `wiki/concepts/` | 方法论、概念、框架、原则 | `concept` |
+| `entity` | `wiki/entities/` | 人物、机构、产品、工具 | （entity 由 ingest 自动建）|
+| `source` | `wiki/sources/` | 外部资料的摘要 | `source` |
+| `question` | `wiki/questions/` | 问答存档 | `synthesis`（多步分析）|
+| `meta` | `wiki/meta/` | 元数据（lint 报告、复盘、决策）| `decision`、`session` |
+
+**映射规则**：
+- save 时说 `synthesis` → 存到 `wiki/questions/`，type = `question`
+- save 时说 `decision` → 存到 `wiki/meta/`，type = `meta`，加 `decision_date` 字段
+- save 时说 `session` → 存到 `wiki/meta/`，type = `meta`
+- save 时说 `concept` → 存到 `wiki/concepts/`，type = `concept`
+- save 时说 `source` → 存到 `wiki/sources/`，type = `source`
+
+**AI 必须遵守**：用 `type` 时只能取上表 5 个值之一；用 save 流程的"内容类型"时只能取 `save.md` 的 5 个值之一。两者通过映射表关联。
 - 区分 AI 生成和人工编写的内容
 
 ---
@@ -125,3 +146,42 @@
 直接说明"建议修改 Schema：问题是什么、建议怎么改、为什么"，我来确认后再改。
 
 **AI 不直接改 Schema**，只提建议。修改由我确认后执行。
+
+---
+
+## 七、工具调用与 wikilink 规范
+
+> 这三条规则来自 2026-06-29 的实战总结：Seedance 2.0 标点控声 ingest 时暴露了路径大小写、manifest 缺失、wikilink 锚点三类问题，均为「系统长远必加」类。
+> 生效范围：**仅对新写入的内容**。旧页面里的同类问题不追溯修复（避免扩大改动范围），等下次自然重写时再统一。
+
+### 规则 1：工具调用路径统一用 `Wiki/` 大写
+
+**问题**：macOS APFS 默认不区分大小写，工具调用用 `wiki/` 也能成功写文件，但跨平台（Windows NTFS / Linux ext4 / GitHub Actions）会找不到文件，引用全部断链。
+
+**规则**：
+- 所有工具调用（`read_file` / `write_to_file` / `replace_in_file` / `search_file` / `list_dir`）涉及 wiki 路径时，**统一使用 `Wiki/` 大写开头**
+- 例外：macOS 系统命令（`ls`、`find`）可以用小写作为匹配模式，但工具调用必须大写
+
+**长期价值**：跨平台一致性 + 未来 CI 自动化基线 + 减少兼容性 bug。
+
+### 规则 2：Manifest 必建 + 每次 ingest 必更新
+
+**问题**：`.raw/.manifest.json` 缺失时，delta tracking 流程空转；不更新 manifest 会导致重复 ingest 检测失效。
+
+**规则**：
+1. 任何 ingest 流程**第一步**先检查 `.raw/.manifest.json` 是否存在，不存在则建骨架
+2. 每次 ingest 完成时，**必须**在 `.raw/.manifest.json` 加一条 `{hash, ingested_at, pages_created, pages_updated, address_map}` 条目
+3. 源文件不在 `.raw/` 的（如用户直接粘贴的内容），hash 留 `null` 并标注
+
+**长期价值**：防止重复 ingest + delta tracking 真正生效 + 审计可追溯。
+
+### 规则 3：Wikilink 避免中文 `#章节锚点`
+
+**问题**：`[[页面名#中文章节名]]` 在 Obsidian 桌面版能正常解析，但第三方工具（BM25 检索、git grep、VSCode 预览、CI 脚本）会把中文标点（冒号、引号、问号）当成 markdown 特殊字符导致解析失败。
+
+**规则**：
+1. **优先省略锚点**：`[[AI角色声音控制]]`，不写 `[[AI角色声音控制#控制语气：...]]`
+2. 如必须用锚点，**章节标题用简短英文 slug**：`[[Page Name#section-name]]`
+3. 引用章节时，**用描述性文字**而不是 wikilink 锚点：「"控制语气"章节」
+
+**长期价值**：第三方解析稳定性 + 未来 search 体验 + 描述性文字可读性更好。

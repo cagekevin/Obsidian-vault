@@ -1,0 +1,25 @@
+{
+  "sources": {
+    "Wiki/sources/Seedance 2.0 标点控声.md": {
+      "hash": null,
+      "ingested_at": "2026-06-29",
+      "pages_created": [
+        "Wiki/sources/Seedance 2.0 标点控声.md"
+      ],
+      "pages_updated": [
+        "Wiki/concepts/AI角色声音控制.md",
+        "Wiki/concepts/_index.md",
+        "Wiki/sources/_index.md",
+        "Wiki/index.md",
+        "Wiki/log.md",
+        "Wiki/hot.md"
+      ],
+      "address_map": {
+        "Wiki/sources/Seedance 2.0 标点控声.md": "c-000015"
+      }
+    }
+  },
+  "address_map": {
+    "Wiki/sources/Seedance 2.0 标点控声.md": "c-000015"
+  }
+}

@@ -74,6 +74,8 @@ Determine the best type from the conversation content:
 
 If the user specifies a type, use that. If not, pick the best fit based on the content. When in doubt, use `synthesis`.
 
+> **Type 映射提示**：上表是 save 流程的"内容类型"。落地为文件 frontmatter 的 `type:` 字段时，要按 `Context/schema.md` 第五节「Type 字典」做映射：`synthesis` → `question`，`decision`/`session` → `meta`，`concept` → `concept`，`source` → `source`。**不要把 save 的内容类型直接写进 frontmatter 的 `type` 字段**。
+
 ---
 
 ## Save Workflow

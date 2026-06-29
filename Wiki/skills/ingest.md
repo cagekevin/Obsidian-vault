@@ -1,6 +1,6 @@
 ---
 name: wiki-ingest
-description: "Ingest sources into the Obsidian wiki vault. Reads a source, extracts entities and concepts, creates or updates wiki pages, cross-references, and logs the operation. Supports files, URLs, and batch mode. Triggers on: ingest, process this source, add this to the wiki, read and file this, batch ingest, ingest all of these, ingest this url."
+description: "Ingest sources into the Obsidian wiki vault. Reads a source, extracts entities and concepts, creates or updates wiki pages, cross-references, and logs the operation. Supports files, URLs, and batch mode. Triggers on: ingest, process this source, add this to the wiki, read and file this, batch ingest, ingest all of these, ingest this url, 吸收, 整理进 wiki, 吃下这份资料, 摄取, 分析这篇, 整理这篇, 摄入."
 ---
 
 # wiki-ingest: Source Ingestion
@@ -171,7 +171,11 @@ Use cases: whiteboard photos, screenshots, diagrams, infographics, document scan
 
 Trigger: user drops a file into `.raw/` or pastes content.
 
-Steps:
+**Step 0: Pre-flight checks (run BEFORE reading the source).**
+0a. **Read `wiki/hot.md`** — know what was just ingested; avoid duplicates.
+0b. **Check `.raw/.manifest.json`** — if it exists, compute source hash and compare. Skip if hash matches (delta tracking). If missing, create the skeleton first (see `Context/schema.md` §七 规则 2).
+
+**Then continue:**
 
 1. **Read** the source completely. Do not skim.
 2. **Discuss** key takeaways with the user. Ask: "What should I emphasize? How granular?" Skip this if the user says "just ingest it."
@@ -191,8 +195,9 @@ Steps:
     - Pages updated: [[Page 3]], [[Page 4]]
     - Key insight: One sentence on what is new.
     ```
-11. **Check for contradictions.** If new info conflicts with existing pages, add `> [!contradiction]` callouts on both pages.
-12. **Rebuild search index** (two-step):
+11. **Update `.raw/.manifest.json`** — add a `sources` entry with hash, ingested_at, pages_created, pages_updated, and address_map. See `Context/schema.md` §七 规则 2.
+12. **Check for contradictions.** If new info conflicts with existing pages, add `> [!contradiction]` callouts on both pages.
+13. **Rebuild search index** (two-step):
     - `python scripts/contextual-prefix.py --all` — regenerate chunks for new/updated pages
     - `python scripts/bm25-index.py build` — rebuild BM25 inverted index
     (Both steps required; chunks must exist before BM25 can index them.)

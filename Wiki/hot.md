@@ -15,6 +15,8 @@ related:
 
 Navigation: [[index]] | [[log]]
 
+2026-06-29 (21:50): **Concept update — AI 角色声音控制 + Source creation — Seedance 2.0 标点控声**. 从 B 站视频（AI 智能夏老师 2026-06-28）提炼标点控声实战深化：省略号=声断气连、拆句+换行=分镜节奏。Created [[sources/Seedance 2.0 标点控声]] (address: c-000015). Updated: [[AI角色声音控制]]（追加"标点控声实战深化"小节，保留原标点表）, [[concepts/_index]], [[sources/_index]], [[index]], [[log]].
+
 2026-06-27 (16:15): **Concept creation — AI 室内光控制**. 三大法则：光源锚定（为光找宿主）、衰减路径（描述光从亮到暗）、漫反射（用反射填充暗部）。Created [[AI室内光控制]]. Updated: [[concepts/_index]], [[index]], [[log]], [[hot]].
 
 2026-06-27 (15:56): **Concept creation — AI 创意方法论**. 三个创意思路：打破物理定律（反重力/质量悖论）、让时间失控（时空割裂/动作阻断）、把镜头变成角色（巨物视角/物品视角）。Created [[AI创意方法论]]. Updated: [[concepts/_index]], [[index]], [[log]], [[hot]].

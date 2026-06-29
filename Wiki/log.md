@@ -17,6 +17,33 @@ Navigation: [[index]] | [[hot]]
 
 ---
 
+## [2026-06-29] Audit + skill update | Wiki 流程审计与执行链补全
+- Summary: 对 4 个 wiki skill + schema.md 做完整审计，发现 8 个问题（A 类 5 条「删了会出错」+ B 类 3 条「加了有好处」）。按方案 II 全部修复。
+- Files updated: `Wiki/skills/ingest.md`（加中文触发词 + Step 0 hot.md/manifest 检查 + manifest 更新入主流程）, `Wiki/skills/save.md`（加 Type 映射提示脚注）, `Wiki/skills/lint.md`（加第 11 项 Schema rule enforcement + 报告模板）, `Context/schema.md`（加 Type 字典）
+- Key insight: **规则加进 schema 但不进入执行链 = 形同虚设**。今天 3 条新规则同步进 lint.md 第 11 项后，规则 → skill → lint 形成闭环。A 类 5 条全是「删了会出错」类必加；B 类 3 条把规则"穿透"到执行链。
+- 跳过：B-#8（query.md Deep mode 默认存答案）属于"用户偏好调整"，等 Kevin 显式要求再做。
+- 审计报告：本次对话内输出，未单独存档。
+
+## [2026-06-29] Schema update | 工具调用与 wikilink 规范（第七节）
+- Summary: 在 `Context/schema.md` 新增第七节，写入 3 条规则——工具调用路径用 `Wiki/` 大写、Manifest 必建必更新、Wikilink 避免中文 `#章节锚点`
+- Files updated: `Context/schema.md`
+- Key insight: 3 条规则均来自今天 ingest 的实战教训（路径大小写、manifest 缺失、wikilink 锚点），是「系统长远必加」类。生效范围仅限新写入内容，旧页面不追溯修复。
+- 来源：本次 Seedance 2.0 标点控声 ingest 的维护性修复（见上一条 log）
+
+## [2026-06-29] Maintenance | Manifest 骨架 + wikilink 锚点修复
+- Summary: 建 `.raw/.manifest.json` 骨架（补 c-000015 条目）+ 修 [[AI角色声音控制]] 第 186-187 行的 `#章节锚点`（含中文冒号，第三方解析会失败）
+- Files created: `.raw/.manifest.json`
+- Files updated: `Wiki/concepts/AI角色声音控制.md`
+- Key insight: 今天 ingest 暴露 2 个系统性问题——manifest 缺失让 delta tracking 流程空转、wikilink 锚点含中文让跨工具解析失败。两者都不是单点问题，而是"以后同类问题会反复出现"的系统问题。配套的 schema 规则建议已提交，等 Kevin 确认后再加到 `Context/schema.md`。
+- 跳过：address 跳号（c-000016~c-000041）经查是历史 cleanup 删除页面导致，DragonScale 设计预期（counter 不回收），无需修。
+
+## [2026-06-29] Concept update + Source creation | Seedance 2.0 标点控声
+- Source: 用户从 B 站下载的视频转录稿（AI 智能夏老师 BV1VTTG6kEHN，2026-06-28）
+- Summary: [[sources/Seedance 2.0 标点控声]]（address: c-000015）
+- Pages created: [[sources/Seedance 2.0 标点控声]]
+- Pages updated: [[AI角色声音控制]]（追加"标点控声实战深化"小节，保留原标点表不变）, [[concepts/_index]], [[sources/_index]], [[index]], [[log]], [[hot]]
+- Key insight: AI 默认不懂情绪，标点符号（特别是省略号"声断气连"）是最被低估的情绪控制工具；拆句+换行 = 多镜头的情感落点节奏。补强了 [[AI角色声音控制]] 在"标点控声"维度的实战案例。
+
 ## [2026-06-27] Concept creation | AI 室内光控制
 - Summary: 光源锚定、衰减路径、漫反射三大法则
 - Pages created: [[AI室内光控制]]
