@@ -67,7 +67,7 @@ All concept pages — ideas, patterns, and frameworks extracted from sources.
 ### 角色与人物
 - [[AI角色资产搭建]] — 人物资产三件套、妆造设计、AI捏脸、活人感、微表情 (status: developing)
 - [[人感审美与材质重塑]] — 减法审美、手工感回归、材质层级重置 (status: developing)
-- [[AI角色声音控制]] — 声音公式控制音色、声音过程控制语气、标点符号控制语速 (status: developing)
+- [[AI角色声音控制]] — 声音公式控制音色、声音过程控制语气、标点符号控制语速、Seedance 2.0 标点控声实战深化 (status: developing)
 
 ### 环境与构图
 - [[AI环境空间设计]] — 环境三层写法、因果逻辑、场景一致性、伪透视 (status: developing)

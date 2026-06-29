@@ -60,7 +60,7 @@ Navigation: [[log]] | [[hot]]
 ### 角色与人物
 - [[AI角色资产搭建]] — 人物资产三件套、妆造设计、AI捏脸、活人感、微表情、多人动作控制 (status: developing)
 - [[人感审美与材质重塑]] — 减法审美、手工感回归、材质层级重置、打破摆拍感 (status: developing)
-- [[AI角色声音控制]] — 声音公式控制音色、声音过程控制语气、标点符号控制语速 (status: developing)
+- [[AI角色声音控制]] — 声音公式控制音色、声音过程控制语气、标点符号控制语速、Seedance 2.0 标点控声实战深化 (status: developing)
 
 
 ### 镜头与光线
@@ -103,6 +103,7 @@ Navigation: [[log]] | [[hot]]
 
 - [[AI Camera Movements]] — AI 视频生成运镜手法提示词 + 英文速查词汇表 + 灯光词汇表 (status: developing)
 - [[Pacing and Rhythm]] — 叙事节奏与韵律，不同场景的速度分类和控制方法 (status: developing)
+- [[sources/Seedance 2.0 标点控声]] — Seedance 2.0 高阶技能：标点控制语气语调、情绪感染力（来源页）(status: ingested)
 
 ## Storytelling & Screenwriting
 

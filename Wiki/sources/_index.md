@@ -66,6 +66,7 @@ All source pages — summaries of ingested documents, transcripts, articles, and
 ## Video Generation
 
 - [[sources/Seedance-2.5-Prompt-Guide]] — Seedance 2.5 提示词指南：6步公式、运镜词汇表、灯光词汇表（第三方整理，非官方）(status: ingested)
+- [[sources/Seedance 2.0 标点控声]] — Seedance 2.0 高阶技能：标点符号控制 AI 人物语气语调、情绪感染力（省略号=声断气连）(status: ingested)
 
 ---
 
