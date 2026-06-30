@@ -1,5 +1,22 @@
 {
   "sources": {
+    ".raw/微表情情绪特征集-2026-06-30.md": {
+      "hash": null,
+      "ingested_at": "2026-06-30",
+      "pages_created": [
+        "Wiki/sources/微表情情绪特征集.md"
+      ],
+      "pages_updated": [
+        "Wiki/concepts/AI角色资产搭建.md",
+        "Wiki/concepts/_index.md",
+        "Wiki/sources/_index.md",
+        "Wiki/index.md",
+        "Wiki/log.md",
+        "Wiki/hot.md",
+        "Wiki/sources/微表情情绪特征集.md"
+      ],
+      "address_map": {}
+    },
     "Wiki/sources/Seedance 2.0 标点控声.md": {
       "hash": null,
       "ingested_at": "2026-06-29",

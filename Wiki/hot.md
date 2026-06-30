@@ -15,6 +15,8 @@ related:
 
 Navigation: [[index]] | [[log]]
 
+2026-06-30 (20:27): **Ingest update — 微表情情绪特征集追加第二批**. 追加9组纯面部动作精炼版微表情提示词（藐视/微笑/内疚/憋笑/失落/惊讶瞪眼/意外挑眉/惊喜交加/惊恐万分），收尾统一用"全部神态流利并富有层次"。Updated [[AI角色资产搭建]]（微表情章节改为两批并存：第一批4组完整镜头版+第二批9组纯面部动作版），[[sources/微表情情绪特征集]]（追加第二批原文），[[hot]].
+
 2026-06-29 (21:50): **Concept update — AI 角色声音控制 + Source creation — Seedance 2.0 标点控声**. 从 B 站视频（AI 智能夏老师 2026-06-28）提炼标点控声实战深化：省略号=声断气连、拆句+换行=分镜节奏。Created [[sources/Seedance 2.0 标点控声]] (address: c-000015). Updated: [[AI角色声音控制]]（追加"标点控声实战深化"小节，保留原标点表）, [[concepts/_index]], [[sources/_index]], [[index]], [[log]].
 
 2026-06-27 (16:15): **Concept creation — AI 室内光控制**. 三大法则：光源锚定（为光找宿主）、衰减路径（描述光从亮到暗）、漫反射（用反射填充暗部）。Created [[AI室内光控制]]. Updated: [[concepts/_index]], [[index]], [[log]], [[hot]].

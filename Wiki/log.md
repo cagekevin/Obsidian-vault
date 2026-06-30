@@ -17,6 +17,13 @@ Navigation: [[index]] | [[hot]]
 
 ---
 
+## [2026-06-30] Ingest | 微表情情绪特征集
+- Source: Kevin 与 AI 对话中的提示词素材
+- Summary: [[sources/微表情情绪特征集]]
+- Pages created: [[sources/微表情情绪特征集]]
+- Pages updated: [[AI角色资产搭建]]（追加"微表情情绪特征对照表"章节，含 6 组完整提示词模板——内疚/藐视/忍笑/微笑/忧郁隐忍完整弧线/忧郁隐忍精简弧线）, [[concepts/_index]], [[sources/_index]], [[index]], [[log]], [[hot]]
+- Key insight: 微表情提示词的核心不是写"情绪标签词"，而是写面部肌肉的具体状态。6 组模板覆盖了 5 种基础情绪 + 2 种情绪演变结构，且古风女子 4 组共享同一套镜头/背景/音频模板，可用于定义"情绪锚点"快速切换。
+
 ## [2026-06-29] Audit + skill update | Wiki 流程审计与执行链补全
 - Summary: 对 4 个 wiki skill + schema.md 做完整审计，发现 8 个问题（A 类 5 条「删了会出错」+ B 类 3 条「加了有好处」）。按方案 II 全部修复。
 - Files updated: `Wiki/skills/ingest.md`（加中文触发词 + Step 0 hot.md/manifest 检查 + manifest 更新入主流程）, `Wiki/skills/save.md`（加 Type 映射提示脚注）, `Wiki/skills/lint.md`（加第 11 项 Schema rule enforcement + 报告模板）, `Context/schema.md`（加 Type 字典）

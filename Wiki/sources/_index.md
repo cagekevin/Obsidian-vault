@@ -68,6 +68,10 @@ All source pages — summaries of ingested documents, transcripts, articles, and
 - [[sources/Seedance-2.5-Prompt-Guide]] — Seedance 2.5 提示词指南：6步公式、运镜词汇表、灯光词汇表（第三方整理，非官方）(status: ingested)
 - [[sources/Seedance 2.0 标点控声]] — Seedance 2.0 高阶技能：标点符号控制 AI 人物语气语调、情绪感染力（省略号=声断气连）(status: ingested)
 
+## 微表情与角色表演
+
+- [[sources/微表情情绪特征集]] — 5 种基础情绪（内疚/藐视/忍笑/微笑/忧郁隐忍）+ 2 种情绪演变结构的完整提示词模板 (status: ingested)
+
 ---
 
 ## Add new sources here after each ingest.
