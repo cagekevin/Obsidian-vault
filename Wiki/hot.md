@@ -15,6 +15,8 @@ related:
 
 Navigation: [[index]] | [[log]]
 
+2026-06-30 (14:16): **Concept creation — AI视频电影质感**. 从 B 站视频（李一帆AIGC 2026-06-17）提炼电影质感三要素：颜色有情绪、空间有呼吸、材质有真实感。Created [[AI视频电影质感]], [[sources/AI视频电影质感底层逻辑]]. Updated: [[AI氛围与色彩控制]], [[人感审美与材质重塑]], [[concepts/_index]], [[index]], [[log]], [[hot]].
+
 2026-06-30 (12:39): **Concept creation — AI长视频丝滑衔接**. 从 B 站视频（李一帆AIGC 2026-06-21）提炼 AI 长视频拼接的三种方法：切换景别和角度、动作中衔接（视觉暂留）、分镜组接镜头。来源: https://www.bilibili.com/video/BV1qyjb6XEmX/. Created [[AI长视频丝滑衔接]]. Updated: [[concepts/_index]], [[index]], [[log]], [[hot]].
 
 2026-06-29 (21:50): **Concept update — AI 角色声音控制 + Source creation — Seedance 2.0 标点控声**. 从 B 站视频（AI 智能夏老师 2026-06-28）提炼标点控声实战深化：省略号=声断气连、拆句+换行=分镜节奏。Created [[sources/Seedance 2.0 标点控声]] (address: c-000015). Updated: [[AI角色声音控制]]（追加"标点控声实战深化"小节，保留原标点表）, [[concepts/_index]], [[sources/_index]], [[index]], [[log]].

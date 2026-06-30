@@ -17,6 +17,13 @@ Navigation: [[index]] | [[hot]]
 
 ---
 
+## [2026-06-30] Concept creation | AI 视频电影质感 + 概念页更新
+- Source: B 站视频 [BV1EFLR6dE4f](https://www.bilibili.com/video/BV1EFLR6dE4f/) — 李一帆AIGC 2026-06-17
+- Summary: [[AI视频电影质感]]
+- Pages created: [[AI视频电影质感]], [[sources/AI视频电影质感底层逻辑]]
+- Pages updated: [[AI氛围与色彩控制]]（追加"色调即情绪"核心理念）, [[人感审美与材质重塑]]（追加"主动制造瑕疵"技法）, [[concepts/_index]], [[index]], [[hot]], [[log]]
+- Key insight: 电影质感三要素——颜色有情绪（色调即情绪）、空间有呼吸（留白让主次分明）、材质有真实感（写状态少写名字+主动加瑕疵）。电影感不是加法而是减法。
+
 ## [2026-06-30] Concept creation | AI 长视频丝滑衔接
 - Source: B 站视频 [BV1qyjb6XEmX](https://www.bilibili.com/video/BV1qyjb6XEmX/) — 李一帆AIGC 2026-06-21
 - Summary: [[AI长视频丝滑衔接]]
