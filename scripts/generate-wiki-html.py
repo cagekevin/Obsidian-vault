@@ -224,6 +224,7 @@ def render_html(sections, pages):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0/dist/fuse.min.js"></script>
 <style>
     :root {{
         --color-bg-base: oklch(0.99 0.00 0);      
@@ -304,11 +305,10 @@ def render_html(sections, pages):
     .stats {{ font-size: 11px; font-weight: 600; color: var(--color-text-muted); padding: var(--space-16) var(--space-24); border-top: 1px solid var(--color-border); letter-spacing: 0.05em; text-transform: uppercase; }}
 
     /* --- Main Content --- */
-    .main-content {{ flex: 1; overflow-y: auto; display: flex; justify-content: center; }}
+    .main-content {{ flex: 1; overflow-y: auto; display: flex; justify-content: center; align-items: flex-start; padding: var(--space-48) var(--space-24); box-sizing: border-box; }}
+    .main-content .article-container {{ width: 100%; max-width: 800px; min-height: calc(100vh - var(--space-96)); box-sizing: border-box; }}
     .main-content::-webkit-scrollbar {{ width: 6px; }}
     .main-content::-webkit-scrollbar-thumb {{ background: var(--color-border); border-radius: 4px; }}
-    
-    .article-container {{ width: 100%; max-width: 800px; }}
     
     .article-title {{ font-size: 48px; line-height: 1.1; font-weight: 800; margin-bottom: var(--space-16); letter-spacing: -0.03em; }}
     
@@ -321,8 +321,8 @@ def render_html(sections, pages):
 
     /* Markdown Body Styling (Strict Scandi) */
     .article-body p {{ font-size: 16px; line-height: 1.8; font-weight: 400; margin-bottom: var(--space-24); color: var(--color-text-main); }}
-    .article-body h2 {{ font-size: 24px; font-weight: 700; margin: var(--space-64) 0 var(--space-24); letter-spacing: -0.02em; }}
-    .article-body h3 {{ font-size: 18px; font-weight: 600; margin: var(--space-48) 0 var(--space-16); }}
+    .article-body h2 {{ font-size: 24px; font-weight: 700; margin: var(--space-32) 0 var(--space-16); letter-spacing: -0.02em; }}
+    .article-body h3 {{ font-size: 18px; font-weight: 600; margin: var(--space-24) 0 var(--space-8); }}
     .article-body ul, .article-body ol {{ padding-left: var(--space-24); margin-bottom: var(--space-24); font-size: 16px; line-height: 1.8; color: var(--color-text-main); }}
     .article-body li {{ margin-bottom: var(--space-8); }}
     .article-body a {{ color: var(--color-accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.2s; }}
@@ -339,7 +339,7 @@ def render_html(sections, pages):
     .article-body th, .article-body td {{ border-bottom: 1px solid var(--color-border); padding: var(--space-16) var(--space-8); text-align: left; }}
     .article-body th {{ font-weight: 600; color: var(--color-text-muted); text-transform: uppercase; letter-spacing: 0.05em; font-size: 12px; }}
     
-    .article-body hr {{ border: none; border-top: 1px solid var(--color-border); margin: var(--space-64) 0; }}
+    .article-body hr {{ border: none; border-top: 1px solid var(--color-border); margin: var(--space-32) 0; }}
 
     /* Overview Cards */
     .overview-grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--space-24); margin-top: var(--space-32); }}
@@ -505,42 +505,44 @@ function showDetail(name, el) {{
     }});
 }}
 
+renderTree();
+
+// ── Fuse.js 搜索索引 ──
+const fuseItems = [];
+treeData.forEach(cat => {{
+    const allItems = [];
+    cat.subcategories.forEach(sub => sub.items.forEach(it => allItems.push(it)));
+    cat.standalone.forEach(it => allItems.push(it));
+    allItems.forEach(item => {{
+        const bodyText = (bodyHtml[item.name] || '').replace(/<[^>]+>/g, '');
+        fuseItems.push({{ name: item.name, desc: item.desc, body: bodyText }});
+    }});
+}});
+const fuse = new Fuse(fuseItems, {{
+    keys: [
+        {{ name: 'name', weight: 10 }},
+        {{ name: 'desc', weight: 3 }},
+        {{ name: 'body', weight: 1 }}
+    ],
+    threshold: 0.4,
+    includeScore: true
+}});
+
 let searchTimer = null;
 function onSearch() {{
     clearTimeout(searchTimer);
     searchTimer = setTimeout(() => {{
-        const q = document.getElementById('search').value.trim().toLowerCase();
+        const q = document.getElementById('search').value.trim();
         if (!q) {{ showOverview(); return; }}
-        
-        let results = [];
-        treeData.forEach(cat => {{
-            const allItems = [];
-            cat.subcategories.forEach(sub => sub.items.forEach(it => allItems.push(it)));
-            cat.standalone.forEach(it => allItems.push(it));
-            
-            allItems.forEach(item => {{
-                const bodyText = (bodyHtml[item.name] || '').replace(/<[^>]+>/g, '');
-                const searchText = (item.name + ' ' + item.desc + ' ' + bodyText).toLowerCase();
-                if (searchText.includes(q)) results.push(item);
-            }});
-        }});
-        
+        const results = fuse.search(q);
         let html = `<h1 class="article-title">Search Results</h1>
                     <div class="article-meta"><span>${{results.length}} RESULTS FOR "${{q.toUpperCase()}}"</span></div>
                     <div class="article-body">`;
-                    
-        results.forEach(item => {{
-            const idx = (item.name + ' ' + item.desc).toLowerCase().indexOf(q);
-            let titleHtml = item.name;
-            let descHtml = item.desc;
-            if (idx !== -1) {{
-                const end = idx + q.length;
-                titleHtml = item.name.substring(0, idx) + '<span class="search-match">' + item.name.substring(idx, end) + '</span>' + item.name.substring(end);
-                descHtml = item.desc.substring(0, idx) + '<span class="search-match">' + item.desc.substring(idx, end) + '</span>' + item.desc.substring(end);
-            }}
+        results.forEach(r => {{
+            const item = r.item;
             html += `<div class="search-result-item" onclick="showDetail('${{item.name}}')">
-                <div class="search-result-title">${{titleHtml}}</div>
-                <div class="search-result-desc">${{descHtml}}</div>
+                <div class="search-result-title">${{item.name}}</div>
+                <div class="search-result-desc">${{item.desc}}</div>
             </div>`;
         }});
         html += '</div>';
@@ -549,7 +551,6 @@ function onSearch() {{
     }}, 200);
 }}
 
-renderTree();
 showOverview();
 </script>
 </body>
