@@ -17,6 +17,13 @@ Navigation: [[index]] | [[hot]]
 
 ---
 
+## [2026-06-30] Concept creation | AI 长视频丝滑衔接
+- Source: B 站视频 [BV1qyjb6XEmX](https://www.bilibili.com/video/BV1qyjb6XEmX/) — 李一帆AIGC 2026-06-21
+- Summary: [[AI长视频丝滑衔接]]
+- Pages created: [[AI长视频丝滑衔接]] (concept)
+- Pages updated: [[concepts/_index]], [[index]], [[hot]], [[log]]
+- Key insight: 真正限制 AI 长视频制作的不是 15 秒，而是硬续长镜头。电影本来就不是一镜到底，而是靠镜头组接完成叙事。三种方法由浅入深：切换景别角度（基础）、动作中衔接利用视觉暂留（进阶）、分镜组接镜头（终极）。
+
 ## [2026-06-29] Audit + skill update | Wiki 流程审计与执行链补全
 - Summary: 对 4 个 wiki skill + schema.md 做完整审计，发现 8 个问题（A 类 5 条「删了会出错」+ B 类 3 条「加了有好处」）。按方案 II 全部修复。
 - Files updated: `Wiki/skills/ingest.md`（加中文触发词 + Step 0 hot.md/manifest 检查 + manifest 更新入主流程）, `Wiki/skills/save.md`（加 Type 映射提示脚注）, `Wiki/skills/lint.md`（加第 11 项 Schema rule enforcement + 报告模板）, `Context/schema.md`（加 Type 字典）

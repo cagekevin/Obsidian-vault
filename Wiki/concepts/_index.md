@@ -102,6 +102,7 @@ All concept pages — ideas, patterns, and frameworks extracted from sources.
 
 - [[AI Camera Movements]] — AI 视频生成中常用的 30+ 种运镜手法提示词，包括基础运镜、动态情绪运镜、角度视角、进阶技巧等
 - [[Pacing and Rhythm]] — 叙事节奏与韵律，不同场景的速度分类和控制方法，与运镜配合使用
+- [[AI长视频丝滑衔接]] — 多段 15 秒 AI 视频拼接的三种方法：切换景别角度、动作中衔接、分镜组接 (status: developing)
 
 ---
 

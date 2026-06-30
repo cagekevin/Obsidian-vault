@@ -103,6 +103,7 @@ Navigation: [[log]] | [[hot]]
 
 - [[AI Camera Movements]] — AI 视频生成运镜手法提示词 + 英文速查词汇表 + 灯光词汇表 (status: developing)
 - [[Pacing and Rhythm]] — 叙事节奏与韵律，不同场景的速度分类和控制方法 (status: developing)
+- [[AI长视频丝滑衔接]] — 多段 15 秒 AI 视频拼接的三种方法：切换景别角度、动作中衔接、分镜组接 (status: developing)
 - [[sources/Seedance 2.0 标点控声]] — Seedance 2.0 高阶技能：标点控制语气语调、情绪感染力（来源页）(status: ingested)
 
 ## Storytelling & Screenwriting

@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki\\concepts\\_index.md",
+  "page_address": "syn-e8c8cb",
+  "chunk_index": 2,
+  "raw_text": "只改用户要求改的那一点，不全量返工\n- [[Single Version Principle]] — 单一版本原则，只给一个最优解 + 理由，不给一堆选项让用户选\n- [[Binary Question]] — 二进制提问法，信息不够时问窄的二选一问题，不问开放问题\n\n---\n\n## Add new concepts here as they are extracted from sources.",
+  "contextualized_text": "This passage is from the wiki page \"Concepts Index\". The page opens: # Concepts Index\n\nNavigation: [[index]] | [[entities/_index|Entities]] | [[sources/_index|Sources]]\n\nAll concept pages — ideas, patterns, and frameworks extracted from sources.\n\n只改用户要求改的那一点，不全量返工\n- [[Single Version Principle]] — 单一版本原则，只给一个最优解 + 理由，不给一堆选项让用户选\n- [[Binary Question]] — 二进制提问法，信息不够时问窄的二选一问题，不问开放问题\n\n---\n\n## Add new concepts here as they are extracted from sources.",
+  "prefix": "This passage is from the wiki page \"Concepts Index\". The page opens: # Concepts Index\n\nNavigation: [[index]] | [[entities/_index|Entities]] | [[sources/_index|Sources]]\n\nAll concept pages — ideas, patterns, and frameworks extracted from sources.",
+  "prefix_source": "synthetic",
+  "char_count": 200,
+  "body_hash": "sha256:4d3e90f8089ea5a07b2f1a9dc77d48a6125d111ce938115f0ef86fa4188b0f73",
+  "page_body_hash": "sha256:b8a7aedc52a5bb5af29b0406d0573a15220b2fbf34387997622367fd1e1d3232",
+  "created_at": "2026-06-30T04:40:14Z"
+}

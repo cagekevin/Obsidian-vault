@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "page_path": "wiki/concepts/摄影语言锚定质感.md",
+  "page_path": "wiki\\concepts\\摄影语言锚定质感.md",
   "page_address": "c-000013",
   "chunk_index": 0,
   "raw_text": "# 摄影语言锚定质感\n\n获取照片真实质感的方法：**用摄影镜头语言（镜头/光线/构图/胶片）替代\"超逼真\"等抽象词。**\n\n## 核心原则\n\n当想要真实质感时，用摄影语言比用形容词效果要好得多：\n\n- **不要写**：\"超逼真、照片级画质\"\n- **要写**：\"35mm 胶片照片、中景、视线高度、50mm 镜头、柔和海岸光、前景深、轻微胶片质感\"\n- **反向约束**：\"不要美化、不要重度修图、不要电影光、不要戏剧化成分、不要风格化构图\"\n\n## 和克制原则的关系\n\n[[克制原则]] 要求用静态的、状态化的描述避免 AI 走极端。摄影语言锚定质感就是这一原则的具体实践——用具体的摄影参数替代抽象的程度词。\n\n## 参考来源\n\n[[sources/OpenAI-GPT-4o-Image-Generation-28案例]]",
@@ -10,5 +10,5 @@
   "char_count": 364,
   "body_hash": "sha256:29b7edf5e1d0e95d7d638ccc5abd31bcbc3a89a071fb5c164635f1f3cf8e1314",
   "page_body_hash": "sha256:a4c1e57f580945bc01e3bad5ef37f81a9455cf25ece0dd82fc3cdb8c9a483999",
-  "created_at": "2026-06-29T13:50:42Z"
+  "created_at": "2026-06-30T04:40:15Z"
 }
