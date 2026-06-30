@@ -16,6 +16,10 @@ related:
 Navigation: [[index]] | [[log]]
 
 <<<<<<< HEAD
+2026-06-30 (23:10): **Concept creation — AI 视频提示词生成检查清单**. 7 阶段 30+ 项检查，每项含"判断是否需要使用"维度，从故事结构到语法修正全覆盖。Created [[AI视频提示词生成检查清单]]. Updated [[concepts/_index]], [[index]], [[log]], [[hot]].
+
+2026-06-30 (22:47): **Concept update — AI 分镜设计 + Source creation — 老白的分镜**. 从老白的分镜视频（B站）补充主镜设计理念：先定核心画面再围绕主镜加镜头，四个强调手法（多拍少拍/控制信息/对比/镜头运动连接）。Created [[sources/老白的分镜 万能分镜思路]]. Updated [[AI分镜设计]]（追加主镜设计章节），[[concepts/_index]], [[sources/_index]], [[index]], [[log]], [[hot]].
+
 2026-06-30 (22:15): **Concept creation — AI 分镜设计 + Pacing and Rhythm**. 基于 StudioBinder 分镜指南 + 何止维最短路径理论 + 刺猬星球时间补偿机制搭建。Created [[AI分镜设计]]（四步法：拆场景→定景别→选运镜→定节奏）, [[Pacing and Rhythm]]（节奏控制三维度+检查清单）. Updated [[concepts/_index]], [[index]], [[log]], [[hot]].
 
 2026-06-30 (21:38): **Concept creation — AI 首尾帧控制**. 从何止维《首尾帧梦境转场》提炼四步思维模型：识别最短路径陷阱→决定拦什么→给替代路径→加气质词。Created [[AI首尾帧控制]]. Updated [[concepts/_index]], [[index]], [[log]], [[hot]].

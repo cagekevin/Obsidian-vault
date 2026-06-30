@@ -82,6 +82,9 @@ All concept pages — ideas, patterns, and frameworks extracted from sources.
 - [[AI首尾帧控制]] — 四步思维模型：识别最短路径陷阱→决定拦什么→给替代路径→加气质词 (status: developing)
 - [[时间补偿机制与动态词学]] — 时间词三态、运动矢量反推 (status: developing)
 
+### 检查清单与工作流
+- [[AI视频提示词生成检查清单]] — 7 阶段 30+ 项检查，每项含判断维度，从故事到修正全覆盖 (status: developing)
+
 ### 提示词与底层机制
 - [[AI视觉语法体系]] — 提示词五板块、词序规则、反向提示词 (status: developing)
 - [[AI底层机制与高级控制]] — 误解机制、风格泄漏、鲁棒性破坏、知识诅咒、提示词权重竞争 (status: developing)
@@ -93,7 +96,7 @@ All concept pages — ideas, patterns, and frameworks extracted from sources.
 - [[AI生图两段式]] — 信息版→情绪版，先锁内容再上影调 (status: developing)
 
 ### 分镜与节奏
-- [[AI分镜设计]] — 四步法：拆场景→定景别→选运镜→定节奏，景别运用指南 (status: developing)
+- [[AI分镜设计]] — 主镜设计+四步法：先定核心画面，再设计每个镜头的景别/运镜/节奏 (status: developing)
 - [[Pacing and Rhythm]] — 节奏控制三维度：镜头时长、动作节奏、情绪节奏，节奏检查清单 (status: developing)
 
 ### 创作思维与工具

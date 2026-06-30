@@ -1,0 +1,14 @@
+{
+  "schema_version": 1,
+  "page_path": "wiki/sources/_index.md",
+  "page_address": "syn-c066d9",
+  "chunk_index": 1,
+  "raw_text": "视频的方法论合辑：提示词权重竞争、知识诅咒、生图两段式、PBR材质、低长调影调、电影感布光、构图术语、首尾帧控制 (status: ingested)\n- [[sources/老白的分镜 万能分镜思路]] — 老白的分镜理念：先定主镜再围绕主镜加镜头，四个强调手法 (status: ingested)\n\n---\n\n## Add new sources here after each ingest.",
+  "contextualized_text": "This passage is from the wiki page \"Sources Index\". The page opens: # Sources Index\n\nNavigation: [[index]] | [[concepts/_index|Concepts]] | [[entities/_index|Entities]]\n\nAll source pages — summaries of ingested documents, transcripts, articles, and data.\n\n视频的方法论合辑：提示词权重竞争、知识诅咒、生图两段式、PBR材质、低长调影调、电影感布光、构图术语、首尾帧控制 (status: ingested)\n- [[sources/老白的分镜 万能分镜思路]] — 老白的分镜理念：先定主镜再围绕主镜加镜头，四个强调手法 (status: ingested)\n\n---\n\n## Add new sources here after each ingest.",
+  "prefix": "This passage is from the wiki page \"Sources Index\". The page opens: # Sources Index\n\nNavigation: [[index]] | [[concepts/_index|Concepts]] | [[entities/_index|Entities]]\n\nAll source pages — summaries of ingested documents, transcripts, articles, and data.",
+  "prefix_source": "synthetic",
+  "char_count": 200,
+  "body_hash": "sha256:a15ba303577391c2dbfe3b83c95fc5783ebd5ae1ad11fcc6a5e2ab1c24cad1cc",
+  "page_body_hash": "sha256:855433d612bc56fa86df8cbc55ae460eb1d1a96e71a42ff71ee71e712e135cdf",
+  "created_at": "2026-06-30T14:48:22Z"
+}

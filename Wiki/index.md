@@ -84,6 +84,9 @@ Navigation: [[log]] | [[hot]]
 - [[AI底层机制与高级控制]] — 误解机制、风格泄漏、鲁棒性破坏、知识诅咒、提示词权重竞争、JSON提示词 (status: developing)
 - [[风格提取与约束系统]] — 不可变约束点、风格边界锁定、结构骨架反推 (status: developing)
 
+### 检查清单
+- [[AI视频提示词生成检查清单]] — 7 阶段 30+ 项检查，每项含判断维度，从故事到修正全覆盖 (status: developing)
+
 ### 工作流与方法
 - [[AI生图两段式]] — 信息版→情绪版，先锁内容再上影调 (status: developing)
 
@@ -92,6 +95,9 @@ Navigation: [[log]] | [[hot]]
 - [[AI创意方法论]] — 打破物理定律、让时间失控、把镜头变成角色 (status: developing)
 
 - [[物理模拟控制流（Cinema Studio）]] — 真实摄影机模拟、物理模拟引擎 (status: developing)
+
+### 检查清单
+- [[AI视频提示词生成检查清单]] — 7 阶段 30+ 项检查，每项含判断维度，从故事到修正全覆盖 (status: developing)
 
 ### 工作流与方法
 - [[产物先行]] — 先定义交付物类型，再写提示词；不同产物触发不同精修逻辑 (status: mature)
@@ -109,7 +115,7 @@ Navigation: [[log]] | [[hot]]
 - [[AI Camera Movements]] — AI 视频生成运镜手法提示词 + 英文速查词汇表 + 灯光词汇表 (status: developing)
 - [[Pacing and Rhythm]] — 叙事节奏与韵律，不同场景的速度分类和控制方法 (status: developing)
 - [[AI首尾帧控制]] — 四步思维模型：识别最短路径陷阱→决定拦什么→给替代路径→加气质词 (status: developing)
-- [[AI分镜设计]] — 四步法：拆场景→定景别→选运镜→定节奏，景别运用指南 (status: developing)
+- [[AI分镜设计]] — 主镜设计+四步法：先定核心画面，再设计每个镜头的景别/运镜/节奏，四个强调手法 (status: developing)
 - [[Pacing and Rhythm]] — 节奏控制三维度：镜头时长、动作节奏、情绪节奏，节奏检查清单 (status: developing)
 - [[AI长视频丝滑衔接]] — 多段 15 秒 AI 视频拼接的三种方法：切换景别角度、动作中衔接、分镜组接 (status: developing)
 - [[AI视频电影质感]] — 电影质感三要素：颜色有情绪、空间有呼吸、材质有真实感 (status: developing)

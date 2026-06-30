@@ -18,6 +18,19 @@ Navigation: [[index]] | [[hot]]
 ---
 
 <<<<<<< HEAD
+## [2026-06-30] Concept creation | AI 视频提示词生成检查清单
+- Summary: 整合 Wiki 所有与提示词生成相关的概念，按 7 阶段分组（故事与结构/分镜与节奏/镜头与构图/动作与人物/光影与色彩/声音与情绪/语法与修正），每项含"判断是否需要使用"维度
+- Pages created: [[AI视频提示词生成检查清单]]
+- Pages updated: [[concepts/_index]], [[index]], [[log]], [[hot]]
+- Key insight: 之前的 Wiki 知识是散落的，每次只能用一部分。这个检查清单把 30+ 项概念整合到一个页面，并标注了每项的使用条件，避免漏用或滥用。
+
+## [2026-06-30] Concept update + Source | 老白的分镜 主镜设计理念
+- Source: B 站 UP 主老白的分镜《万能分镜思路，8分钟讲透！》
+- Summary: [[sources/老白的分镜 万能分镜思路]]
+- Pages created: [[sources/老白的分镜 万能分镜思路]]
+- Pages updated: [[AI分镜设计]]（追加"主镜设计"章节：先定核心画面再围绕主镜加镜头，四个强调手法）
+- Key insight: 主镜设计解决"哪些镜头该存在"，四步法解决"每个镜头怎么做"。两者是先后关系——先用主镜法决定拍什么，再用四步法决定怎么拍。
+
 ## [2026-06-30] Concept creation | AI 分镜设计 + Pacing and Rhythm
 - Summary: 基于 StudioBinder 分镜指南 + 何止维最短路径理论 + 刺猬星球时间补偿机制 + 传统影视节奏理论搭建
 - Pages created: [[AI分镜设计]]（四步法：拆场景→定景别→选运镜→定节奏，含景别指南和分表示例）, [[Pacing and Rhythm]]（节奏控制三维度：镜头时长/动作节奏/情绪节奏，含节奏检查清单）

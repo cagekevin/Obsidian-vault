@@ -74,7 +74,8 @@ All source pages — summaries of ingested documents, transcripts, articles, and
 
 ## 创作者系列
 
-- [[sources/何止维AI创作系列合辑]] — 何止维 12 个视频的方法论合辑：提示词权重竞争、知识诅咒、生图两段式、PBR材质、低长调影调、电影感布光、构图术语 (status: ingested)
+- [[sources/何止维AI创作系列合辑]] — 何止维 13 个视频的方法论合辑：提示词权重竞争、知识诅咒、生图两段式、PBR材质、低长调影调、电影感布光、构图术语、首尾帧控制 (status: ingested)
+- [[sources/老白的分镜 万能分镜思路]] — 老白的分镜理念：先定主镜再围绕主镜加镜头，四个强调手法 (status: ingested)
 
 ---
 
