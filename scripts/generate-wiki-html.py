@@ -80,7 +80,7 @@ def md_to_html(text):
 
         if line.startswith('```'):
             if in_code:
-                html.append(f'<pre><code>{"\\n".join(code_buf)}</code></pre>')
+                html.append(f'<pre><code>{chr(10).join(code_buf)}</code></pre>')
                 code_buf = []
                 in_code = False
                 i += 1
@@ -134,7 +134,12 @@ def md_to_html(text):
         if re.match(r'^[-*+]\s+', line):
             items = []
             while i < len(lines) and re.match(r'^[-*+]\s+', lines[i]):
-                items.append(re.sub(r'^[-*+]\s+', '', lines[i]))
+                item = re.sub(r'^[-*+]\s+', '', lines[i])
+                item = re.sub(r'\[\[([^\]]+)\]\]', r'<a href="#" class="wiki-link" data-name="\1">\1</a>', item)
+                item = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', item)
+                item = re.sub(r'\*(.+?)\*', r'<em>\1</em>', item)
+                item = re.sub(r'`(.+?)`', r'<code>\1</code>', item)
+                items.append(item)
                 i += 1
             lis = ''.join(f'<li>{item}</li>' for item in items)
             html.append(f'<ul>{lis}</ul>')
@@ -143,7 +148,12 @@ def md_to_html(text):
         if re.match(r'^\d+\.\s+', line):
             items = []
             while i < len(lines) and re.match(r'^\d+\.\s+', lines[i]):
-                items.append(re.sub(r'^\d+\.\s+', '', lines[i]))
+                item = re.sub(r'^\d+\.\s+', '', lines[i])
+                item = re.sub(r'\[\[([^\]]+)\]\]', r'<a href="#" class="wiki-link" data-name="\1">\1</a>', item)
+                item = re.sub(r'\*\*(.+?)\*\*', r'<strong>\1</strong>', item)
+                item = re.sub(r'\*(.+?)\*', r'<em>\1</em>', item)
+                item = re.sub(r'`(.+?)`', r'<code>\1</code>', item)
+                items.append(item)
                 i += 1
             lis = ''.join(f'<li>{item}</li>' for item in items)
             html.append(f'<ol>{lis}</ol>')
@@ -160,7 +170,7 @@ def md_to_html(text):
         i += 1
 
     if in_code:
-        html.append(f'<pre><code>{"\\n".join(code_buf)}</code></pre>')
+        html.append(f'<pre><code>{chr(10).join(code_buf)}</code></pre>')
     if in_table:
         html.append(render_table(table_buf))
 
@@ -211,9 +221,9 @@ def render_html(sections, pages):
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>某人的数字花园 | Knowledge Graph</title>
-<link rel="preconnect" href="[https://fonts.googleapis.com](https://fonts.googleapis.com)">
-<link rel="preconnect" href="[https://fonts.gstatic.com](https://fonts.gstatic.com)" crossorigin>
-<link href="[https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap](https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap)" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
     :root {{
         --color-bg-base: oklch(0.99 0.00 0);      
@@ -259,7 +269,8 @@ def render_html(sections, pages):
     .search-box:focus {{ border-color: var(--color-text-muted); outline: none; }}
     
     .tree {{ flex: 1; overflow-y: auto; padding: 0 var(--space-16) var(--space-24); }}
-    .tree::-webkit-scrollbar {{ width: 0; display: none; }} /* 隐藏滚动条保持纯粹 */
+    .tree::-webkit-scrollbar {{ width: 4px; }}
+    .tree::-webkit-scrollbar-thumb {{ background: var(--color-border); border-radius: 4px; }}
 
     .nav-group-title {{
         font-size: 11px; font-weight: 700; color: var(--color-text-muted);
@@ -293,7 +304,7 @@ def render_html(sections, pages):
     .stats {{ font-size: 11px; font-weight: 600; color: var(--color-text-muted); padding: var(--space-16) var(--space-24); border-top: 1px solid var(--color-border); letter-spacing: 0.05em; text-transform: uppercase; }}
 
     /* --- Main Content --- */
-    .main-content {{ flex: 1; overflow-y: auto; padding: var(--space-96) var(--space-64); display: flex; justify-content: center; }}
+    .main-content {{ flex: 1; overflow-y: auto; display: flex; justify-content: center; }}
     .main-content::-webkit-scrollbar {{ width: 6px; }}
     .main-content::-webkit-scrollbar-thumb {{ background: var(--color-border); border-radius: 4px; }}
     
@@ -375,12 +386,12 @@ function renderTree() {{
     let html = '';
     let totalItems = 0;
     treeData.forEach(cat => {{
-        html += `<div class="nav-group-title" onclick="toggleCat(this)">${{cat.category}}</div>`;
-        html += `<div class="cat-items" id="cat-${{cat.category}}">`;
+        html += `<div class="nav-group-title collapsed" onclick="toggleCat(this)">${{cat.category}}</div>`;
+        html += `<div class="cat-items collapsed" id="cat-${{cat.category}}">`;
         
         cat.subcategories.forEach(sub => {{
-            html += `<div class="nav-sub-title" onclick="toggleSub(this)">${{sub.name}}</div>`;
-            html += `<div class="sub-items" id="sub-${{sub.name}}">`;
+            html += `<div class="nav-sub-title collapsed" onclick="toggleSub(this)">${{sub.name}}</div>`;
+            html += `<div class="sub-items collapsed" id="sub-${{sub.name}}">`;
             sub.items.forEach(item => {{
                 html += `<div class="nav-item" onclick="showDetail('${{item.name}}', this)" data-name="${{item.name}}">${{item.name}}</div>`;
                 totalItems++;
@@ -454,7 +465,22 @@ function showDetail(name, el) {{
     if (el) el.classList.add('active');
     
     const sidebarItem = document.querySelector(`.nav-item[data-name="${{name}}"]`);
-    if (sidebarItem) sidebarItem.classList.add('active');
+    if (sidebarItem) {{
+        sidebarItem.classList.add('active');
+        // 展开所在分类和子分类
+        let parent = sidebarItem.parentElement;
+        while (parent) {{
+            if (parent.classList.contains('cat-items') || parent.classList.contains('sub-items')) {{
+                parent.classList.remove('collapsed');
+            }}
+            if (parent.previousElementSibling && (parent.previousElementSibling.classList.contains('nav-group-title') || parent.previousElementSibling.classList.contains('nav-sub-title'))) {{
+                parent.previousElementSibling.classList.remove('collapsed');
+            }}
+            parent = parent.parentElement;
+        }}
+        // 滚动到侧边栏可见
+        sidebarItem.scrollIntoView({{ behavior: 'smooth', block: 'nearest' }});
+    }}
     
     const meta = pagesMeta[name] || {{}};
     const htmlContent = bodyHtml[name] || '<p>Content not found.</p>';
