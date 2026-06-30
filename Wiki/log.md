@@ -17,12 +17,56 @@ Navigation: [[index]] | [[hot]]
 
 ---
 
+<<<<<<< HEAD
+## [2026-06-30] Concept creation | AI 分镜设计 + Pacing and Rhythm
+- Summary: 基于 StudioBinder 分镜指南 + 何止维最短路径理论 + 刺猬星球时间补偿机制 + 传统影视节奏理论搭建
+- Pages created: [[AI分镜设计]]（四步法：拆场景→定景别→选运镜→定节奏，含景别指南和分表示例）, [[Pacing and Rhythm]]（节奏控制三维度：镜头时长/动作节奏/情绪节奏，含节奏检查清单）
+- Pages updated: [[concepts/_index]], [[index]], [[log]], [[hot]]
+- Key insight: 这两个页面补上了"剧本扩充→完整镜头剧本"流程中的关键缺口——分镜设计和节奏控制。分镜设计四步法 + 节奏控制三维度 + AI首尾帧控制的五步法，三者配合可以覆盖从故事到提示词的完整链路。
+
+## [2026-06-30] Concept creation | AI 首尾帧控制
+- Summary: 从何止维《首尾帧不好用了吗？分享一个用它做的电影感梦境转场》中提炼的四步思维模型
+- Pages created: [[AI首尾帧控制]]
+- Pages updated: [[concepts/_index]], [[index]], [[log]], [[hot]]
+- Key insight: 首尾帧的核心机制是最短路径，提示词的本质是为 AI 重新定义最短路径。四步法可套用到任何首尾帧场景。
+
+## [2026-06-30] Batch ingest | 何止维 AI 创作系列合辑（12 个视频）
+- Source: `.raw/何止维AI创作系列合辑-2026-06-30.md`（B 站 UP 主何止维 12 个视频转录稿合辑，2026-03-23 ~ 2026-06-16）
+- Summary: [[sources/何止维AI创作系列合辑]]
+- Pages created:
+  - Source: [[sources/何止维AI创作系列合辑]]
+  - Entity: [[何止维]]
+  - Concepts: [[AI生图两段式]], [[AI影调控制]], [[AI提示词修正思路]]
+- Pages updated:
+  - [[AI底层机制与高级控制]]（追加知识诅咒、提示词权重竞争）
+  - [[人感审美与材质重塑]]（追加 PBR 材质术语库、三维渲染二维感）
+  - [[AI视觉语法体系]]（追加词序权重逻辑、related 更新）
+  - [[AI氛围与色彩控制]]（related 更新）
+  - [[AI镜头语言进阶]]（related 更新）
+  - [[concepts/_index]], [[sources/_index]], [[entities/_index]], [[index]], [[log]], [[hot]]
+- Key insight: 何止维偏底层逻辑（权重竞争/知识诅咒/信息情绪两段），与刺猬星球偏操作技巧高度互补。他的专业术语库（cinematic lighting/PBR/low-key 等）是比抽象形容词更有效的提示词。
+
 ## [2026-06-30] Ingest | 微表情情绪特征集
 - Source: Kevin 与 AI 对话中的提示词素材
 - Summary: [[sources/微表情情绪特征集]]
 - Pages created: [[sources/微表情情绪特征集]]
 - Pages updated: [[AI角色资产搭建]]（追加"微表情情绪特征对照表"章节，含 6 组完整提示词模板——内疚/藐视/忍笑/微笑/忧郁隐忍完整弧线/忧郁隐忍精简弧线）, [[concepts/_index]], [[sources/_index]], [[index]], [[log]], [[hot]]
 - Key insight: 微表情提示词的核心不是写"情绪标签词"，而是写面部肌肉的具体状态。6 组模板覆盖了 5 种基础情绪 + 2 种情绪演变结构，且古风女子 4 组共享同一套镜头/背景/音频模板，可用于定义"情绪锚点"快速切换。
+=======
+## [2026-06-30] Concept creation | AI 视频电影质感 + 概念页更新
+- Source: B 站视频 [BV1EFLR6dE4f](https://www.bilibili.com/video/BV1EFLR6dE4f/) — 李一帆AIGC 2026-06-17
+- Summary: [[AI视频电影质感]]
+- Pages created: [[AI视频电影质感]], [[sources/AI视频电影质感底层逻辑]]
+- Pages updated: [[AI氛围与色彩控制]]（追加"色调即情绪"核心理念）, [[人感审美与材质重塑]]（追加"主动制造瑕疵"技法）, [[concepts/_index]], [[index]], [[hot]], [[log]]
+- Key insight: 电影质感三要素——颜色有情绪（色调即情绪）、空间有呼吸（留白让主次分明）、材质有真实感（写状态少写名字+主动加瑕疵）。电影感不是加法而是减法。
+
+## [2026-06-30] Concept creation | AI 长视频丝滑衔接
+- Source: B 站视频 [BV1qyjb6XEmX](https://www.bilibili.com/video/BV1qyjb6XEmX/) — 李一帆AIGC 2026-06-21
+- Summary: [[AI长视频丝滑衔接]]
+- Pages created: [[AI长视频丝滑衔接]] (concept)
+- Pages updated: [[concepts/_index]], [[index]], [[hot]], [[log]]
+- Key insight: 真正限制 AI 长视频制作的不是 15 秒，而是硬续长镜头。电影本来就不是一镜到底，而是靠镜头组接完成叙事。三种方法由浅入深：切换景别角度（基础）、动作中衔接利用视觉暂留（进阶）、分镜组接镜头（终极）。
+>>>>>>> origin/main
 
 ## [2026-06-29] Audit + skill update | Wiki 流程审计与执行链补全
 - Summary: 对 4 个 wiki skill + schema.md 做完整审计，发现 8 个问题（A 类 5 条「删了会出错」+ B 类 3 条「加了有好处」）。按方案 II 全部修复。

@@ -75,15 +75,26 @@ All concept pages — ideas, patterns, and frameworks extracted from sources.
 
 ### 氛围与色彩
 - [[AI氛围与色彩控制]] — 氛围三要素、调色三法、减法审美、特征塌陷 (status: developing)
+- [[AI影调控制]] — 低长调、影调不是滤镜、电影质感核心 (status: developing)
 
 ### 视频与动作
 - [[AI视频动作设计]] — ARC视角、打斗结构、单主体动作原则 (status: developing)
+- [[AI首尾帧控制]] — 四步思维模型：识别最短路径陷阱→决定拦什么→给替代路径→加气质词 (status: developing)
 - [[时间补偿机制与动态词学]] — 时间词三态、运动矢量反推 (status: developing)
 
 ### 提示词与底层机制
 - [[AI视觉语法体系]] — 提示词五板块、词序规则、反向提示词 (status: developing)
-- [[AI底层机制与高级控制]] — 误解机制、风格泄漏、鲁棒性破坏 (status: developing)
+- [[AI底层机制与高级控制]] — 误解机制、风格泄漏、鲁棒性破坏、知识诅咒、提示词权重竞争 (status: developing)
+- [[AI提示词修正思路]] — 删高干扰动作、修正强磁、明确动作歧义 (status: developing)
+- [[AI 生图决策规则]] — 6 条可执行 if-then 规则 (status: developing)
 - [[风格提取与约束系统]] — 不可变约束点、风格边界锁定 (status: developing)
+
+### 工作流与方法
+- [[AI生图两段式]] — 信息版→情绪版，先锁内容再上影调 (status: developing)
+
+### 分镜与节奏
+- [[AI分镜设计]] — 四步法：拆场景→定景别→选运镜→定节奏，景别运用指南 (status: developing)
+- [[Pacing and Rhythm]] — 节奏控制三维度：镜头时长、动作节奏、情绪节奏，节奏检查清单 (status: developing)
 
 ### 创作思维与工具
 - [[AI导演创作思维]] — 调度优先、核心行动驱动、补拍重构、画面结构拆解法、Codex自动化 (status: developing)
@@ -102,6 +113,8 @@ All concept pages — ideas, patterns, and frameworks extracted from sources.
 
 - [[AI Camera Movements]] — AI 视频生成中常用的 30+ 种运镜手法提示词，包括基础运镜、动态情绪运镜、角度视角、进阶技巧等
 - [[Pacing and Rhythm]] — 叙事节奏与韵律，不同场景的速度分类和控制方法，与运镜配合使用
+- [[AI长视频丝滑衔接]] — 多段 15 秒 AI 视频拼接的三种方法：切换景别角度、动作中衔接、分镜组接 (status: developing)
+- [[AI视频电影质感]] — 颜色有情绪、空间有呼吸、材质有真实感 (status: developing)
 
 ---
 

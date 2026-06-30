@@ -12,12 +12,14 @@ tags:
 created: 2026-06-27
 related:
   - "[[sources/刺猬星球AI创作系列]]"
+  - "[[sources/何止维AI创作系列合辑]]"
   - "[[AI Camera Movements]]"
   - "[[AI视觉语法体系]]"
   - "[[AI氛围与色彩控制]]"
   - "[[摄影语言锚定质感]]"
   - "[[Show Don't Tell]]"
   - "[[Scene Value]]"
+  - "[[何止维]]"
 ---
 
 # AI 镜头语言进阶

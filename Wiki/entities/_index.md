@@ -26,6 +26,7 @@ All entity pages — people, organizations, products, and tools.
 ## People
 
 - [[Andrej Karpathy]] — AI researcher, educator; originated the LLM Wiki pattern
+- [[何止维]] — B 站 AI 视频创作教程 UP 主，提示词底层方法论 (status: mature)
 
 ---
 

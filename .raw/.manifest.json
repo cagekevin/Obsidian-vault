@@ -1,5 +1,30 @@
 {
   "sources": {
+    ".raw/何止维AI创作系列合辑-2026-06-30.md": {
+      "hash": null,
+      "ingested_at": "2026-06-30",
+      "pages_created": [
+        "Wiki/sources/何止维AI创作系列合辑.md",
+        "Wiki/entities/何止维.md",
+        "Wiki/concepts/AI生图两段式.md",
+        "Wiki/concepts/AI影调控制.md",
+        "Wiki/concepts/AI提示词修正思路.md"
+      ],
+      "pages_updated": [
+        "Wiki/concepts/AI底层机制与高级控制.md",
+        "Wiki/concepts/人感审美与材质重塑.md",
+        "Wiki/concepts/AI视觉语法体系.md",
+        "Wiki/concepts/AI氛围与色彩控制.md",
+        "Wiki/concepts/AI镜头语言进阶.md",
+        "Wiki/concepts/_index.md",
+        "Wiki/sources/_index.md",
+        "Wiki/entities/_index.md",
+        "Wiki/index.md",
+        "Wiki/log.md",
+        "Wiki/hot.md"
+      ],
+      "address_map": {}
+    },
     ".raw/微表情情绪特征集-2026-06-30.md": {
       "hash": null,
       "ingested_at": "2026-06-30",

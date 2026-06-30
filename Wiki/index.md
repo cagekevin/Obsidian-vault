@@ -59,13 +59,14 @@ Navigation: [[log]] | [[hot]]
 
 ### 角色与人物
 - [[AI角色资产搭建]] — 人物资产三件套、妆造设计、AI捏脸、活人感、微表情三控、微表情情绪特征对照表、多人动作控制 (status: developing)
-- [[人感审美与材质重塑]] — 减法审美、手工感回归、材质层级重置、打破摆拍感 (status: developing)
+- [[人感审美与材质重塑]] — 减法审美、手工感回归、材质层级重置、打破摆拍感、PBR材质术语库、三维渲染二维感 (status: developing)
 - [[AI角色声音控制]] — 声音公式控制音色、声音过程控制语气、标点符号控制语速、Seedance 2.0 标点控声实战深化 (status: developing)
 
 
 ### 镜头与光线
 - [[AI镜头语言进阶]] — 反向写提示词、低角度原理、空镜三作用、情绪蒙太奇 (status: developing)
-- [[AI视觉语法体系]] — 提示词五板块、词序规则、摄影三参数、反向提示词 (status: developing)
+- [[AI视觉语法体系]] — 提示词五板块、词序规则、摄影三参数、反向提示词、词序权重逻辑 (status: developing)
+- [[AI提示词修正思路]] — 删高干扰动作、修正强磁、明确动作歧义 (status: developing)
 
 ### 环境与构图
 - [[AI环境空间设计]] — 环境三层写法、因果逻辑、场景一致性、伪透视技巧 (status: developing)
@@ -73,14 +74,18 @@ Navigation: [[log]] | [[hot]]
 
 ### 氛围与色彩
 - [[AI氛围与色彩控制]] — 氛围三要素、调色三法、减法审美、特征塌陷 (status: developing)
+- [[AI影调控制]] — 低长调、影调不是滤镜、电影质感核心 (status: developing)
 
 ### 视频与动作
 - [[AI视频动作设计]] — ARC视角、打斗结构、单主体动作原则、人物一致性 (status: developing)
 - [[时间补偿机制与动态词学]] — 时间词三态、运动矢量反推、时间逻辑约束 (status: developing)
 
 ### 高级控制
-- [[AI底层机制与高级控制]] — 误解机制、风格泄漏、鲁棒性破坏、JSON提示词 (status: developing)
+- [[AI底层机制与高级控制]] — 误解机制、风格泄漏、鲁棒性破坏、知识诅咒、提示词权重竞争、JSON提示词 (status: developing)
 - [[风格提取与约束系统]] — 不可变约束点、风格边界锁定、结构骨架反推 (status: developing)
+
+### 工作流与方法
+- [[AI生图两段式]] — 信息版→情绪版，先锁内容再上影调 (status: developing)
 
 ### 创作思维
 - [[AI导演创作思维]] — 调度优先、核心行动驱动、补拍重构、Codex自动化 (status: developing)
@@ -103,7 +108,13 @@ Navigation: [[log]] | [[hot]]
 
 - [[AI Camera Movements]] — AI 视频生成运镜手法提示词 + 英文速查词汇表 + 灯光词汇表 (status: developing)
 - [[Pacing and Rhythm]] — 叙事节奏与韵律，不同场景的速度分类和控制方法 (status: developing)
+- [[AI首尾帧控制]] — 四步思维模型：识别最短路径陷阱→决定拦什么→给替代路径→加气质词 (status: developing)
+- [[AI分镜设计]] — 四步法：拆场景→定景别→选运镜→定节奏，景别运用指南 (status: developing)
+- [[Pacing and Rhythm]] — 节奏控制三维度：镜头时长、动作节奏、情绪节奏，节奏检查清单 (status: developing)
+- [[AI长视频丝滑衔接]] — 多段 15 秒 AI 视频拼接的三种方法：切换景别角度、动作中衔接、分镜组接 (status: developing)
+- [[AI视频电影质感]] — 电影质感三要素：颜色有情绪、空间有呼吸、材质有真实感 (status: developing)
 - [[sources/Seedance 2.0 标点控声]] — Seedance 2.0 高阶技能：标点控制语气语调、情绪感染力（来源页）(status: ingested)
+- [[sources/AI视频电影质感底层逻辑]] — B 站李一帆AIGC：色调即情绪、留白呼吸、瑕疵真实（来源页）(status: ingested)
 
 ## Storytelling & Screenwriting
 

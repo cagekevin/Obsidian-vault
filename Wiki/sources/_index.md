@@ -72,6 +72,10 @@ All source pages — summaries of ingested documents, transcripts, articles, and
 
 - [[sources/微表情情绪特征集]] — 5 种基础情绪（内疚/藐视/忍笑/微笑/忧郁隐忍）+ 2 种情绪演变结构的完整提示词模板 (status: ingested)
 
+## 创作者系列
+
+- [[sources/何止维AI创作系列合辑]] — 何止维 12 个视频的方法论合辑：提示词权重竞争、知识诅咒、生图两段式、PBR材质、低长调影调、电影感布光、构图术语 (status: ingested)
+
 ---
 
 ## Add new sources here after each ingest.

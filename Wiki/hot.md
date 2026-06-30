@@ -15,7 +15,19 @@ related:
 
 Navigation: [[index]] | [[log]]
 
+<<<<<<< HEAD
+2026-06-30 (22:15): **Concept creation — AI 分镜设计 + Pacing and Rhythm**. 基于 StudioBinder 分镜指南 + 何止维最短路径理论 + 刺猬星球时间补偿机制搭建。Created [[AI分镜设计]]（四步法：拆场景→定景别→选运镜→定节奏）, [[Pacing and Rhythm]]（节奏控制三维度+检查清单）. Updated [[concepts/_index]], [[index]], [[log]], [[hot]].
+
+2026-06-30 (21:38): **Concept creation — AI 首尾帧控制**. 从何止维《首尾帧梦境转场》提炼四步思维模型：识别最短路径陷阱→决定拦什么→给替代路径→加气质词。Created [[AI首尾帧控制]]. Updated [[concepts/_index]], [[index]], [[log]], [[hot]].
+
+2026-06-30 (21:05): **Batch ingest — 何止维 AI 创作系列合辑 (13 个视频)**. B 站 UP 主何止维的 12 个 AI 创作视频，覆盖提示词底层逻辑、生图流程、布光影调、材质控制、构图、风格、氛围等完整方法论体系。Created [[sources/何止维AI创作系列合辑]] source page, [[何止维]] entity page, [[AI生图两段式]], [[AI影调控制]], [[AI提示词修正思路]] concept pages. Updated [[AI底层机制与高级控制]]（追加知识诅咒、提示词权重竞争）, [[人感审美与材质重塑]]（追加 PBR 材质术语库、三维渲染二维感）, [[AI视觉语法体系]]（追加词序权重逻辑）, [[AI氛围与色彩控制]], [[AI镜头语言进阶]], [[concepts/_index]], [[sources/_index]], [[entities/_index]], [[index]], [[log]], [[hot]]. Key insight: 何止维偏底层逻辑（权重竞争/知识诅咒/信息情绪两段），与刺猬星球偏操作技巧互补。
+
 2026-06-30 (20:27): **Ingest update — 微表情情绪特征集追加第二批**. 追加9组纯面部动作精炼版微表情提示词（藐视/微笑/内疚/憋笑/失落/惊讶瞪眼/意外挑眉/惊喜交加/惊恐万分），收尾统一用"全部神态流利并富有层次"。Updated [[AI角色资产搭建]]（微表情章节改为两批并存：第一批4组完整镜头版+第二批9组纯面部动作版），[[sources/微表情情绪特征集]]（追加第二批原文），[[hot]].
+=======
+2026-06-30 (14:16): **Concept creation — AI视频电影质感**. 从 B 站视频（李一帆AIGC 2026-06-17）提炼电影质感三要素：颜色有情绪、空间有呼吸、材质有真实感。Created [[AI视频电影质感]], [[sources/AI视频电影质感底层逻辑]]. Updated: [[AI氛围与色彩控制]], [[人感审美与材质重塑]], [[concepts/_index]], [[index]], [[log]], [[hot]].
+
+2026-06-30 (12:39): **Concept creation — AI长视频丝滑衔接**. 从 B 站视频（李一帆AIGC 2026-06-21）提炼 AI 长视频拼接的三种方法：切换景别和角度、动作中衔接（视觉暂留）、分镜组接镜头。来源: https://www.bilibili.com/video/BV1qyjb6XEmX/. Created [[AI长视频丝滑衔接]]. Updated: [[concepts/_index]], [[index]], [[log]], [[hot]].
+>>>>>>> origin/main
 
 2026-06-29 (21:50): **Concept update — AI 角色声音控制 + Source creation — Seedance 2.0 标点控声**. 从 B 站视频（AI 智能夏老师 2026-06-28）提炼标点控声实战深化：省略号=声断气连、拆句+换行=分镜节奏。Created [[sources/Seedance 2.0 标点控声]] (address: c-000015). Updated: [[AI角色声音控制]]（追加"标点控声实战深化"小节，保留原标点表）, [[concepts/_index]], [[sources/_index]], [[index]], [[log]].
 
