@@ -54,16 +54,14 @@ def get_output_dir():
 
 def add_to_apple_music(filepath):
     if sys.platform != "darwin":
-        # 所有格式和浏览器都试过了，官方输出已保留在上面
-    print(f"\n❌ 只可能有两个原因：")
-    print(f"   1. yt-dlp 不是最新版（已尝试自动更新）")
-    print(f"   2. Cookie 问题（浏览器没登录目标网站）")
-    return False
+        print(f"\n❌ 只可能有两个原因：")
+        print(f"   1. yt-dlp 不是最新版（已尝试自动更新）")
+        print(f"   2. Cookie 问题（浏览器没登录目标网站）")
+        return False
     auto_add = os.path.expanduser("~/Music/Music/Media.localized/Automatically Add to Music.localized")
     if os.path.isdir(auto_add):
         shutil.copy2(filepath, auto_add)
         return True
-    # 所有格式和浏览器都试过了，官方输出已保留在上面
     print(f"\n❌ 只可能有两个原因：")
     print(f"   1. yt-dlp 不是最新版（已尝试自动更新）")
     print(f"   2. Cookie 问题（浏览器没登录目标网站）")
