@@ -16,6 +16,8 @@ related:
 Navigation: [[index]] | [[log]]
 
 <<<<<<< HEAD
+2026-06-30 (23:19): **Concept creation — AI 视频提示词生成工作流**. 9 步工作流，每步自带一致性检查（找矛盾），按需加载。Created [[AI视频提示词生成工作流]]. Deleted [[AI视频提示词生成检查清单]]. Updated [[concepts/_index]], [[log]], [[hot]].
+
 2026-06-30 (23:10): **Concept creation — AI 视频提示词生成检查清单**. 7 阶段 30+ 项检查，每项含"判断是否需要使用"维度，从故事结构到语法修正全覆盖。Created [[AI视频提示词生成检查清单]]. Updated [[concepts/_index]], [[index]], [[log]], [[hot]].
 
 2026-06-30 (22:47): **Concept update — AI 分镜设计 + Source creation — 老白的分镜**. 从老白的分镜视频（B站）补充主镜设计理念：先定核心画面再围绕主镜加镜头，四个强调手法（多拍少拍/控制信息/对比/镜头运动连接）。Created [[sources/老白的分镜 万能分镜思路]]. Updated [[AI分镜设计]]（追加主镜设计章节），[[concepts/_index]], [[sources/_index]], [[index]], [[log]], [[hot]].

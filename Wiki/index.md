@@ -85,7 +85,7 @@ Navigation: [[log]] | [[hot]]
 - [[风格提取与约束系统]] — 不可变约束点、风格边界锁定、结构骨架反推 (status: developing)
 
 ### 检查清单
-- [[AI视频提示词生成检查清单]] — 7 阶段 30+ 项检查，每项含判断维度，从故事到修正全覆盖 (status: developing)
+- [[AI视频提示词生成工作流]] — 9 步工作流，每步自带一致性检查，按需加载 (status: developing)
 
 ### 工作流与方法
 - [[AI生图两段式]] — 信息版→情绪版，先锁内容再上影调 (status: developing)
@@ -97,7 +97,7 @@ Navigation: [[log]] | [[hot]]
 - [[物理模拟控制流（Cinema Studio）]] — 真实摄影机模拟、物理模拟引擎 (status: developing)
 
 ### 检查清单
-- [[AI视频提示词生成检查清单]] — 7 阶段 30+ 项检查，每项含判断维度，从故事到修正全覆盖 (status: developing)
+- [[AI视频提示词生成工作流]] — 9 步工作流，每步自带一致性检查，按需加载 (status: developing)
 
 ### 工作流与方法
 - [[产物先行]] — 先定义交付物类型，再写提示词；不同产物触发不同精修逻辑 (status: mature)

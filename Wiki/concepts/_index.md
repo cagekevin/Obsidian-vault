@@ -83,7 +83,7 @@ All concept pages — ideas, patterns, and frameworks extracted from sources.
 - [[时间补偿机制与动态词学]] — 时间词三态、运动矢量反推 (status: developing)
 
 ### 检查清单与工作流
-- [[AI视频提示词生成检查清单]] — 7 阶段 30+ 项检查，每项含判断维度，从故事到修正全覆盖 (status: developing)
+- [[AI视频提示词生成工作流]] — 9 步工作流，每步自带一致性检查，按需加载 (status: developing)
 
 ### 提示词与底层机制
 - [[AI视觉语法体系]] — 提示词五板块、词序规则、反向提示词 (status: developing)
