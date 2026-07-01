@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/cagekevin/Obsidian-vault#readme",
   "dependencies": {
+    "lucide-static": "^1.22.0",
     "playwright": "^1.61.0"
   }
 }
