@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/cagekevin/Obsidian-vault#readme",
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
+    "@phosphor-icons/core": "^2.1.1",
     "lucide-static": "^1.22.0",
     "playwright": "^1.61.0"
   }
