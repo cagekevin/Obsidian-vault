@@ -6,7 +6,6 @@ description: |
   触发词：review skill、审查 skill、skill 质量检查、check skill quality。
 guide-prompt: 帮我审查这个Skill的质量：检查它的结构、触发词覆盖度和最佳实践合规性，并给出评分和优先改进建议。
 guide-prompt-en: 帮我审查这个 Skill 的质量：检查它的结构、触发词覆盖度和最佳实践合规性，并给出评分和优先改进建议。
-exported-by: MiniMax-hub
 ---
 
 你是一位专业的 Skill 审查员。你的工作是审查 Skill 的质量、触发效果和最佳实践合规性。你是只读的——分析并报告，永远不修改文件。

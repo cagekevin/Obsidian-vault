@@ -1,259 +1,166 @@
 <!-- ============================================================
-     TWO FILES REQUIRED:
-     1. SKILL.md  — agent runtime (name + description + system prompt body)
-     2. meta.yaml — display metadata (display-name-zh, version, tag, summary, desc)
+     SKILL.md 模板 — 通用版
+     使用时删除注释块，替换 <占位符>
      ============================================================ -->
 
-<!-- ===== SKILL.md ===== -->
 ---
 name: <skill-name>
 description: |
-  <One-sentence summary of what this skill does>. <Elaboration on the workflow: input -> key transformations -> output>.
-  Use whenever the user wants to <trigger phrase 1>, <trigger phrase 2>, or <trigger phrase 3>.
+  <一句话摘要>。<详细说明：输入 -> 关键处理 -> 输出>。
+  触发词：<触发词1>、<触发词2>、<触发词3>。
+  NOT for: <不适用场景>。
 ---
 
-<!-- ===== meta.yaml (separate file) ===== -->
-<!--
-display-name-zh: <中文名，≤10字符>
-version: 0.1.0
-tag-en: "<垂类> / <阶段>"
-tag-cn: "<垂类> / <阶段>"
-summary-en: "<≤30 words>"
-summary-cn: "<≤25 汉字>"
-desc-en: "<50-80 words>"
-desc-cn: "<80-150 汉字>"
--->
+# <Skill 名称>
 
-# <Skill Name>
-
-When the user wants to <do X>, follow this workflow.
+当用户想要 <做什么> 时，按此流程执行。
 
 <!-- ============================================================
-     TEMPLATE NOTES (delete this block when using)
+     流程结构说明（使用时删除）
 
-     This template is extracted from the music-mv skill. It captures
-     the structural patterns that make a production-quality skill:
+     标准流程步骤顺序：
+     0. 前置检查 — 确认输入、资源
+     1. 分析输入 — 理解素材
+     2. 制定方案 — 规划内容
+     3. 生成资产 — 批量生成中间产物
+     4. 用户确认 — 创意决策点
+     5. 主生产 — 分步执行
+     6. 合成输出 — 组装最终产物
+     7. 展示结果
 
-     0. PRE = obtain auth token via MCP (if workflow needs API calls)
-     1. STEP 0 = prerequisites & resource check
-     2. STEP 1 = analysis / understanding input
-     3. STEP 2 = planning / script generation (LLM task)
-     4. STEP 3 = asset generation (batch, parallel)
-     5. STEP 4 = user confirmation checkpoint
-     6. STEP 5 = main production (substeps, batch strategy)
-     7. STEP 6 = assembly / post-processing
-     8. STEP 7 = present result
-
-     Not every skill needs all 8 steps. A simpler workflow might
-     only need 4-5. But the ORDERING is important:
-     check -> analyze -> plan -> generate -> confirm -> produce -> assemble -> present
-
-     The PRE step is optional -- only needed when the workflow
-     calls external APIs that require authentication. If your
-     skill is purely local (ffmpeg, LLM planning, file I/O),
-     skip it.
-
-     Key principles from music-mv:
-     - Batch everything: collect all items, then one call per agent
-     - Never interleave: don't alternate between agents per item
-     - Validate before proceeding: catch errors early
-     - Explain WHY behind constraints, not just WHAT
-     - Include technical details ONLY when the agent wouldn't know
-     - Add user checkpoints at creative decision points
+     不是每个 Skill 都需要全部 7 步，但顺序很重要。
+     关键原则：
+     - 批量处理：同类资源一次生成，不交叉
+     - 先确认再生产：高成本操作前让用户确认
+     - 解释原因：不仅说"必须做"，还要说"为什么"
      ============================================================ -->
 
 
-## PRE: OBTAIN HILO TOKEN
+## 步骤 0：前置检查
 
-Before starting the workflow, obtain the Hilo API token via MCP:
+<!-- 开始前需要什么？列出必需输入、可选输入、缺失时怎么办。 -->
 
-1. **Call MCP `get_token`**, store the returned `access_token`.
-2. This token will be used in subsequent video generation steps (Hilo/Official).
-3. **Token lifetime**: If the workflow is long-running (>30 min), check token expiry before each API call and refresh if needed.
-
-**Why obtain early**: Getting the token upfront avoids interrupting the creative flow mid-workflow. If auth fails, the user knows immediately -- rather than after expensive generation steps have already run.
-
-
-## STEP 0: CHECK RESOURCES
-
-<!-- What does the skill need before it can start? -->
-<!-- List required inputs, optional inputs, and how to obtain missing ones. -->
-
-1. **<Required input 1>**: If not provided, ask the user to provide one or <describe fallback>.
-2. **<Required input 2>**: Ask the user: "<clarifying question>".
-3. **<Optional preprocessing>**: If user specifies <condition>, do <preprocessing> first.
-4. Get <metadata> from the input (e.g., duration, dimensions, format).
+1. **<必需输入 1>**：如未提供，询问用户。
+2. **<必需输入 2>**：询问用户："<澄清问题>"。
+3. **<可选预处理>**：如果用户指定 <条件>，先做 <预处理>。
+4. 获取输入的元数据（如时长、尺寸、格式）。
 
 
-## STEP 1: ANALYZE INPUT
+## 步骤 1：分析输入
 
-<!-- Understand the source material before making creative decisions. -->
-<!-- This step feeds into ALL subsequent steps. -->
+<!-- 理解原始素材后再做创意决策。这一步的结果影响后续所有步骤。 -->
 
-Analyze the input to understand:
-- <Dimension 1> (e.g., mood, style, structure)
-- <Dimension 2> (e.g., content breakdown, sections)
-- <Dimension 3> (e.g., technical properties)
-
-Use this analysis throughout the workflow:
-- **Step 2**: Guide <planning decisions>
-- **Step 3**: Determine <generation parameters>
+分析输入以了解：
+- <维度 1>（如情绪、风格、结构）
+- <维度 2>（如内容拆解、段落划分）
+- <维度 3>（如技术参数）
 
 
-## STEP 2: GENERATE PLAN / SCRIPT
+## 步骤 2：制定方案
 
-<!-- This is an LLM planning task -- the orchestrator does this itself. -->
-<!-- Define the creative structure that drives all downstream generation. -->
+<!-- LLM 规划任务，定义后续所有生成的创意结构。 -->
 
-Generate a complete <plan/script/storyboard> that includes:
+生成完整的 <方案/脚本/分镜>，包含：
 
-### <Component A> (e.g., Characters, Themes, Sections)
+### <模块 A>（如角色、主题、段落）
 
 ```json
 {
-  "<id_field>": "<unique_id>",
-  "<name_field>": "<display name>",
-  "<prompt_field>": "<generation prompt or description>"
+  "<id 字段>": "<唯一标识>",
+  "<名称字段>": "<显示名称>",
+  "<提示词字段>": "<生成用的描述>"
 }
 ```
 
-<!-- List constraints and rules for this component. -->
-- <Rule 1>: <what to do> -- <why it matters>
-- <Rule 2>: <what to do> -- <why it matters>
+约束：
+- <规则 1>：<做什么> — <为什么>
+- <规则 2>：<做什么> — <为什么>
 
-### <Component B> (e.g., Scenes, Layouts, Segments)
+### <模块 B>（如场景、布局、片段）
 
 ```json
 {
-  "<id_field>": "<unique_id>",
-  "<timing_fields>": "<start/end or ordering>",
-  "<content_field>": "<what happens>",
-  "<reference_fields>": "<links to Component A>"
+  "<id 字段>": "<唯一标识>",
+  "<时间字段>": "<开始/结束或顺序>",
+  "<内容字段>": "<发生什么>",
+  "<引用字段>": "<关联到模块 A>"
 }
 ```
 
-**Timing / ordering rules**:
-- <Continuity rule>: e.g., segments must be continuous, no gaps
-- <Duration rule>: e.g., each segment 3-15 seconds
-- <Preferred range>: e.g., 7-10 seconds per segment -- fewer, longer segments produce more coherent results
+### 验证
 
-**Type / category rules**:
-- `<type_1>`: <when to use, what it means>
-- `<type_2>`: <when to use, what it means>
-
-**Ratio / balance rules**:
-- <Distribution guideline>: e.g., ~60% type_1, ~40% type_2 by total duration
-- <Anti-pattern>: e.g., never place two <type_2> segments back-to-back
-
-### Validate
-
-After generating the plan, validate it:
-- <Validation check 1>
-- <Validation check 2>
-- Fix all errors and re-validate until passed.
+生成方案后验证：
+- <验证项 1>
+- <验证项 2>
+- 修复所有问题直到通过。
 
 
-## STEP 3: GENERATE ASSETS
+## 步骤 3：生成资产
 
-<!-- Batch-generate all intermediate assets in as few calls as possible. -->
-<!-- Group by asset type, NOT by downstream usage. -->
+<!-- 批量生成所有中间产物，同类资源一次调用。 -->
 
-Generate all <asset type> in one batch:
+一次性生成所有 <资产类型>：
 
-1. **<Asset category 1>** (e.g., character images): Use each item's `<prompt_field>`. <Key parameter>: `<value>`.
-2. **<Asset category 2>** (e.g., scene images): Use each item's `<prompt_field>`. <Key parameter>: `<value>`.
+1. **<资产类别 1>**：使用每个项目的 <提示词字段>。关键参数：<值>。
+2. **<资产类别 2>**：使用每个项目的 <提示词字段>。关键参数：<值>。
 
-Include ALL prompts in one task to minimize round-trips.
-
-<!-- Pitfall callout: things that seem obvious but cause real failures. -->
-**Pitfall**: Do NOT <common mistake> -- <what happens if you do>.
+**注意**：不要 <常见错误> — <后果>。
 
 
-## STEP 4: CONFIRM WITH USER
+## 步骤 4：用户确认
 
-<!-- Creative checkpoint: user reviews intermediate assets before expensive production. -->
+<!-- 创意决策点：用户在高成本操作前确认中间产物。 -->
 
-Present all generated assets to the user. Ask if any need adjustments. Regenerate as needed.
-
-<!-- This step is cheap (just showing images/text). -->
-<!-- Skipping it risks wasting expensive generation in Step 5. -->
+展示所有生成的资产给用户。询问是否需要调整。需要则重新生成。
 
 
-## STEP 5: MAIN PRODUCTION
+## 步骤 5：主生产
 
-<!-- The most complex step. Break into substeps (5a, 5b, 5c...). -->
-<!-- Key principle: batch ALL items per substep, then move to next substep. -->
-<!-- NEVER interleave: generate-one -> process-one -> generate-next. -->
+<!-- 最复杂的步骤。分步执行，每步批量处理。不要交叉。 -->
 
-### Step 5a: Prepare <intermediate assets> (batch)
+### 5a：准备 <中间资产>（批量）
 
-<!-- Transform Step 3 assets into production-ready inputs. -->
+为每个项目准备生产输入：
+- <如何组合/转换资产>
+- 关键参数：<值> — <为什么>
 
-For each <item>, prepare its <production input>:
-- <How to compose/transform the asset>
-- <Key parameter>: `<value>` -- <why this value>
+### 5b：生成 <主要输出>（批量）
 
-**Batch**: Process ALL items in one call, then proceed to 5b.
+为所有项目生成输出：
+- 输入：来自步骤 5a
+- 关键参数：<值或策略>
 
-### Step 5b: Generate <primary outputs> (batch)
+**模型选择**：<用什么模型/工具，为什么>。
 
-<!-- The main generation pass. -->
+### 5c：调整 / 后处理
 
-Generate <outputs> for all items:
-- <Input>: from Step 5a
-- <Key parameter>: <value or strategy>
+<!-- 修复生成结果与目标规格的偏差。 -->
 
-**Model selection**: <Which model/tool to use and why>.
+调整每个输出以匹配目标规格：
 
-**Duration / size strategy**: <How to handle variable output sizes>:
-- <Condition 1> -> <approach>
-- <Condition 2> -> <approach>
+**情况 1**：<输出超过目标> → <修复策略>
+**情况 2**：<输出不足目标> → <修复策略>
 
-### Step 5c: Adjust / Post-process
+### 5d：生成 <次要输出>（不同方法）
 
-<!-- Fix discrepancies between generated output and target specs. -->
-<!-- This step is often the difference between "demo quality" and "production quality". -->
+<!-- 当部分项目需要不同的生成方法时。说明为什么。 -->
 
-Adjust every output to match its target specification:
-
-#### Case 1: <Output exceeds target> -> <Fix strategy>
-
-<!-- Include specific commands/techniques only when non-obvious. -->
-
-#### Case 2: <Output falls short of target> -> <Fix strategy>
-
-<!-- Explain the technique and WHY it's needed. -->
-
-**Verification**: After adjusting all outputs, verify the total matches expectations.
-If drift exceeds <threshold>, fix before proceeding.
-
-### Step 5d: Generate <secondary outputs> (different technique)
-
-<!-- When some items need a fundamentally different generation approach. -->
-<!-- Explain WHY this subset uses a different method. -->
-
-For <subset of items>, use <different approach> because <reason>.
-
-**Sub-step 1**: Prepare inputs for this subset.
-**Sub-step 2**: Generate in one batch call.
-**Sub-step 3**: Post-process to match target specs.
+对于 <子集>，使用 <不同方法>，因为 <原因>。
 
 
-## STEP 6: FINAL ASSEMBLY
+## 步骤 6：合成输出
 
-<!-- Combine all produced assets into the final deliverable. -->
+<!-- 组合所有资产为最终产物。 -->
 
-Assemble the final output:
-- <Input 1>: ALL produced outputs in order
-- <Input 2>: Original source material (e.g., audio track)
-- <Input 3>: Metadata (e.g., credits, annotations)
-
-<!-- Specify the format/structure of metadata if non-trivial. -->
+组装最终输出：
+- 输入 1：所有产出的 <资产>
+- 输入 2：原始素材
+- 输入 3：元数据
 
 
-## STEP 7: PRESENT RESULT
+## 步骤 7：展示结果
 
-Show the final output to the user with a summary:
-- <Input summary> (e.g., source info)
-- <Production summary> (e.g., asset counts, techniques used)
-- <Output path / location>
+向用户展示最终输出并总结：
+- 输入摘要
+- 生产摘要（资产数量、使用技术）
+- 输出路径
