@@ -1,5 +1,5 @@
 ---
-name: 社交卡片
+name: 小红书微信图文
 description: 生成小红书图文、微信公众号封面等社交卡片，支持 Editorial 杂志风和 Swiss 国际风双视觉系统。Use when 用户需要小红书图文, Rednote/Xiaohongshu images, social cards, carousel, 3:4 covers, 微信公众号封面, WeChat 21:9+1:1 covers, Swiss Style, 杂志风 social images.
 ---
 
