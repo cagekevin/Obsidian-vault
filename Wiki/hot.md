@@ -15,7 +15,11 @@ related:
 
 Navigation: [[index]] | [[log]]
 
+> 🚀 **做视频？** 直接看 [[视频创作快速导航]] — 按"我现在在做什么"组织的任务型 MOC，1-2 跳直达所有相关 Wiki 页面。
+
 <<<<<<< HEAD
+2026-07-02 (12:21): **Source creation — 刺猬星球 镜头角度电影感**. 刺猬星球super-i 视频转录：8 种镜头角度详解 + 斜修组合玩法（平视+长焦/广角、俯视+广角、仰视+前景遮挡）。Created [[sources/刺猬星球-镜头角度电影感]]. Updated [[sources/_index]], [[index]], [[log]], [[hot]]. Key insight: 镜头角度的核心不是"用哪个"，而是组合使用（镜头角度 + 焦段 + 前景遮挡）。
+
 2026-06-30 (23:19): **Concept creation — AI 视频提示词生成工作流**. 9 步工作流，每步自带一致性检查（找矛盾），按需加载。Created [[AI视频提示词生成工作流]]. Deleted [[AI视频提示词生成检查清单]]. Updated [[concepts/_index]], [[log]], [[hot]].
 
 2026-06-30 (23:10): **Concept creation — AI 视频提示词生成检查清单**. 7 阶段 30+ 项检查，每项含"判断是否需要使用"维度，从故事结构到语法修正全覆盖。Created [[AI视频提示词生成检查清单]]. Updated [[concepts/_index]], [[index]], [[log]], [[hot]].

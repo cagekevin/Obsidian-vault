@@ -1,0 +1,41 @@
+{
+  "width": 2160,
+  "height": 2880,
+  "layers": [
+    {
+      "file": "layer_00.png",
+      "left": 0,
+      "top": 0
+    },
+    {
+      "file": "layer_01.png",
+      "left": 176,
+      "top": 192
+    },
+    {
+      "file": "layer_02.png",
+      "left": 176,
+      "top": 294
+    },
+    {
+      "file": "layer_03.png",
+      "left": 176,
+      "top": 753
+    },
+    {
+      "file": "layer_04.png",
+      "left": 176,
+      "top": 936
+    },
+    {
+      "file": "layer_05.png",
+      "left": 176,
+      "top": 1282
+    },
+    {
+      "file": "layer_06.png",
+      "left": 176,
+      "top": 2684
+    }
+  ]
+}

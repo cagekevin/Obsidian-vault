@@ -20,6 +20,8 @@ Last updated: 2026-06-24 | Total pages: 40 | Sources ingested: 10
 
 Navigation: [[log]] | [[hot]]
 
+> 🚀 **做视频的快速入口** → [[视频创作快速导航]] — 按"我当前在做什么"组织的任务型 MOC（剧本/分镜/镜头/光影/人物/动作/声音/提示词/检查），1-2 跳直达所有相关页面。
+
 ---
 
 ## Concepts
@@ -167,3 +169,4 @@ Navigation: [[log]] | [[hot]]
 - [[sources/OptiQ Tutorial]] — WeChat tutorial (status: ingested)
 - [[5 Agent Skill Design Patterns]] — Google Cloud Tech Twitter thread on 5 ADK skill patterns (status: ingested)
 - [[sources/Google OKF 2026]] — Google OKF 开放知识格式标准 (status: ingested)
+- [[sources/刺猬星球-镜头角度电影感]] — 8 种镜头角度详解 + 斜修组合玩法 (status: ingested)

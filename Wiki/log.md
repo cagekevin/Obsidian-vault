@@ -18,6 +18,13 @@ Navigation: [[index]] | [[hot]]
 ---
 
 <<<<<<< HEAD
+## [2026-07-02] Source creation | 刺猬星球 镜头角度电影感
+- Source: 刺猬星球super-i B站视频转录
+- Summary: 8 种镜头角度详解 + 斜修组合玩法，核心观点：镜头角度的核心不是"用哪个"，而是组合使用
+- Pages created: [[sources/刺猬星球-镜头角度电影感]]
+- Pages updated: [[sources/_index]], [[index]], [[log]], [[hot]]
+- Key insight: 镜头角度 + 焦段 + 前景遮挡的组合才是电影感的关键，单一镜头角度没有意义
+
 ## [2026-06-30] Concept creation | AI 视频提示词生成工作流
 - Summary: 从"检查清单"升级为"工作流"。9 步流程（定故事→定影调→定分镜→定镜头语言→定光影方案→定动作与人物→定声音→写提示词→检查与修正），每步自带一致性检查（找矛盾），按需加载
 - Pages created: [[AI视频提示词生成工作流]]
