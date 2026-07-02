@@ -1,0 +1,81 @@
+{
+  "width": 2160,
+  "height": 2880,
+  "layers": [
+    {
+      "file": "layer_00.png",
+      "left": 0,
+      "top": 0
+    },
+    {
+      "file": "layer_01.png",
+      "left": 176,
+      "top": 192
+    },
+    {
+      "file": "layer_02.png",
+      "left": 176,
+      "top": 294
+    },
+    {
+      "file": "layer_03.png",
+      "left": 176,
+      "top": 498
+    },
+    {
+      "file": "layer_04.png",
+      "left": 176,
+      "top": 498
+    },
+    {
+      "file": "layer_05.png",
+      "left": 176,
+      "top": 1426
+    },
+    {
+      "file": "layer_06.png",
+      "left": 176,
+      "top": 1644
+    },
+    {
+      "file": "layer_07.png",
+      "left": 176,
+      "top": 1795
+    },
+    {
+      "file": "layer_08.png",
+      "left": 176,
+      "top": 1947
+    },
+    {
+      "file": "layer_09.png",
+      "left": 1104,
+      "top": 498
+    },
+    {
+      "file": "layer_10.png",
+      "left": 1104,
+      "top": 1426
+    },
+    {
+      "file": "layer_11.png",
+      "left": 1104,
+      "top": 1644
+    },
+    {
+      "file": "layer_12.png",
+      "left": 1104,
+      "top": 1795
+    },
+    {
+      "file": "layer_13.png",
+      "left": 1104,
+      "top": 1947
+    },
+    {
+      "file": "layer_14.png",
+      "left": 176,
+      "top": 2684
+    }
+  ]
+}
