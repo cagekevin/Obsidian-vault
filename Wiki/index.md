@@ -16,7 +16,7 @@ related:
 
 # Wiki Index
 
-Last updated: 2026-06-24 | Total pages: 40 | Sources ingested: 10
+Last updated: 2026-07-07 | Total pages: 41 | Sources ingested: 10
 
 Navigation: [[log]] | [[hot]]
 
@@ -83,6 +83,7 @@ Navigation: [[log]] | [[hot]]
 - [[时间补偿机制与动态词学]] — 时间词三态、运动矢量反推、时间逻辑约束 (status: developing)
 
 ### 高级控制
+- [[AI协作核心方法论]] — 反捷径 + 避免矛盾：AI 会走捷径、AI 怕矛盾的底层心理模型，以及"精准简洁 + 无矛盾"的元方法论 (status: developing)
 - [[AI底层机制与高级控制]] — 误解机制、风格泄漏、鲁棒性破坏、知识诅咒、提示词权重竞争、JSON提示词 (status: developing)
 - [[风格提取与约束系统]] — 不可变约束点、风格边界锁定、结构骨架反推 (status: developing)
 

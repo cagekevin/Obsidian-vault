@@ -18,6 +18,12 @@ Navigation: [[index]] | [[hot]]
 ---
 
 <<<<<<< HEAD
+## [2026-07-07] Concept creation | AI 协作核心方法论
+- Summary: 反捷径 + 避免矛盾的核心原则。AI 会走捷径（能复制不创造、能模糊不具体、能省力不费力），AI 怕矛盾（矛盾导致崩溃）。核心公式：核心场景（1句）+ 关键元素（3-5个）+ 氛围方向（光线+色调+情绪）。实战检查清单：矛盾检查、废话删除、捷径堵死。写完翻译成中文让用户帮忙检查矛盾。
+- Pages created: [[concepts/AI协作核心方法论]]
+- Pages updated: [[concepts/_index]], [[index]], [[log]], [[hot]]
+- Key insight: AI 崩溃不是因为词汇不够，而是因为矛盾太多。宁可简洁，不要矛盾。
+
 ## [2026-07-02] Source creation | 刺猬星球 镜头角度电影感
 - Source: 刺猬星球super-i B站视频转录
 - Summary: 8 种镜头角度详解 + 斜修组合玩法，核心观点：镜头角度的核心不是"用哪个"，而是组合使用

@@ -86,6 +86,7 @@ All concept pages — ideas, patterns, and frameworks extracted from sources.
 - [[AI视频提示词生成工作流]] — 9 步工作流，每步自带一致性检查，按需加载 (status: developing)
 
 ### 提示词与底层机制
+- [[AI协作核心方法论]] — 反捷径 + 避免矛盾：AI 会走捷径、AI 怕矛盾的底层心理模型，以及"精准简洁 + 无矛盾"的元方法论 (status: developing)
 - [[AI视觉语法体系]] — 提示词五板块、词序规则、反向提示词 (status: developing)
 - [[AI底层机制与高级控制]] — 误解机制、风格泄漏、鲁棒性破坏、知识诅咒、提示词权重竞争 (status: developing)
 - [[AI提示词修正思路]] — 删高干扰动作、修正强磁、明确动作歧义 (status: developing)
