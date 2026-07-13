@@ -6,10 +6,10 @@ function main() {
     var doc = app.activeDocument;
     var isWin = $.os.indexOf("Windows") !== -1;
     var pythonCmd = isWin ? "python" : "python3";
-    
-    var pyScriptPath = isWin
-        ? "C:/Users/xinye/Nutstore/1/我的坚果云/skills-main/tools/ocr-image-to-text.py"
-        : "/Users/kevin/Nutstore Files/我的坚果云/skills-main/tools/ocr-image-to-text.py";
+
+    // 指向与当前 jsx 同目录下的 ocr-image-to-text.py
+    var scriptDir = (new File($.fileName)).parent.fsName.replace(/\\/g, "/");
+    var pyScriptPath = scriptDir + "/ocr-image-to-text.py";
 
     var tempDir = Folder(Folder.temp.fsName + "/ps_ocr_engine");
     if (!tempDir.exists) tempDir.create();

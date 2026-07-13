@@ -1,0 +1,36 @@
+{
+  "width": 2160,
+  "height": 2880,
+  "layers": [
+    {
+      "file": "layer_00.png",
+      "left": 0,
+      "top": 0
+    },
+    {
+      "file": "layer_01.png",
+      "left": 176,
+      "top": 192
+    },
+    {
+      "file": "layer_02.png",
+      "left": 176,
+      "top": 246
+    },
+    {
+      "file": "layer_03.png",
+      "left": 176,
+      "top": 989
+    },
+    {
+      "file": "layer_04.png",
+      "left": 1271,
+      "top": 318
+    },
+    {
+      "file": "layer_05.png",
+      "left": 176,
+      "top": 2684
+    }
+  ]
+}
