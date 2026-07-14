@@ -91,16 +91,26 @@ def download_audio(query, output_dir, download_video=False, cookie_file=""):
         if result.stderr.strip():
             for line in result.stderr.strip().split("\n")[-3:]:
                 print(f"  [yt-dlp] {line}")
-        if result.returncode == 0 and result.stdout.strip():
+
+        # 检测方式：扫描输出目录找最新非空 mp4/mkv 文件
+        if result.returncode == 0:
             suffix = ".mp4" if download_video else f".{fmt}"
-            for ext in [suffix, ".m4a", ".mp3", ".opus"]:
-                for line in result.stdout.strip().split("\n"):
-                    line = line.strip()
-                    if line.endswith(ext) and os.path.exists(line):
-                        size = os.path.getsize(line)
-                        print(f"📁 {os.path.basename(line)} ({size/1024/1024:.1f} MB)")
-                        add_to_apple_music(line)
-                        return True
+            exts_to_check = [suffix, ".mkv", ".webm", ".m4a", ".mp3", ".opus"]
+            # 取输出目录中修改时间最新的文件
+            latest = None
+            latest_mtime = 0
+            for fname in os.listdir(output_dir):
+                fpath = os.path.join(output_dir, fname)
+                if os.path.isfile(fpath) and any(fname.lower().endswith(e) for e in exts_to_check):
+                    mtime = os.path.getmtime(fpath)
+                    if mtime > latest_mtime:
+                        latest_mtime = mtime
+                        latest = fpath
+            if latest and os.path.getsize(latest) > 1024 * 1024:  # >1MB 排除封面图
+                size_mb = os.path.getsize(latest) / 1024 / 1024
+                print(f"📁 {os.path.basename(latest)} ({size_mb:.1f} MB)")
+                add_to_apple_music(latest)
+                return True
         # cookie 文件失败时 fallthrough 到浏览器模式
 
     # 按稳定性优先级尝试：mp3 → m4a → mp4（视频模式也试 mp3 以防格式问题）
@@ -123,15 +133,23 @@ def download_audio(query, output_dir, download_video=False, cookie_file=""):
 
             result = subprocess.run(cmd, capture_output=True, text=True)
 
-            suffix = ".mp4" if download_video else f".{fmt}"
-            for ext in [suffix, ".m4a", ".mp3", ".opus"]:
-                for line in result.stdout.strip().split("\n"):
-                    line = line.strip()
-                    if line.endswith(ext) and os.path.exists(line):
-                        size = os.path.getsize(line)
-                        print(f"📁 {os.path.basename(line)} ({size/1024/1024:.1f} MB)")
-                        add_to_apple_music(line)
-                        return True
+            if result.returncode == 0:
+                suffix = ".mp4" if download_video else f".{fmt}"
+                exts_to_check = [suffix, ".mkv", ".webm", ".m4a", ".mp3", ".opus"]
+                latest = None
+                latest_mtime = 0
+                for fname in os.listdir(output_dir):
+                    fpath = os.path.join(output_dir, fname)
+                    if os.path.isfile(fpath) and any(fname.lower().endswith(e) for e in exts_to_check):
+                        mtime = os.path.getmtime(fpath)
+                        if mtime > latest_mtime:
+                            latest_mtime = mtime
+                            latest = fpath
+                if latest and os.path.getsize(latest) > 1024 * 1024:
+                    size_mb = os.path.getsize(latest) / 1024 / 1024
+                    print(f"📁 {os.path.basename(latest)} ({size_mb:.1f} MB)")
+                    add_to_apple_music(latest)
+                    return True
 
     # 所有格式和浏览器都试过了，官方输出已保留在上面
     print(f"\n❌ 只可能有两个原因：")
