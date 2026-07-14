@@ -67,12 +67,41 @@ def add_to_apple_music(filepath):
     print(f"   2. Cookie 问题（浏览器没登录目标网站）")
     return False
 
-def download_audio(query, output_dir, download_video=False):
+def download_audio(query, output_dir, download_video=False, cookie_file=""):
     """下载音频或视频"""
     is_url = query.startswith("http://") or query.startswith("https://")
     url = query if is_url else f"ytsearch:{query}"
 
     auto_update()
+
+    # 如果提供了 cookie 文件，直接用文件（优先级最高）
+    if cookie_file and os.path.isfile(cookie_file):
+        fmt = "mp4" if download_video else "mp3"
+        cmd = ["yt-dlp", "-t", fmt]
+        cmd.extend(["--cookies", cookie_file, "--js-runtimes", "node"])
+        cmd.extend(["-P", output_dir, "-o", "%(title)s.%(ext)s"])
+        cmd.extend(["--no-playlist", "--embed-thumbnail", "--embed-metadata"])
+        if not is_url:
+            cmd.extend(["--max-downloads", "1"])
+        cmd.append(url)
+
+        print(f"  使用 Cookie 文件: {cookie_file}")
+        result = subprocess.run(cmd, capture_output=True, text=True)
+        print(f"  yt-dlp RC={result.returncode}")
+        if result.stderr.strip():
+            for line in result.stderr.strip().split("\n")[-3:]:
+                print(f"  [yt-dlp] {line}")
+        if result.returncode == 0 and result.stdout.strip():
+            suffix = ".mp4" if download_video else f".{fmt}"
+            for ext in [suffix, ".m4a", ".mp3", ".opus"]:
+                for line in result.stdout.strip().split("\n"):
+                    line = line.strip()
+                    if line.endswith(ext) and os.path.exists(line):
+                        size = os.path.getsize(line)
+                        print(f"📁 {os.path.basename(line)} ({size/1024/1024:.1f} MB)")
+                        add_to_apple_music(line)
+                        return True
+        # cookie 文件失败时 fallthrough 到浏览器模式
 
     # 按稳定性优先级尝试：mp3 → m4a → mp4（视频模式也试 mp3 以防格式问题）
     formats_to_try = ["mp3", "m4a", "mp4"]
@@ -117,6 +146,7 @@ def main():
     parser.add_argument("--batch", help="从文本文件读取（每行一首）")
     parser.add_argument("--output-dir", default=get_output_dir(), help="保存目录")
     parser.add_argument("--mp4", action="store_true", help="下载视频（mp4 格式）")
+    parser.add_argument("--cookie-file", help="指定 Netscape 格式的 Cookie 文件路径")
 
     args = parser.parse_args()
     check_dependencies()
@@ -138,7 +168,7 @@ def main():
         print(f"[{i}/{total}] {q}")
         print(f"{'='*50}")
         try:
-            if download_audio(q, args.output_dir, args.mp4):
+            if download_audio(q, args.output_dir, args.mp4, args.cookie_file):
                 success_count += 1
             else:
                 print(f"❌ 失败: {q}")
